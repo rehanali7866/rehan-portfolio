@@ -448,25 +448,46 @@ body.ready #nav { opacity: 1; transform: none; }
 .soc-row.lit .soc-name { color: var(--cream); -webkit-text-stroke-color: transparent; }
 .soc-row.lit .soc-arrow { opacity: 1; transform: translate(0, 0); }
 
-/* marquee flood: handle ticker floods the row when lit or hovered */
-.soc-flood {
-  position: absolute; inset: 0; z-index: 0; display: flex; align-items: center;
-  overflow: hidden; pointer-events: none;
-  opacity: 0; transition: opacity 0.35s ease;
+/* glitch flicker: signal tear when a row lights or is hovered */
+.soc-name { position: relative; }
+.soc-name::before, .soc-name::after {
+  content: attr(data-text); position: absolute; left: 0; top: 0;
+  opacity: 0; pointer-events: none; -webkit-text-stroke: 0;
 }
-.soc-flood-track {
-  display: flex; white-space: nowrap; width: max-content;
-  animation: socFlood 16s linear infinite;
+.soc-row.lit .soc-name, .soc-row:hover .soc-name {
+  animation: glitchShake 0.45s steps(2) both;
 }
-.soc-flood-track span {
-  font-family: var(--display); font-weight: 400;
-  font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: 1; letter-spacing: 0.02em;
-  color: transparent; -webkit-text-stroke: 1px rgba(232, 16, 46, 0.35);
+.soc-row.lit .soc-name::before, .soc-row:hover .soc-name::before {
+  color: var(--red);
+  animation: glitchSliceA 0.55s steps(3) both;
 }
-@keyframes socFlood { to { transform: translateX(-50%); } }
-.soc-row:hover .soc-flood, .soc-row.lit .soc-flood { opacity: 1; }
+.soc-row.lit .soc-name::after, .soc-row:hover .soc-name::after {
+  color: rgba(244, 236, 221, 0.9);
+  animation: glitchSliceB 0.55s steps(3) both;
+}
+@keyframes glitchShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+@keyframes glitchSliceA {
+  0% { opacity: 0.85; clip-path: inset(5% 0 70% 0); transform: translate(-6px, -2px); }
+  33% { opacity: 0.85; clip-path: inset(40% 0 30% 0); transform: translate(5px, 1px); }
+  66% { opacity: 0.85; clip-path: inset(70% 0 5% 0); transform: translate(-4px, 2px); }
+  100% { opacity: 0; clip-path: inset(70% 0 5% 0); transform: translate(0, 0); }
+}
+@keyframes glitchSliceB {
+  0% { opacity: 0.7; clip-path: inset(60% 0 10% 0); transform: translate(6px, 2px); }
+  33% { opacity: 0.7; clip-path: inset(10% 0 60% 0); transform: translate(-5px, -1px); }
+  66% { opacity: 0.7; clip-path: inset(35% 0 35% 0); transform: translate(4px, -2px); }
+  100% { opacity: 0; clip-path: inset(35% 0 35% 0); transform: translate(0, 0); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .soc-flood-track { animation: none; }
+  .soc-row.lit .soc-name, .soc-row:hover .soc-name,
+  .soc-row.lit .soc-name::before, .soc-row:hover .soc-name::before,
+  .soc-row.lit .soc-name::after, .soc-row:hover .soc-name::after { animation: none; }
 }
 @media (max-width: 640px) {
   .soc-handle { display: none; }
