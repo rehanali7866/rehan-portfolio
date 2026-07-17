@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEVERMISSED — AI Phone Answering for Takeaways | Edinburgh</title>
+<meta name="description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, every order taken and texted straight to you. First month free. Edinburgh.">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,500;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0a08;
+    --ink-2:#12100d;
+    --steel:#1a1815;
+    --cream:#f4ecdd;
+    --cream-dim:rgba(244,236,221,.55);
+    --hairline:rgba(244,236,221,.14);
+    --red:#e8102e;
+    --red-deep:#8f0a1d;
+    --display:"Anton",impact,sans-serif;
+    --serif:"Playfair Display",georgia,serif;
+    --grotesk:"Space Grotesk",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--ink)}
+  body{
+    font-family:var(--grotesk);
+    background:var(--ink);color:var(--cream);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--red);color:var(--cream)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 6vw}
+
+  /* GRAIN */
+  #grain{
+    position:fixed;inset:-100px;z-index:90;pointer-events:none;opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    animation:grainShift .9s steps(2) infinite;
+  }
+  @keyframes grainShift{
+    0%{transform:translate(0,0)}25%{transform:translate(-40px,30px)}
+    50%{transform:translate(30px,-45px)}75%{transform:translate(-25px,-20px)}
+    100%{transform:translate(0,0)}
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:80;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.4rem 2rem;mix-blend-mode:difference;
+  }
+  .nav-mark{font-family:var(--display);font-size:1.05rem;letter-spacing:.06em}
+  .nav-mark span{color:var(--red)}
+  .nav-links{display:flex;gap:1.8rem;align-items:center}
+  .nav-links a{font-size:.66rem;letter-spacing:.28em;position:relative;padding:4px 0}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+    background:var(--red);transform:scaleX(0);transform-origin:right;
+    transition:transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+  @media(max-width:640px){
+    nav{padding:1.1rem 1.2rem}
+    .nav-links{gap:.9rem}
+    .nav-links a{font-size:.6rem;letter-spacing:.14em;white-space:nowrap}
+    .nav-links a.hide-sm{display:none}
+    .nav-mark{font-size:.9rem}
+  }
+
+  /* SHARED */
+  .eyebrow{
+    font-size:.66rem;letter-spacing:.4em;color:var(--cream-dim);
+    display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem;
+  }
+  .eyebrow b{color:var(--red);font-weight:600}
+  .eyebrow::after{content:"";height:1px;width:72px;background:var(--hairline)}
+  h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.2rem,6.5vw,5rem);line-height:.92;letter-spacing:.01em;
+    margin-bottom:1.2rem;
+  }
+  h2 em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.82em}
+  .lead{color:var(--cream-dim);max-width:640px;font-size:1.02rem;margin-bottom:3.4rem}
+  .lead em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:1.12em}
+
+  /* HERO */
+  header{
+    padding:26vh 0 14vh;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%,rgba(143,10,29,.28),transparent 62%),
+      var(--ink);
+  }
+  .pill{
+    display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.32em;
+    color:var(--red);border:1px solid rgba(232,16,46,.5);
+    padding:.6rem 1.2rem;margin-bottom:2.4rem;
+  }
+  h1{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(3rem,10vw,8.5rem);line-height:.86;letter-spacing:.01em;
+    max-width:15ch;margin-bottom:2rem;
+  }
+  h1 em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.72em}
+  .sub{
+    font-size:clamp(1rem,1.9vw,1.2rem);color:var(--cream-dim);
+    max-width:620px;margin-bottom:3rem;line-height:1.65;
+  }
+  .cta-row{display:flex;gap:1.2rem;flex-wrap:wrap}
+  .btn{
+    font-family:var(--grotesk);font-weight:600;font-size:.7rem;letter-spacing:.3em;
+    padding:1.2rem 2.4rem;position:relative;overflow:hidden;z-index:1;
+    transition:color .35s ease;display:inline-block;
+  }
+  .btn::after{
+    content:"";position:absolute;inset:0;background:var(--cream);z-index:-1;
+    transform:translateY(101%);transition:transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .btn:hover::after{transform:translateY(0)}
+  .btn:hover{color:var(--ink)}
+  .btn-red{background:var(--red);color:var(--cream)}
+  .btn-ghost{border:1px solid rgba(244,236,221,.4);color:var(--cream)}
+  .hero-note{margin-top:1.6rem;font-size:.62rem;letter-spacing:.28em;color:var(--cream-dim)}
+
+  /* PROBLEM */
+  .problem{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+  .stat{background:var(--ink-2);padding:2.6rem 2rem 3rem}
+  .stat .num{font-family:var(--display);font-size:clamp(3.4rem,7vw,5.4rem);line-height:.9;color:var(--cream)}
+  .stat .num.red{color:var(--red)}
+  .stat .num.hollow{color:transparent;-webkit-text-stroke:1px rgba(232,16,46,.8)}
+  .stat p{color:var(--cream-dim);font-size:.86rem;margin-top:1.2rem;line-height:1.55}
+
+  /* HOW */
+  .how{padding:14vh 0}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+  .step{background:var(--ink);padding:2.6rem 2.2rem 3rem}
+  .step .n{
+    font-family:var(--display);font-size:3.4rem;line-height:1;
+    color:transparent;-webkit-text-stroke:1px rgba(232,16,46,.75);margin-bottom:1.4rem;
+  }
+  .step h3{font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.03em;margin-bottom:.9rem}
+  .step p{color:var(--cream-dim);font-size:.9rem;line-height:1.65}
+
+  /* DEMO */
+  .demo{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.4rem;align-items:center}
+  @media(max-width:820px){.demo-grid{grid-template-columns:1fr}}
+  .chat{display:flex;flex-direction:column;gap:.9rem}
+  .bubble{max-width:88%;padding:1rem 1.3rem;font-size:.94rem;line-height:1.5;border:1px solid var(--hairline)}
+  .bubble.ai{background:var(--steel);align-self:flex-start;border-left:2px solid var(--red)}
+  .bubble.cust{background:rgba(232,16,46,.08);border-color:rgba(232,16,46,.35);align-self:flex-end}
+  .bubble .who{
+    display:block;font-size:.56rem;font-weight:600;letter-spacing:.3em;
+    text-transform:uppercase;margin-bottom:.5rem;color:var(--cream-dim);
+  }
+  .receipt{
+    background:var(--cream);color:#14120e;padding:2rem 1.8rem;
+    font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.85rem;line-height:1.75;
+    box-shadow:0 30px 70px rgba(0,0,0,.6);transform:rotate(1.2deg);
+  }
+  .receipt .rt{
+    font-weight:700;text-align:center;letter-spacing:.14em;font-size:.72rem;
+    border-bottom:2px dashed #c4bba8;padding-bottom:.7rem;margin-bottom:.9rem;
+  }
+  .receipt .row{display:flex;justify-content:space-between}
+  .receipt .dash{border-top:2px dashed #c4bba8;margin:.8rem 0}
+  .receipt .total{font-weight:700}
+  .receipt .foot{text-align:center;color:#8a8271;font-size:.7rem;margin-top:1rem}
+
+  /* PRICING */
+  .pricing{padding:16vh 0;text-align:center}
+  .pricing .eyebrow{justify-content:center}
+  .price-card{
+    max-width:460px;margin:3rem auto 0;background:var(--ink-2);
+    border:1px solid rgba(232,16,46,.4);padding:3.4rem 2.6rem;text-align:left;
+  }
+  .price{font-family:var(--display);font-size:5rem;line-height:1;color:var(--cream)}
+  .price small{font-family:var(--grotesk);font-size:.9rem;font-weight:400;color:var(--cream-dim);letter-spacing:.2em}
+  .free-tag{
+    display:inline-block;color:var(--red);border:1px solid rgba(232,16,46,.5);
+    font-size:.58rem;font-weight:600;letter-spacing:.28em;padding:.5rem 1rem;margin:1.4rem 0 2rem;
+  }
+  .features{list-style:none;margin:0 0 2.4rem;color:var(--cream-dim)}
+  .features li{padding:.85rem 0;border-bottom:1px solid var(--hairline);font-size:.9rem;display:flex;gap:.8rem}
+  .features li::before{content:"—";color:var(--red);font-weight:700}
+  .features li:last-child{border-bottom:none}
+  .price-card .btn{display:block;text-align:center}
+  .guarantee{
+    margin-top:1.6rem;font-size:.86rem;color:var(--cream-dim);
+    font-family:var(--serif);font-style:italic;
+  }
+
+  /* FAQ */
+  .faq{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
+  details{border-top:1px solid var(--hairline)}
+  details:last-of-type{border-bottom:1px solid var(--hairline)}
+  summary{
+    cursor:pointer;padding:1.6rem .4rem;font-size:1rem;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:1.4rem;
+    transition:color .3s ease,padding-left .3s ease;
+  }
+  summary:hover{color:var(--red);padding-left:1rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--display);font-size:1.6rem;color:var(--red)}
+  details[open] summary{color:var(--red)}
+  details[open] summary::after{content:"\2013"}
+  details p{padding:0 .4rem 1.8rem;color:var(--cream-dim);font-size:.92rem;line-height:1.7;max-width:70ch}
+
+  /* FINAL */
+  .final{
+    padding:20vh 0;text-align:center;position:relative;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 70%,rgba(143,10,29,.24),transparent 70%),
+      var(--ink);
+  }
+  .final h2{font-size:clamp(2.6rem,9vw,7.5rem)}
+  .final .cta-row{justify-content:center}
+  .final .sub{margin:0 auto 3rem;font-family:var(--serif);font-style:italic;color:var(--cream-dim)}
+
+  footer{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.4rem;
+    padding:2.2rem 2rem;border-top:1px solid var(--hairline);
+  }
+  .foot-links{display:flex;gap:1.6rem;flex-wrap:wrap}
+  .foot-links a{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim);transition:color .3s}
+  .foot-links a:hover{color:var(--red)}
+  .foot-credit{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div id="grain" aria-hidden="true"></div>
+
+<nav>
+  <a class="nav-mark" href="/">RAVOLUTION<span>.</span></a>
+  <div class="nav-links">
+    <a href="#how" class="hide-sm">HOW IT WORKS</a>
+    <a href="#pricing">PRICING</a>
+    <a href="/vaults/" class="hide-sm">THE VAULTS</a>
+    <a href="/">PORTFOLIO</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="pill">BUILT FOR SCOTTISH RESTAURANTS &amp; TAKEAWAYS</div>
+    <h1>YOUR PHONE <em>answered.</em></h1>
+    <p class="sub">NeverMissed is an AI receptionist that picks up every call to your takeaway, takes the full order, and texts it straight to you — even at 6pm on a Friday.</p>
+    <div class="cta-row">
+      <a class="btn btn-red" href="tel:+440000000000">CALL THE LIVE DEMO</a>
+      <a class="btn btn-ghost" href="#how">SEE HOW IT WORKS</a>
+    </div>
+    <p class="hero-note">NO APP · NO NEW HARDWARE · YOUR NUMBER STAYS THE SAME</p>
+  </div>
+</header>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="eyebrow"><b>01</b> THE FRIDAY NIGHT PROBLEM</p>
+    <h2>EVERY MISSED CALL<br>IS AN ORDER FOR <em>someone else</em></h2>
+    <p class="lead">When the shop's slammed, the phone loses. Customers don't ring back — <em>they just order from whoever picks up.</em></p>
+    <div class="stats">
+      <div class="stat"><div class="num red">10+</div><p>calls missed on a busy Friday night at a typical independent takeaway</p></div>
+      <div class="stat"><div class="num red">£150+</div><p>walks out the door every week in orders that went to a competitor</p></div>
+      <div class="stat"><div class="num hollow">0</div><p>calls missed with NeverMissed answering — 24 hours a day, 7 days a week</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="eyebrow"><b>02</b> HOW IT WORKS</p>
+    <h2>LIVE IN YOUR SHOP<br>IN <em>under an hour</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>DIVERT YOUR PHONE</h3>
+        <p>Busy or unanswered calls forward to your NeverMissed number. Takes 2 minutes, works with any landline or mobile. Your customers still ring the same number they always have.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>AI TAKES THE ORDER</h3>
+        <p>A natural, friendly voice greets customers by your shop's name, knows your full menu and prices, takes the order, and confirms it back — collection or delivery.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>ORDER IN YOUR HAND</h3>
+        <p>The second the call ends, the full order is texted to your phone — name, items, total, and time. Kitchen screen and printer options available too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo">
+  <div class="wrap">
+    <p class="eyebrow"><b>03</b> HEAR THE DIFFERENCE</p>
+    <h2>SOUNDS LIKE YOUR<br><em>best</em> MEMBER OF STAFF</h2>
+    <p class="lead">A real call, start to finish, in about 20 seconds:</p>
+    <div class="demo-grid">
+      <div class="chat">
+        <div class="bubble ai"><span class="who">NeverMissed</span>"Ravolution Pizza, what can I get you?"</div>
+        <div class="bubble cust"><span class="who">Customer</span>"Large pepperoni and two garlic breads please."</div>
+        <div class="bubble ai"><span class="who">NeverMissed</span>"Large pepperoni, two garlic breads — that's £22.50. Name for the order?"</div>
+        <div class="bubble cust"><span class="who">Customer</span>"Tony. Collection."</div>
+        <div class="bubble ai"><span class="who">NeverMissed</span>"Perfect. Twenty minutes, see you soon Tony."</div>
+      </div>
+      <div class="receipt">
+        <div class="rt">NEW ORDER — RAVOLUTION PIZZA</div>
+        <div class="row"><span>Tony</span><span>07700 900123</span></div>
+        <div class="row"><span>Type</span><span>Collection</span></div>
+        <div class="dash"></div>
+        <div class="row"><span>1× Large Pepperoni</span><span>£16.50</span></div>
+        <div class="row"><span>2× Garlic Bread</span><span>£6.00</span></div>
+        <div class="dash"></div>
+        <div class="row total"><span>TOTAL</span><span>£22.50</span></div>
+        <div class="row"><span>Ready in</span><span>20 mins</span></div>
+        <div class="foot">Sent to your phone 2 seconds after the call ended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow"><b>04</b> SIMPLE PRICING</p>
+    <h2>LESS THAN ONE<br><em>lost</em> FRIDAY NIGHT</h2>
+    <div class="price-card">
+      <div class="price">£99<small>/MONTH</small></div>
+      <div class="free-tag">FIRST MONTH FREE</div>
+      <ul class="features">
+        <li>Every call answered, 24/7 — including holidays</li>
+        <li>Full orders taken with your real menu &amp; prices</li>
+        <li>Orders texted to you instantly</li>
+        <li>Kitchen screen or receipt printer add-on available</li>
+        <li>Set up for you in person — we come to your shop</li>
+        <li>No contract. Cancel any time.</li>
+      </ul>
+      <a class="btn btn-red" href="tel:+440000000000">START YOUR FREE MONTH</a>
+      <p class="guarantee">If it doesn't save you money in month one, don't pay a penny. That's the deal.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <p class="eyebrow"><b>05</b> QUESTIONS OWNERS ASK</p>
+    <h2>FAIR QUESTIONS,<br><em>straight</em> ANSWERS</h2>
+    <details>
+      <summary>Will customers know it's AI?</summary>
+      <p>It sounds natural and most callers don't notice — but it never pretends. If a caller asks, it says it's the shop's automated order line. What customers care about is getting through and getting their food right.</p>
+    </details>
+    <details>
+      <summary>What if it gets an order wrong?</summary>
+      <p>It repeats every order back to the customer before ending the call, and you see the full order in the text. Anything unusual, it takes the customer's number so you can ring back — it never guesses.</p>
+    </details>
+    <details>
+      <summary>Do I need new equipment?</summary>
+      <p>No. It works with your existing phone line — we just set up call diverting. If you later want orders on a kitchen screen or receipt printer, we can add that.</p>
+    </details>
+    <details>
+      <summary>What about my menu changing?</summary>
+      <p>Text us the change and it's live the same day. Price updates, specials, items off tonight — all handled.</p>
+    </details>
+    <details>
+      <summary>Can it just cover busy times or after hours?</summary>
+      <p>Yes. Many shops only divert when the line's engaged or unanswered — so it's a safety net, not a replacement. You choose.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>STOP PAYING FOR<br><em>missed calls</em></h2>
+    <p class="sub">Ring the demo line right now and order a pizza from it. If it doesn't impress you, hang up — no hard feelings.</p>
+    <div class="cta-row">
+      <a class="btn btn-red" href="tel:+440000000000">CALL THE DEMO LINE</a>
+      <a class="btn btn-ghost" href="mailto:rainnovation@mail.com">EMAIL ME</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <a href="/">PORTFOLIO</a>
+    <a href="/vaults/">THE VAULTS</a>
+    <a href="mailto:rainnovation@mail.com">EMAIL</a>
+  </div>
+  <div class="foot-credit">NEVERMISSED · EDINBURGH · ©2026 RAVOLUTION</div>
+</footer>
+
+</body>
+</html>
