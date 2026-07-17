@@ -387,7 +387,58 @@ body.ready #nav { opacity: 1; transform: none; }
 }
 
 /* ============================================================
-   05 · FINALE + FOOTER
+   05 · SOCIALS
+   ============================================================ */
+#socials { position: relative; padding: 18vh 6vw 14vh; background: var(--ink); }
+.soc-heading {
+  margin: 3rem 0 7vh; font-family: var(--display); font-weight: 400;
+  font-size: clamp(3.4rem, 11vw, 11rem); line-height: 0.86;
+}
+.soc-heading em {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  color: var(--red); font-size: 0.85em;
+}
+.soc-list { border-top: 1px solid rgba(244, 236, 221, 0.1); }
+.soc-row {
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  align-items: center; gap: 2.4rem;
+  padding: 1.9rem 0.5rem; position: relative;
+  border-bottom: 1px solid rgba(244, 236, 221, 0.1);
+  transition: padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
+}
+.soc-row::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--red); transform: scaleY(0); transform-origin: top;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.soc-row:hover { padding-left: 1.6rem; background: rgba(232, 16, 46, 0.05); }
+.soc-row:hover::before { transform: scaleY(1); }
+.soc-idx {
+  font-size: 0.66rem; letter-spacing: 0.3em; color: var(--cream-dim);
+}
+.soc-name {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.1rem, 5.6vw, 4.4rem); line-height: 0.95; letter-spacing: 0.01em;
+  color: transparent; -webkit-text-stroke: 1px rgba(244, 236, 221, 0.55);
+  transition: color 0.35s ease, -webkit-text-stroke-color 0.35s ease;
+}
+.soc-row:hover .soc-name { color: var(--cream); -webkit-text-stroke-color: transparent; }
+.soc-handle {
+  font-size: 0.64rem; letter-spacing: 0.3em; color: var(--cream-dim); white-space: nowrap;
+}
+.soc-arrow {
+  font-size: 1.6rem; color: var(--red);
+  opacity: 0; transform: translate(-10px, 10px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s;
+}
+.soc-row:hover .soc-arrow { opacity: 1; transform: translate(0, 0); }
+@media (max-width: 640px) {
+  .soc-handle { display: none; }
+  .soc-row { gap: 1.2rem; }
+}
+
+/* ============================================================
+   06 · FINALE + FOOTER
    ============================================================ */
 .finale {
   position: relative; padding: 24vh 6vw 14vh; text-align: center;

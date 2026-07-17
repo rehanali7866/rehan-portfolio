@@ -441,7 +441,14 @@ ScrollTrigger.create({
 });
 
 /* ---------------- section reveals ---------------- */
-[".work-heading", ".finale-title .line", ".finale-sub", ".finale-cta"].forEach((sel) => {
+gsap.utils.toArray(".soc-row").forEach((el, i) => {
+  gsap.from(el, {
+    x: -70, opacity: 0, duration: 0.9, ease: "power3.out", delay: i * 0.09,
+    scrollTrigger: { trigger: ".soc-list", start: "top 85%", once: true },
+  });
+});
+
+[".work-heading", ".soc-heading", ".finale-title .line", ".finale-sub", ".finale-cta"].forEach((sel) => {
   gsap.utils.toArray(sel).forEach((el) => {
     gsap.from(el, {
       y: 90, opacity: 0, duration: 1.1, ease: "power4.out",
