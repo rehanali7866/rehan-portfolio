@@ -441,10 +441,33 @@ body.ready #nav { opacity: 1; transform: none; }
 .soc-row:hover .soc-arrow { opacity: 1; transform: translate(0, 0); }
 
 /* auto-spotlight: same look as hover, driven by JS */
+.soc-row { overflow: hidden; }
+.soc-row > span { position: relative; z-index: 1; }
 .soc-row.lit { padding-left: 1.6rem; background: rgba(232, 16, 46, 0.05); }
 .soc-row.lit::before { transform: scaleY(1); }
 .soc-row.lit .soc-name { color: var(--cream); -webkit-text-stroke-color: transparent; }
 .soc-row.lit .soc-arrow { opacity: 1; transform: translate(0, 0); }
+
+/* marquee flood: handle ticker floods the row when lit or hovered */
+.soc-flood {
+  position: absolute; inset: 0; z-index: 0; display: flex; align-items: center;
+  overflow: hidden; pointer-events: none;
+  opacity: 0; transition: opacity 0.35s ease;
+}
+.soc-flood-track {
+  display: flex; white-space: nowrap; width: max-content;
+  animation: socFlood 16s linear infinite;
+}
+.soc-flood-track span {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: 1; letter-spacing: 0.02em;
+  color: transparent; -webkit-text-stroke: 1px rgba(232, 16, 46, 0.35);
+}
+@keyframes socFlood { to { transform: translateX(-50%); } }
+.soc-row:hover .soc-flood, .soc-row.lit .soc-flood { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .soc-flood-track { animation: none; }
+}
 @media (max-width: 640px) {
   .soc-handle { display: none; }
   .soc-row { gap: 1.2rem; }

@@ -443,6 +443,24 @@ ScrollTrigger.create({
 /* ---------------- section reveals ---------------- */
 /* ---------------- socials auto-spotlight ---------------- */
 const socRows = $$(".soc-row");
+
+/* build the flood ticker inside each row from its handle */
+socRows.forEach((r) => {
+  const handle = r.querySelector(".soc-handle");
+  if (!handle) return;
+  const txt = (handle.textContent.trim() + " — ").repeat(8);
+  const flood = document.createElement("div");
+  flood.className = "soc-flood";
+  flood.setAttribute("aria-hidden", "true");
+  const track = document.createElement("div");
+  track.className = "soc-flood-track";
+  const s1 = document.createElement("span"); s1.textContent = txt;
+  const s2 = document.createElement("span"); s2.textContent = txt;
+  track.appendChild(s1); track.appendChild(s2);
+  flood.appendChild(track);
+  r.appendChild(flood);
+});
+
 if (socRows.length && !reduceMotion) {
   let litIdx = -1;
   let socHover = false;
