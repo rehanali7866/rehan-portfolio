@@ -441,6 +441,36 @@ ScrollTrigger.create({
 });
 
 /* ---------------- section reveals ---------------- */
+/* ---------------- socials auto-spotlight ---------------- */
+const socRows = $$(".soc-row");
+if (socRows.length && !reduceMotion) {
+  let litIdx = -1;
+  let socHover = false;
+  let socActive = false;
+  socRows.forEach((r) => {
+    r.addEventListener("pointerenter", () => {
+      socHover = true;
+      if (litIdx >= 0) socRows[litIdx].classList.remove("lit");
+    });
+    r.addEventListener("pointerleave", () => { socHover = false; });
+  });
+  setInterval(() => {
+    if (!socActive || socHover || document.hidden) return;
+    if (litIdx >= 0) socRows[litIdx].classList.remove("lit");
+    litIdx = (litIdx + 1) % socRows.length;
+    socRows[litIdx].classList.add("lit");
+  }, 2500);
+  ScrollTrigger.create({
+    trigger: "#socials",
+    start: "top 80%",
+    end: "bottom top",
+    onEnter: () => { socActive = true; },
+    onEnterBack: () => { socActive = true; },
+    onLeave: () => { socActive = false; if (litIdx >= 0) socRows[litIdx].classList.remove("lit"); },
+    onLeaveBack: () => { socActive = false; if (litIdx >= 0) socRows[litIdx].classList.remove("lit"); },
+  });
+}
+
 gsap.utils.toArray(".soc-group").forEach((group) => {
   gsap.utils.toArray(".soc-row", group).forEach((el, i) => {
     gsap.from(el, {

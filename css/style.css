@@ -439,6 +439,12 @@ body.ready #nav { opacity: 1; transform: none; }
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s;
 }
 .soc-row:hover .soc-arrow { opacity: 1; transform: translate(0, 0); }
+
+/* auto-spotlight: same look as hover, driven by JS */
+.soc-row.lit { padding-left: 1.6rem; background: rgba(232, 16, 46, 0.05); }
+.soc-row.lit::before { transform: scaleY(1); }
+.soc-row.lit .soc-name { color: var(--cream); -webkit-text-stroke-color: transparent; }
+.soc-row.lit .soc-arrow { opacity: 1; transform: translate(0, 0); }
 @media (max-width: 640px) {
   .soc-handle { display: none; }
   .soc-row { gap: 1.2rem; }
