@@ -397,6 +397,14 @@ body.ready #nav { opacity: 1; transform: none; }
   font-family: var(--serif); font-style: italic; font-weight: 500;
   color: var(--red); font-size: 0.85em;
 }
+.soc-group { margin-bottom: 8vh; }
+.soc-group:last-child { margin-bottom: 0; }
+.soc-group-label {
+  font-size: 0.66rem; letter-spacing: 0.4em; color: var(--cream-dim);
+  margin-bottom: 2.2rem; display: flex; align-items: center; gap: 0.9rem;
+}
+.soc-group-label span { color: var(--red); font-weight: 600; }
+.soc-group-label::after { content: ""; height: 1px; width: 72px; background: rgba(244, 236, 221, 0.25); }
 .soc-list { border-top: 1px solid rgba(244, 236, 221, 0.1); }
 .soc-row {
   display: grid; grid-template-columns: auto 1fr auto auto;

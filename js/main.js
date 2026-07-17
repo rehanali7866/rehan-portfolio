@@ -441,10 +441,17 @@ ScrollTrigger.create({
 });
 
 /* ---------------- section reveals ---------------- */
-gsap.utils.toArray(".soc-row").forEach((el, i) => {
-  gsap.from(el, {
-    x: -70, opacity: 0, duration: 0.9, ease: "power3.out", delay: i * 0.09,
-    scrollTrigger: { trigger: ".soc-list", start: "top 85%", once: true },
+gsap.utils.toArray(".soc-group").forEach((group) => {
+  gsap.utils.toArray(".soc-row", group).forEach((el, i) => {
+    gsap.from(el, {
+      x: -70, opacity: 0, duration: 0.9, ease: "power3.out", delay: i * 0.09,
+      scrollTrigger: { trigger: group, start: "top 85%", once: true },
+    });
+  });
+  const label = group.querySelector(".soc-group-label");
+  gsap.from(label, {
+    opacity: 0, y: 24, duration: 0.8, ease: "power3.out",
+    scrollTrigger: { trigger: group, start: "top 88%", once: true },
   });
 });
 
