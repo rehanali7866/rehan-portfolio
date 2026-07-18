@@ -397,19 +397,48 @@ body.ready #nav { opacity: 1; transform: none; }
   font-family: var(--serif); font-style: italic; font-weight: 500;
   color: var(--red); font-size: 0.85em;
 }
-.soc-group { margin-bottom: 8vh; }
-.soc-group:last-child { margin-bottom: 0; }
+/* two-column face-off: business | personal, split by a hairline */
+.soc-split {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; align-items: start;
+}
+.soc-side { position: relative; padding: 0 3.4vw; }
+.soc-side:first-child { padding-left: 0; }
+.soc-side:last-child { padding-right: 0; }
+/* the dividing hairline */
+.soc-side + .soc-side::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(180deg,
+    transparent, rgba(244, 236, 221, 0.16) 12%,
+    rgba(232, 16, 46, 0.45) 50%,
+    rgba(244, 236, 221, 0.16) 88%, transparent);
+}
+.soc-side-inner { position: relative; }
+
 .soc-group-label {
   font-size: 0.66rem; letter-spacing: 0.4em; color: var(--cream-dim);
-  margin-bottom: 2.2rem; display: flex; align-items: center; gap: 0.9rem;
+  margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.9rem;
 }
 .soc-group-label span { color: var(--red); font-weight: 600; }
-.soc-group-label::after { content: ""; height: 1px; width: 72px; background: rgba(244, 236, 221, 0.25); }
+.soc-side-sub {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: var(--cream-dim);
+  margin-bottom: 3rem;
+}
 .soc-list { border-top: 1px solid rgba(244, 236, 221, 0.1); }
+
+@media (max-width: 640px) {
+  .soc-split { grid-template-columns: 1fr; gap: 7vh; }
+  .soc-side { padding: 0; }
+  .soc-side + .soc-side::before {
+    left: 0; right: 0; top: -3.5vh; bottom: auto; width: auto; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 16, 46, 0.45), transparent);
+  }
+}
 .soc-row {
   display: grid; grid-template-columns: auto 1fr auto auto;
-  align-items: center; gap: 2.4rem;
-  padding: 1.9rem 0.5rem; position: relative;
+  align-items: center; gap: 1.4rem;
+  padding: 1.5rem 0.5rem; position: relative;
   border-bottom: 1px solid rgba(244, 236, 221, 0.1);
   transition: padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
 }
@@ -425,7 +454,7 @@ body.ready #nav { opacity: 1; transform: none; }
 }
 .soc-name {
   font-family: var(--display); font-weight: 400;
-  font-size: clamp(2.1rem, 5.6vw, 4.4rem); line-height: 0.95; letter-spacing: 0.01em;
+  font-size: clamp(1.8rem, 3.4vw, 3.1rem); line-height: 0.95; letter-spacing: 0.01em;
   color: transparent; -webkit-text-stroke: 1px rgba(244, 236, 221, 0.55);
   transition: color 0.35s ease, -webkit-text-stroke-color 0.35s ease;
 }
@@ -545,6 +574,38 @@ footer {
 }
 .foot-socials a:hover { color: var(--red); }
 .foot-credit { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--cream-dim); }
+
+/* ---------- custom cursor ---------- */
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor, body.has-cursor a, body.has-cursor button,
+  body.has-cursor .vault-head, body.has-cursor input { cursor: none; }
+}
+#cursorDot {
+  position: fixed; z-index: 990; top: 0; left: 0; width: 6px; height: 6px;
+  margin: -3px 0 0 -3px; border-radius: 50%; background: var(--red);
+  pointer-events: none; opacity: 0; transition: opacity 0.25s ease;
+}
+#cursorRing {
+  position: fixed; z-index: 989; top: 0; left: 0;
+  min-width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 1px solid rgba(244, 236, 221, 0.4); border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.25s ease, background 0.25s ease, border-color 0.25s ease,
+    min-width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#cursorRing span {
+  font-family: var(--grotesk); font-size: 0.56rem; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--cream); white-space: nowrap;
+  padding: 0 0.9rem; opacity: 0; transition: opacity 0.2s ease;
+}
+body.cursor-on #cursorDot, body.cursor-on #cursorRing { opacity: 1; }
+#cursorRing.is-pill {
+  background: var(--red); border-color: var(--red);
+  min-width: 74px; height: 30px; margin-top: -15px;
+}
+#cursorRing.is-pill span { opacity: 1; }
+#cursorRing.is-grow { min-width: 52px; height: 52px; margin-top: -26px; border-color: rgba(232, 16, 46, 0.7); }
 
 /* ---------- reveal helper ---------- */
 .reveal-y { opacity: 0; transform: translateY(60px); }

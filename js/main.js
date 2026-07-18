@@ -183,6 +183,136 @@ ScrollTrigger.create({
   },
 });
 
+/* ============================================================
+   HERO ATMOSPHERE — aurora gradients · depth particles · parallax
+   Colour customization: tweak AURORA + PARTICLE_TINTS below.
+   ============================================================ */
+const ATMOSPHERE_ON = true;
+const AURORA_ON = false;     // parked — colour fields off
+const PARTICLES_ON = false;  // parked — dust off
+const GLOW_ON = true;        // the breathing light stays
+
+const AURORA = [
+  { rgb: "232,16,46",   alpha: 0.075, x: 0.20, y: 0.30, r: 0.55, spd: 0.020, ph: 0.0 }, // crimson
+  { rgb: "244,236,221", alpha: 0.034, x: 0.80, y: 0.22, r: 0.50, spd: 0.015, ph: 2.1 }, // cream
+  { rgb: "92,116,168",  alpha: 0.050, x: 0.50, y: 0.80, r: 0.60, spd: 0.011, ph: 4.2 }, // cool slate
+];
+const PARTICLE_TINTS = [
+  { rgb: "244,236,221", weight: 0.85 }, // cream dust
+  { rgb: "232,16,46",   weight: 0.15 }, // rare red spark
+];
+
+const atm = document.createElement("canvas");
+atm.width = 1280; atm.height = 720;
+const atmCtx = atm.getContext("2d");
+
+// pre-rendered glow sprites (cheap glow, no per-particle shadowBlur)
+function makeSprite(rgb) {
+  const s = document.createElement("canvas");
+  s.width = s.height = 48;
+  const c = s.getContext("2d");
+  const g = c.createRadialGradient(24, 24, 0, 24, 24, 24);
+  g.addColorStop(0, `rgba(${rgb},1)`);
+  g.addColorStop(0.35, `rgba(${rgb},0.45)`);
+  g.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = g;
+  c.fillRect(0, 0, 48, 48);
+  return s;
+}
+const sprites = PARTICLE_TINTS.map((t) => makeSprite(t.rgb));
+
+const P_COUNT = innerWidth < 700 ? 36 : 72;
+const particles = [];
+for (let i = 0; i < P_COUNT; i++) {
+  const tint = Math.random() < PARTICLE_TINTS[0].weight ? 0 : 1;
+  const depth = 0.35 + Math.random() * 0.65; // 0.35 far … 1 near
+  particles.push({
+    x0: Math.random(),
+    y0: Math.random(),
+    spd: (0.006 + Math.random() * 0.012) * depth, // near = faster
+    sway: 0.4 + Math.random() * 0.8,
+    ph: Math.random() * Math.PI * 2,
+    size: (2.5 + Math.random() * 7) * depth,
+    alpha: (0.10 + Math.random() * 0.30) * depth,
+    depth, tint,
+  });
+}
+
+// mouse parallax (lerped for smoothness)
+let paraTarget = 0, para = 0, paraTargetY = 0, paraY = 0;
+addEventListener("pointermove", (e) => {
+  paraTarget = e.clientX / innerWidth - 0.5;
+  paraTargetY = e.clientY / innerHeight - 0.5;
+}, { passive: true });
+
+let atmT0 = null;
+
+function paintAtmosphere(time) {
+  const w = atm.width, h = atm.height;
+  para += (paraTarget - para) * 0.04;
+  paraY += (paraTargetY - paraY) * 0.04;
+  atmCtx.globalCompositeOperation = "source-over";
+  atmCtx.clearRect(0, 0, w, h);
+  atmCtx.globalCompositeOperation = "lighter";
+
+  // slow-morphing aurora blobs
+  const t = reduceMotion ? 0 : time;
+  for (const b of (AURORA_ON ? AURORA : [])) {
+    const cx = (b.x + 0.07 * Math.sin(t * b.spd * 6.283 + b.ph) - para * 0.03 * (1 / b.r)) * w;
+    const cy = (b.y + 0.05 * Math.cos(t * b.spd * 5.1 + b.ph) - paraY * 0.02) * h;
+    const alpha = b.alpha * (0.75 + 0.25 * Math.sin(t * 0.09 + b.ph));
+    const g = atmCtx.createRadialGradient(cx, cy, 0, cx, cy, b.r * w);
+    g.addColorStop(0, `rgba(${b.rgb},${alpha})`);
+    g.addColorStop(1, `rgba(${b.rgb},0)`);
+    atmCtx.fillStyle = g;
+    atmCtx.fillRect(0, 0, w, h);
+  }
+
+  // breathing light behind the subject
+  if (GLOW_ON) {
+    const breathe = 0.10 + (reduceMotion ? 0 : 0.055 * Math.sin(t * 0.9));
+    const bg = atmCtx.createRadialGradient(w * 0.5, h * 0.52, 0, w * 0.5, h * 0.52, w * 0.44);
+    bg.addColorStop(0, `rgba(255,240,214,${breathe})`);
+    bg.addColorStop(0.55, `rgba(255,236,205,${breathe * 0.45})`);
+    bg.addColorStop(1, "rgba(255,240,214,0)");
+    atmCtx.fillStyle = bg;
+    atmCtx.fillRect(0, 0, w, h);
+  }
+
+  // depth particle field
+  for (const p of (PARTICLES_ON ? particles : [])) {
+    const drift = reduceMotion ? 0 : t * p.spd;
+    const y = ((p.y0 - drift) % 1 + 1) % 1;
+    const x = p.x0 + (reduceMotion ? 0 : 0.014 * Math.sin(t * p.sway + p.ph)) + para * 0.06 * p.depth;
+    atmCtx.globalAlpha = p.alpha * (0.6 + 0.4 * Math.sin(t * 0.8 + p.ph));
+    atmCtx.drawImage(sprites[p.tint], x * w - p.size / 2, y * h - p.size / 2, p.size, p.size);
+  }
+  atmCtx.globalAlpha = 1;
+
+  // keep the subject zone clean (only needed when the busy layers are on —
+  // the solo backlight is meant to wash over him like a real studio light)
+  if (AURORA_ON || PARTICLES_ON) {
+    atmCtx.globalCompositeOperation = "destination-out";
+    const pr = atmCtx.createRadialGradient(w * 0.5, h * 0.55, w * 0.10, w * 0.5, h * 0.55, w * 0.34);
+    pr.addColorStop(0, "rgba(0,0,0,0.9)");
+    pr.addColorStop(1, "rgba(0,0,0,0)");
+    atmCtx.fillStyle = pr;
+    atmCtx.fillRect(0, 0, w, h);
+  }
+}
+
+function renderHero(idx, time) {
+  drawFrame(idx, true);
+  if (!ATMOSPHERE_ON) return;
+  if (atmT0 === null) atmT0 = time;
+  paintAtmosphere(time);
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  ctx.globalAlpha = Math.min(1, (time - atmT0) / 1.6) * 0.92; // fade in on load
+  ctx.drawImage(atm, 0, 0, canvas.width, canvas.height);
+  ctx.restore();
+}
+
 /* ---------------- pendulum sway: the hero drifts on its own ---------------- */
 const SWAY_AMP = 26;    // frames of drift either side (~60 degrees)
 const SWAY_PERIOD = 9;  // seconds per full sway cycle
@@ -194,7 +324,7 @@ gsap.ticker.add((time) => {
   const sway = reduceMotion ? 0 : Math.sin((time % SWAY_PERIOD) / SWAY_PERIOD * Math.PI * 2) * SWAY_AMP;
   const base = Math.round(heroProgress * (frameCount - 1));
   const idx = (((base + Math.round(sway)) % frameCount) + frameCount) % frameCount;
-  drawFrame(idx);
+  renderHero(idx, time);
   degCount.textContent = String(Math.round((idx / (frameCount - 1)) * 360) % 361).padStart(3, "0");
 });
 
@@ -441,6 +571,55 @@ ScrollTrigger.create({
 });
 
 /* ---------------- section reveals ---------------- */
+/* ---------------- custom cursor: dot + morphing pill (parked) ---------------- */
+const CURSOR_ON = false;
+if (CURSOR_ON && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  document.body.classList.add("has-cursor");
+  const dot = document.createElement("div"); dot.id = "cursorDot";
+  const ring = document.createElement("div"); ring.id = "cursorRing";
+  const label = document.createElement("span"); ring.appendChild(label);
+  document.body.appendChild(dot); document.body.appendChild(ring);
+
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  let seen = false;
+  addEventListener("pointermove", (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (!seen) { seen = true; rx = mx; ry = my; document.body.classList.add("cursor-on"); }
+  }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", () => document.body.classList.remove("cursor-on"));
+  document.documentElement.addEventListener("pointerenter", () => { if (seen) document.body.classList.add("cursor-on"); });
+
+  gsap.ticker.add(() => {
+    dot.style.transform = `translate(${mx}px, ${my}px)`;
+    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+  });
+
+  const LABELS = [
+    [".soc-row", "FOLLOW"],
+    [".pillar-link", "GO"],
+    [".btn", "ENTER"],
+    [".card", "SOON"],
+  ];
+  document.addEventListener("pointerover", (e) => {
+    const el = e.target.closest("[data-cursor], .soc-row, .pillar-link, .btn, .card, a, button");
+    if (!el) { ring.className = ""; return; }
+    const custom = el.getAttribute && el.getAttribute("data-cursor");
+    const hit = custom ? [null, custom] : LABELS.find(([sel]) => el.matches(sel));
+    if (hit) {
+      label.textContent = hit[1];
+      ring.className = "is-pill";
+    } else {
+      ring.className = "is-grow"; // plain links: ring grows, no label
+    }
+  });
+  document.addEventListener("pointerout", (e) => {
+    if (!e.relatedTarget || !e.relatedTarget.closest("[data-cursor], .soc-row, .pillar-link, .btn, .card, a, button")) {
+      ring.className = "";
+    }
+  });
+}
+
 /* ---------------- socials auto-spotlight ---------------- */
 const socRows = $$(".soc-row");
 
@@ -478,17 +657,17 @@ if (socRows.length && !reduceMotion) {
   });
 }
 
-gsap.utils.toArray(".soc-group").forEach((group) => {
-  gsap.utils.toArray(".soc-row", group).forEach((el, i) => {
+gsap.utils.toArray(".soc-side").forEach((side, sideI) => {
+  const dir = sideI === 0 ? -70 : 70;
+  gsap.utils.toArray(".soc-row", side).forEach((el, i) => {
     gsap.from(el, {
-      x: -70, opacity: 0, duration: 0.9, ease: "power3.out", delay: i * 0.09,
-      scrollTrigger: { trigger: group, start: "top 85%", once: true },
+      x: dir, opacity: 0, duration: 0.9, ease: "power3.out", delay: i * 0.09,
+      scrollTrigger: { trigger: ".soc-split", start: "top 85%", once: true },
     });
   });
-  const label = group.querySelector(".soc-group-label");
-  gsap.from(label, {
-    opacity: 0, y: 24, duration: 0.8, ease: "power3.out",
-    scrollTrigger: { trigger: group, start: "top 88%", once: true },
+  gsap.from([side.querySelector(".soc-group-label"), side.querySelector(".soc-side-sub")], {
+    opacity: 0, y: 24, duration: 0.8, ease: "power3.out", stagger: 0.08,
+    scrollTrigger: { trigger: ".soc-split", start: "top 88%", once: true },
   });
 });
 
