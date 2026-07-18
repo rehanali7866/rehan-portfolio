@@ -236,12 +236,13 @@ body.ready #nav { opacity: 1; transform: none; }
 .flap-cell {
   display: inline-flex; align-items: center; justify-content: center;
   width: clamp(9px, 1.35vw, 17px); height: clamp(16px, 2.1vw, 27px);
-  background: rgba(244, 236, 221, 0.07);
-  border: 1px solid rgba(244, 236, 221, 0.12);
+  background: rgba(45, 226, 130, 0.08);
+  border: 1px solid rgba(45, 226, 130, 0.18);
   border-radius: 2px;
   font-family: var(--grotesk); font-weight: 600;
   font-size: clamp(8px, 1vw, 13px); letter-spacing: 0;
-  color: var(--cream); position: relative;
+  color: #2de282; position: relative;
+  text-shadow: 0 0 8px rgba(45, 226, 130, 0.45);
   transition: transform 0.08s ease;
 }
 .flap-cell::after {
