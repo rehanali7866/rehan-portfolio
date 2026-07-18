@@ -196,13 +196,13 @@ body.ready #nav { opacity: 1; transform: none; }
   font-family: var(--display); font-size: 1.6rem; letter-spacing: 0.08em;
   color: var(--cream);
 }
-.hud-deg span { color: var(--red); }
+.hud-deg span { color: #2de282; text-shadow: 0 0 10px rgba(45, 226, 130, 0.4); }
 
 /* ---------- dossier HUD ---------- */
 .hud-frame {
   position: absolute; z-index: 2; inset: 16vh 22vw 12vh; pointer-events: none;
 }
-.hud-frame i { position: absolute; width: 26px; height: 26px; border: 0 solid rgba(232, 16, 46, 0.55); }
+.hud-frame i { position: absolute; width: 26px; height: 26px; border: 0 solid rgba(45, 226, 130, 0.55); }
 .hud-frame i:nth-child(1) { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
 .hud-frame i:nth-child(2) { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
 .hud-frame i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
