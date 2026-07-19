@@ -455,24 +455,213 @@ if (board) {
   }
 }
 
-/* ---------------- stats count-up ---------------- */
-$$(".count").forEach((el) => {
-  const target = parseFloat(el.dataset.target);
-  const obj = { v: 0 };
-  gsap.to(obj, {
-    v: target,
-    duration: 1.8,
-    ease: "power3.out",
-    scrollTrigger: { trigger: el, start: "top 85%", once: true },
-    onUpdate: () => { el.textContent = Math.round(obj.v); },
+/* ---------------- 02 · NUMBERS — declassification pass ---------------- */
+const numbersEl = $("#numbers");
+const numScan = $(".num-scan");
+const numFlashEl = $(".num-flash");
+const stampEl = $(".stamp");
+const statList = $$(".stat");
+const STAT_STATUS = ["● VERIFIED", "● VERIFIED", "● VERIFIED", "● NO TEAM DETECTED"];
+let numActive = false;
+let lockedCount = 0;
+
+if (reduceMotion || !numbersEl) {
+  /* reduced motion: the previously shipped behavior, verbatim */
+  $$(".count").forEach((el) => {
+    const target = parseFloat(el.dataset.target);
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target,
+      duration: 1.8,
+      ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 85%", once: true },
+      onUpdate: () => { el.textContent = Math.round(obj.v); },
+    });
   });
-});
-gsap.utils.toArray(".stat").forEach((el, i) => {
-  gsap.from(el, {
-    opacity: 0, y: 60, duration: 1, ease: "power3.out", delay: i * 0.08,
-    scrollTrigger: { trigger: el, start: "top 88%", once: true },
+  statList.forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0, y: 60, duration: 1, ease: "power3.out", delay: i * 0.08,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true },
+    });
   });
-});
+  if (stampEl) {
+    ScrollTrigger.create({
+      trigger: stampEl, start: "top 92%", once: true,
+      onEnter: () => gsap.set(stampEl, { opacity: 0.5 }),
+    });
+  }
+} else {
+  /* master trigger: scan band position + marquee skew + idle gating,
+     all fed by the one ScrollTrigger so the section costs nothing off-screen */
+  let scanRange = 0;
+  const cacheScanRange = () => { scanRange = numbersEl.offsetHeight + 90; };
+  cacheScanRange();
+  ScrollTrigger.addEventListener("refreshInit", cacheScanRange);
+
+  gsap.set(".marquee", { scaleX: 1.02 }); // covers shear gaps at max skew
+  const skewTo = gsap.quickTo(".marquee", "skewX", { duration: 0.5, ease: "power3" });
+  numbersEl.classList.add("is-offscreen");
+
+  ScrollTrigger.create({
+    trigger: "#numbers",
+    start: "top bottom",
+    end: "bottom top",
+    onUpdate: (self) => {
+      gsap.set(numScan, {
+        y: self.progress * scanRange,
+        opacity: self.progress > 0.01 && self.progress < 0.99 ? 1 : 0,
+      });
+      skewTo(gsap.utils.clamp(-6, 6, self.getVelocity() / -140));
+    },
+    onToggle: (self) => {
+      numActive = self.isActive;
+      numbersEl.classList.toggle("is-offscreen", !self.isActive);
+      if (!self.isActive) skewTo(0);
+    },
+  });
+
+  /* file header decodes in the dossier's voice */
+  const eyebrowTxt = $("#numbers .eyebrow-txt");
+  const fileTag = $("#numbers .file-tag");
+  ScrollTrigger.create({
+    trigger: ".stats-wrap", start: "top 85%", once: true,
+    onEnter: () => decodeInto(eyebrowTxt, "THE NUMBERS", () => {
+      const txt = document.createElement("span");
+      fileTag.appendChild(txt);
+      fileTag.appendChild(document.createElement("i"));
+      decodeInto(txt, "// FILE 02-A · CLEARANCE: PUBLIC");
+    }),
+  });
+
+  /* a tile locking = suffix flap-punch, settle thunk, border stamp, chip, stamp counter */
+  const lockTile = (stat, i) => {
+    const sup = stat.querySelector(".stat-num sup");
+    if (sup) {
+      gsap.fromTo(sup,
+        { scaleY: 0, opacity: 0 },
+        { scaleY: 1, opacity: 1, duration: 0.38, ease: "back.out(2.6)", transformOrigin: "50% 100%" });
+      sup.classList.add("sup-flash");
+      setTimeout(() => sup.classList.remove("sup-flash"), 90);
+    }
+    gsap.fromTo(stat, { y: 0 }, { y: 3, duration: 0.07, ease: "power2.in", yoyo: true, repeat: 1 });
+    stat.classList.add("stat--lit");
+    setTimeout(() => stat.classList.remove("stat--lit"), 250);
+    stat.dataset.locked = "1";
+    const ssTxt = stat.querySelector(".ss-txt");
+    if (ssTxt) setTimeout(() => decodeInto(ssTxt, STAT_STATUS[i] || STAT_STATUS[0]), 250);
+    if (++lockedCount === statList.length && stampEl) {
+      gsap.timeline()
+        .fromTo(stampEl,
+          { opacity: 0, scale: 2.1, rotate: -3 },
+          { opacity: 0.9, scale: 1, rotate: -8, duration: 0.28, ease: "power4.in" })
+        .to(stampEl, { opacity: 0.55, duration: 0.5, ease: "power2.out" })
+        .fromTo(numFlashEl, { opacity: 0.14 }, { opacity: 0, duration: 0.4, ease: "power1.out" }, 0.26);
+    }
+  };
+
+  statList.forEach((stat, i) => {
+    /* injected decor: corner brackets, redaction bar, status chip */
+    const corners = document.createElement("i");
+    corners.className = "corners";
+    corners.setAttribute("aria-hidden", "true");
+    for (let c = 0; c < 4; c++) {
+      const b = document.createElement("b");
+      b.innerHTML = '<u class="h"></u><u class="v"></u>';
+      corners.appendChild(b);
+    }
+    stat.appendChild(corners);
+
+    const redact = document.createElement("i");
+    redact.className = "redact";
+    redact.setAttribute("aria-hidden", "true");
+    stat.querySelector(".stat-label").appendChild(redact);
+
+    const chip = document.createElement("div");
+    chip.className = "stat-status";
+    chip.setAttribute("aria-hidden", "true");
+    chip.innerHTML = '<span class="ss-txt"></span><i class="ss-cursor"></i>';
+    stat.appendChild(chip);
+
+    const sup = stat.querySelector(".stat-num sup");
+    if (sup) gsap.set(sup, { opacity: 0 });
+
+    const countEl = stat.querySelector(".count");
+    const target = parseFloat(countEl.dataset.target);
+    const str = String(target);
+    countEl.style.display = "inline-block";
+    countEl.style.minWidth = str.length + "ch"; // scramble at final width, no jitter
+    const obj = { v: 0 };
+    const hSegs = stat.querySelectorAll(".corners u.h");
+    const vSegs = stat.querySelectorAll(".corners u.v");
+
+    const tl = gsap.timeline({
+      delay: i * 0.12,
+      scrollTrigger: { trigger: stat, start: "top 82%", once: true },
+    });
+    tl.from(stat, { y: 40, opacity: 0, duration: 0.7, ease: "power3.out" }, 0)
+      .fromTo(hSegs, { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out", stagger: 0.04 }, 0)
+      .fromTo(vSegs, { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power3.out", stagger: 0.04 }, 0)
+      .to(redact, { backgroundColor: "#e8102e", duration: 0.12, ease: "steps(1)" }, 0.25)
+      .to(redact, { scaleX: 0, duration: 0.5, ease: "power2.inOut" }, 0.37)
+      .to(obj, {
+        v: target, duration: 1.6, ease: "power3.out",
+        onUpdate() {
+          /* decrypt, don't count: digits lock left-to-right over the tween */
+          const p = this.progress();
+          const cur = String(Math.round(obj.v)).padStart(str.length, "0");
+          const lockedN = Math.floor(p * str.length + 0.3);
+          let out = cur.slice(0, lockedN);
+          for (let d = lockedN; d < str.length; d++) {
+            out += p < 1 ? "0123456789"[(Math.random() * 10) | 0] : cur[d];
+          }
+          countEl.textContent = out;
+        },
+        onComplete() { countEl.textContent = str; lockTile(stat, i); },
+      }, 0.35);
+  });
+
+  /* idle life: censor-pen ink passes on the marquee, glitch ticks on locked numerals.
+     Both no-op unless the section is on screen and the tab is visible. */
+  const mqWords = [];
+  $$(".marquee-track span").forEach((span) => {
+    [...span.childNodes].forEach((node) => {
+      if (node.nodeType !== 3 || !node.textContent.trim()) return;
+      const frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach((tok) => {
+        if (!tok) return;
+        if (tok.trim()) {
+          const b = document.createElement("b");
+          b.textContent = tok;
+          frag.appendChild(b);
+          mqWords.push(b);
+        } else {
+          frag.appendChild(document.createTextNode(tok));
+        }
+      });
+      span.replaceChild(frag, node);
+    });
+  });
+  setInterval(() => {
+    if (!numActive || document.hidden || !mqWords.length) return;
+    const el = mqWords[(Math.random() * mqWords.length) | 0];
+    el.classList.add("mq-hit");
+    gsap.fromTo(el, { x: -1 }, {
+      x: 0, duration: 0.16, ease: "steps(2)",
+      onComplete: () => el.classList.remove("mq-hit"),
+    });
+  }, 4000);
+  setInterval(() => {
+    if (!numActive || document.hidden) return;
+    const lockedTiles = statList.filter((s) => s.dataset.locked === "1");
+    if (!lockedTiles.length) return;
+    const el = lockedTiles[(Math.random() * lockedTiles.length) | 0].querySelector(".count");
+    el.classList.add("num-glitch");
+    gsap.fromTo(el, { skewX: 6, x: -2 }, {
+      skewX: 0, x: 0, duration: 0.12, ease: "steps(2)", clearProps: "transform",
+      onComplete: () => el.classList.remove("num-glitch"),
+    });
+  }, 4300);
+}
 
 /* ---------------- pillars ---------------- */
 const pillars = $$(".pillar");
@@ -671,7 +860,27 @@ gsap.utils.toArray(".soc-side").forEach((side, sideI) => {
   });
 });
 
-[".work-heading", ".soc-heading", ".finale-title .line", ".finale-sub", ".finale-cta"].forEach((sel) => {
+/* ---------------- contact: ask-me-anything -> opens a pre-filled email ---------------- */
+const CONTACT_EMAIL = "rainnovation@mail.com";
+const amaForm = $("#amaForm");
+if (amaForm) {
+  amaForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const msgEl = $("#amaMsg");
+    const msg = msgEl.value.trim();
+    if (!msg) { msgEl.focus(); return; }
+    const from = $("#amaFrom").value.trim();
+    const subject = "Question from your site";
+    const body = msg + (from ? `\n\n— reply to: ${from}` : "");
+    window.location.href =
+      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const note = $("#amaNote");
+    if (note) note.textContent = "OPENING YOUR MAIL APP — JUST HIT SEND";
+  });
+}
+
+[".work-heading", ".soc-heading", ".finale-title .line", ".finale-sub", ".finale-cta",
+ ".contact-title .line", ".contact-sub", ".ama-form", ".contact-direct"].forEach((sel) => {
   gsap.utils.toArray(sel).forEach((el) => {
     gsap.from(el, {
       y: 90, opacity: 0, duration: 1.1, ease: "power4.out",
