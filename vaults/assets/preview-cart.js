@@ -65,7 +65,7 @@
       e.preventDefault();
       var a = itemFrom(addBtn);
       add(a.item, a.qty);
-      showToast('⚔ <b>' + a.item.title + '</b> added · <a href="/vaults/cart.html" style="color:var(--amber);text-decoration:underline">View vault →</a>');
+      showToast('✓ <b>' + a.item.title + '</b> added · <a href="/vaults/cart.html" style="color:var(--amber);text-decoration:underline">View basket →</a>');
     } else if (buyBtn) {
       e.preventDefault();
       var b = itemFrom(buyBtn);

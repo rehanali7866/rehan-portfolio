@@ -104,6 +104,10 @@
 .rv-card > .rv-badge:not(.rank) { left: auto; right: 10px; }
 .rv-card > .rv-badge.rank { left: auto; right: -12px; top: -12px; }
 
+/* the empty toast box peeked above the bottom edge of every page - its
+   off-screen transform is a % of its own height, which is tiny when empty */
+.rv-toast:empty { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .rv-cover__shine { animation: none; opacity: .35; }
   .rv-cover { transition: none; }

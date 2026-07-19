@@ -80,7 +80,7 @@
         .then(function (res) {
           if (!res.ok) throw new Error(res.d.description || "Could not add");
           return refreshCart().then(function () {
-            toast("⚔ <b>" + (res.d.product_title || "Item") + "</b> added to your vault");
+            toast("✓ <b>" + (res.d.product_title || "Item") + "</b> added to your basket");
           });
         })
         .catch(function (err) { toast("⚠ " + err.message); })
