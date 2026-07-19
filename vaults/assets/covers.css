@@ -28,9 +28,12 @@ body {
 
 /* hero: give it an actual light source */
 .rv-hero { position: relative; }
-.rv-hero::before {   /* replaces the theme's dark animated aurora with light */
+.rv-hero::before {   /* no photograph - the light source is the composition */
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-  background: radial-gradient(820px 460px at 50% 32%, rgba(255,228,198,.14), transparent 70%);
+  background:
+    radial-gradient(900px 500px at 50% 26%, rgba(255,228,198,.16), transparent 68%),
+    radial-gradient(700px 420px at 82% 88%, rgba(240,69,63,.10), transparent 66%),
+    radial-gradient(620px 380px at 14% 78%, rgba(251,191,36,.07), transparent 64%);
   animation: none; opacity: 1;
 }
 .rv-hero::after {    /* theme vignette was near-black at 85% and crushed the type */
