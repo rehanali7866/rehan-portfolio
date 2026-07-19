@@ -178,17 +178,6 @@ body.ready #nav { opacity: 1; transform: none; }
   padding: 1.6rem 2rem;
   font-size: 0.62rem; letter-spacing: 0.3em; color: var(--cream-dim);
 }
-.hud-scroll { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
-.scroll-line { width: 1px; height: 26px; background: rgba(244, 236, 221, 0.2); overflow: hidden; }
-.scroll-line i {
-  display: block; width: 100%; height: 100%; background: var(--red);
-  animation: scrollDrip 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-@keyframes scrollDrip {
-  0% { transform: translateY(-100%); }
-  55% { transform: translateY(0); }
-  100% { transform: translateY(100%); }
-}
 .hud-deg {
   font-family: var(--display); font-size: 1.6rem; letter-spacing: 0.08em;
   color: var(--cream);
