@@ -1,276 +1,1067 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RAVOLUTION VAULTS — Rehan Ali · Digital Products &amp; Services</title>
-  <meta name="description" content="Rehan Ali — builder of Ravolution Vaults and NeverMissed. Eight vaults of digital playbooks, automated systems, cinematic execution. Pay once, unlock forever." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,500;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=2" />
-</head>
-<body>
-
-  <div id="grain" aria-hidden="true"></div>
-
-  <!-- scroll progress -->
-  <div id="scrollProgress" aria-hidden="true"></div>
-
-  <!-- ============ NAV ============ -->
-  <nav id="nav">
-    <a class="nav-mark" href="/" data-hover>RAVOLUTION<span>.</span></a>
-    <div class="nav-links">
-      <a href="#numbers">NUMBERS</a>
-      <a href="#vaults">THE VAULTS</a>
-      <a href="#how">HOW IT WORKS</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-  </nav>
-
-  <main id="top">
-
-    <!-- ============ HERO: THE DOOR ============ -->
-    <section id="hero">
-      <div class="hero-sticky">
-        <div class="door-wrap" aria-hidden="true">
-          <div class="door">
-            <div class="door-ring"></div>
-            <div class="door-handle" id="doorHandle"><i></i><i></i><i></i></div>
-            <div class="door-core"></div>
-          </div>
-        </div>
-        <header class="hero-head">
-          <p class="hero-kicker">REHAN ALI · A PRIVATE ARCHIVE — SCOTLAND</p>
-          <h1 class="hero-title">THE<br />VAULTS</h1>
-          <p class="hero-sub"><em>I sell</em> DIGITAL PRODUCTS <em>&amp;</em> SERVICES — <em>locked until it's yours.</em></p>
-        </header>
-        <div class="hero-hud">
-          <div>RAVOLUTION ©MMXXVI</div>
-          <div class="hud-scroll">SCROLL TO ENTER<span class="scroll-line"><i></i></span></div>
-          <div><span id="dialRead">00-00-00</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>SELL <em>—</em> BUILD <em>—</em> CLOSE <em>—</em> REPEAT <em>—</em>&nbsp;</span>
-        <span>SELL <em>—</em> BUILD <em>—</em> CLOSE <em>—</em> REPEAT <em>—</em>&nbsp;</span>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAVOLUTION VAULTS — Ebooks That Forge Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vaults/assets/animations.css"><link rel="stylesheet" href="/vaults/assets/theme.css"></head>
+<body class="template-index">
+<section id="vault-intro" aria-label="The vault opens">
+  <div class="vi-sticky">
+    <div class="vi-door-wrap" aria-hidden="true">
+      <div class="vi-door" id="viDoor">
+        <div class="vi-ring"></div>
+        <div class="vi-handle" id="viHandle"><i></i><i></i><i></i></div>
+        <div class="vi-core"></div>
       </div>
     </div>
-
-    <!-- ============ 01 · NUMBERS ============ -->
-    <section id="numbers">
-      <div class="stats-wrap">
-        <p class="section-eyebrow"><span>01</span> THE NUMBERS</p>
-        <!-- EDIT HERE: swap data-target / suffix for your real numbers -->
-        <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-num"><span class="count" data-target="2">0</span></div>
-            <div class="stat-label">VENTURES LIVE</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num"><span class="count" data-target="40">0</span><sup>+</sup></div>
-            <div class="stat-label">DIGITAL PRODUCTS SHIPPED</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num"><span class="count" data-target="24">0</span><sup>/7</sup></div>
-            <div class="stat-label">AI ANSWERING FOR CLIENTS</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num"><span class="count" data-target="100">0</span><sup>%</sup></div>
-            <div class="stat-label">SELF-BUILT. NO TEAM. NO EXCUSES.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ THE VAULTS ============ -->
-    <section id="vaults">
-      <p class="section-eyebrow"><span>02</span> CHOOSE YOUR VAULT</p>
-
-      <!-- Each product's UNLOCK href gets a Payhip link once the account exists -->
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">001</span>
-          <h2 class="vault-name">THE BODY</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £19</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">IRON FRAME — 12 Week Stallion Body</span><span class="e-price">£29</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">BEAST PROTOCOL — Bodyweight Mastery</span><span class="e-price">£24</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">SHRED CODE — 21-Day HIIT Burn</span><span class="e-price">£19</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">PURE POWER — Olympic Lifting Bible</span><span class="e-price">£79</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">MOBILITY FORGE — Bulletproof Joints</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">002</span>
-          <h2 class="vault-name">THE MONEY</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £29</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">THE MONEY MACHINE — Make Your First £10K</span><span class="e-price">£47</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">HIGH TICKET CLOSER</span><span class="e-price">£79</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">DROPSHIP DYNASTY</span><span class="e-price">£34</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">AI SIDE HUSTLE PLAYBOOK</span><span class="e-price">£29</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">FREELANCE KINGS</span><span class="e-price">£39</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">003</span>
-          <h2 class="vault-name">THE FINANCES</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £19</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">CASHFORGE — Save £15K a Year</span><span class="e-price">£19</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">CREDIT KINGDOM — 800+ in 9 Months</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">TAX NINJA — Keep More of Your Money</span><span class="e-price">£59</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">GROCERY KILLER</span><span class="e-price">£29</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">DEBT DESTROYER</span><span class="e-price">£44</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">004</span>
-          <h2 class="vault-name">THE MARKETS</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £49</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">RED FLOOR — Day Trading Blueprint</span><span class="e-price">£79</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">CRYPTO WARLORD</span><span class="e-price">£59</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">OPTIONS ARSENAL</span><span class="e-price">£69</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">SWING KING</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">DIVIDEND EMPIRE</span><span class="e-price">£79</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">005</span>
-          <h2 class="vault-name">THE SHIELDS</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £12</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">PREMIUM KILLER — Cheap Car Insurance</span><span class="e-price">£12</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">HEALTH INSURANCE HACK</span><span class="e-price">£34</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">HOME FORTRESS INSURANCE</span><span class="e-price">£39</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">LIFE INSURANCE BLUEPRINT</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">TRAVEL SHIELD</span><span class="e-price">£22</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">006</span>
-          <h2 class="vault-name">THE MIND</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £29</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">THE STALLION CODE — Becoming a Better Man</span><span class="e-price">£39</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">BRAIN DETOX — Purge the Fog</span><span class="e-price">£29</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">IRON WILL — The Discipline Code</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">STOIC FIRE</span><span class="e-price">£29</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">FEAR DESTROYER</span><span class="e-price">£49</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">007</span>
-          <h2 class="vault-name">THE EMPIRE</h2>
-          <span class="vault-meta">5 ENTRIES · FROM £54</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">EMPIRE BUILD — Solo Business to £50K/Mo</span><span class="e-price">£99</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">AGENCY ALPHA</span><span class="e-price">£59</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">SAAS LION</span><span class="e-price">£139</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">E-COMMERCE EMPEROR</span><span class="e-price">£54</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">CONSULTING KINGS</span><span class="e-price">£99</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-
-      <article class="vault" data-vault>
-        <div class="vault-head" data-hover>
-          <span class="vault-no">008</span>
-          <h2 class="vault-name">THE LONG GAME</h2>
-          <span class="vault-meta">4 ENTRIES · FROM £19</span>
-          <span class="vault-state">+</span>
-        </div>
-        <div class="vault-body">
-          <div class="entry"><span class="e-title">LONGEVITY PROTOCOL — Live to 120</span><span class="e-price">£34</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">TESTOSTERONE TITAN</span><span class="e-price">£44</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">GUT WARRIOR — Microbiome Reset</span><span class="e-price">£24</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-          <div class="entry"><span class="e-title">COLD PLUNGE CODE</span><span class="e-price">£19</span><a class="e-btn" href="#" data-payhip>UNLOCK</a></div>
-        </div>
-      </article>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section id="how">
-      <p class="section-eyebrow"><span>03</span> HOW IT WORKS</p>
-      <div class="how-grid">
-        <div class="how-step">
-          <div class="how-no">01</div>
-          <h3>PICK A VAULT</h3>
-          <p>Eight doors. Behind each one, a set of playbooks written to be used, not admired.</p>
-        </div>
-        <div class="how-step">
-          <div class="how-no">02</div>
-          <h3>UNLOCK IT</h3>
-          <p>Pay once. Card, Apple Pay, PayPal. No subscription, no upsell maze.</p>
-        </div>
-        <div class="how-step">
-          <div class="how-no">03</div>
-          <h3>IT'S YOURS</h3>
-          <p>Instant delivery to your inbox. Download it, use it, keep it forever.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FINALE ============ -->
-    <section id="contact" class="finale">
-      <h2 class="finale-title"><span class="line">THE DOOR IS</span><span class="line red">OPEN</span></h2>
-      <p class="finale-sub"><em>Everything I build, in one place. Questions before you buy? Ask directly.</em></p>
-      <div class="finale-cta">
-        <a class="btn btn-red" href="#vaults" data-hover>BROWSE THE VAULTS</a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <!-- EDIT HERE: drop in real social URLs -->
-    <div class="foot-socials">
-      <a href="/">PORTFOLIO</a>
-      <a href="/nevermissed/">NEVERMISSED</a>
-      <a href="#">INSTAGRAM</a>
-      <a href="#">TIKTOK</a>
-      <a href="#">X</a>
-      <a href="#">LINKEDIN</a>
-      <a href="#">YOUTUBE</a>
+    <header class="vi-head">
+      <p class="vi-kicker">REHAN ALI &middot; A PRIVATE ARCHIVE &mdash; SCOTLAND</p>
+      <h1 class="vi-title">THE<br>VAULTS</h1>
+      <p class="vi-sub"><em>I sell</em> DIGITAL PRODUCTS <em>&amp;</em> SERVICES &mdash; <em>locked until it's yours.</em></p>
+    </header>
+    <div class="vi-hud">
+      <div>RAVOLUTION &copy;MMXXVI</div>
+      <div class="vi-scroll">SCROLL TO ENTER<span class="vi-line"><i></i></span></div>
+      <div><span id="viDial">00-00-00</span></div>
     </div>
-    <div class="foot-credit">©2026 REHAN ALI — BUILT DIFFERENT</div>
-  </footer>
+  </div>
+</section>
+<style>
+#vault-intro { height: 250vh; position: relative; background: #0b0a08; }
+#vault-intro .vi-sticky {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse 90% 70% at 50% 110%, rgba(143,10,29,.22), transparent 60%), #0b0a08;
+}
+#vault-intro .vi-door-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+#vault-intro .vi-door {
+  position: relative; width: min(78vmin, 640px); height: min(78vmin, 640px); border-radius: 50%;
+  background: conic-gradient(from 90deg,
+    #201d19 0deg, #35302a 40deg, #191612 90deg, #2c2823 140deg,
+    #17140f 190deg, #322d27 240deg, #1a1712 300deg, #201d19 360deg);
+  box-shadow: 0 0 0 1px rgba(244,236,221,.08), 0 0 120px rgba(232,16,46,.12), inset 0 0 80px rgba(0,0,0,.85);
+}
+#vault-intro .vi-ring {
+  position: absolute; inset: 7%; border-radius: 50%; border: 1px solid rgba(244,236,221,.12);
+  background: repeating-conic-gradient(rgba(244,236,221,.05) 0deg 1.4deg, transparent 1.4deg 30deg);
+}
+#vault-intro .vi-core {
+  position: absolute; inset: 34%; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #2b2721 0%, #171310 60%, #0c0a07 100%);
+  border: 1px solid rgba(244,236,221,.1); box-shadow: inset 0 0 40px rgba(0,0,0,.9);
+}
+#vault-intro .vi-handle { position: absolute; inset: 22%; border-radius: 50%; border: 2px solid rgba(244,236,221,.22); will-change: transform; }
+#vault-intro .vi-handle i {
+  position: absolute; left: 50%; top: 50%; width: 112%; height: 6px; margin: -3px 0 0 -56%;
+  background: linear-gradient(90deg, transparent 0%, rgba(244,236,221,.25) 18%, rgba(244,236,221,.25) 82%, transparent 100%);
+  border-radius: 3px;
+}
+#vault-intro .vi-handle i:nth-child(2) { transform: rotate(60deg); }
+#vault-intro .vi-handle i:nth-child(3) { transform: rotate(120deg); }
+#vault-intro .vi-head { position: relative; z-index: 3; text-align: center; mix-blend-mode: difference; }
+#vault-intro .vi-kicker { font-size: .64rem; letter-spacing: .5em; color: rgba(244,236,221,.55); font-family: "Space Grotesk", system-ui, sans-serif; }
+#vault-intro .vi-title {
+  margin-top: 1.6rem; font-family: "Anton", impact, sans-serif; font-weight: 400;
+  font-size: clamp(4.6rem, 19vw, 19rem); line-height: .84; letter-spacing: .01em; color: #f4ecdd;
+}
+#vault-intro .vi-sub {
+  margin-top: 2rem; font-size: clamp(.66rem, 1.3vw, .9rem); letter-spacing: .42em;
+  color: #f4ecdd; font-family: "Space Grotesk", system-ui, sans-serif;
+}
+#vault-intro .vi-sub em {
+  font-family: "Playfair Display", georgia, serif; font-style: italic; text-transform: none;
+  letter-spacing: .02em; color: #e8102e; font-size: 1.3em;
+}
+#vault-intro .vi-hud {
+  position: absolute; z-index: 4; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 1.6rem 2rem; font-size: .6rem; letter-spacing: .3em; color: rgba(244,236,221,.55);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+#vault-intro #viDial { font-family: "Anton", impact, sans-serif; font-size: 1.4rem; letter-spacing: .12em; color: #e8102e; }
+#vault-intro .vi-scroll { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+#vault-intro .vi-line { width: 1px; height: 34px; background: rgba(244,236,221,.2); overflow: hidden; }
+#vault-intro .vi-line i {
+  display: block; width: 100%; height: 100%; background: #e8102e;
+  animation: viDrip 1.6s cubic-bezier(.65,0,.35,1) infinite;
+}
+@keyframes viDrip { 0% { transform: translateY(-100%);} 55% { transform: translateY(0);} 100% { transform: translateY(100%);} }
+@media (max-width: 640px) {
+  #vault-intro .vi-sub { letter-spacing: .24em; padding: 0 1rem; }
+  #vault-intro #viDial { font-size: 1rem; }
+  #vault-intro .vi-hud { gap: 1rem; }
+  #vault-intro .vi-hud > div { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #vault-intro { height: 100vh; }
+  #vault-intro .vi-line i { animation: none; }
+}
+</style>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=2"></script>
-</body>
-</html>
+<div class="rv-ticker"><div class="rv-ticker__track"><span class="rv-ticker__item rv-ticker__live">● LIVE</span><span class="rv-ticker__item"><b>Tobias</b> in Bristol just grabbed <span class="hot">SHRED CODE</span> · 52 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Nolan</b> in Leeds just grabbed <span class="hot">CASHFORGE</span> · 21 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>James</b> in Dublin just grabbed <span class="hot">THE STALLION CODE</span> · 8 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Mateo</b> in Madrid just grabbed <span class="hot">AI SIDE HUSTLE</span> · 14 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Kwame</b> in London just grabbed <span class="hot">IRON FRAME</span> · 3 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Lukas</b> in Berlin just grabbed <span class="hot">RED FLOOR</span> · 37 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Diego</b> in Lisbon just grabbed <span class="hot">TESTOSTERONE TITAN</span> · 11 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Owen</b> in Manchester just grabbed <span class="hot">BRAIN DETOX</span> · 26 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item rv-ticker__live">● LIVE</span><span class="rv-ticker__item"><b>Tobias</b> in Bristol just grabbed <span class="hot">SHRED CODE</span> · 52 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Nolan</b> in Leeds just grabbed <span class="hot">CASHFORGE</span> · 21 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>James</b> in Dublin just grabbed <span class="hot">THE STALLION CODE</span> · 8 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Mateo</b> in Madrid just grabbed <span class="hot">AI SIDE HUSTLE</span> · 14 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Kwame</b> in London just grabbed <span class="hot">IRON FRAME</span> · 3 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Lukas</b> in Berlin just grabbed <span class="hot">RED FLOOR</span> · 37 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Diego</b> in Lisbon just grabbed <span class="hot">TESTOSTERONE TITAN</span> · 11 min ago</span><span class="rv-ticker__item">◆</span><span class="rv-ticker__item"><b>Owen</b> in Manchester just grabbed <span class="hot">BRAIN DETOX</span> · 26 min ago</span><span class="rv-ticker__item">◆</span></div></div>
+<header class="rv-header"><div class="rv-wrap rv-header__bar">
+  <a href="/vaults/" class="rv-brand"><img class="rv-brand__logo" src="/vaults/assets/ravolution-logo.png" alt="" width="50" height="50"><span class="rv-brand__txt"><b>RAVOLUTION</b><small>VAULTS</small></span></a>
+  <nav class="rv-nav"><a href="/vaults/" aria-current=page>Home</a><a href="/vaults/category/fitness.html">💪 Fitness</a><a href="/vaults/category/wealth.html">💰 Money</a><a href="/vaults/category/trading.html">📈 Trading</a><a href="/vaults/category/mindset.html">🧠 Mindset</a><a href="/vaults/category/business.html">🏛 Business</a><a href="/vaults/category/health.html">🌿 Health</a><a href="/vaults/#grid">🔥 New</a></nav>
+  <div class="rv-header__tools">
+    <form class="rv-search" data-search><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" placeholder="Hunt…"></form>
+    <a href="/vaults/cart.html" class="rv-icon-btn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.3a2 2 0 0 0 2 1.7h7.7a2 2 0 0 0 2-1.6L22 8H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg><span class="rv-cart-count" data-count="0">0</span></a>
+    <button class="rv-icon-btn rv-burger" data-rv-open-drawer aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</div></header>
+<div class="rv-drawer" data-rv-drawer><div class="rv-drawer__head"><b style="font-family:var(--font-display);font-size:24px">MENU</b><button class="rv-icon-btn" data-rv-close-drawer><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><nav><a href="/vaults/" data-rv-close-drawer>Home</a><a href="/vaults/category/fitness.html" data-rv-close-drawer>💪 Fitness</a><a href="/vaults/category/wealth.html" data-rv-close-drawer>💰 Money</a><a href="/vaults/category/trading.html" data-rv-close-drawer>📈 Trading</a><a href="/vaults/category/mindset.html" data-rv-close-drawer>🧠 Mindset</a><a href="/vaults/category/business.html" data-rv-close-drawer>🏛 Business</a><a href="/vaults/category/health.html" data-rv-close-drawer>🌿 Health</a><a href="/vaults/#grid" data-rv-close-drawer>🔥 New</a></nav></div><main>
+<section class="rv-hero">
+  <div class="rv-hero__bg" style="background-image:url(/vaults/assets/vault-hero.jpg)"></div>
+  <span class="rv-pill"><span class="dot"></span> LIVE · 13 OPERATORS BROWSING NOW</span>
+  <h1 class="rv-grad-text">Forge Your<br>Legend</h1>
+  <p class="rv-hero__lead">Premium ebook programs for men who refuse average. Forged by operators. Delivered to your inbox in seconds.</p>
+  <div class="rv-ctas"><a class="rv-cta primary" href="#grid">Enter the Vault →</a><a class="rv-cta ghost" href="#grid">🔥 New Releases</a></div>
+</section>
+<section class="rv-section rv-section--tight"><div class="rv-wrap"><div class="rv-stats"><div class="rv-stat"><div class="n">👥 1,247+</div><div class="l">Operators Armed</div></div><div class="rv-stat"><div class="n">📚 39</div><div class="l">Ebooks Shipped</div></div><div class="rv-stat"><div class="n">✓ 98.4%</div><div class="l">Satisfaction Rate</div></div><div class="rv-stat"><div class="n">★ 4.8/5</div><div class="l">Average Rating</div></div></div></div></section>
+<div class="rv-band"><div class="rv-band__track"><span>FITNESS 💪</span><span>WEALTH 💰</span><span>TRADING 📈</span><span>MINDSET 🧠</span><span>BUSINESS 🏗️</span><span>HEALTH ⚕️</span><span>INSURANCE 🛡️</span><span>FITNESS 💪</span><span>WEALTH 💰</span><span>TRADING 📈</span><span>MINDSET 🧠</span><span>BUSINESS 🏗️</span><span>HEALTH ⚕️</span><span>INSURANCE 🛡️</span></div></div>
+<section class="rv-section" data-rv-rail>
+  <div class="rv-wrap"><div class="rv-section-head"><div><span class="rv-eyebrow">🔥 Most popular this week</span><h2>Top Sellers Now</h2><p class="rv-sub">Updated hourly by raw sales velocity.</p></div><div class="rv-rail-nav"><button data-rv-rail-prev>←</button><button data-rv-rail-next>→</button></div></div></div>
+  <div class="rv-wrap rv-wrap--wide"><div class="rv-rail">
+      <article class="rv-card" data-rv-reveal data-title-card="THE STALLION CODE: Becoming a Better Man Mindset &amp; Discipline Ezra Stone">
+        <span class="rv-badge rank">#1</span>
+        <a class="rv-cover" href="/vaults/product/stallion-code-becoming-a-better-man.html" style="background:linear-gradient(135deg, #9333ea, #312e81, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🔱</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/stallion-code-becoming-a-better-man.html" style="color:inherit">THE STALLION CODE: Becoming a Better Man</a></h3>
+          <p class="rv-card__tag">The only playbook on manhood that doesn&#x27;t apologise.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">5</span></span><span>· 27,340 sold</span></div>
+          <div class="rv-card__by">by Ezra Stone</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="stallion-code" data-title="THE STALLION CODE: Becoming a Better Man" data-price="3900" data-icon="🔱" data-grad="linear-gradient(135deg, #9333ea, #312e81, #000000)" data-author="Ezra Stone">Buy now →</a>
+          <button class="rv-add" data-add data-id="stallion-code" data-title="THE STALLION CODE: Becoming a Better Man" data-price="3900" data-icon="🔱" data-grad="linear-gradient(135deg, #9333ea, #312e81, #000000)" data-author="Ezra Stone">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="THE MONEY MACHINE: Make Your First £10K Make Money The Money Lion">
+        <span class="rv-badge rank">#2</span>
+        <a class="rv-cover" href="/vaults/product/money-machine-first-10k.html" style="background:linear-gradient(135deg, #f59e0b, #a16207, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">💰</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/money-machine-first-10k.html" style="color:inherit">THE MONEY MACHINE: Make Your First £10K</a></h3>
+          <p class="rv-card__tag">The exact ladder from broke to first ten stack.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 22,980 sold</span></div>
+          <div class="rv-card__by">by The Money Lion</div>
+          <div class="rv-card__foot"><span class="rv-price">£47.00 <s>£99.00</s></span><span class="rv-discount">-53%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="money-machine" data-title="THE MONEY MACHINE: Make Your First £10K" data-price="4700" data-icon="💰" data-grad="linear-gradient(135deg, #f59e0b, #a16207, #000000)" data-author="The Money Lion">Buy now →</a>
+          <button class="rv-add" data-add data-id="money-machine" data-title="THE MONEY MACHINE: Make Your First £10K" data-price="4700" data-icon="💰" data-grad="linear-gradient(135deg, #f59e0b, #a16207, #000000)" data-author="The Money Lion">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="PREMIUM KILLER: Cheap Car Insurance Insurance &amp; Protection Jordan Malloy">
+        <span class="rv-badge rank">#3</span>
+        <a class="rv-cover" href="/vaults/product/premium-killer-cheap-car-insurance.html" style="background:linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🚗</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/premium-killer-cheap-car-insurance.html" style="color:inherit">PREMIUM KILLER: Cheap Car Insurance</a></h3>
+          <p class="rv-card__tag">Slash your car insurance by 47% — legally.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 18,750 sold</span></div>
+          <div class="rv-card__by">by Jordan Malloy</div>
+          <div class="rv-card__foot"><span class="rv-price">£12.00 <s>£29.00</s></span><span class="rv-discount">-59%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="premium-killer" data-title="PREMIUM KILLER: Cheap Car Insurance" data-price="1200" data-icon="🚗" data-grad="linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)" data-author="Jordan Malloy">Buy now →</a>
+          <button class="rv-add" data-add data-id="premium-killer" data-title="PREMIUM KILLER: Cheap Car Insurance" data-price="1200" data-icon="🚗" data-grad="linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)" data-author="Jordan Malloy">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="AI SIDE HUSTLE PLAYBOOK Make Money Neo Tesla">
+        <span class="rv-badge rank">#4</span>
+        <a class="rv-cover" href="/vaults/product/ai-side-hustle-playbook.html" style="background:linear-gradient(135deg, #f59e0b, #92400e, #0f172a)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🤖</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/ai-side-hustle-playbook.html" style="color:inherit">AI SIDE HUSTLE PLAYBOOK</a></h3>
+          <p class="rv-card__tag">20 AI side hustles printing money in 2026.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 18,440 sold</span></div>
+          <div class="rv-card__by">by Neo Tesla</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="ai-side-hustle" data-title="AI SIDE HUSTLE PLAYBOOK" data-price="2900" data-icon="🤖" data-grad="linear-gradient(135deg, #f59e0b, #92400e, #0f172a)" data-author="Neo Tesla">Buy now →</a>
+          <button class="rv-add" data-add data-id="ai-side-hustle" data-title="AI SIDE HUSTLE PLAYBOOK" data-price="2900" data-icon="🤖" data-grad="linear-gradient(135deg, #f59e0b, #92400e, #0f172a)" data-author="Neo Tesla">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="BRAIN DETOX: Purge the Fog Mindset &amp; Discipline Kell Nakagawa">
+        <span class="rv-badge rank">#5</span>
+        <a class="rv-cover" href="/vaults/product/brain-detox-purge-the-fog.html" style="background:linear-gradient(135deg, #a855f7, #4c1d95, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧠</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/brain-detox-purge-the-fog.html" style="color:inherit">BRAIN DETOX: Purge the Fog</a></h3>
+          <p class="rv-card__tag">Clear the mental clutter in 30 ruthless days.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 16,420 sold</span></div>
+          <div class="rv-card__by">by Kell Nakagawa</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="brain-detox" data-title="BRAIN DETOX: Purge the Fog" data-price="2900" data-icon="🧠" data-grad="linear-gradient(135deg, #a855f7, #4c1d95, #000000)" data-author="Kell Nakagawa">Buy now →</a>
+          <button class="rv-add" data-add data-id="brain-detox" data-title="BRAIN DETOX: Purge the Fog" data-price="2900" data-icon="🧠" data-grad="linear-gradient(135deg, #a855f7, #4c1d95, #000000)" data-author="Kell Nakagawa">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="TESTOSTERONE TITAN Health &amp; Longevity Knox Bellamy">
+        <span class="rv-badge rank">#6</span>
+        <a class="rv-cover" href="/vaults/product/testosterone-titan.html" style="background:linear-gradient(135deg, #0d9488, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⚡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Health &amp; Longevity</span>
+          <h3><a href="/vaults/product/testosterone-titan.html" style="color:inherit">TESTOSTERONE TITAN</a></h3>
+          <p class="rv-card__tag">Natural testosterone optimisation. Nuclear energy.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 14,820 sold</span></div>
+          <div class="rv-card__by">by Knox Bellamy</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="testosterone-titan" data-title="TESTOSTERONE TITAN" data-price="3900" data-icon="⚡" data-grad="linear-gradient(135deg, #0d9488, #7f1d1d, #000000)" data-author="Knox Bellamy">Buy now →</a>
+          <button class="rv-add" data-add data-id="testosterone-titan" data-title="TESTOSTERONE TITAN" data-price="3900" data-icon="⚡" data-grad="linear-gradient(135deg, #0d9488, #7f1d1d, #000000)" data-author="Knox Bellamy">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="IRON FRAME: 12 Week Stallion Body Fitness &amp; Body Coach Draco Kane">
+        <span class="rv-badge rank">#7</span>
+        <a class="rv-cover" href="/vaults/product/iron-frame-stallion-body.html" style="background:linear-gradient(135deg, #ef4444, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">💪</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/iron-frame-stallion-body.html" style="color:inherit">IRON FRAME: 12 Week Stallion Body</a></h3>
+          <p class="rv-card__tag">Forge a granite physique in 12 ruthless weeks of iron.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 14,320 sold</span></div>
+          <div class="rv-card__by">by Coach Draco Kane</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£69.00</s></span><span class="rv-discount">-58%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="iron-frame" data-title="IRON FRAME: 12 Week Stallion Body" data-price="2900" data-icon="💪" data-grad="linear-gradient(135deg, #ef4444, #7f1d1d, #000000)" data-author="Coach Draco Kane">Buy now →</a>
+          <button class="rv-add" data-add data-id="iron-frame" data-title="IRON FRAME: 12 Week Stallion Body" data-price="2900" data-icon="💪" data-grad="linear-gradient(135deg, #ef4444, #7f1d1d, #000000)" data-author="Coach Draco Kane">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="SHRED CODE: 21-Day HIIT Burn Fitness &amp; Body Flame Kostov">
+        <span class="rv-badge rank">#8</span>
+        <a class="rv-cover" href="/vaults/product/shred-code-21-day-hiit-burn.html" style="background:linear-gradient(135deg, #dc2626, #9a3412, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🔥</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/shred-code-21-day-hiit-burn.html" style="color:inherit">SHRED CODE: 21-Day HIIT Burn</a></h3>
+          <p class="rv-card__tag">Incinerate fat in 21 days. No mercy. No soy.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 12,100 sold</span></div>
+          <div class="rv-card__by">by Flame Kostov</div>
+          <div class="rv-card__foot"><span class="rv-price">£19.00 <s>£39.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="shred-code" data-title="SHRED CODE: 21-Day HIIT Burn" data-price="1900" data-icon="🔥" data-grad="linear-gradient(135deg, #dc2626, #9a3412, #000000)" data-author="Flame Kostov">Buy now →</a>
+          <button class="rv-add" data-add data-id="shred-code" data-title="SHRED CODE: 21-Day HIIT Burn" data-price="1900" data-icon="🔥" data-grad="linear-gradient(135deg, #dc2626, #9a3412, #000000)" data-author="Flame Kostov">+ Add to cart</button>
+        </div>
+      </article></div></div>
+</section>
+<div class="rv-band alt"><div class="rv-band__track"><span>30-DAY REFUND ✓</span><span>INSTANT DELIVERY ⚡</span><span>STRIPE SECURED 🔒</span><span>1,000+ OPERATORS 👥</span><span>LIFETIME ACCESS ♾</span><span>BATTLE-TESTED ⚔</span><span>30-DAY REFUND ✓</span><span>INSTANT DELIVERY ⚡</span><span>STRIPE SECURED 🔒</span><span>1,000+ OPERATORS 👥</span><span>LIFETIME ACCESS ♾</span><span>BATTLE-TESTED ⚔</span></div></div>
+<section class="rv-section" id="grid"><div class="rv-wrap"><div class="rv-section-head"><div><span class="rv-eyebrow">The arsenal</span><h2>Battle-Tested Programs</h2></div></div>
+  <div class="rv-grid cols-4" data-grid>
+      <article class="rv-card" data-rv-reveal data-title-card="THE STALLION CODE: Becoming a Better Man Mindset &amp; Discipline Ezra Stone">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/stallion-code-becoming-a-better-man.html" style="background:linear-gradient(135deg, #9333ea, #312e81, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🔱</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/stallion-code-becoming-a-better-man.html" style="color:inherit">THE STALLION CODE: Becoming a Better Man</a></h3>
+          <p class="rv-card__tag">The only playbook on manhood that doesn&#x27;t apologise.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">5</span></span><span>· 27,340 sold</span></div>
+          <div class="rv-card__by">by Ezra Stone</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="stallion-code" data-title="THE STALLION CODE: Becoming a Better Man" data-price="3900" data-icon="🔱" data-grad="linear-gradient(135deg, #9333ea, #312e81, #000000)" data-author="Ezra Stone">Buy now →</a>
+          <button class="rv-add" data-add data-id="stallion-code" data-title="THE STALLION CODE: Becoming a Better Man" data-price="3900" data-icon="🔱" data-grad="linear-gradient(135deg, #9333ea, #312e81, #000000)" data-author="Ezra Stone">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="THE MONEY MACHINE: Make Your First £10K Make Money The Money Lion">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/money-machine-first-10k.html" style="background:linear-gradient(135deg, #f59e0b, #a16207, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">💰</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/money-machine-first-10k.html" style="color:inherit">THE MONEY MACHINE: Make Your First £10K</a></h3>
+          <p class="rv-card__tag">The exact ladder from broke to first ten stack.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 22,980 sold</span></div>
+          <div class="rv-card__by">by The Money Lion</div>
+          <div class="rv-card__foot"><span class="rv-price">£47.00 <s>£99.00</s></span><span class="rv-discount">-53%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="money-machine" data-title="THE MONEY MACHINE: Make Your First £10K" data-price="4700" data-icon="💰" data-grad="linear-gradient(135deg, #f59e0b, #a16207, #000000)" data-author="The Money Lion">Buy now →</a>
+          <button class="rv-add" data-add data-id="money-machine" data-title="THE MONEY MACHINE: Make Your First £10K" data-price="4700" data-icon="💰" data-grad="linear-gradient(135deg, #f59e0b, #a16207, #000000)" data-author="The Money Lion">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="PREMIUM KILLER: Cheap Car Insurance Insurance &amp; Protection Jordan Malloy">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/premium-killer-cheap-car-insurance.html" style="background:linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🚗</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/premium-killer-cheap-car-insurance.html" style="color:inherit">PREMIUM KILLER: Cheap Car Insurance</a></h3>
+          <p class="rv-card__tag">Slash your car insurance by 47% — legally.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 18,750 sold</span></div>
+          <div class="rv-card__by">by Jordan Malloy</div>
+          <div class="rv-card__foot"><span class="rv-price">£12.00 <s>£29.00</s></span><span class="rv-discount">-59%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="premium-killer" data-title="PREMIUM KILLER: Cheap Car Insurance" data-price="1200" data-icon="🚗" data-grad="linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)" data-author="Jordan Malloy">Buy now →</a>
+          <button class="rv-add" data-add data-id="premium-killer" data-title="PREMIUM KILLER: Cheap Car Insurance" data-price="1200" data-icon="🚗" data-grad="linear-gradient(135deg, #3b82f6, #1e3a8a, #000000)" data-author="Jordan Malloy">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="AI SIDE HUSTLE PLAYBOOK Make Money Neo Tesla">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/ai-side-hustle-playbook.html" style="background:linear-gradient(135deg, #f59e0b, #92400e, #0f172a)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🤖</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/ai-side-hustle-playbook.html" style="color:inherit">AI SIDE HUSTLE PLAYBOOK</a></h3>
+          <p class="rv-card__tag">20 AI side hustles printing money in 2026.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 18,440 sold</span></div>
+          <div class="rv-card__by">by Neo Tesla</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="ai-side-hustle" data-title="AI SIDE HUSTLE PLAYBOOK" data-price="2900" data-icon="🤖" data-grad="linear-gradient(135deg, #f59e0b, #92400e, #0f172a)" data-author="Neo Tesla">Buy now →</a>
+          <button class="rv-add" data-add data-id="ai-side-hustle" data-title="AI SIDE HUSTLE PLAYBOOK" data-price="2900" data-icon="🤖" data-grad="linear-gradient(135deg, #f59e0b, #92400e, #0f172a)" data-author="Neo Tesla">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="BRAIN DETOX: Purge the Fog Mindset &amp; Discipline Kell Nakagawa">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/brain-detox-purge-the-fog.html" style="background:linear-gradient(135deg, #a855f7, #4c1d95, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧠</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/brain-detox-purge-the-fog.html" style="color:inherit">BRAIN DETOX: Purge the Fog</a></h3>
+          <p class="rv-card__tag">Clear the mental clutter in 30 ruthless days.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 16,420 sold</span></div>
+          <div class="rv-card__by">by Kell Nakagawa</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="brain-detox" data-title="BRAIN DETOX: Purge the Fog" data-price="2900" data-icon="🧠" data-grad="linear-gradient(135deg, #a855f7, #4c1d95, #000000)" data-author="Kell Nakagawa">Buy now →</a>
+          <button class="rv-add" data-add data-id="brain-detox" data-title="BRAIN DETOX: Purge the Fog" data-price="2900" data-icon="🧠" data-grad="linear-gradient(135deg, #a855f7, #4c1d95, #000000)" data-author="Kell Nakagawa">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="TESTOSTERONE TITAN Health &amp; Longevity Knox Bellamy">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/testosterone-titan.html" style="background:linear-gradient(135deg, #0d9488, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⚡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Health &amp; Longevity</span>
+          <h3><a href="/vaults/product/testosterone-titan.html" style="color:inherit">TESTOSTERONE TITAN</a></h3>
+          <p class="rv-card__tag">Natural testosterone optimisation. Nuclear energy.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 14,820 sold</span></div>
+          <div class="rv-card__by">by Knox Bellamy</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="testosterone-titan" data-title="TESTOSTERONE TITAN" data-price="3900" data-icon="⚡" data-grad="linear-gradient(135deg, #0d9488, #7f1d1d, #000000)" data-author="Knox Bellamy">Buy now →</a>
+          <button class="rv-add" data-add data-id="testosterone-titan" data-title="TESTOSTERONE TITAN" data-price="3900" data-icon="⚡" data-grad="linear-gradient(135deg, #0d9488, #7f1d1d, #000000)" data-author="Knox Bellamy">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="IRON FRAME: 12 Week Stallion Body Fitness &amp; Body Coach Draco Kane">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/iron-frame-stallion-body.html" style="background:linear-gradient(135deg, #ef4444, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">💪</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/iron-frame-stallion-body.html" style="color:inherit">IRON FRAME: 12 Week Stallion Body</a></h3>
+          <p class="rv-card__tag">Forge a granite physique in 12 ruthless weeks of iron.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 14,320 sold</span></div>
+          <div class="rv-card__by">by Coach Draco Kane</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£69.00</s></span><span class="rv-discount">-58%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="iron-frame" data-title="IRON FRAME: 12 Week Stallion Body" data-price="2900" data-icon="💪" data-grad="linear-gradient(135deg, #ef4444, #7f1d1d, #000000)" data-author="Coach Draco Kane">Buy now →</a>
+          <button class="rv-add" data-add data-id="iron-frame" data-title="IRON FRAME: 12 Week Stallion Body" data-price="2900" data-icon="💪" data-grad="linear-gradient(135deg, #ef4444, #7f1d1d, #000000)" data-author="Coach Draco Kane">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="SHRED CODE: 21-Day HIIT Burn Fitness &amp; Body Flame Kostov">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/shred-code-21-day-hiit-burn.html" style="background:linear-gradient(135deg, #dc2626, #9a3412, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🔥</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/shred-code-21-day-hiit-burn.html" style="color:inherit">SHRED CODE: 21-Day HIIT Burn</a></h3>
+          <p class="rv-card__tag">Incinerate fat in 21 days. No mercy. No soy.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 12,100 sold</span></div>
+          <div class="rv-card__by">by Flame Kostov</div>
+          <div class="rv-card__foot"><span class="rv-price">£19.00 <s>£39.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="shred-code" data-title="SHRED CODE: 21-Day HIIT Burn" data-price="1900" data-icon="🔥" data-grad="linear-gradient(135deg, #dc2626, #9a3412, #000000)" data-author="Flame Kostov">Buy now →</a>
+          <button class="rv-add" data-add data-id="shred-code" data-title="SHRED CODE: 21-Day HIIT Burn" data-price="1900" data-icon="🔥" data-grad="linear-gradient(135deg, #dc2626, #9a3412, #000000)" data-author="Flame Kostov">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="LONGEVITY PROTOCOL: Live to 120 Health &amp; Longevity Dr. Sloane Brenner">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/longevity-protocol-live-to-120.html" style="background:linear-gradient(135deg, #14b8a6, #064e3b, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧬</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Health &amp; Longevity</span>
+          <h3><a href="/vaults/product/longevity-protocol-live-to-120.html" style="color:inherit">LONGEVITY PROTOCOL: Live to 120</a></h3>
+          <p class="rv-card__tag">The nutrition, training, and testing stack for 120 years.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 11,210 sold</span></div>
+          <div class="rv-card__by">by Dr. Sloane Brenner</div>
+          <div class="rv-card__foot"><span class="rv-price">£34.00 <s>£69.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="longevity-protocol" data-title="LONGEVITY PROTOCOL: Live to 120" data-price="3400" data-icon="🧬" data-grad="linear-gradient(135deg, #14b8a6, #064e3b, #000000)" data-author="Dr. Sloane Brenner">Buy now →</a>
+          <button class="rv-add" data-add data-id="longevity-protocol" data-title="LONGEVITY PROTOCOL: Live to 120" data-price="3400" data-icon="🧬" data-grad="linear-gradient(135deg, #14b8a6, #064e3b, #000000)" data-author="Dr. Sloane Brenner">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="GROCERY KILLER Make Money Rosa Kitchen">
+        
+        <a class="rv-cover" href="/vaults/product/grocery-killer.html" style="background:linear-gradient(135deg, #ca8a04, #78350f, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🛒</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/grocery-killer.html" style="color:inherit">GROCERY KILLER</a></h3>
+          <p class="rv-card__tag">Feed the household on £40 a week — like a boss.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.6</span></span><span>· 9,980 sold</span></div>
+          <div class="rv-card__by">by Rosa Kitchen</div>
+          <div class="rv-card__foot"><span class="rv-price">£14.00 <s>£29.00</s></span><span class="rv-discount">-52%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="grocery-killer" data-title="GROCERY KILLER" data-price="1400" data-icon="🛒" data-grad="linear-gradient(135deg, #ca8a04, #78350f, #000000)" data-author="Rosa Kitchen">Buy now →</a>
+          <button class="rv-add" data-add data-id="grocery-killer" data-title="GROCERY KILLER" data-price="1400" data-icon="🛒" data-grad="linear-gradient(135deg, #ca8a04, #78350f, #000000)" data-author="Rosa Kitchen">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="BEAST PROTOCOL: Bodyweight Mastery Fitness &amp; Body Beast Varga">
+        
+        <a class="rv-cover" href="/vaults/product/beast-protocol-bodyweight-mastery.html" style="background:linear-gradient(135deg, #ea580c, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🦍</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/beast-protocol-bodyweight-mastery.html" style="color:inherit">BEAST PROTOCOL: Bodyweight Mastery</a></h3>
+          <p class="rv-card__tag">Zero equipment. Total dominance. Your body is the weapon.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 9,840 sold</span></div>
+          <div class="rv-card__by">by Beast Varga</div>
+          <div class="rv-card__foot"><span class="rv-price">£24.00 <s>£59.00</s></span><span class="rv-discount">-59%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="beast-protocol" data-title="BEAST PROTOCOL: Bodyweight Mastery" data-price="2400" data-icon="🦍" data-grad="linear-gradient(135deg, #ea580c, #7f1d1d, #000000)" data-author="Beast Varga">Buy now →</a>
+          <button class="rv-add" data-add data-id="beast-protocol" data-title="BEAST PROTOCOL: Bodyweight Mastery" data-price="2400" data-icon="🦍" data-grad="linear-gradient(135deg, #ea580c, #7f1d1d, #000000)" data-author="Beast Varga">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="IRON WILL: The Discipline Code Mindset &amp; Discipline Oskar Kade">
+        
+        <a class="rv-cover" href="/vaults/product/iron-will-discipline-code.html" style="background:linear-gradient(135deg, #7e22ce, #0f172a, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⏰</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/iron-will-discipline-code.html" style="color:inherit">IRON WILL: The Discipline Code</a></h3>
+          <p class="rv-card__tag">Discipline is freedom. Forge it daily.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 9,840 sold</span></div>
+          <div class="rv-card__by">by Oskar Kade</div>
+          <div class="rv-card__foot"><span class="rv-price">£24.00 <s>£49.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="iron-will" data-title="IRON WILL: The Discipline Code" data-price="2400" data-icon="⏰" data-grad="linear-gradient(135deg, #7e22ce, #0f172a, #000000)" data-author="Oskar Kade">Buy now →</a>
+          <button class="rv-add" data-add data-id="iron-will" data-title="IRON WILL: The Discipline Code" data-price="2400" data-icon="⏰" data-grad="linear-gradient(135deg, #7e22ce, #0f172a, #000000)" data-author="Oskar Kade">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="CASHFORGE: Save £15,000 a Year Make Money Cassius Cold">
+        
+        <a class="rv-cover" href="/vaults/product/cashforge-save-15000.html" style="background:linear-gradient(135deg, #f59e0b, #854d0e, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🔒</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/cashforge-save-15000.html" style="color:inherit">CASHFORGE: Save £15,000 a Year</a></h3>
+          <p class="rv-card__tag">Quietly stash £15K without eating rice.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 8,420 sold</span></div>
+          <div class="rv-card__by">by Cassius Cold</div>
+          <div class="rv-card__foot"><span class="rv-price">£19.00 <s>£39.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="cashforge" data-title="CASHFORGE: Save £15,000 a Year" data-price="1900" data-icon="🔒" data-grad="linear-gradient(135deg, #f59e0b, #854d0e, #000000)" data-author="Cassius Cold">Buy now →</a>
+          <button class="rv-add" data-add data-id="cashforge" data-title="CASHFORGE: Save £15,000 a Year" data-price="1900" data-icon="🔒" data-grad="linear-gradient(135deg, #f59e0b, #854d0e, #000000)" data-author="Cassius Cold">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="CRYPTO WARLORD Investing &amp; Trading Niko Reyes">
+        
+        <a class="rv-cover" href="/vaults/product/crypto-warlord.html" style="background:linear-gradient(135deg, #10b981, #115e59, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⚡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Investing &amp; Trading</span>
+          <h3><a href="/vaults/product/crypto-warlord.html" style="color:inherit">CRYPTO WARLORD</a></h3>
+          <p class="rv-card__tag">Ride the bull. Short the top. Stack the bag.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 8,340 sold</span></div>
+          <div class="rv-card__by">by Niko Reyes</div>
+          <div class="rv-card__foot"><span class="rv-price">£59.00 <s>£119.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="crypto-warlord" data-title="CRYPTO WARLORD" data-price="5900" data-icon="⚡" data-grad="linear-gradient(135deg, #10b981, #115e59, #000000)" data-author="Niko Reyes">Buy now →</a>
+          <button class="rv-add" data-add data-id="crypto-warlord" data-title="CRYPTO WARLORD" data-price="5900" data-icon="⚡" data-grad="linear-gradient(135deg, #10b981, #115e59, #000000)" data-author="Niko Reyes">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="GUT WARRIOR: Microbiome Reset Health &amp; Longevity Mina Orellana">
+        
+        <a class="rv-cover" href="/vaults/product/gut-warrior-microbiome-reset.html" style="background:linear-gradient(135deg, #2dd4bf, #164e63, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧪</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Health &amp; Longevity</span>
+          <h3><a href="/vaults/product/gut-warrior-microbiome-reset.html" style="color:inherit">GUT WARRIOR: Microbiome Reset</a></h3>
+          <p class="rv-card__tag">Reset your gut. Reclaim your energy. Rebuild the man.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 7,480 sold</span></div>
+          <div class="rv-card__by">by Mina Orellana</div>
+          <div class="rv-card__foot"><span class="rv-price">£24.00 <s>£49.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="gut-warrior" data-title="GUT WARRIOR: Microbiome Reset" data-price="2400" data-icon="🧪" data-grad="linear-gradient(135deg, #2dd4bf, #164e63, #000000)" data-author="Mina Orellana">Buy now →</a>
+          <button class="rv-add" data-add data-id="gut-warrior" data-title="GUT WARRIOR: Microbiome Reset" data-price="2400" data-icon="🧪" data-grad="linear-gradient(135deg, #2dd4bf, #164e63, #000000)" data-author="Mina Orellana">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="CREDIT KINGDOM: 800+ in 9 Months Make Money Lexi Vault">
+        
+        <a class="rv-cover" href="/vaults/product/credit-kingdom-800-in-9-months.html" style="background:linear-gradient(135deg, #d97706, #7c2d12, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">💳</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/credit-kingdom-800-in-9-months.html" style="color:inherit">CREDIT KINGDOM: 800+ in 9 Months</a></h3>
+          <p class="rv-card__tag">Engineer an 800 credit score from scratch.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 7,410 sold</span></div>
+          <div class="rv-card__by">by Lexi Vault</div>
+          <div class="rv-card__foot"><span class="rv-price">£24.00 <s>£49.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="credit-kingdom" data-title="CREDIT KINGDOM: 800+ in 9 Months" data-price="2400" data-icon="💳" data-grad="linear-gradient(135deg, #d97706, #7c2d12, #000000)" data-author="Lexi Vault">Buy now →</a>
+          <button class="rv-add" data-add data-id="credit-kingdom" data-title="CREDIT KINGDOM: 800+ in 9 Months" data-price="2400" data-icon="💳" data-grad="linear-gradient(135deg, #d97706, #7c2d12, #000000)" data-author="Lexi Vault">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="STOIC FIRE Mindset &amp; Discipline Ethan Callaghan">
+        
+        <a class="rv-cover" href="/vaults/product/stoic-fire.html" style="background:linear-gradient(135deg, #7c3aed, #581c87, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🏛</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/stoic-fire.html" style="color:inherit">STOIC FIRE</a></h3>
+          <p class="rv-card__tag">Marcus Aurelius meets modern warfare.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 7,340 sold</span></div>
+          <div class="rv-card__by">by Ethan Callaghan</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="stoic-fire" data-title="STOIC FIRE" data-price="2900" data-icon="🏛" data-grad="linear-gradient(135deg, #7c3aed, #581c87, #000000)" data-author="Ethan Callaghan">Buy now →</a>
+          <button class="rv-add" data-add data-id="stoic-fire" data-title="STOIC FIRE" data-price="2900" data-icon="🏛" data-grad="linear-gradient(135deg, #7c3aed, #581c87, #000000)" data-author="Ethan Callaghan">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="FREELANCE KINGS Make Money Jax Storm">
+        
+        <a class="rv-cover" href="/vaults/product/freelance-kings.html" style="background:linear-gradient(135deg, #eab308, #92400e, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">👑</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/freelance-kings.html" style="color:inherit">FREELANCE KINGS</a></h3>
+          <p class="rv-card__tag">From £0 to £10K/month on Upwork. Brutally simple.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 7,210 sold</span></div>
+          <div class="rv-card__by">by Jax Storm</div>
+          <div class="rv-card__foot"><span class="rv-price">£27.00 <s>£54.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="freelance-kings" data-title="FREELANCE KINGS" data-price="2700" data-icon="👑" data-grad="linear-gradient(135deg, #eab308, #92400e, #000000)" data-author="Jax Storm">Buy now →</a>
+          <button class="rv-add" data-add data-id="freelance-kings" data-title="FREELANCE KINGS" data-price="2700" data-icon="👑" data-grad="linear-gradient(135deg, #eab308, #92400e, #000000)" data-author="Jax Storm">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="DIVIDEND EMPIRE Investing &amp; Trading Henryk Vale">
+        
+        <a class="rv-cover" href="/vaults/product/dividend-empire.html" style="background:linear-gradient(135deg, #34d399, #14532d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">👑</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Investing &amp; Trading</span>
+          <h3><a href="/vaults/product/dividend-empire.html" style="color:inherit">DIVIDEND EMPIRE</a></h3>
+          <p class="rv-card__tag">Build a throne of cash-flowing stocks. Rule calmly.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 7,210 sold</span></div>
+          <div class="rv-card__by">by Henryk Vale</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="dividend-empire" data-title="DIVIDEND EMPIRE" data-price="3900" data-icon="👑" data-grad="linear-gradient(135deg, #34d399, #14532d, #000000)" data-author="Henryk Vale">Buy now →</a>
+          <button class="rv-add" data-add data-id="dividend-empire" data-title="DIVIDEND EMPIRE" data-price="3900" data-icon="👑" data-grad="linear-gradient(135deg, #34d399, #14532d, #000000)" data-author="Henryk Vale">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="HIGH TICKET CLOSER Make Money Max Velocity">
+        
+        <a class="rv-cover" href="/vaults/product/high-ticket-closer.html" style="background:linear-gradient(135deg, #fbbf24, #c2410c, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">📞</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/high-ticket-closer.html" style="color:inherit">HIGH TICKET CLOSER</a></h3>
+          <p class="rv-card__tag">Close £5K+ deals from your phone. Ruthlessly.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 6,720 sold</span></div>
+          <div class="rv-card__by">by Max Velocity</div>
+          <div class="rv-card__foot"><span class="rv-price">£37.00 <s>£79.00</s></span><span class="rv-discount">-53%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="high-ticket-closer" data-title="HIGH TICKET CLOSER" data-price="3700" data-icon="📞" data-grad="linear-gradient(135deg, #fbbf24, #c2410c, #000000)" data-author="Max Velocity">Buy now →</a>
+          <button class="rv-add" data-add data-id="high-ticket-closer" data-title="HIGH TICKET CLOSER" data-price="3700" data-icon="📞" data-grad="linear-gradient(135deg, #fbbf24, #c2410c, #000000)" data-author="Max Velocity">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="MOBILITY FORGE: Bulletproof Joints Fitness &amp; Body Roman Forge">
+        
+        <a class="rv-cover" href="/vaults/product/mobility-forge-bulletproof-joints.html" style="background:linear-gradient(135deg, #ef4444, #991b1b, #0f172a)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧘</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/mobility-forge-bulletproof-joints.html" style="color:inherit">MOBILITY FORGE: Bulletproof Joints</a></h3>
+          <p class="rv-card__tag">Move like 25 at 55. Forever.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 6,530 sold</span></div>
+          <div class="rv-card__by">by Roman Forge</div>
+          <div class="rv-card__foot"><span class="rv-price">£22.00 <s>£49.00</s></span><span class="rv-discount">-55%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="mobility-forge" data-title="MOBILITY FORGE: Bulletproof Joints" data-price="2200" data-icon="🧘" data-grad="linear-gradient(135deg, #ef4444, #991b1b, #0f172a)" data-author="Roman Forge">Buy now →</a>
+          <button class="rv-add" data-add data-id="mobility-forge" data-title="MOBILITY FORGE: Bulletproof Joints" data-price="2200" data-icon="🧘" data-grad="linear-gradient(135deg, #ef4444, #991b1b, #0f172a)" data-author="Roman Forge">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="DEBT DESTROYER Make Money Phoenix Vale">
+        
+        <a class="rv-cover" href="/vaults/product/debt-destroyer.html" style="background:linear-gradient(135deg, #b91c1c, #78350f, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⛓</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/debt-destroyer.html" style="color:inherit">DEBT DESTROYER</a></h3>
+          <p class="rv-card__tag">Break the chains. Burn the debt. Free the man.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 6,410 sold</span></div>
+          <div class="rv-card__by">by Phoenix Vale</div>
+          <div class="rv-card__foot"><span class="rv-price">£22.00 <s>£44.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="debt-destroyer" data-title="DEBT DESTROYER" data-price="2200" data-icon="⛓" data-grad="linear-gradient(135deg, #b91c1c, #78350f, #000000)" data-author="Phoenix Vale">Buy now →</a>
+          <button class="rv-add" data-add data-id="debt-destroyer" data-title="DEBT DESTROYER" data-price="2200" data-icon="⛓" data-grad="linear-gradient(135deg, #b91c1c, #78350f, #000000)" data-author="Phoenix Vale">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="COLD PLUNGE CODE Health &amp; Longevity Reed Iversen">
+        
+        <a class="rv-cover" href="/vaults/product/cold-plunge-code.html" style="background:linear-gradient(135deg, #06b6d4, #134e4a, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🧊</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Health &amp; Longevity</span>
+          <h3><a href="/vaults/product/cold-plunge-code.html" style="color:inherit">COLD PLUNGE CODE</a></h3>
+          <p class="rv-card__tag">Freeze the weakness out. Daily.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 6,340 sold</span></div>
+          <div class="rv-card__by">by Reed Iversen</div>
+          <div class="rv-card__foot"><span class="rv-price">£19.00 <s>£39.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="cold-plunge-code" data-title="COLD PLUNGE CODE" data-price="1900" data-icon="🧊" data-grad="linear-gradient(135deg, #06b6d4, #134e4a, #000000)" data-author="Reed Iversen">Buy now →</a>
+          <button class="rv-add" data-add data-id="cold-plunge-code" data-title="COLD PLUNGE CODE" data-price="1900" data-icon="🧊" data-grad="linear-gradient(135deg, #06b6d4, #134e4a, #000000)" data-author="Reed Iversen">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="FEAR DESTROYER Mindset &amp; Discipline Sevan Mourad">
+        
+        <a class="rv-cover" href="/vaults/product/fear-destroyer.html" style="background:linear-gradient(135deg, #a855f7, #701a75, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⚡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Mindset &amp; Discipline</span>
+          <h3><a href="/vaults/product/fear-destroyer.html" style="color:inherit">FEAR DESTROYER</a></h3>
+          <p class="rv-card__tag">Walk into the storm. Come out lightning.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 6,210 sold</span></div>
+          <div class="rv-card__by">by Sevan Mourad</div>
+          <div class="rv-card__foot"><span class="rv-price">£22.00 <s>£49.00</s></span><span class="rv-discount">-55%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="fear-destroyer" data-title="FEAR DESTROYER" data-price="2200" data-icon="⚡" data-grad="linear-gradient(135deg, #a855f7, #701a75, #000000)" data-author="Sevan Mourad">Buy now →</a>
+          <button class="rv-add" data-add data-id="fear-destroyer" data-title="FEAR DESTROYER" data-price="2200" data-icon="⚡" data-grad="linear-gradient(135deg, #a855f7, #701a75, #000000)" data-author="Sevan Mourad">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="RED FLOOR: Day Trading Blueprint Investing &amp; Trading Anton Blackwood">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/red-floor-day-trading-blueprint.html" style="background:linear-gradient(135deg, #059669, #14532d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">📊</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Investing &amp; Trading</span>
+          <h3><a href="/vaults/product/red-floor-day-trading-blueprint.html" style="color:inherit">RED FLOOR: Day Trading Blueprint</a></h3>
+          <p class="rv-card__tag">Live on the red floor. Print daily. Never gamble.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 6,110 sold</span></div>
+          <div class="rv-card__by">by Anton Blackwood</div>
+          <div class="rv-card__foot"><span class="rv-price">£79.00 <s>£149.00</s></span><span class="rv-discount">-47%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="red-floor" data-title="RED FLOOR: Day Trading Blueprint" data-price="7900" data-icon="📊" data-grad="linear-gradient(135deg, #059669, #14532d, #000000)" data-author="Anton Blackwood">Buy now →</a>
+          <button class="rv-add" data-add data-id="red-floor" data-title="RED FLOOR: Day Trading Blueprint" data-price="7900" data-icon="📊" data-grad="linear-gradient(135deg, #059669, #14532d, #000000)" data-author="Anton Blackwood">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="SWING KING Investing &amp; Trading Amara Owens">
+        
+        <a class="rv-cover" href="/vaults/product/swing-king.html" style="background:linear-gradient(135deg, #14b8a6, #065f46, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">📈</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Investing &amp; Trading</span>
+          <h3><a href="/vaults/product/swing-king.html" style="color:inherit">SWING KING</a></h3>
+          <p class="rv-card__tag">Swing trade on your lunch break. Keep your day job.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 5,990 sold</span></div>
+          <div class="rv-card__by">by Amara Owens</div>
+          <div class="rv-card__foot"><span class="rv-price">£49.00 <s>£99.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="swing-king" data-title="SWING KING" data-price="4900" data-icon="📈" data-grad="linear-gradient(135deg, #14b8a6, #065f46, #000000)" data-author="Amara Owens">Buy now →</a>
+          <button class="rv-add" data-add data-id="swing-king" data-title="SWING KING" data-price="4900" data-icon="📈" data-grad="linear-gradient(135deg, #14b8a6, #065f46, #000000)" data-author="Amara Owens">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="DROPSHIP DYNASTY Make Money Kade Stone">
+        
+        <a class="rv-cover" href="/vaults/product/dropship-dynasty.html" style="background:linear-gradient(135deg, #d97706, #854d0e, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">📦</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/dropship-dynasty.html" style="color:inherit">DROPSHIP DYNASTY</a></h3>
+          <p class="rv-card__tag">Build a 6-figure dropshipping store before supper.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.6</span></span><span>· 5,890 sold</span></div>
+          <div class="rv-card__by">by Kade Stone</div>
+          <div class="rv-card__foot"><span class="rv-price">£34.00 <s>£69.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="dropship-dynasty" data-title="DROPSHIP DYNASTY" data-price="3400" data-icon="📦" data-grad="linear-gradient(135deg, #d97706, #854d0e, #000000)" data-author="Kade Stone">Buy now →</a>
+          <button class="rv-add" data-add data-id="dropship-dynasty" data-title="DROPSHIP DYNASTY" data-price="3400" data-icon="📦" data-grad="linear-gradient(135deg, #d97706, #854d0e, #000000)" data-author="Kade Stone">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="TRAVEL SHIELD Insurance &amp; Protection Arno Velasco">
+        
+        <a class="rv-cover" href="/vaults/product/travel-shield.html" style="background:linear-gradient(135deg, #0ea5e9, #1e3a8a, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🌍</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/travel-shield.html" style="color:inherit">TRAVEL SHIELD</a></h3>
+          <p class="rv-card__tag">Cheap travel insurance. Real coverage. Zero panic.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.6</span></span><span>· 5,410 sold</span></div>
+          <div class="rv-card__by">by Arno Velasco</div>
+          <div class="rv-card__foot"><span class="rv-price">£9.00 <s>£22.00</s></span><span class="rv-discount">-59%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="travel-shield" data-title="TRAVEL SHIELD" data-price="900" data-icon="🌍" data-grad="linear-gradient(135deg, #0ea5e9, #1e3a8a, #000000)" data-author="Arno Velasco">Buy now →</a>
+          <button class="rv-add" data-add data-id="travel-shield" data-title="TRAVEL SHIELD" data-price="900" data-icon="🌍" data-grad="linear-gradient(135deg, #0ea5e9, #1e3a8a, #000000)" data-author="Arno Velasco">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="TAX NINJA: Keep More of Your Money Make Money Shadow Legal">
+        
+        <a class="rv-cover" href="/vaults/product/tax-ninja-keep-more-of-your-money.html" style="background:linear-gradient(135deg, #f59e0b, #78350f, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🥷</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Make Money</span>
+          <h3><a href="/vaults/product/tax-ninja-keep-more-of-your-money.html" style="color:inherit">TAX NINJA: Keep More of Your Money</a></h3>
+          <p class="rv-card__tag">Legal tax kung-fu. HMRC approved.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 5,340 sold</span></div>
+          <div class="rv-card__by">by Shadow Legal</div>
+          <div class="rv-card__foot"><span class="rv-price">£29.00 <s>£59.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="tax-ninja" data-title="TAX NINJA: Keep More of Your Money" data-price="2900" data-icon="🥷" data-grad="linear-gradient(135deg, #f59e0b, #78350f, #000000)" data-author="Shadow Legal">Buy now →</a>
+          <button class="rv-add" data-add data-id="tax-ninja" data-title="TAX NINJA: Keep More of Your Money" data-price="2900" data-icon="🥷" data-grad="linear-gradient(135deg, #f59e0b, #78350f, #000000)" data-author="Shadow Legal">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="EMPIRE BUILD: Solo Business to £50K/Mo Build Your Business Dante Orlov">
+        <span class="rv-badge">★ Bestseller</span>
+        <a class="rv-cover" href="/vaults/product/empire-build-solo-50k-month.html" style="background:linear-gradient(135deg, #f97316, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🏛</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Build Your Business</span>
+          <h3><a href="/vaults/product/empire-build-solo-50k-month.html" style="color:inherit">EMPIRE BUILD: Solo Business to £50K/Mo</a></h3>
+          <p class="rv-card__tag">One operator. Zero employees. £50K per month.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 5,120 sold</span></div>
+          <div class="rv-card__by">by Dante Orlov</div>
+          <div class="rv-card__foot"><span class="rv-price">£69.00 <s>£129.00</s></span><span class="rv-discount">-47%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="empire-build" data-title="EMPIRE BUILD: Solo Business to £50K/Mo" data-price="6900" data-icon="🏛" data-grad="linear-gradient(135deg, #f97316, #7f1d1d, #000000)" data-author="Dante Orlov">Buy now →</a>
+          <button class="rv-add" data-add data-id="empire-build" data-title="EMPIRE BUILD: Solo Business to £50K/Mo" data-price="6900" data-icon="🏛" data-grad="linear-gradient(135deg, #f97316, #7f1d1d, #000000)" data-author="Dante Orlov">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="HEALTH INSURANCE HACK Insurance &amp; Protection Maren Stroud">
+        
+        <a class="rv-cover" href="/vaults/product/health-insurance-hack.html" style="background:linear-gradient(135deg, #06b6d4, #1e40af, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">⚕</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/health-insurance-hack.html" style="color:inherit">HEALTH INSURANCE HACK</a></h3>
+          <p class="rv-card__tag">Pay half. Claim more. Protect everything.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 4,820 sold</span></div>
+          <div class="rv-card__by">by Maren Stroud</div>
+          <div class="rv-card__foot"><span class="rv-price">£17.00 <s>£34.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="health-insurance-hack" data-title="HEALTH INSURANCE HACK" data-price="1700" data-icon="⚕" data-grad="linear-gradient(135deg, #06b6d4, #1e40af, #000000)" data-author="Maren Stroud">Buy now →</a>
+          <button class="rv-add" data-add data-id="health-insurance-hack" data-title="HEALTH INSURANCE HACK" data-price="1700" data-icon="⚕" data-grad="linear-gradient(135deg, #06b6d4, #1e40af, #000000)" data-author="Maren Stroud">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="OPTIONS ARSENAL Investing &amp; Trading Raven Cortez">
+        
+        <a class="rv-cover" href="/vaults/product/options-arsenal.html" style="background:linear-gradient(135deg, #10b981, #064e3b, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🎯</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Investing &amp; Trading</span>
+          <h3><a href="/vaults/product/options-arsenal.html" style="color:inherit">OPTIONS ARSENAL</a></h3>
+          <p class="rv-card__tag">Options: weapons-grade. Not lottery tickets.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 4,580 sold</span></div>
+          <div class="rv-card__by">by Raven Cortez</div>
+          <div class="rv-card__foot"><span class="rv-price">£69.00 <s>£139.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="options-arsenal" data-title="OPTIONS ARSENAL" data-price="6900" data-icon="🎯" data-grad="linear-gradient(135deg, #10b981, #064e3b, #000000)" data-author="Raven Cortez">Buy now →</a>
+          <button class="rv-add" data-add data-id="options-arsenal" data-title="OPTIONS ARSENAL" data-price="6900" data-icon="🎯" data-grad="linear-gradient(135deg, #10b981, #064e3b, #000000)" data-author="Raven Cortez">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="AGENCY ALPHA Build Your Business Cassian Vale">
+        
+        <a class="rv-cover" href="/vaults/product/agency-alpha.html" style="background:linear-gradient(135deg, #fb923c, #78350f, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">📡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Build Your Business</span>
+          <h3><a href="/vaults/product/agency-alpha.html" style="color:inherit">AGENCY ALPHA</a></h3>
+          <p class="rv-card__tag">Build a 7-figure marketing agency from your bedroom.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 4,220 sold</span></div>
+          <div class="rv-card__by">by Cassian Vale</div>
+          <div class="rv-card__foot"><span class="rv-price">£59.00 <s>£119.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="agency-alpha" data-title="AGENCY ALPHA" data-price="5900" data-icon="📡" data-grad="linear-gradient(135deg, #fb923c, #78350f, #000000)" data-author="Cassian Vale">Buy now →</a>
+          <button class="rv-add" data-add data-id="agency-alpha" data-title="AGENCY ALPHA" data-price="5900" data-icon="📡" data-grad="linear-gradient(135deg, #fb923c, #78350f, #000000)" data-author="Cassian Vale">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="PURE POWER: Olympic Lifting Bible Fitness &amp; Body Atlas Prime">
+        
+        <a class="rv-cover" href="/vaults/product/pure-power-olympic-lifting-bible.html" style="background:linear-gradient(135deg, #b91c1c, #881337, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🏋</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Fitness &amp; Body</span>
+          <h3><a href="/vaults/product/pure-power-olympic-lifting-bible.html" style="color:inherit">PURE POWER: Olympic Lifting Bible</a></h3>
+          <p class="rv-card__tag">The snatch and clean &amp; jerk — decoded by champions.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 4,120 sold</span></div>
+          <div class="rv-card__by">by Atlas Prime</div>
+          <div class="rv-card__foot"><span class="rv-price">£39.00 <s>£79.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="pure-power" data-title="PURE POWER: Olympic Lifting Bible" data-price="3900" data-icon="🏋" data-grad="linear-gradient(135deg, #b91c1c, #881337, #000000)" data-author="Atlas Prime">Buy now →</a>
+          <button class="rv-add" data-add data-id="pure-power" data-title="PURE POWER: Olympic Lifting Bible" data-price="3900" data-icon="🏋" data-grad="linear-gradient(135deg, #b91c1c, #881337, #000000)" data-author="Atlas Prime">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="CONSULTING KINGS Build Your Business Benedikt Ash">
+        
+        <a class="rv-cover" href="/vaults/product/consulting-kings.html" style="background:linear-gradient(135deg, #fb923c, #9a3412, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">♔</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Build Your Business</span>
+          <h3><a href="/vaults/product/consulting-kings.html" style="color:inherit">CONSULTING KINGS</a></h3>
+          <p class="rv-card__tag">Charge £10K a day. Deliver like royalty.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 4,080 sold</span></div>
+          <div class="rv-card__by">by Benedikt Ash</div>
+          <div class="rv-card__foot"><span class="rv-price">£49.00 <s>£99.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="consulting-kings" data-title="CONSULTING KINGS" data-price="4900" data-icon="♔" data-grad="linear-gradient(135deg, #fb923c, #9a3412, #000000)" data-author="Benedikt Ash">Buy now →</a>
+          <button class="rv-add" data-add data-id="consulting-kings" data-title="CONSULTING KINGS" data-price="4900" data-icon="♔" data-grad="linear-gradient(135deg, #fb923c, #9a3412, #000000)" data-author="Benedikt Ash">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="E-COMMERCE EMPEROR Build Your Business Mira Langley">
+        
+        <a class="rv-cover" href="/vaults/product/ecommerce-emperor.html" style="background:linear-gradient(135deg, #ea580c, #7f1d1d, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">👑</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Build Your Business</span>
+          <h3><a href="/vaults/product/ecommerce-emperor.html" style="color:inherit">E-COMMERCE EMPEROR</a></h3>
+          <p class="rv-card__tag">Build your Shopify empire. Wear the crown.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.7</span></span><span>· 3,340 sold</span></div>
+          <div class="rv-card__by">by Mira Langley</div>
+          <div class="rv-card__foot"><span class="rv-price">£54.00 <s>£109.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="ecom-emperor" data-title="E-COMMERCE EMPEROR" data-price="5400" data-icon="👑" data-grad="linear-gradient(135deg, #ea580c, #7f1d1d, #000000)" data-author="Mira Langley">Buy now →</a>
+          <button class="rv-add" data-add data-id="ecom-emperor" data-title="E-COMMERCE EMPEROR" data-price="5400" data-icon="👑" data-grad="linear-gradient(135deg, #ea580c, #7f1d1d, #000000)" data-author="Mira Langley">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="HOME FORTRESS INSURANCE Insurance &amp; Protection Callum Brent">
+        
+        <a class="rv-cover" href="/vaults/product/home-fortress-insurance.html" style="background:linear-gradient(135deg, #2563eb, #312e81, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🏰</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/home-fortress-insurance.html" style="color:inherit">HOME FORTRESS INSURANCE</a></h3>
+          <p class="rv-card__tag">Fortify your house. Pay the bare minimum.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 3,120 sold</span></div>
+          <div class="rv-card__by">by Callum Brent</div>
+          <div class="rv-card__foot"><span class="rv-price">£19.00 <s>£39.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="home-fortress" data-title="HOME FORTRESS INSURANCE" data-price="1900" data-icon="🏰" data-grad="linear-gradient(135deg, #2563eb, #312e81, #000000)" data-author="Callum Brent">Buy now →</a>
+          <button class="rv-add" data-add data-id="home-fortress" data-title="HOME FORTRESS INSURANCE" data-price="1900" data-icon="🏰" data-grad="linear-gradient(135deg, #2563eb, #312e81, #000000)" data-author="Callum Brent">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="LIFE INSURANCE BLUEPRINT Insurance &amp; Protection Gloria Maddox">
+        
+        <a class="rv-cover" href="/vaults/product/life-insurance-blueprint.html" style="background:linear-gradient(135deg, #3b82f6, #0c4a6e, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🛡</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Insurance &amp; Protection</span>
+          <h3><a href="/vaults/product/life-insurance-blueprint.html" style="color:inherit">LIFE INSURANCE BLUEPRINT</a></h3>
+          <p class="rv-card__tag">Protect your bloodline without the broker bloat.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.9</span></span><span>· 2,940 sold</span></div>
+          <div class="rv-card__by">by Gloria Maddox</div>
+          <div class="rv-card__foot"><span class="rv-price">£24.00 <s>£49.00</s></span><span class="rv-discount">-51%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="life-insurance-blueprint" data-title="LIFE INSURANCE BLUEPRINT" data-price="2400" data-icon="🛡" data-grad="linear-gradient(135deg, #3b82f6, #0c4a6e, #000000)" data-author="Gloria Maddox">Buy now →</a>
+          <button class="rv-add" data-add data-id="life-insurance-blueprint" data-title="LIFE INSURANCE BLUEPRINT" data-price="2400" data-icon="🛡" data-grad="linear-gradient(135deg, #3b82f6, #0c4a6e, #000000)" data-author="Gloria Maddox">+ Add to cart</button>
+        </div>
+      </article>
+      <article class="rv-card" data-rv-reveal data-title-card="SAAS LION Build Your Business Priya Vahn">
+        
+        <a class="rv-cover" href="/vaults/product/saas-lion.html" style="background:linear-gradient(135deg, #f97316, #7c2d12, #000000)">
+          <span class="rv-cover__brand">RAVOLUTION</span>
+          <span class="rv-cover__emoji">🦁</span>
+        </a>
+        <div class="rv-card__body">
+          <span class="rv-card__cat">Build Your Business</span>
+          <h3><a href="/vaults/product/saas-lion.html" style="color:inherit">SAAS LION</a></h3>
+          <p class="rv-card__tag">Launch a SaaS. Kill the competition.</p>
+          <div class="rv-card__meta"><span class="rv-stars">★★★★★ <span class="num">4.8</span></span><span>· 2,810 sold</span></div>
+          <div class="rv-card__by">by Priya Vahn</div>
+          <div class="rv-card__foot"><span class="rv-price">£69.00 <s>£139.00</s></span><span class="rv-discount">-50%</span></div>
+        </div>
+        <div class="rv-card__btns">
+          <a class="rv-cta buy" href="#" data-buy data-id="saas-lion" data-title="SAAS LION" data-price="6900" data-icon="🦁" data-grad="linear-gradient(135deg, #f97316, #7c2d12, #000000)" data-author="Priya Vahn">Buy now →</a>
+          <button class="rv-add" data-add data-id="saas-lion" data-title="SAAS LION" data-price="6900" data-icon="🦁" data-grad="linear-gradient(135deg, #f97316, #7c2d12, #000000)" data-author="Priya Vahn">+ Add to cart</button>
+        </div>
+      </article></div></div></section>
+<section class="rv-section rv-center"><div class="rv-wrap"><div class="rv-section-head"><div><span class="rv-eyebrow">Choose your battlefield</span><h2>Seven Arenas of War</h2></div></div>
+  <div class="rv-grid cols-3" style="text-align:left"><a class="rv-cat" href="/vaults/category/fitness.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #ef4444, #7f1d1d)"></div><span class="rv-cat__ic">💪</span><h3>Fitness &amp; Body</h3><p>Forge a body that commands every room.</p><span class="rv-cat__count">5 programs</span></a><a class="rv-cat" href="/vaults/category/wealth.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #fbbf24, #a16207)"></div><span class="rv-cat__ic">💰</span><h3>Make Money</h3><p>Build income streams that fund your freedom.</p><span class="rv-cat__count">10 programs</span></a><a class="rv-cat" href="/vaults/category/trading.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #34d399, #065f46)"></div><span class="rv-cat__ic">📈</span><h3>Investing &amp; Trading</h3><p>Read the market. Own the charts. Keep your gains.</p><span class="rv-cat__count">5 programs</span></a><a class="rv-cat" href="/vaults/category/insurance.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #60a5fa, #1e40af)"></div><span class="rv-cat__ic">🛡</span><h3>Insurance &amp; Protection</h3><p>Pay less. Claim more. Protect your empire.</p><span class="rv-cat__count">5 programs</span></a><a class="rv-cat" href="/vaults/category/mindset.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #a855f7, #581c87)"></div><span class="rv-cat__ic">🧠</span><h3>Mindset &amp; Discipline</h3><p>Master your mind before the world does.</p><span class="rv-cat__count">5 programs</span></a><a class="rv-cat" href="/vaults/category/business.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #f97316, #7c2d12)"></div><span class="rv-cat__ic">🏛</span><h3>Build Your Business</h3><p>From solo operator to empire builder.</p><span class="rv-cat__count">5 programs</span></a><a class="rv-cat" href="/vaults/category/health.html" data-rv-reveal><div class="rv-cat__bg" style="background:linear-gradient(135deg, #2dd4bf, #115e59)"></div><span class="rv-cat__ic">🌿</span><h3>Health &amp; Longevity</h3><p>Peak hormones, elite recovery, a body that lasts.</p><span class="rv-cat__count">4 programs</span></a></div></div></section>
+<section class="rv-section"><div class="rv-wrap"><div class="rv-section-head"><div><span class="rv-eyebrow">Why operators choose the vault</span><h2>No Fluff. Just Firepower.</h2></div></div>
+  <div class="rv-grid cols-4"><div class="rv-feat" data-rv-reveal><div class="i">⚡</div><div class="big">0s</div><h3>Instant Delivery</h3><p>Your ebook lands in your inbox the second Stripe confirms payment. T+0 seconds. No waiting room, no PDF purgatory.</p></div><div class="rv-feat" data-rv-reveal><div class="i">🛡</div><div class="big">30d</div><h3>30-Day Refund</h3><p>Hate it? Money back. Zero interrogation, zero forms, zero guilt trip. The risk lives with us — never with you.</p></div><div class="rv-feat" data-rv-reveal><div class="i">⚔</div><div class="big">100%</div><h3>Battle-Tested</h3><p>Every weapon in the vault was forged by an operator who actually walked the path — not chair-philosophers.</p></div><div class="rv-feat" data-rv-reveal><div class="i">♾</div><div class="big">∞</div><h3>Lifetime Access</h3><p>Pay once, own forever. Every ebook stays in your inbox archive — re-download whenever the war demands it.</p></div></div></div></section>
+<section class="rv-section"><div class="rv-wrap"><div class="rv-section-head"><div><span class="rv-eyebrow">From the front line</span><h2>1,000+ Men Transformed</h2></div></div>
+  <div class="rv-grid cols-3"><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>Dropped 38 lbs on Iron Frame, then stacked Money Machine. Cleared $14K in side income in 10 weeks. My wife looks at me different now.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#ef4444,#7f1d1d)">M</span><span><b>Marcus T.</b><span>Construction Foreman · Texas</span></span></div></div><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>Red Floor rewired my entire approach to markets. Risk first, ego last. Paid for the ebook in one afternoon session.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#10b981,#7f1d1d)">D</span><span><b>Darius K.</b><span>Ex-Navy → Day Trader</span></span></div></div><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>Stallion Code slapped. I&#x27;ve been 90 days sober, in the gym 6× a week. For the first time I actually like who I see in the mirror.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#fbbf24,#7f1d1d)">J</span><span><b>Joey R.</b><span>College Student · Ohio</span></span></div></div><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>Empire Build gave me a step-by-step. I hit $8K/mo in my 5th month doing outreach exactly the way it teaches. This isn&#x27;t theory.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#f97316,#7f1d1d)">A</span><span><b>Andre P.</b><span>Uber Driver → Agency Owner</span></span></div></div><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>CashForge plus Premium Killer saved my family $5,400 last year. Bought the whole Vault with the first month&#x27;s savings.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#8b5cf6,#7f1d1d)">S</span><span><b>Sami H.</b><span>Father of Three · Manchester</span></span></div></div><div class="rv-test" data-rv-reveal><span class="rv-stars">★★★★★</span><q>I&#x27;ve read 30+ business books. The Vault was the first one that turned into actual revenue inside a quarter. Refund window expired untouched.</q><div class="rv-test__who"><span class="rv-test__av" style="background:linear-gradient(135deg,#06b6d4,#7f1d1d)">T</span><span><b>Tobias W.</b><span>Software Engineer · Berlin</span></span></div></div></div></div></section>
+<section class="rv-final"><span class="rv-pill" style="margin-bottom:22px"><span class="dot"></span> Vault Initiate Offer</span><h2 class="rv-grad-text">Join the Vault</h2>
+  <p class="rv-hero__lead">Stop reading about the man you could be. Build him. Instant access. 30-day refund. Zero risk.</p><div class="rv-ctas"><a class="rv-cta primary" href="#grid">Enter the Vault →</a></div></section></main>
+<footer class="rv-footer"><div class="rv-wrap"><div class="rv-footer__grid">
+  <div class="rv-footer__about"><a href="/vaults/" class="rv-brand"><img class="rv-brand__logo" src="/vaults/assets/ravolution-logo.png" alt="" width="50" height="50"><span class="rv-brand__txt"><b>RAVOLUTION</b><small>VAULTS</small></span></a>
+    <p>Premium ebook programs for men who refuse average. Forged by operators, delivered to your inbox in seconds.</p>
+    <div class="rv-pay"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>GOOGLE PAY</span></div></div>
+  <div><h4>Arsenal</h4><nav><a href="/vaults/category/fitness.html">Fitness &amp; Body</a><a href="/vaults/category/wealth.html">Make Money</a><a href="/vaults/category/trading.html">Investing &amp; Trading</a><a href="/vaults/category/insurance.html">Insurance &amp; Protection</a><a href="/vaults/category/mindset.html">Mindset &amp; Discipline</a><a href="/vaults/category/business.html">Build Your Business</a><a href="/vaults/category/health.html">Health &amp; Longevity</a></nav></div>
+  <div><h4>Support</h4><nav><a href="/vaults/cart.html">Cart</a><a href="/vaults/">All programs</a><a href="/">Portfolio</a><a href="#">Guarantees</a><a href="#">Refund policy</a></nav></div>
+  <div><h4>Enlist</h4><div class="rv-newsletter"><input type="email" placeholder="Your email"><button class="rv-cta primary" style="padding:12px 18px">Join</button></div></div>
+</div><div class="rv-footer__bottom"><span>© 2026 Ravolution Vaults. All rights reserved.</span><span>🔒 Secure checkout · 30-day refund · Instant PDF delivery</span></div></div></footer>
+<div class="rv-scrim" data-rv-scrim hidden></div><div class="rv-toast" data-rv-toast role="status"></div>
+<script src="/vaults/assets/theme.js"></script><script src="/vaults/assets/preview-cart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var dial = document.getElementById("viDial");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    ScrollTrigger.create({
+      trigger: "#vault-intro", start: "top top", end: "bottom bottom", scrub: true,
+      onUpdate: function (self) {
+        var p = self.progress;
+        gsap.set("#viHandle", { rotate: p * 720 });
+        gsap.set("#viDoor", { scale: 1 + p * 0.5, opacity: 1 - Math.max(0, (p - 0.75) / 0.25) * 0.6 });
+        var a = String(Math.round(p * 36)).padStart(2, "0");
+        var b = String(Math.round(p * 72) % 60).padStart(2, "0");
+        var c = String(Math.round(p * 144) % 60).padStart(2, "0");
+        dial.textContent = a + "-" + b + "-" + c;
+        gsap.set(".vi-scroll", { opacity: 1 - Math.min(1, p / 0.12) });
+      }
+    });
+    gsap.from(".vi-title", { y: 90, opacity: 0, duration: 1.2, ease: "power4.out", delay: 0.15 });
+    gsap.from(".vi-kicker", { opacity: 0, duration: 1, delay: 0.5 });
+    gsap.from(".vi-sub", { opacity: 0, y: 20, duration: 1, ease: "power3.out", delay: 0.55 });
+    gsap.from("#viDoor", { scale: 0.85, opacity: 0, duration: 1.6, ease: "power3.out" });
+  }
+})();
+</script>
+</body></html>
