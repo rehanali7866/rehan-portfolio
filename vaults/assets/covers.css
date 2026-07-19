@@ -1,3 +1,93 @@
+
+/* ============================================================
+   Publisher, not funnel. Restraint over decoration.
+   ============================================================ */
+:root { --line-quiet: rgba(244,236,221,.10); }
+
+/* header: quieter, no shouting */
+.rv-header { background: rgba(8,6,7,.9); border-bottom: 1px solid var(--line-quiet); }
+.rv-header__bar { height: 68px; }
+.rv-nav a { font-size: 13px; letter-spacing: .02em; color: var(--muted); font-weight: 500; }
+.rv-nav a:hover, .rv-nav a[aria-current] { color: #fff; }
+.rv-brand__logo { width: 38px; height: 38px; border-radius: 6px; }
+.rv-brand__txt b { font-size: 20px; letter-spacing: .06em;
+  background: none; -webkit-text-fill-color: #f4ecdd; color: #f4ecdd; }
+.rv-brand__txt small { letter-spacing: .3em; font-size: 9px; color: var(--muted); }
+
+/* hero: let the type carry it */
+.rv-hero { padding: 132px 0 96px; }
+.rv-hero__bg { opacity: .18; }
+.rv-hero .rv-pill { background: none; border: 1px solid var(--line-quiet); color: var(--muted);
+  font-size: 10px; letter-spacing: .26em; }
+.rv-hero .rv-pill .dot { display: none; }
+.rv-hero__lead { max-width: 620px; font-size: 16.5px; line-height: 1.65; color: #b9aeb0; }
+.rv-grad-text { background: none; -webkit-text-fill-color: #f4ecdd; color: #f4ecdd; }
+
+/* buttons: one accent, no gradient glow */
+.rv-cta.primary, .rv-cta.buy {
+  background: var(--red); color: #fff; border-radius: 3px; box-shadow: none;
+  font-size: 12.5px; letter-spacing: .1em; font-weight: 700; padding: 13px 20px;
+}
+.rv-cta.primary:hover, .rv-cta.buy:hover { background: #c40d26; }
+.rv-hero .rv-ctas, .rv-final .rv-ctas { justify-content: center; }
+.rv-hero .rv-cta, .rv-final .rv-cta { box-shadow: none !important; filter: none !important; }
+.rv-cta.ghost, .rv-add {
+  background: none; border: 1px solid var(--line-quiet); color: #cfc6c2;
+  border-radius: 3px; font-size: 12.5px; letter-spacing: .1em; font-weight: 600;
+}
+.rv-cta.ghost:hover, .rv-add:hover { border-color: rgba(244,236,221,.34); color: #fff; }
+
+/* stats: hairline row, no icons */
+.rv-stat .n { font-size: clamp(30px, 3.4vw, 44px); }
+.rv-stat .n img, .rv-stat .n .ic { display: none; }
+.rv-stat .l { letter-spacing: .22em; font-size: 10px; color: var(--muted); }
+
+/* section headings: smaller, calmer */
+.rv-section { padding: 74px 0; }
+.rv-section-head h2 { font-size: clamp(30px, 3.6vw, 46px); letter-spacing: .01em; }
+.rv-eyebrow { color: var(--muted); letter-spacing: .28em; font-size: 10px; font-weight: 600; }
+.rv-sub { color: var(--muted); font-size: 14px; }
+
+/* category cards: a rule, a name, a count */
+.rv-cat[data-cat="fitness"] { --c:#f87171; }
+.rv-cat[data-cat="wealth"]  { --c:#fbbf24; }
+.rv-cat[data-cat="ai"]      { --c:#22d3ee; }
+.rv-cat[data-cat="mindset"] { --c:#a78bfa; }
+.rv-cat[data-cat="health"]  { --c:#2dd4bf; }
+.rv-cat {
+  position: relative; display: block; padding: 26px 24px 22px;
+  background: rgba(255,255,255,.014); border: 1px solid var(--line-quiet);
+  border-radius: 4px; min-height: 0; overflow: visible;
+  transition: border-color .35s ease, background .35s ease, transform .35s ease;
+}
+.rv-cat:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  background: rgba(255,255,255,.03); transform: translateY(-2px); }
+.rv-cat__rule { display: block; width: 26px; height: 2px; background: var(--c); margin-bottom: 16px; }
+.rv-cat h3 { font-size: 21px; color: #fff; margin-bottom: 8px; }
+.rv-cat p { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-bottom: 14px; }
+.rv-cat__count { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: color-mix(in srgb, var(--c) 78%, white); }
+.rv-cat__bg, .rv-cat__ic { display: none !important; }
+
+/* product cards: quieter frame, price does the talking */
+.rv-card { background: rgba(255,255,255,.015); border: 1px solid var(--line-quiet); border-radius: 4px; }
+.rv-card:hover { border-color: rgba(244,236,221,.2); }
+.rv-card h3 { font-size: 19px; line-height: 1.12; letter-spacing: .005em; }
+.rv-card__cat { color: var(--muted); font-weight: 600; font-size: 10px; letter-spacing: .2em; }
+.rv-card__tag { font-size: 13.5px; line-height: 1.55; }
+.rv-card__by { font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+.rv-price { font-size: 24px; color: #f4ecdd; }
+.rv-card__btns { gap: 8px; }
+
+/* product page */
+.rv-product h1 { font-size: clamp(34px, 4.6vw, 58px); }
+.rv-product__tagline { font-size: 17px; color: #c9bfbb; font-style: normal; font-family: inherit; }
+.rv-product__meta { font-size: 12.5px; letter-spacing: .04em; }
+.rv-product__price .rv-price { font-size: 34px; }
+
+/* footer */
+.rv-footer { border-top: 1px solid var(--line-quiet); }
+.rv-footer h4 { font-size: 11px; letter-spacing: .24em; color: var(--muted); }
+.rv-footer nav a, .rv-footer__about p { font-size: 13px; }
 /* ============================================================
    Designed book covers - typography and motion, no artwork.
    One palette per category so the catalogue reads as a series.

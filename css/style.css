@@ -32,6 +32,13 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+/* keyboard navigation: visible but on-brand */
+:focus { outline: none; }
+:focus-visible {
+  outline: 1px solid rgba(232, 16, 46, 0.8);
+  outline-offset: 4px;
+}
+
 /* ---------- scroll progress ---------- */
 #scrollProgress {
   position: fixed; z-index: 96; top: 0; left: 0; right: 0; height: 3px;
@@ -199,11 +206,11 @@ body.ready #nav { opacity: 1; transform: none; }
 }
 .d-line { opacity: 0; transition: opacity 0.3s ease; }
 .d-line.on { opacity: 1; }
-.d-k { color: var(--red); font-weight: 600; }
+.d-k { color: #2de282; font-weight: 600; text-shadow: 0 0 8px rgba(45, 226, 130, 0.35); }
 .d-v { color: var(--cream); }
 .d-cursor {
   display: inline-block; width: 7px; height: 0.9em; margin-left: 7px;
-  background: var(--red); vertical-align: -0.1em;
+  background: #2de282; box-shadow: 0 0 8px rgba(45, 226, 130, 0.5); vertical-align: -0.1em;
   animation: dBlink 1s steps(1) infinite;
 }
 @keyframes dBlink { 50% { opacity: 0; } }
