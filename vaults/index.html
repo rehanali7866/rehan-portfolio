@@ -86,10 +86,18 @@
 }
 @keyframes viDrip { 0% { transform: translateY(-100%);} 55% { transform: translateY(0);} 100% { transform: translateY(100%);} }
 @media (max-width: 640px) {
-  #vault-intro .vi-sub { letter-spacing: .24em; padding: 0 1rem; }
-  #vault-intro #viDial { font-size: 1rem; }
-  #vault-intro .vi-hud { gap: 1rem; }
-  #vault-intro .vi-hud > div { white-space: nowrap; }
+  /* three HUD items will not fit 375px on one line - the dial was running
+     off the right edge. The turning door already implies "scroll". */
+  #vault-intro .vi-scroll { display: none; }
+  #vault-intro .vi-hud { padding: 1.1rem 1.1rem; gap: .8rem; }
+  #vault-intro .vi-hud > div { white-space: nowrap; font-size: .52rem; letter-spacing: .22em; }
+  #vault-intro #viDial { font-size: .95rem; letter-spacing: .08em; }
+  #vault-intro .vi-sub {
+    white-space: normal; letter-spacing: .18em; line-height: 1.9;
+    padding: 0 1.3rem; font-size: .58rem;
+  }
+  #vault-intro .vi-kicker { font-size: .5rem; letter-spacing: .28em; padding: 0 1rem; }
+  #vault-intro .vi-title { font-size: clamp(3.4rem, 21vw, 6rem); }
 }
 @media (prefers-reduced-motion: reduce) {
   #vault-intro { height: 100vh; }
