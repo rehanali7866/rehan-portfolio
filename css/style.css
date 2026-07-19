@@ -146,6 +146,7 @@ body.ready #nav { opacity: 1; transform: none; }
 .hero-title {
   position: absolute; inset: 0; z-index: 5;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding-bottom: 14vh; /* lifts the name clear of the flap board on wide screens */
   font-family: var(--display); font-weight: 400;
   color: var(--cream);
   text-shadow: 0 2px 70px rgba(11, 10, 8, 0.55);
@@ -162,7 +163,7 @@ body.ready #nav { opacity: 1; transform: none; }
 .hero-title .char.red { color: var(--red); }
 
 .hero-sub {
-  position: absolute; z-index: 4; left: 50%; bottom: 18vh; transform: translateX(-50%);
+  position: absolute; z-index: 4; left: 50%; bottom: 12vh; transform: translateX(-50%);
   font-size: clamp(0.7rem, 1.4vw, 0.95rem); letter-spacing: 0.42em; text-align: center;
   color: var(--cream); white-space: nowrap;
 }
@@ -178,7 +179,7 @@ body.ready #nav { opacity: 1; transform: none; }
   font-size: 0.62rem; letter-spacing: 0.3em; color: var(--cream-dim);
 }
 .hud-scroll { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
-.scroll-line { width: 1px; height: 44px; background: rgba(244, 236, 221, 0.2); overflow: hidden; }
+.scroll-line { width: 1px; height: 26px; background: rgba(244, 236, 221, 0.2); overflow: hidden; }
 .scroll-line i {
   display: block; width: 100%; height: 100%; background: var(--red);
   animation: scrollDrip 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
@@ -252,6 +253,7 @@ body.ready #nav { opacity: 1; transform: none; }
   .hud-frame { inset: 13vh 7vw 11vh; }
   #flapBoard { gap: 2px; }
   .flap-cell { width: 8px; height: 14px; font-size: 7px; border-radius: 1px; }
+  .hero-title { padding-bottom: 6vh; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hud-scan { animation: none; opacity: 0; }
