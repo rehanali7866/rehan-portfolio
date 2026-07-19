@@ -1,5 +1,99 @@
 
 /* ============================================================
+   Lift: the near-black was swallowing everything. Same identity,
+   considerably more light, contrast and colour.
+   ============================================================ */
+:root {
+  --bg:     #191419;   /* was #0a0506 - almost black */
+  --bg2:    #211b21;
+  --card:   #272129;
+  --card2:  #302932;
+  --fg:     #fbf8f6;
+  --muted:  #c9bdbb;   /* was #a99c98 */
+  --line:   rgba(250,245,240,.13);
+  --line2:  rgba(250,245,240,.26);
+  --line-quiet: rgba(250,245,240,.13);
+}
+body {
+  background:
+    radial-gradient(1100px 620px at 78% -8%, rgba(239,68,68,.13), transparent 62%),
+    radial-gradient(900px 560px at 8% 6%, rgba(245,158,11,.075), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* header sits on the light, not against it */
+.rv-header { background: rgba(25,20,25,.82); backdrop-filter: blur(14px); }
+.rv-nav a { color: #cec3c1; }
+
+/* hero: give it an actual light source */
+.rv-hero { position: relative; }
+.rv-hero::before {   /* replaces the theme's dark animated aurora with light */
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: radial-gradient(820px 460px at 50% 32%, rgba(255,228,198,.14), transparent 70%);
+  animation: none; opacity: 1;
+}
+.rv-hero::after {    /* theme vignette was near-black at 85% and crushed the type */
+  background:
+    radial-gradient(circle at 50% 30%, rgba(240,69,63,.15), transparent 58%),
+    radial-gradient(circle at 50% 14%, transparent, rgba(25,20,25,.5) 84%);
+  z-index: 2;
+}
+.rv-hero > *:not(.rv-hero__bg) { position: relative; z-index: 4; }
+.rv-hero__bg { position: absolute !important; inset: 0 !important; z-index: 0 !important; opacity: .22; }
+.rv-hero__lead { color: #d6cbc9; }
+.rv-hero .rv-pill { border-color: var(--line2); color: #d8cdca; }
+
+/* surfaces need to read as surfaces */
+.rv-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.022));
+  border-color: var(--line);
+}
+.rv-card:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
+  border-color: rgba(250,245,240,.3);
+}
+.rv-card__tag { color: #bdb2b0; }
+.rv-card__by { color: #a99e9c; }
+
+/* category cards carry their colour instead of hinting at it */
+.rv-cat {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--c) 13%, transparent), transparent 72%),
+    rgba(255,255,255,.035);
+  border-color: color-mix(in srgb, var(--c) 26%, transparent);
+}
+.rv-cat:hover {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--c) 22%, transparent), transparent 74%),
+    rgba(255,255,255,.06);
+  border-color: color-mix(in srgb, var(--c) 55%, transparent);
+}
+.rv-cat__rule { width: 34px; height: 3px; box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent); }
+.rv-cat p { color: #c3b8b6; }
+
+/* stats and guarantees read clearly now */
+.rv-stat .n { color: #fff; }
+.rv-stat .l { color: #b8adab; }
+.rv-feat {
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border: 1px solid var(--line); border-radius: 4px;
+}
+.rv-feat p { color: #c3b8b6; }
+.rv-sub, .rv-eyebrow { color: #b6abaa; }
+
+/* buttons brighter */
+.rv-cta.primary, .rv-cta.buy { background: #f0453f; }
+.rv-cta.primary:hover, .rv-cta.buy:hover { background: #ff5a52; }
+.rv-add { border-color: var(--line2); color: #ded4d1; }
+.rv-add:hover { border-color: rgba(250,245,240,.45); background: rgba(255,255,255,.05); }
+
+/* covers get a touch more luminance against the lighter page */
+.rv-cover { filter: saturate(1.06) brightness(1.06); }
+
+.rv-footer { background: rgba(0,0,0,.22); }
+
+/* ============================================================
    Publisher, not funnel. Restraint over decoration.
    ============================================================ */
 :root { --line-quiet: rgba(244,236,221,.10); }
