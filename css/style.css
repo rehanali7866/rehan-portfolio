@@ -154,7 +154,7 @@ body.ready #nav { opacity: 1; transform: none; }
 }
 .hero-title .line {
   display: block; line-height: 0.84; letter-spacing: 0.01em;
-  font-size: clamp(5rem, 21vw, 24rem);
+  font-size: clamp(3.6rem, 13.5vw, 15rem);
   white-space: nowrap;
 }
 .hero-title .char {
@@ -196,15 +196,6 @@ body.ready #nav { opacity: 1; transform: none; }
 .hud-deg span { color: #2de282; text-shadow: 0 0 10px rgba(45, 226, 130, 0.4); }
 
 /* ---------- dossier HUD ---------- */
-.hud-frame {
-  position: absolute; z-index: 2; inset: 16vh 22vw 12vh; pointer-events: none;
-}
-.hud-frame i { position: absolute; width: 26px; height: 26px; border: 0 solid rgba(45, 226, 130, 0.55); }
-.hud-frame i:nth-child(1) { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-.hud-frame i:nth-child(2) { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
-.hud-frame i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
-.hud-frame i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
 .hud-scan {
   position: absolute; z-index: 2; left: 0; right: 0; top: -140px; height: 130px; pointer-events: none;
   background: linear-gradient(180deg, transparent, rgba(232, 16, 46, 0.05) 35%, rgba(232, 16, 46, 0.13) 55%, transparent);
@@ -250,7 +241,6 @@ body.ready #nav { opacity: 1; transform: none; }
 
 @media (max-width: 760px) {
   .hud-dossier { display: none; }
-  .hud-frame { inset: 13vh 7vw 11vh; }
   #flapBoard { gap: 2px; }
   .flap-cell { width: 8px; height: 14px; font-size: 7px; border-radius: 1px; }
   .hero-title { padding-bottom: 6vh; }
