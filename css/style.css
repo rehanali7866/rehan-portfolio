@@ -144,7 +144,7 @@ body.ready #nav { opacity: 1; transform: none; }
 }
 
 .hero-title {
-  position: absolute; inset: 0; z-index: 3;
+  position: absolute; inset: 0; z-index: 5;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   font-family: var(--display); font-weight: 400;
   color: var(--cream);
@@ -344,15 +344,6 @@ body.ready #nav { opacity: 1; transform: none; }
   animation: dBlink 1s steps(1) infinite;
 }
 
-.stamp {
-  position: absolute; top: 2vh; right: 6vw; z-index: 2;
-  padding: 0.5em 0.9em; border: 3px solid var(--red); color: var(--red);
-  font-family: var(--display); font-size: clamp(1.4rem, 3.2vw, 2.6rem);
-  letter-spacing: 0.08em; text-align: center;
-  transform: rotate(-8deg); opacity: 0; pointer-events: none;
-}
-.stamp small { display: block; font-family: var(--grotesk); font-size: 0.32em; letter-spacing: 0.3em; }
-
 .marquee { will-change: transform; }
 .marquee-track b { font-weight: inherit; }
 .marquee-track b.mq-hit { color: var(--red); -webkit-text-stroke: 0; }
@@ -361,7 +352,6 @@ body.ready #nav { opacity: 1; transform: none; }
 
 @media (max-width: 760px) {
   #numbers .file-tag { display: none; }
-  .stamp { position: static; display: inline-block; margin: 1.5rem 0 0; transform: rotate(-4deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ss-cursor, .file-tag i { animation: none; }
@@ -427,7 +417,7 @@ body.ready #nav { opacity: 1; transform: none; }
   color: var(--red); font-size: 0.85em;
 }
 
-.cards { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+.cards { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); margin-top: 7vh; }
 .card {
   position: relative; padding: 2rem 1.8rem 2.2rem;
   background: rgba(11, 10, 8, 0.62); border: 1px solid rgba(244, 236, 221, 0.14);
@@ -460,6 +450,44 @@ body.ready #nav { opacity: 1; transform: none; }
   font-size: 0.58rem; letter-spacing: 0.32em; color: var(--red);
   border: 1px solid rgba(232, 16, 46, 0.5);
 }
+.cards a.card { display: block; }
+.card-tag.live {
+  color: #2de282; border-color: rgba(45, 226, 130, 0.45);
+  background: rgba(45, 226, 130, 0.06);
+}
+
+/* ---------- testimonials (placeholder templates) ---------- */
+.testi { margin-top: 11vh; }
+.testi-label {
+  font-size: 0.62rem; letter-spacing: 0.35em; color: var(--cream);
+  display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;
+}
+.testi-label::before {
+  content: ""; height: 1px; width: 44px; background: rgba(244, 236, 221, 0.25);
+}
+.testi-note { color: var(--cream-dim); letter-spacing: 0.22em; }
+.testi-grid {
+  margin-top: 3.5vh; display: grid; gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+.testi-card {
+  padding: 2rem 1.8rem; position: relative;
+  background: rgba(11, 10, 8, 0.62); border: 1px solid rgba(244, 236, 221, 0.14);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.testi-card::before {
+  content: "\201C"; position: absolute; top: 0.6rem; left: 1.4rem;
+  font-family: var(--serif); font-size: 3.4rem; line-height: 1;
+  color: rgba(232, 16, 46, 0.55);
+}
+.testi-quote {
+  margin-top: 2.2rem; font-family: var(--serif); font-style: italic;
+  font-size: 1rem; line-height: 1.7; color: var(--cream-dim);
+}
+.testi-who {
+  margin-top: 1.6rem; font-size: 0.62rem; letter-spacing: 0.28em; color: var(--cream);
+}
+.testi-who span { color: var(--cream-dim); }
 
 /* ============================================================
    05 · SOCIALS

@@ -880,7 +880,8 @@ if (amaForm) {
 }
 
 [".work-heading", ".soc-heading", ".finale-title .line", ".finale-sub", ".finale-cta",
- ".contact-title .line", ".contact-sub", ".ama-form", ".contact-direct"].forEach((sel) => {
+ ".contact-title .line", ".contact-sub", ".ama-form", ".contact-direct",
+ ".testi-label", ".testi-card"].forEach((sel) => {
   gsap.utils.toArray(sel).forEach((el) => {
     gsap.from(el, {
       y: 90, opacity: 0, duration: 1.1, ease: "power4.out",
