@@ -1,0 +1,139 @@
+/* ============================================================
+   RAVOLUTION LTD — legal / contact pages
+   Matches the portfolio: ink black · cream type · red accent
+   ============================================================ */
+
+:root {
+  --ink: #0b0a08;
+  --ink-2: #12100d;
+  --cream: #f4ecdd;
+  --cream-dim: rgba(244, 236, 221, 0.62);
+  --cream-faint: rgba(244, 236, 221, 0.38);
+  --red: #e8102e;
+  --display: "Anton", impact, sans-serif;
+  --grotesk: "Space Grotesk", system-ui, -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { background: var(--ink); scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--grotesk);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--red); color: var(--cream); }
+a { color: inherit; }
+:focus-visible { outline: 1px solid rgba(232, 16, 46, 0.85); outline-offset: 4px; }
+
+/* ---------- top bar ---------- */
+.legal-nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  padding: 1.15rem clamp(1.25rem, 5vw, 4rem);
+  background: rgba(11, 10, 8, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(244, 236, 221, 0.09);
+}
+.legal-nav .home {
+  font-family: var(--display);
+  font-size: 1.05rem; letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.legal-nav .home span { color: var(--red); }
+.legal-nav .links { display: flex; gap: clamp(0.9rem, 3vw, 2rem); flex-wrap: wrap; }
+.legal-nav .links a {
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cream-dim); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.legal-nav .links a:hover,
+.legal-nav .links a[aria-current="page"] { color: var(--cream); border-color: var(--red); }
+
+/* ---------- page ---------- */
+.wrap { max-width: 46rem; margin: 0 auto; padding: clamp(3rem, 9vw, 6rem) clamp(1.25rem, 5vw, 2rem) 5rem; }
+
+.eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.1rem;
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 9vw, 4.6rem);
+  line-height: 0.95; letter-spacing: 0.01em;
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+
+.updated {
+  font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--cream-faint); margin-bottom: 2.6rem;
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
+  letter-spacing: 0.02em; text-transform: uppercase;
+  margin: 2.8rem 0 0.9rem;
+}
+h3 {
+  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em;
+  margin: 1.7rem 0 0.5rem;
+}
+
+p, li { color: var(--cream-dim); font-size: 0.97rem; }
+p { margin-bottom: 1rem; }
+ul { margin: 0 0 1.2rem 1.15rem; }
+li { margin-bottom: 0.5rem; }
+strong { color: var(--cream); font-weight: 600; }
+
+a.inline { color: var(--cream); text-decoration: none; border-bottom: 1px solid var(--red); }
+a.inline:hover { color: var(--red); }
+
+hr {
+  border: 0; height: 1px;
+  background: rgba(244, 236, 221, 0.12);
+  margin: 3rem 0;
+}
+
+/* ---------- company details card ---------- */
+.company-card {
+  background: var(--ink-2);
+  border: 1px solid rgba(244, 236, 221, 0.1);
+  padding: clamp(1.4rem, 4vw, 2rem);
+  margin: 2.4rem 0;
+}
+.company-card h2 { margin-top: 0; font-size: 1.15rem; }
+.company-card dl { display: grid; grid-template-columns: minmax(9rem, auto) 1fr; gap: 0.55rem 1.3rem; }
+.company-card dt {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--cream-faint); padding-top: 0.15rem;
+}
+.company-card dd { font-size: 0.95rem; color: var(--cream); }
+@media (max-width: 34rem) {
+  .company-card dl { grid-template-columns: 1fr; gap: 0.15rem; }
+  .company-card dd { margin-bottom: 0.75rem; }
+}
+
+/* ---------- footer ---------- */
+.legal-foot {
+  border-top: 1px solid rgba(244, 236, 221, 0.09);
+  padding: 2.6rem clamp(1.25rem, 5vw, 4rem) 3.2rem;
+  text-align: center;
+}
+.legal-foot .flinks { display: flex; gap: 1.4rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.legal-foot .flinks a {
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cream-dim); text-decoration: none;
+}
+.legal-foot .flinks a:hover { color: var(--red); }
+.legal-foot .reg {
+  font-size: 0.72rem; line-height: 1.85; color: var(--cream-faint);
+  max-width: 40rem; margin: 0 auto;
+}

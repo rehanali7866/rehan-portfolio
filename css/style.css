@@ -731,7 +731,16 @@ footer {
   transition: color 0.3s ease;
 }
 .foot-mail:hover { color: var(--red); }
-.foot-credit { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--cream-dim); }
+.foot-legal { display: flex; gap: 1.4rem; flex-wrap: wrap; justify-content: center; }
+.foot-legal a {
+  font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--cream-dim); transition: color 0.2s ease;
+}
+.foot-legal a:hover { color: var(--red); }
+.foot-credit {
+  font-size: 0.62rem; letter-spacing: 0.22em; line-height: 2.1;
+  color: var(--cream-dim); text-align: center;
+}
 
 /* ---------- custom cursor ---------- */
 @media (hover: hover) and (pointer: fine) {
