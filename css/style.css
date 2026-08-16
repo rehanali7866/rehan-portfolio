@@ -702,7 +702,18 @@ body.ready #nav { opacity: 1; transform: none; }
 .ama-row .btn { flex: 0 0 auto; border: 0; cursor: pointer; }
 .ama-note {
   margin-top: 1rem; font-size: 0.58rem; letter-spacing: 0.3em; color: var(--cream-dim);
+  transition: color 0.3s ease;
 }
+.ama-note[data-state="ok"]  { color: #2de282; }
+.ama-note[data-state="err"] { color: var(--red); }
+
+/* honeypot: off-screen for bots to find, invisible to people and screen readers */
+#amaHoney {
+  position: absolute !important; left: -9999px !important;
+  width: 1px !important; height: 1px !important;
+  opacity: 0 !important; pointer-events: none !important;
+}
+.ama-form button[disabled] { opacity: 0.55; cursor: wait; }
 .contact-direct {
   margin-top: 9vh; font-size: 0.68rem; letter-spacing: 0.3em; color: var(--cream-dim);
 }

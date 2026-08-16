@@ -191,6 +191,21 @@ const ATMOSPHERE_ON = true;
 const AURORA_ON = false;     // parked — colour fields off
 const PARTICLES_ON = false;  // parked — dust off
 const GLOW_ON = true;        // the breathing light stays
+const GRID_ON = true;        // tech grid horizon behind the subject
+
+/* the grid reads through the dark studio (screen blend), hidden by his lit body.
+   tweak here: colour, where the horizon sits, density, and how fast it drifts. */
+const GRID = {
+  line:    "150,196,224",   // cool holographic white-blue
+  glow:    "232,16,46",     // crimson horizon glow (brand tie-in)
+  horizon: 0.60,            // 0 top … 1 bottom
+  cols:    16,              // vertical lines each side of centre
+  rows:    22,              // depth lines
+  spread:  1.9,             // floor half-width at the near edge (× canvas w)
+  speed:   0.05,            // forward drift; 0 = static
+  aLine:   0.070,           // base line brightness (screen amplifies — keep low)
+  aGlow:   0.10,            // horizon glow strength
+};
 
 const AURORA = [
   { rgb: "232,16,46",   alpha: 0.075, x: 0.20, y: 0.30, r: 0.55, spd: 0.020, ph: 0.0 }, // crimson
@@ -268,6 +283,9 @@ function paintAtmosphere(time) {
     atmCtx.fillRect(0, 0, w, h);
   }
 
+  // tech grid horizon — drawn under the glow so the backlight washes over it
+  if (GRID_ON) paintGrid(t, w, h);
+
   // breathing light behind the subject
   if (GLOW_ON) {
     const breathe = 0.10 + (reduceMotion ? 0 : 0.055 * Math.sin(t * 0.9));
@@ -299,6 +317,58 @@ function paintAtmosphere(time) {
     atmCtx.fillStyle = pr;
     atmCtx.fillRect(0, 0, w, h);
   }
+}
+
+/* perspective grid receding to a horizon, converging on centre.
+   drawn additively on the atmosphere canvas; the whole thing is later
+   screen-blended over the frame, so it only reads in the dark studio. */
+function paintGrid(t, w, h) {
+  const gy = h * GRID.horizon;         // horizon line
+  const cx = w * 0.5;                  // vanishing point x
+  const floor = h - gy;                // horizon → bottom
+  const drift = reduceMotion ? 0 : (t * GRID.speed) % 1;
+  const shift = para * w * 0.05;       // subtle mouse parallax
+
+  atmCtx.save();
+  atmCtx.globalCompositeOperation = "lighter";
+  atmCtx.lineWidth = 1;
+
+  // horizon glow band, brand crimson
+  const hgTop = gy - h * 0.16;
+  const hg = atmCtx.createLinearGradient(0, hgTop, 0, gy + h * 0.03);
+  hg.addColorStop(0, `rgba(${GRID.glow},0)`);
+  hg.addColorStop(0.7, `rgba(${GRID.glow},${GRID.aGlow * 0.5})`);
+  hg.addColorStop(1, `rgba(${GRID.glow},${GRID.aGlow})`);
+  atmCtx.fillStyle = hg;
+  atmCtx.fillRect(0, hgTop, w, gy + h * 0.03 - hgTop);
+
+  // depth lines: perspective bunches them toward the horizon, drift pulls them in
+  for (let n = 1; n <= GRID.rows; n++) {
+    const D = (n - drift) * 0.42;      // ground distance
+    if (D <= 0) continue;
+    const y = gy + floor / (1 + D);    // near = bottom, far = horizon
+    const a = GRID.aLine * (1 / (1 + D * 0.9)) * Math.min(1, D * 2.2);
+    if (a < 0.002) continue;
+    atmCtx.strokeStyle = `rgba(${GRID.line},${a})`;
+    atmCtx.beginPath();
+    atmCtx.moveTo(0, y);
+    atmCtx.lineTo(w, y);
+    atmCtx.stroke();
+  }
+
+  // rails: verticals fanning from the near edge to the vanishing point
+  for (let i = -GRID.cols; i <= GRID.cols; i++) {
+    const xN = cx + (i / GRID.cols) * w * GRID.spread + shift;  // near, at bottom
+    const grad = atmCtx.createLinearGradient(xN, h, cx + shift * 0.15, gy);
+    grad.addColorStop(0, `rgba(${GRID.line},${GRID.aLine})`);
+    grad.addColorStop(1, `rgba(${GRID.line},0)`);
+    atmCtx.strokeStyle = grad;
+    atmCtx.beginPath();
+    atmCtx.moveTo(xN, h);
+    atmCtx.lineTo(cx + shift * 0.15, gy);
+    atmCtx.stroke();
+  }
+  atmCtx.restore();
 }
 
 function renderHero(idx, time) {
@@ -860,22 +930,72 @@ gsap.utils.toArray(".soc-side").forEach((side, sideI) => {
   });
 });
 
-/* ---------------- contact: ask-me-anything -> opens a pre-filled email ---------------- */
-const CONTACT_EMAIL = "rainnovation@mail.com";
+/* ---------------- contact: ask-me-anything ----------------
+   Posts the message to a form endpoint, which emails it to CONTACT_EMAIL.
+   The visitor never leaves the page and needs no mail app installed.
+   If the request fails (endpoint down, offline), we fall back to a
+   pre-filled mailto so the message still has somewhere to go.
+   ---------------------------------------------------------- */
+const CONTACT_EMAIL = "rehan@ravolution.agency";
+
+/* EDIT HERE: swap for the hashed endpoint once FormSubmit is activated,
+   e.g. "https://formsubmit.co/ajax/a1b2c3..." — that keeps the address
+   out of the page source, away from scrapers. */
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
 const amaForm = $("#amaForm");
 if (amaForm) {
-  amaForm.addEventListener("submit", (e) => {
+  const note = $("#amaNote");
+  const btn = $("#amaBtn");
+  const msgEl = $("#amaMsg");
+  const fromEl = $("#amaFrom");
+  const honeyEl = $("#amaHoney");
+  const setNote = (text, state) => {
+    if (!note) return;
+    note.textContent = text;
+    note.dataset.state = state || "";
+  };
+
+  amaForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const msgEl = $("#amaMsg");
+    if (honeyEl && honeyEl.value) return;          // bot filled the hidden field
+
     const msg = msgEl.value.trim();
-    if (!msg) { msgEl.focus(); return; }
-    const from = $("#amaFrom").value.trim();
-    const subject = "Question from your site";
-    const body = msg + (from ? `\n\n— reply to: ${from}` : "");
-    window.location.href =
-      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const note = $("#amaNote");
-    if (note) note.textContent = "OPENING YOUR MAIL APP — JUST HIT SEND";
+    if (!msg) { msgEl.focus(); setNote("WRITE YOUR QUESTION FIRST", "err"); return; }
+
+    const from = fromEl.value.trim();
+    if (from && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)) {
+      fromEl.focus(); setNote("THAT EMAIL DOESN'T LOOK RIGHT", "err"); return;
+    }
+
+    btn.disabled = true;
+    setNote("SENDING…", "");
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          message: msg,
+          email: from || "(not given)",
+          _subject: "New message from ravolution.agency",
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) throw new Error("bad response");
+      amaForm.reset();
+      setNote("SENT — I'LL COME BACK TO YOU SHORTLY", "ok");
+    } catch (err) {
+      // last resort: hand it to their mail app rather than lose the message
+      const body = msg + (from ? `\n\n— reply to: ${from}` : "");
+      window.location.href =
+        `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Question from your site")}` +
+        `&body=${encodeURIComponent(body)}`;
+      setNote("OPENING YOUR MAIL APP — JUST HIT SEND", "err");
+    } finally {
+      btn.disabled = false;
+    }
   });
 }
 
