@@ -1,6 +1,6 @@
 /* ============================================================
    REHAN ALI — cinematic scroll engine
-   Lenis smooth scroll · GSAP ScrollTrigger · canvas orbit scrub
+   Lenis smooth scroll · GSAP ScrollTrigger · canvas roller scrub (js/roller.js)
    ============================================================ */
 
 gsap.registerPlugin(ScrollTrigger);
@@ -48,38 +48,28 @@ charsLast.forEach((c) => { if (c.textContent === ".") c.classList.add("red"); })
 const allChars = [...charsFirst, ...charsLast];
 gsap.set(allChars, { yPercent: 120, opacity: 0, rotate: 7 });
 
-/* ---------------- orbit frame sequence ---------------- */
+/* ---------------- hero roller: a drum of words, scrubbed by scroll ----------------
+   The renderer lives in js/roller.js (window.createRoller). Swap words/mode here. */
 const canvas = $("#orbit");
 const ctx = canvas.getContext("2d");
-let frames = [];
-let frameCount = 0;
-let currentFrame = -1;
-let frameW = 1600, frameH = 900;
+const BRAND = { ink: "#0b0a08", ink2: "#12100d", cream: "#f4ecdd", red: "#e8102e", green: "#2de282" };
+const DISPLAY_FONT = '"Anton", Impact, sans-serif';
+const HERO_WORDS = ["SELL", "BUILD", "CLOSE", "REPEAT"];
+const heroRoller = window.createRoller
+  ? createRoller({ words: HERO_WORDS, font: DISPLAY_FONT, colors: BRAND, mode: "hero" })
+  : null;
+let rollerReady = false;
 
 function sizeCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
   canvas.width = Math.round(innerWidth * dpr);
   canvas.height = Math.round(innerHeight * dpr);
-  currentFrame = -1; // force redraw
+  if (heroRoller) heroRoller.resize(innerWidth, innerHeight, dpr);
 }
-addEventListener("resize", () => { sizeCanvas(); drawFrame(lastProgressFrame(), true); });
-
-function drawFrame(i, force = false) {
-  if (!frameCount) return;
-  i = Math.max(0, Math.min(frameCount - 1, i));
-  if (i === currentFrame && !force) return;
-  const img = frames[i];
-  if (!img || !img.complete || !img.naturalWidth) return;
-  currentFrame = i;
-  // cover-fit
-  const cw = canvas.width, ch = canvas.height;
-  const scale = Math.max(cw / frameW, ch / frameH);
-  const dw = frameW * scale, dh = frameH * scale;
-  ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-}
+addEventListener("resize", sizeCanvas);
 
 let heroProgress = 0;
-const lastProgressFrame = () => Math.round(heroProgress * (frameCount - 1));
+let heroAngle = 0;
 
 /* ---------------- preloader ---------------- */
 const preCount = $("#preCount");
@@ -111,48 +101,29 @@ function revealSite() {
     .from(".hero-hud", { opacity: 0, duration: 0.9, ease: "power2.out" }, "-=0.6");
 }
 
-async function loadFrames() {
+async function loadHero() {
+  // the roller rasterises the display face into sprites, so wait for the font
+  const t0 = performance.now();
+  setLoadProgress(0.08);
   try {
-    const res = await fetch("assets/frames/manifest.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("no manifest");
-    const m = await res.json();
-    frameCount = m.count;
-    frameW = m.width || 1600;
-    frameH = m.height || 900;
-
-    let loaded = 0;
-    const jobs = [];
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      img.src = `assets/frames/${m.prefix}${String(i).padStart(m.pad, "0")}${m.ext}${m.v ? `?v=${m.v}` : ""}`;
-      frames.push(img);
-      jobs.push(new Promise((ok) => {
-        img.onload = img.onerror = () => {
-          loaded++;
-          setLoadProgress(loaded / frameCount);
-          if (i === 0) drawFrame(0, true);
-          ok();
-        };
-      }));
-    }
-    await Promise.all(jobs);
-  } catch (e) {
-    // frames not generated yet — reveal anyway on a slow fake load
-    console.warn("orbit frames unavailable:", e.message);
-    await new Promise((ok) => {
-      let p = 0;
-      const t = setInterval(() => {
-        p += 0.13;
-        setLoadProgress(Math.min(p, 1));
-        if (p >= 1) { clearInterval(t); ok(); }
-      }, 90);
-    });
-  }
+    await Promise.race([
+      document.fonts.load('400 100px "Anton"'),
+      new Promise((r) => setTimeout(r, 2500)),
+    ]);
+  } catch (e) { /* fall back to the system face */ }
+  setLoadProgress(0.55);
+  sizeCanvas();
+  bgRollers.forEach((b) => b.size());
+  rollerReady = !!heroRoller;
+  if (heroRoller) renderHero(0, 0);
+  setLoadProgress(0.85);
+  // let the preloader read as a beat, not a flash
+  await new Promise((r) => setTimeout(r, Math.max(0, 900 - (performance.now() - t0))));
+  setLoadProgress(1);
   revealSite();
 }
 
 sizeCanvas();
-loadFrames();
 
 /* ---------------- hero scroll choreography ---------------- */
 const degCount = $("#degCount");
@@ -371,8 +342,9 @@ function paintGrid(t, w, h) {
   atmCtx.restore();
 }
 
-function renderHero(idx, time) {
-  drawFrame(idx, true);
+function renderHero(angle, time) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (heroRoller) heroRoller.draw(ctx, angle, time, 1);
   if (!ATMOSPHERE_ON) return;
   if (atmT0 === null) atmT0 = time;
   paintAtmosphere(time);
@@ -383,19 +355,18 @@ function renderHero(idx, time) {
   ctx.restore();
 }
 
-/* ---------------- pendulum sway: the hero drifts on its own ---------------- */
-const SWAY_AMP = 26;    // frames of drift either side (~60 degrees)
+/* ---------------- pendulum sway: the drum drifts on its own ---------------- */
+const SWAY_DEG = 28;    // degrees of drift either side
 const SWAY_PERIOD = 9;  // seconds per full sway cycle
 const heroEl = $("#hero");
 
 gsap.ticker.add((time) => {
-  if (!frameCount || !siteRevealed) return;
+  if (!rollerReady || !siteRevealed) return;
   if (window.scrollY > heroEl.offsetHeight) return; // hero off-screen, save work
-  const sway = reduceMotion ? 0 : Math.sin((time % SWAY_PERIOD) / SWAY_PERIOD * Math.PI * 2) * SWAY_AMP;
-  const base = Math.round(heroProgress * (frameCount - 1));
-  const idx = (((base + Math.round(sway)) % frameCount) + frameCount) % frameCount;
-  renderHero(idx, time);
-  degCount.textContent = String(Math.round((idx / (frameCount - 1)) * 360) % 361).padStart(3, "0");
+  const sway = reduceMotion ? 0 : Math.sin((time % SWAY_PERIOD) / SWAY_PERIOD * Math.PI * 2) * SWAY_DEG;
+  heroAngle = heroProgress * 360 + sway;
+  renderHero(heroAngle, time);
+  degCount.textContent = String(((Math.round(heroAngle) % 360) + 360) % 360).padStart(3, "0");
 });
 
 /* ---------------- dossier HUD: classified-file readouts ---------------- */
@@ -769,20 +740,40 @@ pillars.forEach((p, i) => {
   }
 });
 
-/* ---------------- background videos: play only in view ---------------- */
-[["#builderVideo", "#pillars"], ["#closerVideo", "#work"]].forEach(([vidSel, secSel]) => {
-  const vid = $(vidSel);
-  if (!vid) return;
+/* ---------------- background rollers: dim, slow, only drawn in view ---------------- */
+const bgRollers = [
+  { canvas: $("#builderCanvas"), sec: "#pillars", words: ["VAULTS", "NEVERMISSED", "THE LAB"], phase: 0 },
+  { canvas: $("#closerCanvas"), sec: "#work", words: ["SELL", "BUILD", "CLOSE", "REPEAT"], phase: 140 },
+].filter((b) => b.canvas && window.createRoller).map((b) => {
+  b.roller = createRoller({ words: b.words, font: DISPLAY_FONT, colors: BRAND, mode: "ambient" });
+  b.ctx = b.canvas.getContext("2d");
+  b.active = false;
+  b.size = () => {
+    const host = b.canvas.parentElement;
+    const w = host.clientWidth, h = host.clientHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    b.canvas.width = Math.round(w * dpr);
+    b.canvas.height = Math.round(h * dpr);
+    b.roller.resize(w, h, dpr);
+  };
+  b.size();
   ScrollTrigger.create({
-    trigger: secSel,
-    start: "top bottom",
-    end: "bottom top",
-    onEnter: () => vid.play().catch(() => {}),
-    onEnterBack: () => vid.play().catch(() => {}),
-    onLeave: () => vid.pause(),
-    onLeaveBack: () => vid.pause(),
+    trigger: b.sec, start: "top bottom", end: "bottom top",
+    onToggle: (self) => { b.active = self.isActive; },
   });
+  return b;
 });
+addEventListener("resize", () => bgRollers.forEach((b) => b.size()));
+gsap.ticker.add((time) => {
+  if (!siteRevealed) return;
+  for (const b of bgRollers) {
+    if (!b.active) continue;
+    b.ctx.clearRect(0, 0, b.canvas.width, b.canvas.height);
+    b.roller.draw(b.ctx, b.phase + (reduceMotion ? 0 : time * 6), time, 0.35);
+  }
+});
+
+loadHero();
 
 /* ---------------- work cards: tilt + glow ---------------- */
 $$(".card").forEach((card) => {

@@ -12,6 +12,14 @@
 <meta property="og:url" content="https://ravolution.agency/nevermissed/">
 <meta property="og:image" content="https://ravolution.agency/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NEVERMISSED — AI Phone Answering for Takeaways">
+<meta name="twitter:description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, every order taken and texted straight to you. First month free.">
+<meta name="twitter:image" content="https://ravolution.agency/assets/og-image.jpg">
+<meta property="og:site_name" content="Ravolution">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="NeverMissed by Ravolution">
 <link rel="canonical" href="https://ravolution.agency/nevermissed/">
 <meta name="theme-color" content="#0b0a08">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -236,7 +244,37 @@
   .foot-links a{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim);transition:color .3s}
   .foot-links a:hover{color:var(--red)}
   .foot-credit{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim)}
+
+  /* KEYBOARD FOCUS */
+  :focus{outline:none}
+  :focus-visible{outline:1px solid rgba(232,16,46,.8);outline-offset:4px}
+
+  /* START (enquiry form) */
+  .start{padding:14vh 0;border-top:1px solid var(--hairline)}
+  .nm-form{max-width:720px}
+  .nm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
+  @media(max-width:640px){.nm-grid{grid-template-columns:1fr}}
+  .nm-field{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.3rem}
+  .nm-field label{font-size:.6rem;letter-spacing:.3em;color:var(--cream-dim);font-weight:600}
+  .nm-field label span{font-weight:400;letter-spacing:.08em}
+  .nm-field input,.nm-field textarea{
+    background:var(--ink-2);border:1px solid var(--hairline);color:var(--cream);
+    font-family:var(--grotesk);font-size:1rem;padding:1rem 1.1rem;border-radius:0;width:100%;
+    transition:border-color .3s;-webkit-appearance:none;appearance:none;
+  }
+  .nm-field input:focus,.nm-field textarea:focus{border-color:var(--red);outline:none}
+  .nm-field input::placeholder,.nm-field textarea::placeholder{color:rgba(244,236,221,.3)}
+  .nm-field textarea{resize:vertical;min-height:96px}
+  .nm-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .nm-actions{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;margin-top:.4rem}
+  .nm-actions .btn{border:0;cursor:pointer}
+  .nm-actions .btn:disabled{opacity:.6;cursor:wait}
+  .nm-note{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim);transition:color .3s}
+  .nm-note[data-state="ok"]{color:#5bd47a}
+  .nm-note[data-state="err"]{color:var(--red)}
 </style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -258,8 +296,10 @@
     <h1>YOUR PHONE <em>answered.</em></h1>
     <p class="sub">NeverMissed is an AI receptionist that picks up every call to your takeaway, takes the full order, and texts it straight to you — even at 6pm on a Friday.</p>
     <div class="cta-row">
-      <a class="btn btn-red" href="tel:+440000000000">CALL THE LIVE DEMO</a>
+      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
       <a class="btn btn-ghost" href="#how">SEE HOW IT WORKS</a>
+      <!-- DEMO LINE: once the Twilio number is live, add
+           <a class="btn btn-ghost" href="tel:+44XXXXXXXXXX">CALL THE LIVE DEMO</a> -->
     </div>
     <p class="hero-note">NO APP · NO NEW HARDWARE · YOUR NUMBER STAYS THE SAME</p>
   </div>
@@ -346,7 +386,7 @@
         <li>Set up for you in person — we come to your shop</li>
         <li>No contract. Cancel any time.</li>
       </ul>
-      <a class="btn btn-red" href="tel:+440000000000">START YOUR FREE MONTH</a>
+      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
       <p class="guarantee">If it doesn't save you money in month one, don't pay a penny. That's the deal.</p>
     </div>
   </div>
@@ -376,15 +416,41 @@
       <summary>Can it just cover busy times or after hours?</summary>
       <p>Yes. Many shops only divert when the line's engaged or unanswered — so it's a safety net, not a replacement. You choose.</p>
     </details>
+    <details>
+      <summary>How do I get started?</summary>
+      <p>Leave your shop name and number in the <a href="#start" style="color:var(--red);text-decoration:underline">form below</a>. I ring you back within one working day, we book a visit, and you're live the same afternoon. The first month is free and there's no contract.</p>
+    </details>
+  </div>
+</section>
+
+<section class="start" id="start">
+  <div class="wrap">
+    <p class="eyebrow"><b>06</b> START YOUR FREE MONTH</p>
+    <h2>GET SET UP<br><em>this week</em></h2>
+    <p class="lead">Leave your details and I'll ring you back within one working day to book the visit. <em>No card, no contract, first month free.</em></p>
+    <form id="nmForm" class="nm-form" novalidate>
+      <div class="nm-grid">
+        <div class="nm-field"><label for="nmShop">SHOP NAME</label><input id="nmShop" name="shop" type="text" required autocomplete="organization" placeholder="e.g. Tony's Pizza"></div>
+        <div class="nm-field"><label for="nmName">YOUR NAME</label><input id="nmName" name="name" type="text" required autocomplete="name" placeholder="Who should I ask for?"></div>
+        <div class="nm-field"><label for="nmPhone">PHONE</label><input id="nmPhone" name="phone" type="tel" required autocomplete="tel" placeholder="07xxx xxxxxx"></div>
+        <div class="nm-field"><label for="nmTown">TOWN / CITY</label><input id="nmTown" name="town" type="text" required autocomplete="address-level2" placeholder="Edinburgh"></div>
+      </div>
+      <div class="nm-field"><label for="nmMsg">ANYTHING ELSE <span>(OPTIONAL)</span></label><textarea id="nmMsg" name="message" rows="3" placeholder="Busiest nights, current phone setup, questions…"></textarea></div>
+      <input type="text" name="_honey" id="nmHoney" tabindex="-1" autocomplete="off" class="nm-honey" aria-hidden="true">
+      <div class="nm-actions">
+        <button class="btn btn-red" type="submit" id="nmBtn">BOOK MY FREE MONTH</button>
+        <p class="nm-note" id="nmNote" role="status" aria-live="polite">I REPLY PERSONALLY, USUALLY THE SAME DAY</p>
+      </div>
+    </form>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
     <h2>STOP PAYING FOR<br><em>missed calls</em></h2>
-    <p class="sub">Ring the demo line right now and order a pizza from it. If it doesn't impress you, hang up — no hard feelings.</p>
+    <p class="sub">Tell me your shop and your town. I'll come and set it up in person, and the first month is on me.</p>
     <div class="cta-row">
-      <a class="btn btn-red" href="tel:+440000000000">CALL THE DEMO LINE</a>
+      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
       <a class="btn btn-ghost" href="mailto:rehan@ravolution.agency">EMAIL ME</a>
     </div>
   </div>
@@ -395,9 +461,44 @@
     <a href="/">PORTFOLIO</a>
     <a href="/vaults/">THE VAULTS</a>
     <a href="mailto:rehan@ravolution.agency">EMAIL</a>
+    <a href="/privacy/">PRIVACY</a>
+    <a href="/terms/">TERMS</a>
+    <a href="/contact/">CONTACT</a>
   </div>
   <div class="foot-credit">NEVERMISSED · EDINBURGH · ©2026 RAVOLUTION</div>
 </footer>
 
+<script>
+(function () {
+  var EMAIL = "rehan@ravolution.agency";
+  var ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL;
+  var f = document.getElementById("nmForm"); if (!f) return;
+  var el = f.elements, note = document.getElementById("nmNote"), btn = document.getElementById("nmBtn");
+  var LABEL = { shop: "SHOP NAME", name: "YOUR NAME", phone: "PHONE NUMBER", town: "TOWN" };
+  function say(t, s) { note.textContent = t; note.dataset.state = s || ""; }
+  f.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (el._honey.value) return;
+    var d = { shop: el.shop.value.trim(), name: el.name.value.trim(), phone: el.phone.value.trim(), town: el.town.value.trim(), message: el.message.value.trim() };
+    var missing = ["shop", "name", "phone", "town"].filter(function (k) { return !d[k]; })[0];
+    if (missing) { el[missing].focus(); say("FILL IN THE " + LABEL[missing] + " FIRST", "err"); return; }
+    if (!/^[\d\s+()-]{9,}$/.test(d.phone)) { el.phone.focus(); say("THAT PHONE NUMBER DOESN'T LOOK RIGHT", "err"); return; }
+    btn.disabled = true; say("SENDING…", "");
+    try {
+      var r = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.assign({}, d, { _subject: "NeverMissed enquiry — " + d.shop, _template: "table", _captcha: "false" }))
+      });
+      if (!r.ok) throw new Error("bad response");
+      f.reset(); say("SENT — I'LL RING YOU WITHIN ONE WORKING DAY", "ok");
+    } catch (err) {
+      var body = "Shop: " + d.shop + "\nName: " + d.name + "\nPhone: " + d.phone + "\nTown: " + d.town + (d.message ? "\n\n" + d.message : "");
+      window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("NeverMissed enquiry — " + d.shop) + "&body=" + encodeURIComponent(body);
+      say("OPENING YOUR MAIL APP — JUST HIT SEND", "err");
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
 </body>
 </html>

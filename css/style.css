@@ -121,9 +121,8 @@ body.ready #nav { opacity: 1; transform: none; }
   content: ""; height: 1px; width: 72px; background: rgba(244, 236, 221, 0.25);
 }
 
-.bg-video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; filter: saturate(0.95) contrast(1.04) brightness(1.08);
+.bg-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
 }
 .video-shade {
   position: absolute; inset: 0;
@@ -181,7 +180,7 @@ body.ready #nav { opacity: 1; transform: none; }
 
 .hero-hud {
   position: absolute; z-index: 4; left: 0; right: 0; bottom: 0;
-  display: flex; justify-content: space-between; align-items: flex-end;
+  display: flex; justify-content: flex-end; align-items: flex-end;
   padding: 1.6rem 2rem;
   font-size: 0.62rem; letter-spacing: 0.3em; color: var(--cream-dim);
 }
@@ -489,10 +488,10 @@ body.ready #nav { opacity: 1; transform: none; }
   font-family: var(--serif); font-style: italic; font-weight: 500;
   color: var(--red); font-size: 0.85em;
 }
-/* two-column face-off: business | personal, split by a hairline */
+/* single column: business channels only */
 .soc-split {
-  position: relative; display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; align-items: start;
+  position: relative; display: grid; grid-template-columns: minmax(0, 760px);
+  justify-content: center; gap: 0; align-items: start;
 }
 .soc-side { position: relative; padding: 0 3.4vw; }
 .soc-side:first-child { padding-left: 0; }
@@ -563,6 +562,11 @@ body.ready #nav { opacity: 1; transform: none; }
 
 /* auto-spotlight: same look as hover, driven by JS */
 .soc-row { overflow: hidden; }
+.soc-row--soon { cursor: default; opacity: 0.55; }
+.soc-row--soon:hover { padding-left: 0; background: transparent; }
+.soc-row--soon:hover::before { transform: scaleY(0); }
+.soc-row--soon .soc-arrow { display: none; }
+.soc-row--soon .soc-handle { color: var(--red); }
 .soc-row > span { position: relative; z-index: 1; }
 .soc-row.lit { padding-left: 1.6rem; background: rgba(232, 16, 46, 0.05); }
 .soc-row.lit::before { transform: scaleY(1); }
@@ -791,5 +795,4 @@ body.cursor-on #cursorDot, body.cursor-on #cursorRing { opacity: 1; }
 @media (max-width: 640px) {
   .hero-sub { white-space: normal; width: 86vw; letter-spacing: 0.3em; }
   .pillar-idx { display: none; }
-  .hud-left { display: none; }
 }

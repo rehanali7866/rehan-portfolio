@@ -93,7 +93,7 @@
         '<div class="rv-line__cover" style="background:' + i.grad + '">' + i.icon + '</div>' +
         '<div><h3>' + i.title + '</h3>' + (i.author ? '<div class="rv-line__by">by ' + i.author + '</div>' : '') +
           '<div class="rv-qty" data-rv-line-qty="' + id + '" style="margin-top:8px"><button data-dir="down" aria-label="Decrease">−</button><input value="' + i.qty + '" readonly><button data-dir="up" aria-label="Increase">+</button></div>' +
-          '<a href="#" class="rv-line__remove" data-remove="' + id + '">Remove</a></div>' +
+          '<button type="button" class="rv-line__remove" data-remove="' + id + '">Remove</button></div>' +
         '<div class="rv-line__price">' + money(i.price * i.qty) + '</div>' +
         '</div>';
     }).join("");
@@ -143,6 +143,25 @@
       card.style.display = (!q || hay.indexOf(q) > -1) ? "" : "none";
     });
   }
+
+  /* footer newsletter -> FormSubmit (same inbox as the contact form) */
+  $$("[data-newsletter]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = $("input", form), btn = $("button", form);
+      var email = (input.value || "").trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { input.focus(); showToast("⚠ That email doesn't look right"); return; }
+      btn.disabled = true;
+      fetch("https://formsubmit.co/ajax/rehan@ravolution.agency", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email: email, _subject: "New Vaults subscriber", _template: "table", _captcha: "false" })
+      })
+        .then(function (r) { if (!r.ok) throw new Error("bad"); form.reset(); showToast("✓ You're on the list"); })
+        .catch(function () { showToast("⚠ Couldn't send — email rehan@ravolution.agency instead"); })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
 
   updateCount();
   renderCart();

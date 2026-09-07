@@ -344,6 +344,7 @@ h1, h2, h3, h4, .display {
 .rv-line__price { font-family: var(--font-display); font-size: 24px; color: var(--red); }
 .rv-line__remove { font-size: 12px; color: var(--muted); text-decoration: underline; margin-top: 6px; }
 .rv-line__remove:hover { color: var(--red); }
+button.rv-line__remove { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; display: block; }
 .rv-summary { background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius); padding: 24px; position: sticky; top: 100px; }
 .rv-summary h2 { font-size: 30px; margin-bottom: 16px; }
 .rv-summary__row { display: flex; justify-content: space-between; padding: 10px 0; color: var(--muted); border-bottom: 1px solid var(--line); }
