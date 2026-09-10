@@ -11,14 +11,15 @@
     let W = 0, H = 0, DPR = 1, sprites = [], total = 0;
 
     function resize(w, h, dpr) {
-      W = w; H = h; DPR = dpr;
-      const size = Math.round((ambient ? 0.22 : 0.16) * Math.min(w, h * 1.4)) * dpr;
+      W = Math.max(1, w || 0); H = Math.max(1, h || 0); DPR = dpr || 1;
+      // never let the sprite size collapse to 0 (that made drawImage throw)
+      const size = Math.max(8, Math.round((ambient ? 0.22 : 0.16) * Math.min(W, H * 1.4)) * DPR);
       sprites = words.map((word) => {
         const m = document.createElement("canvas");
         const x = m.getContext("2d");
         x.font = `400 ${size}px ${font}`;
-        const tw = Math.ceil(x.measureText(word).width) + size;
-        m.width = tw; m.height = Math.ceil(size * 1.2);
+        const tw = Math.max(1, Math.ceil(x.measureText(word).width) + size);
+        m.width = tw; m.height = Math.max(1, Math.ceil(size * 1.2));
         const g = m.getContext("2d");
         g.font = `400 ${size}px ${font}`;
         g.textBaseline = "middle";
@@ -26,7 +27,7 @@
         g.fillText(word, size / 2, m.height / 2);
         return { img: m, w: tw, h: m.height };
       });
-      total = sprites.reduce((a, s) => a + s.w, 0);
+      total = sprites.reduce((a, s) => a + s.w, 0) || 1;
     }
 
     function draw(ctx, angleDeg, timeSec, intensity) {
@@ -42,6 +43,7 @@
       for (let pass = 0; pass < 2; pass++) {
         let x = start + pass * total;
         for (const s of sprites) {
+          if (!s.img.width || !s.img.height) { x += s.w; continue; } // skip any 0-size sprite
           const theta = ((x + s.w / 2) / total) * Math.PI * 2; // position around the drum
           const depth = Math.cos(theta);                       // 1 front … -1 back
           const sx = cw / 2 + Math.sin(theta) * R;

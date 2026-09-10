@@ -32,6 +32,7 @@ $$('a[href^="#"]').forEach((a) => {
 
 /* ---------------- hero title -> chars ---------------- */
 function splitChars(el) {
+  if (!el) return [];
   const text = el.textContent;
   el.textContent = "";
   return [...text].map((ch) => {
@@ -78,8 +79,8 @@ let siteRevealed = false;
 
 function setLoadProgress(p) {
   const pct = Math.round(p * 100);
-  preCount.textContent = String(pct).padStart(2, "0");
-  preBar.style.width = pct + "%";
+  if (preCount) preCount.textContent = String(pct).padStart(2, "0");
+  if (preBar) preBar.style.width = pct + "%";
 }
 
 function revealSite() {
@@ -87,17 +88,17 @@ function revealSite() {
   siteRevealed = true;
   document.body.classList.add("ready");
   const pre = $("#preloader");
-  pre.classList.add("done");
+  if (pre) { pre.classList.add("done"); gsap.set(pre, { display: "none" }); }
 
   const tl = gsap.timeline();
-  tl.to(pre, { yPercent: -100, duration: 0.9, ease: "power4.inOut" })
-    .set(pre, { display: "none" })
-    .to(allChars, {
+  if (allChars.length) {
+    tl.to(allChars, {
       yPercent: 0, opacity: 1, rotate: 0,
       duration: 1.1, ease: "power4.out",
       stagger: 0.05,
-    }, "-=0.45")
-    .from(".hero-sub", { opacity: 0, y: 24, duration: 0.9, ease: "power3.out" }, "-=0.5")
+    });
+  }
+  tl.from(".hero-sub", { opacity: 0, y: 24, duration: 0.9, ease: "power3.out" }, "-=0.5")
     .from(".hero-hud", { opacity: 0, duration: 0.9, ease: "power2.out" }, "-=0.6");
 }
 
@@ -117,8 +118,7 @@ async function loadHero() {
   rollerReady = !!heroRoller;
   if (heroRoller) renderHero(0, 0);
   setLoadProgress(0.85);
-  // let the preloader read as a beat, not a flash
-  await new Promise((r) => setTimeout(r, Math.max(0, 900 - (performance.now() - t0))));
+  // no visible loader anymore — reveal straight away
   setLoadProgress(1);
   revealSite();
 }
@@ -342,17 +342,24 @@ function paintGrid(t, w, h) {
   atmCtx.restore();
 }
 
+let atmBroken = false;
 function renderHero(angle, time) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (heroRoller) heroRoller.draw(ctx, angle, time, 1);
-  if (!ATMOSPHERE_ON) return;
-  if (atmT0 === null) atmT0 = time;
-  paintAtmosphere(time);
-  ctx.save();
-  ctx.globalCompositeOperation = "screen";
-  ctx.globalAlpha = Math.min(1, (time - atmT0) / 1.6) * 0.92; // fade in on load
-  ctx.drawImage(atm, 0, 0, canvas.width, canvas.height);
-  ctx.restore();
+  if (!ATMOSPHERE_ON || atmBroken) return;
+  // the atmosphere overlay is decorative — never let it break the hero/loader
+  try {
+    if (atmT0 === null) atmT0 = time;
+    paintAtmosphere(time);
+    ctx.save();
+    ctx.globalCompositeOperation = "screen";
+    ctx.globalAlpha = Math.min(1, (time - atmT0) / 1.6) * 0.92; // fade in on load
+    ctx.drawImage(atm, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+  } catch (e) {
+    atmBroken = true; // disable it for the rest of the session
+    console.error("[hero] atmosphere disabled after error:", e);
+  }
 }
 
 /* ---------------- pendulum sway: the drum drifts on its own ---------------- */
@@ -372,7 +379,7 @@ gsap.ticker.add((time) => {
 /* ---------------- dossier HUD: classified-file readouts ---------------- */
 const dossier = $("#dossier");
 const D_LINES = [
-  ["ASSET", "REHAN ALI"],
+  ["STUDIO", "RAVOLUTION"],
   ["LOCATION", "EDINBURGH, UK"],
   ["VENTURES", "02 LIVE"],
   ["PRODUCTS", "15 SHIPPED"],
