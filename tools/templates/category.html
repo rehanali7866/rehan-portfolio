@@ -1,0 +1,57 @@
+{{PREVIEW_STRIP}}
+<!-- ============ SHELF ============ -->
+<section class="store-catalogue cat-page" id="catalogue">
+  <div class="container">
+    {{CRUMBS}}
+    <div class="section-head cat-head reveal">
+      <span class="eyebrow"><b>{{CAT_NUM}}</b> The Shelf</span>
+      <h1 style="--accent:{{ACCENT}}">{{CAT_NAME}}</h1>
+      <p>{{CAT_BLURB}}</p>
+      <p class="cat-meta">{{CAT_META}}</p>
+    </div>
+    {{TOOLBAR}}
+    <p class="store-count" id="storeCount" role="status" aria-live="polite">Showing {{COUNT}} of {{COUNT}}</p>
+    <ul class="store-grid" id="storeGrid" aria-label="Guides and bundles in {{CAT_NAME}}">
+{{CARDS}}
+    </ul>
+    <div class="store-empty" id="storeEmpty" hidden>
+      <p>Nothing on this shelf matches that. Try another word, <button class="linklike" type="button" data-store-reset>clear the filters</button>, or <a href="/vaults/#catalogue">search the whole catalogue</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER SHELVES ============ -->
+<section class="store-shelves" id="shelves">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>02</b> The other shelves</span>
+      <h2>Four more things worth <em>getting good at.</em></h2>
+    </div>
+    <ul class="shelf-grid reveal">
+{{SHELVES}}
+    </ul>
+  </div>
+</section>
+
+<!-- ============ HOW THIS WORKS ============ -->
+<section class="store-how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>03</b> How this works</span>
+      <h2>No fluff. <em>No subscription.</em></h2>
+    </div>
+    <div class="reveal">
+{{TRUST}}
+    </div>
+  </div>
+</section>
+
+<!-- ============ START WITH ONE ============ -->
+<section class="store-final" id="start">
+  <div class="container reveal">
+    <p class="store-pill"><i aria-hidden="true"></i>Pay once · keep it forever</p>
+    <h2>Start with <em>one.</em></h2>
+    <p>Pick the one thing you want to be better at by next month. Instant access, 30-day money-back guarantee.</p>
+    <a class="btn-primary" href="/vaults/#catalogue" data-track="cta_click">Browse every shelf</a>
+  </div>
+</section>

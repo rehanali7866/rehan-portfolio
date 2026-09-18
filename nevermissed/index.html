@@ -1,368 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEVERMISSED — AI Phone Answering for Takeaways | Edinburgh</title>
-<meta name="description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, every order taken and texted straight to you. First month free. Edinburgh.">
-<link rel="icon" type="image/png" href="../assets/favicon.png?v=4"><link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta property="og:title" content="NEVERMISSED — AI Phone Answering for Takeaways">
-<meta property="og:description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, every order taken and texted straight to you. First month free.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ravolution.agency/nevermissed/">
-<meta property="og:image" content="https://ravolution.agency/assets/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NEVERMISSED — AI Phone Answering for Takeaways">
-<meta name="twitter:description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, every order taken and texted straight to you. First month free.">
-<meta name="twitter:image" content="https://ravolution.agency/assets/og-image.jpg">
-<meta property="og:site_name" content="Ravolution">
-<meta property="og:locale" content="en_GB">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="NeverMissed by Ravolution">
-<link rel="canonical" href="https://ravolution.agency/nevermissed/">
-<meta name="theme-color" content="#0b0a08">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,500;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0b0a08;
-    --ink-2:#12100d;
-    --steel:#1a1815;
-    --cream:#f4ecdd;
-    --cream-dim:rgba(244,236,221,.55);
-    --hairline:rgba(244,236,221,.14);
-    --red:#e8102e;
-    --red-deep:#8f0a1d;
-    --display:"Anton",impact,sans-serif;
-    --serif:"Playfair Display",georgia,serif;
-    --grotesk:"Space Grotesk",system-ui,sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;background:var(--ink)}
-  body{
-    font-family:var(--grotesk);
-    background:var(--ink);color:var(--cream);line-height:1.6;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  ::selection{background:var(--red);color:var(--cream)}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 6vw}
-
-  /* GRAIN */
-  #grain{
-    position:fixed;inset:-100px;z-index:90;pointer-events:none;opacity:.06;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    animation:grainShift .9s steps(2) infinite;
-  }
-  @keyframes grainShift{
-    0%{transform:translate(0,0)}25%{transform:translate(-40px,30px)}
-    50%{transform:translate(30px,-45px)}75%{transform:translate(-25px,-20px)}
-    100%{transform:translate(0,0)}
-  }
-
-  /* NAV */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:80;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.4rem 2rem;mix-blend-mode:difference;
-  }
-  .nav-mark{font-family:var(--display);font-size:1.05rem;letter-spacing:.06em}
-  .nav-mark span{color:var(--red)}
-  .nav-links{display:flex;gap:1.8rem;align-items:center}
-  .nav-links a{font-size:.66rem;letter-spacing:.28em;position:relative;padding:4px 0}
-  .nav-links a::after{
-    content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
-    background:var(--red);transform:scaleX(0);transform-origin:right;
-    transition:transform .35s cubic-bezier(.22,1,.36,1);
-  }
-  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-  @media(max-width:640px){
-    nav{padding:1.1rem 1.2rem}
-    .nav-links{gap:.9rem}
-    .nav-links a{font-size:.6rem;letter-spacing:.14em;white-space:nowrap}
-    .nav-links a.hide-sm{display:none}
-    .nav-mark{font-size:.9rem}
-  }
-
-  /* SHARED */
-  .eyebrow{
-    font-size:.66rem;letter-spacing:.4em;color:var(--cream-dim);
-    display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem;
-  }
-  .eyebrow b{color:var(--red);font-weight:600}
-  .eyebrow::after{content:"";height:1px;width:72px;background:var(--hairline)}
-  h2{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(2.2rem,6.5vw,5rem);line-height:.92;letter-spacing:.01em;
-    margin-bottom:1.2rem;
-  }
-  h2 em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.82em}
-  .lead{color:var(--cream-dim);max-width:640px;font-size:1.02rem;margin-bottom:3.4rem}
-  .lead em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:1.12em}
-
-  /* HERO */
-  header{
-    padding:26vh 0 14vh;position:relative;overflow:hidden;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%,rgba(143,10,29,.28),transparent 62%),
-      var(--ink);
-  }
-  .pill{
-    display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.32em;
-    color:var(--red);border:1px solid rgba(232,16,46,.5);
-    padding:.6rem 1.2rem;margin-bottom:2.4rem;
-  }
-  h1{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(3rem,10vw,8.5rem);line-height:.86;letter-spacing:.01em;
-    max-width:15ch;margin-bottom:2rem;
-  }
-  h1 em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.72em}
-  .sub{
-    font-size:clamp(1rem,1.9vw,1.2rem);color:var(--cream-dim);
-    max-width:620px;margin-bottom:3rem;line-height:1.65;
-  }
-  .cta-row{display:flex;gap:1.2rem;flex-wrap:wrap}
-  .btn{
-    font-family:var(--grotesk);font-weight:600;font-size:.7rem;letter-spacing:.3em;
-    padding:1.2rem 2.4rem;position:relative;overflow:hidden;z-index:1;
-    transition:color .35s ease;display:inline-block;
-  }
-  .btn::after{
-    content:"";position:absolute;inset:0;background:var(--cream);z-index:-1;
-    transform:translateY(101%);transition:transform .45s cubic-bezier(.22,1,.36,1);
-  }
-  .btn:hover::after{transform:translateY(0)}
-  .btn:hover{color:var(--ink)}
-  .btn-red{background:var(--red);color:var(--cream)}
-  .btn-ghost{border:1px solid rgba(244,236,221,.4);color:var(--cream)}
-  .hero-note{margin-top:1.6rem;font-size:.62rem;letter-spacing:.28em;color:var(--cream-dim)}
-
-  /* PROBLEM */
-  .problem{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
-  .stat{background:var(--ink-2);padding:2.6rem 2rem 3rem}
-  .stat .num{font-family:var(--display);font-size:clamp(3.4rem,7vw,5.4rem);line-height:.9;color:var(--cream)}
-  .stat .num.red{color:var(--red)}
-  .stat .num.hollow{color:transparent;-webkit-text-stroke:1px rgba(232,16,46,.8)}
-  .stat p{color:var(--cream-dim);font-size:.86rem;margin-top:1.2rem;line-height:1.55}
-
-  /* HOW */
-  .how{padding:14vh 0}
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
-  .step{background:var(--ink);padding:2.6rem 2.2rem 3rem}
-  .step .n{
-    font-family:var(--display);font-size:3.4rem;line-height:1;
-    color:transparent;-webkit-text-stroke:1px rgba(232,16,46,.75);margin-bottom:1.4rem;
-  }
-  .step h3{font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.03em;margin-bottom:.9rem}
-  .step p{color:var(--cream-dim);font-size:.9rem;line-height:1.65}
-
-  /* DEMO */
-  .demo{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
-  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.4rem;align-items:center}
-  @media(max-width:820px){.demo-grid{grid-template-columns:1fr}}
-  .chat{display:flex;flex-direction:column;gap:.9rem}
-  .bubble{max-width:88%;padding:1rem 1.3rem;font-size:.94rem;line-height:1.5;border:1px solid var(--hairline)}
-  .bubble.ai{background:var(--steel);align-self:flex-start;border-left:2px solid var(--red)}
-  .bubble.cust{background:rgba(232,16,46,.08);border-color:rgba(232,16,46,.35);align-self:flex-end}
-  .bubble .who{
-    display:block;font-size:.56rem;font-weight:600;letter-spacing:.3em;
-    text-transform:uppercase;margin-bottom:.5rem;color:var(--cream-dim);
-  }
-  .receipt{
-    background:var(--cream);color:#14120e;padding:2rem 1.8rem;
-    font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.85rem;line-height:1.75;
-    box-shadow:0 30px 70px rgba(0,0,0,.6);transform:rotate(1.2deg);
-  }
-  .receipt .rt{
-    font-weight:700;text-align:center;letter-spacing:.14em;font-size:.72rem;
-    border-bottom:2px dashed #c4bba8;padding-bottom:.7rem;margin-bottom:.9rem;
-  }
-  .receipt .row{display:flex;justify-content:space-between}
-  .receipt .dash{border-top:2px dashed #c4bba8;margin:.8rem 0}
-  .receipt .total{font-weight:700}
-  .receipt .foot{text-align:center;color:#8a8271;font-size:.7rem;margin-top:1rem}
-
-  /* PRICING */
-  .pricing{padding:16vh 0;text-align:center}
-  .pricing .eyebrow{justify-content:center}
-  .price-card{
-    max-width:460px;margin:3rem auto 0;background:var(--ink-2);
-    border:1px solid rgba(232,16,46,.4);padding:3.4rem 2.6rem;text-align:left;
-  }
-  .price{font-family:var(--display);font-size:5rem;line-height:1;color:var(--cream)}
-  .price small{font-family:var(--grotesk);font-size:.9rem;font-weight:400;color:var(--cream-dim);letter-spacing:.2em}
-  .free-tag{
-    display:inline-block;color:var(--red);border:1px solid rgba(232,16,46,.5);
-    font-size:.58rem;font-weight:600;letter-spacing:.28em;padding:.5rem 1rem;margin:1.4rem 0 2rem;
-  }
-  .features{list-style:none;margin:0 0 2.4rem;color:var(--cream-dim)}
-  .features li{padding:.85rem 0;border-bottom:1px solid var(--hairline);font-size:.9rem;display:flex;gap:.8rem}
-  .features li::before{content:"—";color:var(--red);font-weight:700}
-  .features li:last-child{border-bottom:none}
-  .price-card .btn{display:block;text-align:center}
-  .guarantee{
-    margin-top:1.6rem;font-size:.86rem;color:var(--cream-dim);
-    font-family:var(--serif);font-style:italic;
-  }
-
-  /* FAQ */
-  .faq{background:var(--ink-2);padding:14vh 0;border-top:1px solid var(--hairline)}
-  details{border-top:1px solid var(--hairline)}
-  details:last-of-type{border-bottom:1px solid var(--hairline)}
-  summary{
-    cursor:pointer;padding:1.6rem .4rem;font-size:1rem;list-style:none;
-    display:flex;justify-content:space-between;align-items:center;gap:1.4rem;
-    transition:color .3s ease,padding-left .3s ease;
-  }
-  summary:hover{color:var(--red);padding-left:1rem}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font-family:var(--display);font-size:1.6rem;color:var(--red)}
-  details[open] summary{color:var(--red)}
-  details[open] summary::after{content:"\2013"}
-  details p{padding:0 .4rem 1.8rem;color:var(--cream-dim);font-size:.92rem;line-height:1.7;max-width:70ch}
-
-  /* FINAL */
-  .final{
-    padding:20vh 0;text-align:center;position:relative;
-    background:
-      radial-gradient(ellipse 70% 55% at 50% 70%,rgba(143,10,29,.24),transparent 70%),
-      var(--ink);
-  }
-  .final h2{font-size:clamp(2.6rem,9vw,7.5rem)}
-  .final .cta-row{justify-content:center}
-  .final .sub{margin:0 auto 3rem;font-family:var(--serif);font-style:italic;color:var(--cream-dim)}
-
-  footer{
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.4rem;
-    padding:2.2rem 2rem;border-top:1px solid var(--hairline);
-  }
-  .foot-links{display:flex;gap:1.6rem;flex-wrap:wrap}
-  .foot-links a{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim);transition:color .3s}
-  .foot-links a:hover{color:var(--red)}
-  .foot-credit{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim)}
-
-  /* KEYBOARD FOCUS */
-  :focus{outline:none}
-  :focus-visible{outline:1px solid rgba(232,16,46,.8);outline-offset:4px}
-
-  /* START (enquiry form) */
-  .start{padding:14vh 0;border-top:1px solid var(--hairline)}
-  .nm-form{max-width:720px}
-  .nm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
-  @media(max-width:640px){.nm-grid{grid-template-columns:1fr}}
-  .nm-field{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.3rem}
-  .nm-field label{font-size:.6rem;letter-spacing:.3em;color:var(--cream-dim);font-weight:600}
-  .nm-field label span{font-weight:400;letter-spacing:.08em}
-  .nm-field input,.nm-field textarea{
-    background:var(--ink-2);border:1px solid var(--hairline);color:var(--cream);
-    font-family:var(--grotesk);font-size:1rem;padding:1rem 1.1rem;border-radius:0;width:100%;
-    transition:border-color .3s;-webkit-appearance:none;appearance:none;
-  }
-  .nm-field input:focus,.nm-field textarea:focus{border-color:var(--red);outline:none}
-  .nm-field input::placeholder,.nm-field textarea::placeholder{color:rgba(244,236,221,.3)}
-  .nm-field textarea{resize:vertical;min-height:96px}
-  .nm-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-  .nm-actions{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;margin-top:.4rem}
-  .nm-actions .btn{border:0;cursor:pointer}
-  .nm-actions .btn:disabled{opacity:.6;cursor:wait}
-  .nm-note{font-size:.6rem;letter-spacing:.28em;color:var(--cream-dim);transition:color .3s}
-  .nm-note[data-state="ok"]{color:#5bd47a}
-  .nm-note[data-state="err"]{color:var(--red)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeverMissed — AI phone answering for takeaways | Ravolution</title>
+  <meta name="description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, the full order taken and texted to you. First week free, no contract, set up in person." />
+  <link rel="canonical" href="https://ravolution.agency/nevermissed/" />
+  <meta property="og:title" content="NeverMissed — AI phone answering for takeaways" />
+  <meta property="og:description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, the full order taken and texted straight to you. First week free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ravolution.agency/nevermissed/" />
+  <meta property="og:image" content="https://ravolution.agency/assets/og-nevermissed.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Your phone, answered. NeverMissed — AI phone answering for takeaways, by Ravolution." />
+  <meta property="og:site_name" content="Ravolution" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeverMissed — AI phone answering for takeaways" />
+  <meta name="twitter:description" content="Your takeaway's phone answered 24/7 by AI. Every call picked up, the full order taken and texted straight to you. First week free." />
+  <meta name="twitter:image" content="https://ravolution.agency/assets/og-nevermissed.jpg" />
+  <!-- @head -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="theme-color" content="#d1c7bd" />
+<link rel="icon" href="/assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/assets/site.webmanifest" />
+<script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
+<link rel="stylesheet" href="/css/site.css?v=2" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/js/site.js?v=2"></script>
+<!-- /@head -->
+  <link rel="stylesheet" href="/css/nevermissed.css?v=1" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://ravolution.agency/nevermissed/#service",
+    "name": "NeverMissed",
+    "serviceType": "AI phone answering and order taking for takeaways and restaurants",
+    "description": "NeverMissed is an AI receptionist that picks up every call to your takeaway, takes the full order, and texts it straight to you. Answers 24/7, works with your existing phone number, set up in person. First week free, no contract, cancel any time.",
+    "url": "https://ravolution.agency/nevermissed/",
+    "image": "https://ravolution.agency/assets/og-nevermissed.jpg",
+    "provider": {
+      "@type": "Organization",
+      "name": "Ravolution Ltd",
+      "legalName": "RAVOLUTION LTD",
+      "url": "https://ravolution.agency",
+      "logo": "https://ravolution.agency/assets/icon-512.png",
+      "email": "rehan@ravolution.agency",
+      "founder": { "@type": "Person", "name": "Raki" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "25 Nigel Rise",
+        "addressLocality": "Livingston",
+        "postalCode": "EH54 6LT",
+        "addressCountry": "GB"
+      },
+      "identifier": { "@type": "PropertyValue", "propertyID": "Companies House", "value": "SC864460" }
+    },
+    "areaServed": { "@type": "AdministrativeArea", "name": "Scotland" },
+    "audience": { "@type": "BusinessAudience", "name": "Independent takeaways and restaurants" },
+    "termsOfService": "https://ravolution.agency/terms/",
+    "offers": {
+      "@type": "Offer",
+      "name": "NeverMissed monthly plan",
+      "description": "First week free. No contract, cancel any time. Set up for you in person.",
+      "price": "99.00",
+      "priceCurrency": "GBP",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "99.00",
+        "priceCurrency": "GBP",
+        "unitCode": "MON",
+        "unitText": "per month"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://ravolution.agency/nevermissed/#pricing",
+      "eligibleRegion": { "@type": "AdministrativeArea", "name": "Scotland" }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Will customers know it's AI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It sounds natural and most callers don't notice — but it never pretends. If a caller asks, it says it's the shop's automated order line. What customers care about is getting through and getting their food right." } },
+      { "@type": "Question", "name": "What if it gets an order wrong?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It repeats every order back to the customer before ending the call, and you see the full order in the text. Anything unusual, it takes the customer's number so you can ring back — it never guesses." } },
+      { "@type": "Question", "name": "Do I need new equipment?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. It works with your existing phone line — we just set up call diverting. If you later want orders on a kitchen screen or receipt printer, we can add that." } },
+      { "@type": "Question", "name": "What about my menu changing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Text us the change and it's live the same day. Price updates, specials, items off tonight — all handled." } },
+      { "@type": "Question", "name": "Can it just cover busy times or after hours?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many shops only divert when the line's engaged or unanswered — so it's a safety net, not a replacement. You choose." } },
+      { "@type": "Question", "name": "How do I get started?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Leave your shop name and number in the form on this page. I ring you back within one working day, we book a visit, and you're live the same afternoon. The first week is free and there's no contract." } }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body data-page="nevermissed">
 
-<div id="grain" aria-hidden="true"></div>
+<div class="bg-fixed"></div>
+<div class="noise"></div>
 
-<nav>
-  <a class="nav-mark" href="/">RAVOLUTION<span>.</span></a>
-  <div class="nav-links">
-    <a href="#how" class="hide-sm">HOW IT WORKS</a>
-    <a href="#pricing">PRICING</a>
-    <a href="/vaults/" class="hide-sm">THE VAULTS</a>
-    <a href="/">PORTFOLIO</a>
+<!-- @nav -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-mark">
+    <span class="pl-logo"><b class="lr">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span>
+    <span class="pl-bar"><i></i></span>
   </div>
+</div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav" aria-label="Primary">
+  <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
+  <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1" hidden>
+  <div class="menu-inner">
+    <p class="menu-label">Menu</p>
+    <nav class="menu-links" aria-label="Site">
+      <a href="/" data-nav="home"><i>01</i>Home</a>
+      <a href="/nevermissed/" data-nav="nevermissed" aria-current="page"><i>02</i>NeverMissed</a>
+      <a href="/vaults/" data-nav="vaults"><i>03</i>The Vaults</a>
+      <a href="/insights/" data-nav="insights"><i>04</i>Insights</a>
+      <a href="/#contact" data-nav="contact"><i>05</i>Contact</a>
+    </nav>
+    <div class="menu-secondary">
+      <a href="/#faq">FAQ</a>
+      <a href="/refunds/">Refunds &amp; Delivery</a>
+      <a href="/vaults/account/">Your Library</a>
+    </div>
+    <a href="/vaults/" class="nav-cta menu-cta" data-track="cta_click">Enter the Vaults</a>
+    <div class="menu-foot">
+      <a href="mailto:rehan@ravolution.agency">rehan@ravolution.agency</a>
+      <span>Ravolution Ltd · Scotland</span>
+    </div>
+  </div>
+</div>
+<!-- /@nav -->
 
-<header>
-  <div class="wrap">
-    <div class="pill">BUILT FOR SCOTTISH RESTAURANTS &amp; TAKEAWAYS</div>
-    <h1>YOUR PHONE <em>answered.</em></h1>
-    <p class="sub">NeverMissed is an AI receptionist that picks up every call to your takeaway, takes the full order, and texts it straight to you — even at 6pm on a Friday.</p>
-    <div class="cta-row">
-      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
-      <a class="btn btn-ghost" href="#how">SEE HOW IT WORKS</a>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="nm-hero" id="top" aria-labelledby="nmTitle">
+  <div class="container">
+    <p class="nm-pill">BUILT FOR SCOTTISH RESTAURANTS &amp; TAKEAWAYS</p>
+    <h1 id="nmTitle">
+      <span class="line"><span>Your phone</span></span>
+      <span class="line"><span><em>answered.</em></span></span>
+    </h1>
+    <p class="nm-sub">NeverMissed is an AI receptionist that picks up every call to your takeaway, takes the full order, and texts it straight to you — even at 6pm on a Friday.</p>
+    <div class="nm-ctas">
+      <a class="btn-primary" href="#start" data-track="cta_click" data-track-props='{"label":"Start your free week (hero)"}'>START YOUR FREE WEEK</a>
+      <a class="btn-secondary" href="#how" data-track="cta_click" data-track-props='{"label":"See how it works (hero)"}'>SEE HOW IT WORKS</a>
       <!-- DEMO LINE: once the Twilio number is live, add
-           <a class="btn btn-ghost" href="tel:+44XXXXXXXXXX">CALL THE LIVE DEMO</a> -->
+           <a class="btn-secondary" href="tel:+44XXXXXXXXXX">CALL THE LIVE DEMO</a> -->
     </div>
-    <p class="hero-note">NO APP · NO NEW HARDWARE · YOUR NUMBER STAYS THE SAME</p>
-  </div>
-</header>
-
-<section class="problem">
-  <div class="wrap">
-    <p class="eyebrow"><b>01</b> THE FRIDAY NIGHT PROBLEM</p>
-    <h2>EVERY MISSED CALL<br>IS AN ORDER FOR <em>someone else</em></h2>
-    <p class="lead">When the shop's slammed, the phone loses. Customers don't ring back — <em>they just order from whoever picks up.</em></p>
-    <div class="stats">
-      <div class="stat"><div class="num red">10+</div><p>calls missed on a busy Friday night at a typical independent takeaway</p></div>
-      <div class="stat"><div class="num red">£150+</div><p>walks out the door every week in orders that went to a competitor</p></div>
-      <div class="stat"><div class="num hollow">0</div><p>calls missed with NeverMissed answering — 24 hours a day, 7 days a week</p></div>
-    </div>
+    <p class="nm-hero-note">NO APP · NO NEW HARDWARE · YOUR NUMBER STAYS THE SAME</p>
   </div>
 </section>
 
-<section class="how" id="how">
-  <div class="wrap">
-    <p class="eyebrow"><b>02</b> HOW IT WORKS</p>
-    <h2>LIVE IN YOUR SHOP<br>IN <em>under an hour</em></h2>
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h3>DIVERT YOUR PHONE</h3>
+<!-- ============ 01 · THE FRIDAY NIGHT PROBLEM ============ -->
+<section class="nm-band" id="problem" aria-labelledby="problemTitle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>01</b> The Friday Night Problem</span>
+      <h2 id="problemTitle">Every missed call<br>is an order for <em>someone else</em></h2>
+      <p>When the shop's slammed, the phone loses. Customers don't ring back — <em>they just order from whoever picks up.</em></p>
+    </div>
+    <div class="stats-grid nm-stats reveal">
+      <div class="stat">
+        <div class="stat-num bad">10+</div>
+        <p>calls missed on a busy Friday night at a typical independent takeaway</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num bad">£150+</div>
+        <p>walks out the door every week in orders that went to a competitor</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num good">0</div>
+        <p>calls missed with NeverMissed answering — 24 hours a day, 7 days a week</p>
+      </div>
+    </div>
+    <p class="nm-stats-note reveal">Illustrative estimates for an independent takeaway. Your numbers will vary.</p>
+  </div>
+</section>
+
+<!-- ============ 02 · HOW IT WORKS ============ -->
+<section id="how" aria-labelledby="howTitle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>02</b> How it works</span>
+      <h2 id="howTitle">Live in your shop<br>in <em>under an hour</em></h2>
+    </div>
+    <ol class="nm-steps reveal">
+      <li class="nm-step">
+        <span class="n" aria-hidden="true">01</span>
+        <h3>Divert your phone</h3>
         <p>Busy or unanswered calls forward to your NeverMissed number. Takes 2 minutes, works with any landline or mobile. Your customers still ring the same number they always have.</p>
-      </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h3>AI TAKES THE ORDER</h3>
+      </li>
+      <li class="nm-step">
+        <span class="n" aria-hidden="true">02</span>
+        <h3>AI takes the order</h3>
         <p>A natural, friendly voice greets customers by your shop's name, knows your full menu and prices, takes the order, and confirms it back — collection or delivery.</p>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h3>ORDER IN YOUR HAND</h3>
+      </li>
+      <li class="nm-step">
+        <span class="n" aria-hidden="true">03</span>
+        <h3>Order in your hand</h3>
         <p>The second the call ends, the full order is texted to your phone — name, items, total, and time. Kitchen screen and printer options available too.</p>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
 
-<section class="demo">
-  <div class="wrap">
-    <p class="eyebrow"><b>03</b> HEAR THE DIFFERENCE</p>
-    <h2>SOUNDS LIKE YOUR<br><em>best</em> MEMBER OF STAFF</h2>
-    <p class="lead">A real call, start to finish, in about 20 seconds:</p>
-    <div class="demo-grid">
-      <div class="chat">
-        <div class="bubble ai"><span class="who">NeverMissed</span>"Ravolution Pizza, what can I get you?"</div>
-        <div class="bubble cust"><span class="who">Customer</span>"Large pepperoni and two garlic breads please."</div>
-        <div class="bubble ai"><span class="who">NeverMissed</span>"Large pepperoni, two garlic breads — that's £22.50. Name for the order?"</div>
-        <div class="bubble cust"><span class="who">Customer</span>"Tony. Collection."</div>
-        <div class="bubble ai"><span class="who">NeverMissed</span>"Perfect. Twenty minutes, see you soon Tony."</div>
-      </div>
-      <div class="receipt">
+<!-- ============ 03 · HEAR THE DIFFERENCE ============ -->
+<section class="nm-band" id="demo" aria-labelledby="demoTitle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>03</b> Hear the difference</span>
+      <h2 id="demoTitle">Sounds like your<br><em>best</em> member of staff</h2>
+      <p>A real call, start to finish, in about 20 seconds:</p>
+    </div>
+    <div class="nm-demo-grid reveal">
+      <ol class="nm-chat" aria-label="Example call, start to finish">
+        <li class="nm-bubble ai"><span class="who">NeverMissed</span>“Ravolution Pizza, what can I get you?”</li>
+        <li class="nm-bubble cust"><span class="who">Customer</span>“Large pepperoni and two garlic breads please.”</li>
+        <li class="nm-bubble ai"><span class="who">NeverMissed</span>“Large pepperoni, two garlic breads — that's £22.50. Name for the order?”</li>
+        <li class="nm-bubble cust"><span class="who">Customer</span>“Tony. Collection.”</li>
+        <li class="nm-bubble ai"><span class="who">NeverMissed</span>“Perfect. Twenty minutes, see you soon Tony.”</li>
+      </ol>
+      <div class="nm-receipt" role="group" aria-label="Example order text sent to your phone">
         <div class="rt">NEW ORDER — RAVOLUTION PIZZA</div>
         <div class="row"><span>Tony</span><span>07700 900123</span></div>
         <div class="row"><span>Type</span><span>Collection</span></div>
-        <div class="dash"></div>
+        <div class="dash" aria-hidden="true"></div>
         <div class="row"><span>1× Large Pepperoni</span><span>£16.50</span></div>
         <div class="row"><span>2× Garlic Bread</span><span>£6.00</span></div>
-        <div class="dash"></div>
+        <div class="dash" aria-hidden="true"></div>
         <div class="row total"><span>TOTAL</span><span>£22.50</span></div>
         <div class="row"><span>Ready in</span><span>20 mins</span></div>
         <div class="foot">Sent to your phone 2 seconds after the call ended</div>
@@ -371,14 +256,17 @@
   </div>
 </section>
 
-<section class="pricing" id="pricing">
-  <div class="wrap">
-    <p class="eyebrow"><b>04</b> SIMPLE PRICING</p>
-    <h2>LESS THAN ONE<br><em>lost</em> FRIDAY NIGHT</h2>
-    <div class="price-card">
-      <div class="price">£99<small>/MONTH</small></div>
-      <div class="free-tag">FIRST MONTH FREE</div>
-      <ul class="features">
+<!-- ============ 04 · SIMPLE PRICING ============ -->
+<section class="nm-pricing" id="pricing" aria-labelledby="pricingTitle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>04</b> Simple pricing</span>
+      <h2 id="pricingTitle">Less than one<br><em>lost</em> Friday night</h2>
+    </div>
+    <div class="nm-price-card reveal">
+      <p class="nm-price">£99<small>/MONTH</small></p>
+      <p class="nm-free">FIRST WEEK FREE</p>
+      <ul class="nm-features">
         <li>Every call answered, 24/7 — including holidays</li>
         <li>Full orders taken with your real menu &amp; prices</li>
         <li>Orders texted to you instantly</li>
@@ -386,117 +274,262 @@
         <li>Set up for you in person — we come to your shop</li>
         <li>No contract. Cancel any time.</li>
       </ul>
-      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
-      <p class="guarantee">If it doesn't save you money in month one, don't pay a penny. That's the deal.</p>
+      <a class="btn-primary" href="#start" data-track="cta_click" data-track-props='{"label":"Start your free week (pricing)"}'>START YOUR FREE WEEK</a>
+      <p class="nm-guarantee">If it doesn't save you money in week one, don't pay a penny. That's the deal.</p>
+    </div>
+    <ul class="trust-strip nm-trust reveal">
+      <li class="trust-item">
+        <h3>Week-one guarantee</h3>
+        <p>If it doesn't save you money in week one, don't pay a penny. The risk sits with us, not with you.</p>
+      </li>
+      <li class="trust-item">
+        <h3>No contract</h3>
+        <p>Billed monthly with no minimum term. Nothing ties you in for a year and there is nothing to sign away.</p>
+      </li>
+      <li class="trust-item">
+        <h3>Cancel any time</h3>
+        <p>One message and it stops at the end of the month you are in. No exit fee, no awkward retention call.</p>
+      </li>
+      <li class="trust-item">
+        <h3>Set up in person</h3>
+        <p>I come to your shop, set up the divert, load your menu and test a live call before I leave.</p>
+      </li>
+    </ul>
+    <p class="nm-trust-note reveal">Billing is monthly. Full details on the <a href="/refunds/">Refunds &amp; Delivery</a> page.</p>
+  </div>
+</section>
+
+<!-- ============ 05 · QUESTIONS OWNERS ASK ============ -->
+<section class="nm-band" id="faq" aria-labelledby="faqTitle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>05</b> Questions owners ask</span>
+      <h2 id="faqTitle">Fair questions,<br><em>straight</em> answers</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Will customers know it's AI?</summary>
+        <div class="faq-a"><p>It sounds natural and most callers don't notice — but it never pretends. If a caller asks, it says it's the shop's automated order line. What customers care about is getting through and getting their food right.</p></div>
+      </details>
+      <details>
+        <summary>What if it gets an order wrong?</summary>
+        <div class="faq-a"><p>It repeats every order back to the customer before ending the call, and you see the full order in the text. Anything unusual, it takes the customer's number so you can ring back — it never guesses.</p></div>
+      </details>
+      <details>
+        <summary>Do I need new equipment?</summary>
+        <div class="faq-a"><p>No. It works with your existing phone line — we just set up call diverting. If you later want orders on a kitchen screen or receipt printer, we can add that.</p></div>
+      </details>
+      <details>
+        <summary>What about my menu changing?</summary>
+        <div class="faq-a"><p>Text us the change and it's live the same day. Price updates, specials, items off tonight — all handled.</p></div>
+      </details>
+      <details>
+        <summary>Can it just cover busy times or after hours?</summary>
+        <div class="faq-a"><p>Yes. Many shops only divert when the line's engaged or unanswered — so it's a safety net, not a replacement. You choose.</p></div>
+      </details>
+      <details>
+        <summary>How do I get started?</summary>
+        <div class="faq-a"><p>Leave your shop name and number in the <a href="#start">form below</a>. I ring you back within one working day, we book a visit, and you're live the same afternoon. The first week is free and there's no contract.</p></div>
+      </details>
     </div>
   </div>
 </section>
 
-<section class="faq">
-  <div class="wrap">
-    <p class="eyebrow"><b>05</b> QUESTIONS OWNERS ASK</p>
-    <h2>FAIR QUESTIONS,<br><em>straight</em> ANSWERS</h2>
-    <details>
-      <summary>Will customers know it's AI?</summary>
-      <p>It sounds natural and most callers don't notice — but it never pretends. If a caller asks, it says it's the shop's automated order line. What customers care about is getting through and getting their food right.</p>
-    </details>
-    <details>
-      <summary>What if it gets an order wrong?</summary>
-      <p>It repeats every order back to the customer before ending the call, and you see the full order in the text. Anything unusual, it takes the customer's number so you can ring back — it never guesses.</p>
-    </details>
-    <details>
-      <summary>Do I need new equipment?</summary>
-      <p>No. It works with your existing phone line — we just set up call diverting. If you later want orders on a kitchen screen or receipt printer, we can add that.</p>
-    </details>
-    <details>
-      <summary>What about my menu changing?</summary>
-      <p>Text us the change and it's live the same day. Price updates, specials, items off tonight — all handled.</p>
-    </details>
-    <details>
-      <summary>Can it just cover busy times or after hours?</summary>
-      <p>Yes. Many shops only divert when the line's engaged or unanswered — so it's a safety net, not a replacement. You choose.</p>
-    </details>
-    <details>
-      <summary>How do I get started?</summary>
-      <p>Leave your shop name and number in the <a href="#start" style="color:var(--red);text-decoration:underline">form below</a>. I ring you back within one working day, we book a visit, and you're live the same afternoon. The first month is free and there's no contract.</p>
-    </details>
-  </div>
-</section>
-
-<section class="start" id="start">
-  <div class="wrap">
-    <p class="eyebrow"><b>06</b> START YOUR FREE MONTH</p>
-    <h2>GET SET UP<br><em>this week</em></h2>
-    <p class="lead">Leave your details and I'll ring you back within one working day to book the visit. <em>No card, no contract, first month free.</em></p>
-    <form id="nmForm" class="nm-form" novalidate>
+<!-- ============ 06 · START YOUR FREE WEEK ============ -->
+<section id="start" aria-labelledby="startTitle">
+  <div class="container nm-start-grid">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>06</b> Start your free week</span>
+      <h2 id="startTitle">Get set up<br><em>this week</em></h2>
+      <p>Leave your details and I'll ring you back within one working day to book the visit. <em>No card, no contract, first week free.</em></p>
+      <p class="contact-direct">OR EMAIL ME DIRECT
+        <a class="contact-mail" href="mailto:rehan@ravolution.agency">rehan@ravolution.agency</a>
+      </p>
+    </div>
+    <form id="nmForm" class="form-card nm-form reveal" novalidate>
       <div class="nm-grid">
-        <div class="nm-field"><label for="nmShop">SHOP NAME</label><input id="nmShop" name="shop" type="text" required autocomplete="organization" placeholder="e.g. Tony's Pizza"></div>
-        <div class="nm-field"><label for="nmName">YOUR NAME</label><input id="nmName" name="name" type="text" required autocomplete="name" placeholder="Who should I ask for?"></div>
-        <div class="nm-field"><label for="nmPhone">PHONE</label><input id="nmPhone" name="phone" type="tel" required autocomplete="tel" placeholder="07xxx xxxxxx"></div>
-        <div class="nm-field"><label for="nmTown">TOWN / CITY</label><input id="nmTown" name="town" type="text" required autocomplete="address-level2" placeholder="Edinburgh"></div>
+        <div class="nm-field">
+          <label class="form-label" for="nmShop">Shop name</label>
+          <input class="input" id="nmShop" name="shop" type="text" required autocomplete="organization" placeholder="e.g. Tony's Pizza" />
+        </div>
+        <div class="nm-field">
+          <label class="form-label" for="nmName">Your name</label>
+          <input class="input" id="nmName" name="name" type="text" required autocomplete="name" placeholder="Who should I ask for?" />
+        </div>
+        <div class="nm-field">
+          <label class="form-label" for="nmPhone">Phone</label>
+          <input class="input" id="nmPhone" name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="07xxx xxxxxx" />
+        </div>
+        <div class="nm-field">
+          <label class="form-label" for="nmTown">Town / City</label>
+          <input class="input" id="nmTown" name="town" type="text" required autocomplete="address-level2" placeholder="Edinburgh" />
+        </div>
       </div>
-      <div class="nm-field"><label for="nmMsg">ANYTHING ELSE <span>(OPTIONAL)</span></label><textarea id="nmMsg" name="message" rows="3" placeholder="Busiest nights, current phone setup, questions…"></textarea></div>
-      <input type="text" name="_honey" id="nmHoney" tabindex="-1" autocomplete="off" class="nm-honey" aria-hidden="true">
+      <div class="nm-field">
+        <label class="form-label" for="nmMsg">Anything else <span>(optional)</span></label>
+        <textarea class="input" id="nmMsg" name="message" rows="3" placeholder="Busiest nights, current phone setup, questions…"></textarea>
+      </div>
+      <input type="text" name="_honey" id="nmHoney" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="nm-actions">
-        <button class="btn btn-red" type="submit" id="nmBtn">BOOK MY FREE MONTH</button>
-        <p class="nm-note" id="nmNote" role="status" aria-live="polite">I REPLY PERSONALLY, USUALLY THE SAME DAY</p>
+        <button class="btn-form" type="submit" id="nmBtn" data-track="cta_click" data-track-props='{"label":"Book my free week (form)"}'>BOOK MY FREE WEEK</button>
+        <p class="form-note" id="nmNote" role="status" aria-live="polite">I REPLY PERSONALLY, USUALLY THE SAME DAY</p>
       </div>
+      <p class="nm-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS PROCESSED WITHIN TWO WORKING DAYS.</p>
     </form>
   </div>
 </section>
 
-<section class="final">
-  <div class="wrap">
-    <h2>STOP PAYING FOR<br><em>missed calls</em></h2>
-    <p class="sub">Tell me your shop and your town. I'll come and set it up in person, and the first month is on me.</p>
-    <div class="cta-row">
-      <a class="btn btn-red" href="#start">START YOUR FREE MONTH</a>
-      <a class="btn btn-ghost" href="mailto:rehan@ravolution.agency">EMAIL ME</a>
-    </div>
+<!-- ============ FINAL CTA ============ -->
+<section class="store-section nm-final reveal" id="final" aria-labelledby="finalTitle">
+  <h2 id="finalTitle">Stop paying for<br><em>missed calls</em></h2>
+  <p>Tell me your shop and your town. I'll come and set it up in person, and the first week is on me.</p>
+  <div class="store-btns">
+    <a class="btn-primary" href="#start" data-track="cta_click" data-track-props='{"label":"Start your free week (final)"}'>START YOUR FREE WEEK</a>
+    <a class="btn-secondary" href="mailto:rehan@ravolution.agency" data-track="cta_click" data-track-props='{"label":"Email me (final)"}'>EMAIL ME</a>
   </div>
 </section>
 
+</main>
+
+<a class="sticky-cta" href="#start" data-hide-when="#start" data-track="cta_click" data-track-props='{"label":"Start your free week (sticky)"}'>Start your free week</a>
+
+<!-- @footer -->
 <footer>
-  <div class="foot-links">
-    <a href="/">PORTFOLIO</a>
-    <a href="/vaults/">THE VAULTS</a>
-    <a href="mailto:rehan@ravolution.agency">EMAIL</a>
-    <a href="/privacy/">PRIVACY</a>
-    <a href="/terms/">TERMS</a>
-    <a href="/contact/">CONTACT</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
+      <p>Digital products, automated systems, cinematic execution. Built by Raki — self-built, no team, no liabilities.</p>
+      <form class="footer-mini" id="footerDispatch" data-form data-subject="New subscriber (footer)" data-event="newsletter_join" data-success="YOU'RE ON THE LIST — WATCH YOUR INBOX" novalidate>
+        <label class="visually-hidden" for="footerEmail">Your email for The Dispatch</label>
+        <div class="newsletter-inline">
+          <input class="input" id="footerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
+          <button class="btn-form" type="submit">Join</button>
+        </div>
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <p class="form-note" role="status" aria-live="polite">THE DISPATCH — ONE EMAIL WHEN SOMETHING SHIPS</p>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h2>Company</h2>
+      <a href="/">Home</a>
+      <a href="/insights/">Insights</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h2>Ventures</h2>
+      <a href="/nevermissed/">NeverMissed</a>
+      <a href="/vaults/">The Vaults</a>
+      <a href="/vaults/category/fitness.html">Fitness &amp; Body</a>
+      <a href="/vaults/category/wealth.html">Make Money</a>
+      <a href="/vaults/category/ai.html">AI &amp; Automation</a>
+      <a href="/vaults/category/mindset.html">Mindset &amp; Discipline</a>
+      <a href="/vaults/category/health.html">Health &amp; Longevity</a>
+    </div>
+    <div class="footer-col">
+      <h2>Support</h2>
+      <a href="/refunds/">Refunds &amp; Delivery</a>
+      <a href="/vaults/account/">Your Library</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <button class="linklike" type="button" data-consent-open>Cookie settings</button>
+    </div>
+    <div class="footer-col">
+      <h2>Connect</h2>
+      <span class="footer-soon">TikTok <small>SOON</small></span>
+      <span class="footer-soon">Instagram <small>SOON</small></span>
+      <a href="/insights/feed.xml">Insights RSS</a>
+      <a href="mailto:rehan@ravolution.agency">rehan@ravolution.agency</a>
+    </div>
   </div>
-  <div class="foot-credit">NEVERMISSED · EDINBURGH · ©2026 RAVOLUTION</div>
+  <div class="footer-bottom">
+    <span class="footer-copy">©2026 <b>RAKI</b> — I AM THE SYSTEM</span>
+    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS PROCESSED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-trust">SECURE CHECKOUT · 30-DAY MONEY-BACK · INSTANT DOWNLOAD</span>
+  </div>
 </footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" pathLength="1"></circle></svg>
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="consent" id="consent" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentText" hidden>
+  <h2 id="consentTitle">Cookies &amp; privacy</h2>
+  <p id="consentText">This site uses cookie-free analytics and stores your basket and this choice on your device. No advertising or tracking cookies unless you say so.</p>
+  <div class="consent-actions">
+    <button type="button" class="btn-primary" data-consent="all">Accept all</button>
+    <button type="button" class="btn-secondary" data-consent="essential">Essential only</button>
+    <a href="/privacy/#cookies">Privacy policy</a>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- /@footer -->
 
 <script>
 (function () {
-  var EMAIL = "rehan@ravolution.agency";
-  var ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL;
-  var f = document.getElementById("nmForm"); if (!f) return;
-  var el = f.elements, note = document.getElementById("nmNote"), btn = document.getElementById("nmBtn");
-  var LABEL = { shop: "SHOP NAME", name: "YOUR NAME", phone: "PHONE NUMBER", town: "TOWN" };
-  function say(t, s) { note.textContent = t; note.dataset.state = s || ""; }
-  f.addEventListener("submit", async function (e) {
+  'use strict';
+  var EMAIL = 'rehan@ravolution.agency';
+  var ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL;
+  var f = document.getElementById('nmForm');
+  if (!f) return;
+  var F = {
+    shop: document.getElementById('nmShop'),
+    name: document.getElementById('nmName'),
+    phone: document.getElementById('nmPhone'),
+    town: document.getElementById('nmTown'),
+    message: document.getElementById('nmMsg'),
+    honey: document.getElementById('nmHoney')
+  };
+  var note = document.getElementById('nmNote');
+  var btn = document.getElementById('nmBtn');
+  var LABEL = { shop: 'SHOP NAME', name: 'YOUR NAME', phone: 'PHONE NUMBER', town: 'TOWN' };
+
+  function say(t, s) {
+    note.textContent = t;
+    if (s) { note.setAttribute('data-state', s); } else { note.removeAttribute('data-state'); }
+  }
+  function track(name, data) {
+    if (typeof window.rvTrack === 'function') { window.rvTrack(name, data); }
+  }
+  function val(el) { return el ? String(el.value || '').trim() : ''; }
+
+  f.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (el._honey.value) return;
-    var d = { shop: el.shop.value.trim(), name: el.name.value.trim(), phone: el.phone.value.trim(), town: el.town.value.trim(), message: el.message.value.trim() };
-    var missing = ["shop", "name", "phone", "town"].filter(function (k) { return !d[k]; })[0];
-    if (missing) { el[missing].focus(); say("FILL IN THE " + LABEL[missing] + " FIRST", "err"); return; }
-    if (!/^[\d\s+()-]{9,}$/.test(d.phone)) { el.phone.focus(); say("THAT PHONE NUMBER DOESN'T LOOK RIGHT", "err"); return; }
-    btn.disabled = true; say("SENDING…", "");
-    try {
-      var r = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.assign({}, d, { _subject: "NeverMissed enquiry — " + d.shop, _template: "table", _captcha: "false" }))
-      });
-      if (!r.ok) throw new Error("bad response");
-      f.reset(); say("SENT — I'LL RING YOU WITHIN ONE WORKING DAY", "ok");
-    } catch (err) {
-      var body = "Shop: " + d.shop + "\nName: " + d.name + "\nPhone: " + d.phone + "\nTown: " + d.town + (d.message ? "\n\n" + d.message : "");
-      window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("NeverMissed enquiry — " + d.shop) + "&body=" + encodeURIComponent(body);
-      say("OPENING YOUR MAIL APP — JUST HIT SEND", "err");
-    } finally { btn.disabled = false; }
+    if (F.honey && F.honey.value) return; /* bot */
+    var d = { shop: val(F.shop), name: val(F.name), phone: val(F.phone), town: val(F.town), message: val(F.message) };
+    var missing = ['shop', 'name', 'phone', 'town'].filter(function (k) { return !d[k]; })[0];
+    if (missing) { F[missing].focus(); say('FILL IN THE ' + LABEL[missing] + ' FIRST', 'err'); return; }
+    if (!/^[\d\s+()-]{9,}$/.test(d.phone)) { F.phone.focus(); say("THAT PHONE NUMBER DOESN'T LOOK RIGHT", 'err'); return; }
+
+    var subject = 'NeverMissed enquiry — ' + d.shop;
+    var body = {
+      shop: d.shop, name: d.name, phone: d.phone, town: d.town, message: d.message,
+      page: location.pathname,
+      _subject: subject, _template: 'table', _captcha: 'false', _honey: ''
+    };
+    btn.disabled = true;
+    say('SENDING…', '');
+    var sent = false;
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json().catch(function () { return {}; });
+    }).then(function (data) {
+      if (data && String(data.success) === 'false') throw new Error(data.message || 'rejected');
+      sent = true;
+      f.reset();
+      say("SENT — I'LL RING YOU WITHIN ONE WORKING DAY", 'ok');
+      track('contact_submit', { form: 'nmForm', venture: 'nevermissed' });
+    }).catch(function () {
+      if (sent) return;
+      var text = 'Shop: ' + d.shop + '\nName: ' + d.name + '\nPhone: ' + d.phone + '\nTown: ' + d.town + (d.message ? '\n\n' + d.message : '');
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+      say('OPENING YOUR MAIL APP — JUST HIT SEND', 'err');
+    }).then(function () {
+      btn.disabled = false;
+    });
   });
 })();
 </script>

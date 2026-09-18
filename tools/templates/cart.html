@@ -1,0 +1,66 @@
+{{PREVIEW_STRIP}}
+<!-- ============ BASKET ============ -->
+<section class="cart-page" id="basket">
+  <div class="container">
+    <div class="section-head cart-head">
+      <span class="eyebrow"><b>01</b> Your order</span>
+      <h1>Your <em>basket.</em></h1>
+    </div>
+
+    <div class="cart-layout" id="cart" data-provider="{{PROVIDER}}" data-status="{{STATUS}}">
+      <div class="cart-main">
+        <ul class="cart-lines" id="cartLines" aria-label="Items in your basket"></ul>
+
+        <div class="cart-empty" id="cartEmpty" hidden>
+          <p class="cart-empty-title">Your basket is empty.</p>
+          <p>Fifteen guides and three bundles are waiting on the shelves.</p>
+          <a class="btn-primary" href="/vaults/#catalogue" data-track="cta_click">Browse the guides</a>
+        </div>
+
+        <section class="upsell" id="cartUpsell" aria-labelledby="upsellTitle" hidden>
+          <h2 id="upsellTitle">Complete the set</h2>
+          <div class="upsell-body" id="cartUpsellBody"></div>
+        </section>
+
+        <p class="cart-continue"><a href="/vaults/#catalogue">← Continue browsing</a></p>
+      </div>
+
+      <aside class="cart-side" id="cartSide" aria-label="Order summary">
+        <form class="coupon" id="couponForm" novalidate>
+          <label class="form-label" for="couponCode">Discount code</label>
+          <div class="form-row">
+            <input class="input" id="couponCode" name="coupon" type="text" placeholder="e.g. WELCOME10" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+            <button class="btn-form btn-apply" type="submit">Apply</button>
+          </div>
+          <p class="form-note" id="couponNote" role="status" aria-live="polite"></p>
+        </form>
+
+        <dl class="summary" id="summary">
+          <div class="sum-row"><dt>Subtotal</dt><dd id="sumSubtotal">£0</dd></div>
+          <div class="sum-row sum-discount" id="sumDiscountRow" hidden><dt>Discount <span class="sum-code" id="sumCode"></span></dt><dd id="sumDiscount">−£0</dd></div>
+          <div class="sum-row"><dt>Delivery</dt><dd>Instant · Free</dd></div>
+          <div class="sum-row sum-total"><dt>Total</dt><dd id="sumTotal">£0</dd></div>
+        </dl>
+        <p class="coupon-applied-note" id="couponAppliedNote" hidden>Applied again at checkout.</p>
+
+        <div class="checkout-area" id="checkoutArea"></div>
+
+        <form class="cart-waitlist" id="cartWaitlist" data-form data-subject="Vaults waitlist (basket)" data-event="waitlist_join" data-success="YOU'RE ON THE LIST — WE'LL EMAIL YOU WHEN CHECKOUT OPENS" novalidate hidden>
+          <p class="form-label" id="cartWaitLead">Get the key. One email when the doors open.</p>
+          <label class="visually-hidden" for="cartWaitEmail">Your email</label>
+          <div class="form-row">
+            <input class="input" id="cartWaitEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
+            <button class="btn-form" type="submit" data-track="cta_click">Get the key</button>
+          </div>
+          <input type="hidden" name="basket" id="cartBasketField" value="" />
+          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <p class="form-note" role="status" aria-live="polite">WE'LL KEEP YOUR BASKET ON THIS DEVICE UNTIL THEN.</p>
+        </form>
+
+{{TRUST}}
+        <ul class="pay-pills" aria-label="Payment methods accepted at checkout"><li>VISA</li><li>MASTERCARD</li><li>AMEX</li><li>APPLE PAY</li><li>GOOGLE PAY</li></ul>
+        <p class="secure-line">Secure checkout · handled by our payment provider · card details never touch our servers</p>
+      </aside>
+    </div>
+  </div>
+</section>

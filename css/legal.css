@@ -1,139 +1,182 @@
-/* ============================================================
-   RAVOLUTION LTD — legal / contact pages
-   Matches the portfolio: ink black · cream type · red accent
-   ============================================================ */
+/* =====================================================================
+   ravolution.agency — legal.css (v2)
+   Legal, contact, refunds and 404 pages on the stone design system.
+   Loads AFTER /css/site.css and uses only its tokens (no new colours).
+   Contrast: body text --dim (5.4:1 on cream, 6.1:1 on cream-2);
+   --dim-2 appears only on ≥12px bold uppercase labels (dt, toc heading).
+   Motion: colour/shadow hovers only. No transforms, no reveal on legal
+   content (it must always be readable, JS or not).
+   ===================================================================== */
 
-:root {
-  --ink: #0b0a08;
-  --ink-2: #12100d;
-  --cream: #f4ecdd;
-  --cream-dim: rgba(244, 236, 221, 0.62);
-  --cream-faint: rgba(244, 236, 221, 0.38);
-  --red: #e8102e;
-  --display: "Anton", impact, sans-serif;
-  --grotesk: "Space Grotesk", system-ui, -apple-system, sans-serif;
+/* ============ PAGE FRAME ============ */
+section.legal{padding:150px 48px 120px;}
+.legal-wrap{max-width:46rem;margin:0 auto;}
+.legal-wrap.wide{max-width:1100px;}
+.legal-wrap.wide .legal-prose{max-width:46rem;}
+
+/* ============ HEADER ============ */
+.legal-head{margin-bottom:8px;}
+.legal-head .eyebrow{margin-bottom:22px;}
+.legal-title{
+  font-size:clamp(38px,6vw,64px);font-weight:700;line-height:1;
+  text-transform:uppercase;color:var(--ink);letter-spacing:-0.02em;
+}
+.legal-title em{font-style:normal;color:var(--red-display);}
+.updated{
+  margin-top:18px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  font-weight:700;color:var(--dim);line-height:1.7;
+}
+.updated b{color:var(--ink);font-weight:700;}
+.legal-lead{margin-top:26px;font-size:17px;line-height:1.7;color:var(--dim);max-width:600px;}
+.legal-lead a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);transition:color .3s ease, border-color .3s ease;}
+.legal-lead a:hover{color:var(--red-text);border-color:var(--red-text);}
+
+/* ============ ON THIS PAGE (h2 anchors) ============ */
+.legal-toc{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);}
+.legal-toc h2{
+  font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--dim-2);font-weight:700;margin-bottom:12px;
+}
+.legal-toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;}
+.legal-toc a{
+  display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:100px;
+  border:1px solid var(--line);background:var(--glass);
+  font-size:12.5px;font-weight:700;letter-spacing:0.04em;color:var(--ink);
+  transition:border-color .3s ease, background .3s ease, color .3s ease;
+}
+.legal-toc a:hover{border-color:var(--red);background:var(--red-soft);color:var(--red-text);}
+
+/* ============ PROSE ============ */
+.legal-prose{font-size:16px;line-height:1.75;color:var(--dim);}
+.legal-prose p{margin-top:14px;}
+.legal-prose h2{
+  font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.15;text-transform:uppercase;
+  color:var(--ink);margin-top:52px;padding-top:28px;border-top:1px solid var(--line);
+}
+.legal-prose h2[id],.legal-prose h3[id]{scroll-margin-top:calc(var(--nav-h) + 28px);}
+.legal-prose h2 + p,.legal-prose h2 + ul,.legal-prose h2 + ol,.legal-prose h2 + .callout{margin-top:16px;}
+.legal-prose h3{
+  font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:800;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--ink);margin-top:30px;
+}
+.legal-prose h3 + p,.legal-prose h3 + ul,.legal-prose h3 + ol{margin-top:8px;}
+.legal-prose ul,.legal-prose ol{margin-top:14px;padding-left:1.25em;}
+.legal-prose li{padding-left:.15em;}
+.legal-prose li + li{margin-top:8px;}
+.legal-prose li::marker{color:var(--red-text);font-weight:700;}
+.legal-prose strong,.legal-prose b{color:var(--ink);font-weight:700;}
+.legal-prose a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);transition:color .3s ease, border-color .3s ease;}
+.legal-prose a:hover{color:var(--red-text);border-color:var(--red-text);}
+/* inline "Cookie settings" button reads like a link */
+.legal-prose .linklike{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);line-height:inherit;transition:color .3s ease, border-color .3s ease;}
+.legal-prose .linklike:hover{color:var(--red-text);border-color:var(--red-text);}
+.legal-prose .trust-strip{margin-top:20px;}
+.legal-head .trust-strip{margin-top:32px;}
+.legal-prose .trust-strip.compact .trust-item p,.legal-head .trust-strip.compact .trust-item p{font-size:13.5px;}
+
+/* ============ CALLOUT (support promise, summaries) ============ */
+.callout{
+  position:relative;overflow:hidden;margin-top:28px;padding:26px 28px 26px 30px;
+  border-radius:20px;border:1px solid var(--line);background:var(--cream-2);box-shadow:var(--shadow-card);
+}
+.callout::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);}
+.callout .callout-label{
+  display:block;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--red-text);margin-bottom:10px;
+}
+.callout h2,.callout h3{margin:0 0 10px;padding:0;border:0;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--red-text);font-family:'Manrope',sans-serif;}
+.callout .promise{
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,2vw,22px);font-weight:700;
+  line-height:1.35;letter-spacing:-0.01em;color:var(--ink);margin:0;text-transform:none;
+}
+.callout p{margin-top:12px;font-size:15px;line-height:1.7;color:var(--dim);}
+.callout p:first-of-type{margin-top:0;}
+.callout .promise + p{margin-top:12px;}
+.callout a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);transition:color .3s ease, border-color .3s ease;}
+.callout a:hover{color:var(--red-text);border-color:var(--red-text);}
+
+/* ============ COMPANY CARD (dl) ============ */
+.company-card{
+  margin-top:36px;padding:30px 32px;border-radius:20px;border:1px solid var(--line);
+  background:var(--cream-2);box-shadow:var(--shadow-card);
+}
+.legal-prose .company-card h2,.company-card h2{margin:0 0 22px;padding:0;border:0;font-size:20px;text-transform:uppercase;color:var(--ink);}
+.company-card dl{display:grid;grid-template-columns:minmax(10rem,auto) 1fr;gap:14px 24px;margin:0;}
+.company-card dt{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--dim-2);padding-top:3px;line-height:1.5;}
+.company-card dd{font-size:15.5px;color:var(--ink);line-height:1.6;margin:0;}
+.company-card dd a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);transition:color .3s ease, border-color .3s ease;}
+.company-card dd a:hover{color:var(--red-text);border-color:var(--red-text);}
+
+/* ============ CONTACT PAGE ============ */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:8px;}
+.contact-layout .legal-prose{margin-top:0;}
+.contact-layout .legal-prose > p:first-child{margin-top:0;}
+.contact-direct-block{margin-top:30px;}
+.contact-layout .contact-direct{margin-top:30px;}
+.contact-form h2{font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--red-text);margin:0 0 22px;}
+.contact-form .ama-label{margin-bottom:12px;}
+.contact-form .ama-note{line-height:1.7;}
+.contact-more{margin-top:56px;}
+
+/* ============ 404 ============ */
+section.notfound{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:140px 48px 110px;
+}
+.nf-inner{max-width:760px;margin:0 auto;width:100%;}
+.nf-code{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(110px,24vw,240px);
+  line-height:.9;letter-spacing:-0.05em;color:transparent;-webkit-text-stroke:2px var(--red);
+  user-select:none;
+}
+@supports not (-webkit-text-stroke:1px black){.nf-code{color:var(--red-display);}}
+.notfound h1{
+  font-size:clamp(34px,5.4vw,64px);font-weight:700;line-height:1;text-transform:uppercase;
+  color:var(--ink);margin-top:22px;letter-spacing:-0.02em;
+}
+.notfound h1 em{font-style:normal;color:var(--red-display);}
+.notfound .nf-text{margin:22px auto 0;max-width:46ch;font-size:16.5px;line-height:1.7;color:var(--dim);}
+.nf-search{margin:34px auto 0;max-width:520px;text-align:left;}
+.nf-search .form-row{margin-top:0;}
+.nf-search .input{-webkit-appearance:none;appearance:none;}
+.nf-search .input::-webkit-search-decoration,.nf-search .input::-webkit-search-cancel-button{-webkit-appearance:none;}
+.nf-search .form-note{margin-top:12px;text-align:center;}
+.nf-links{list-style:none;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0;padding:0;}
+.nf-links a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:100px;
+  border:1px solid rgba(21,18,15,0.22);background:var(--glass);
+  font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);
+  transition:border-color .3s ease, background .3s ease, color .3s ease;
+}
+.nf-links a:hover{border-color:var(--red);background:var(--red-soft);color:var(--red-text);}
+.nf-links a.primary{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.nf-links a.primary:hover{background:var(--red);color:#fff;border-color:var(--red);}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  section.legal{padding:118px 24px 80px;}
+  section.notfound{padding:120px 24px 90px;}
+  .contact-layout{grid-template-columns:1fr;gap:36px;}
+}
+@media (max-width:720px){
+  .legal-toc a{min-height:44px;padding:0 16px;}
+  .nf-links{flex-direction:column;align-items:stretch;}
+  .nf-links a{width:100%;}
+}
+@media (max-width:560px){
+  .company-card{padding:22px;}
+  .company-card dl{grid-template-columns:1fr;gap:4px 0;}
+  .company-card dd + dt{margin-top:14px;}
+  .callout{padding:20px 20px 20px 22px;}
+  .legal-title{font-size:clamp(34px,11vw,44px);}
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { background: var(--ink); scroll-behavior: smooth; }
-
-body {
-  background: var(--ink);
-  color: var(--cream);
-  font-family: var(--grotesk);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-
-::selection { background: var(--red); color: var(--cream); }
-a { color: inherit; }
-:focus-visible { outline: 1px solid rgba(232, 16, 46, 0.85); outline-offset: 4px; }
-
-/* ---------- top bar ---------- */
-.legal-nav {
-  position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; flex-wrap: wrap;
-  padding: 1.15rem clamp(1.25rem, 5vw, 4rem);
-  background: rgba(11, 10, 8, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(244, 236, 221, 0.09);
-}
-.legal-nav .home {
-  font-family: var(--display);
-  font-size: 1.05rem; letter-spacing: 0.06em;
-  text-decoration: none;
-}
-.legal-nav .home span { color: var(--red); }
-.legal-nav .links { display: flex; gap: clamp(0.9rem, 3vw, 2rem); flex-wrap: wrap; }
-.legal-nav .links a {
-  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--cream-dim); text-decoration: none;
-  padding-bottom: 2px; border-bottom: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-.legal-nav .links a:hover,
-.legal-nav .links a[aria-current="page"] { color: var(--cream); border-color: var(--red); }
-
-/* ---------- page ---------- */
-.wrap { max-width: 46rem; margin: 0 auto; padding: clamp(3rem, 9vw, 6rem) clamp(1.25rem, 5vw, 2rem) 5rem; }
-
-.eyebrow {
-  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 1.1rem;
-}
-
-h1 {
-  font-family: var(--display);
-  font-size: clamp(2.6rem, 9vw, 4.6rem);
-  line-height: 0.95; letter-spacing: 0.01em;
-  text-transform: uppercase; margin-bottom: 1rem;
-}
-
-.updated {
-  font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--cream-faint); margin-bottom: 2.6rem;
-}
-
-h2 {
-  font-family: var(--display);
-  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
-  letter-spacing: 0.02em; text-transform: uppercase;
-  margin: 2.8rem 0 0.9rem;
-}
-h3 {
-  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em;
-  margin: 1.7rem 0 0.5rem;
-}
-
-p, li { color: var(--cream-dim); font-size: 0.97rem; }
-p { margin-bottom: 1rem; }
-ul { margin: 0 0 1.2rem 1.15rem; }
-li { margin-bottom: 0.5rem; }
-strong { color: var(--cream); font-weight: 600; }
-
-a.inline { color: var(--cream); text-decoration: none; border-bottom: 1px solid var(--red); }
-a.inline:hover { color: var(--red); }
-
-hr {
-  border: 0; height: 1px;
-  background: rgba(244, 236, 221, 0.12);
-  margin: 3rem 0;
-}
-
-/* ---------- company details card ---------- */
-.company-card {
-  background: var(--ink-2);
-  border: 1px solid rgba(244, 236, 221, 0.1);
-  padding: clamp(1.4rem, 4vw, 2rem);
-  margin: 2.4rem 0;
-}
-.company-card h2 { margin-top: 0; font-size: 1.15rem; }
-.company-card dl { display: grid; grid-template-columns: minmax(9rem, auto) 1fr; gap: 0.55rem 1.3rem; }
-.company-card dt {
-  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--cream-faint); padding-top: 0.15rem;
-}
-.company-card dd { font-size: 0.95rem; color: var(--cream); }
-@media (max-width: 34rem) {
-  .company-card dl { grid-template-columns: 1fr; gap: 0.15rem; }
-  .company-card dd { margin-bottom: 0.75rem; }
-}
-
-/* ---------- footer ---------- */
-.legal-foot {
-  border-top: 1px solid rgba(244, 236, 221, 0.09);
-  padding: 2.6rem clamp(1.25rem, 5vw, 4rem) 3.2rem;
-  text-align: center;
-}
-.legal-foot .flinks { display: flex; gap: 1.4rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.4rem; }
-.legal-foot .flinks a {
-  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--cream-dim); text-decoration: none;
-}
-.legal-foot .flinks a:hover { color: var(--red); }
-.legal-foot .reg {
-  font-size: 0.72rem; line-height: 1.85; color: var(--cream-faint);
-  max-width: 40rem; margin: 0 auto;
+/* ============ PRINT (legal pages get printed) ============ */
+@media print{
+  .bg-fixed,.noise,nav#nav,.mobile-menu,footer,.consent,.toast,.skip-link,.legal-toc,.sticky-cta{display:none !important;}
+  body{background:#fff;color:#000;}
+  section.legal{padding:0;}
+  .legal-prose,.legal-prose p,.legal-prose li,.updated,.callout p{color:#000;}
+  .legal-prose a{border-bottom:0;}
+  .legal-prose a[href^="http"]::after{content:" (" attr(href) ")";font-size:.85em;}
+  .callout,.company-card{box-shadow:none;background:#fff;border-color:#999;}
 }

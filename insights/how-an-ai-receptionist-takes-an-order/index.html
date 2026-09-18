@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How an AI receptionist takes an order — Ravolution</title>
+  <meta name="description" content="How NeverMissed actually takes a takeaway order: the phone divert, the menu as a guardrail, the read-back, and the moments it hands over to a person." />
+  <meta name="author" content="Raki" />
+  <link rel="canonical" href="https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/" />
+  <link rel="alternate" type="application/rss+xml" title="Ravolution Insights" href="/insights/feed.xml" />
+  <meta property="og:title" content="How an AI receptionist actually takes an order — and when it hands over to a human" />
+  <meta property="og:description" content="How NeverMissed actually takes a takeaway order: the phone divert, the menu as a guardrail, the read-back, and the moments it hands over to a person." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/" />
+  <meta property="og:image" content="https://ravolution.agency/assets/og-insights.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Insights — Notes on building, automating and selling. Ravolution." />
+  <meta property="og:site_name" content="Ravolution" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="article:published_time" content="2026-09-03T09:00:00+00:00" />
+  <meta property="article:modified_time" content="2026-09-03T09:00:00+00:00" />
+  <meta property="article:author" content="Raki" />
+  <meta property="article:section" content="NeverMissed" />
+  <meta property="article:tag" content="NeverMissed" />
+  <meta property="article:tag" content="AI receptionist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How an AI receptionist actually takes an order — and when it hands over to a human" />
+  <meta name="twitter:description" content="The phone divert, the menu as a guardrail, the read-back, and the moments the AI hands over to a person." />
+  <meta name="twitter:image" content="https://ravolution.agency/assets/og-insights.jpg" />
+  <!-- @head -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="theme-color" content="#d1c7bd" />
+<link rel="icon" href="/assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/assets/site.webmanifest" />
+<script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
+<link rel="stylesheet" href="/css/site.css?v=2" />
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/js/site.js?v=2"></script>
+<!-- /@head -->
+  <link rel="stylesheet" href="/css/insights.css?v=1" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/#article",
+    "headline": "How an AI receptionist actually takes an order — and when it hands over to a human",
+    "description": "How NeverMissed actually takes a takeaway order: the phone divert, the menu as a guardrail, the read-back, and the moments it hands over to a person.",
+    "url": "https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/" },
+    "image": { "@type": "ImageObject", "url": "https://ravolution.agency/assets/og-insights.jpg", "width": 1200, "height": 630 },
+    "datePublished": "2026-09-03T09:00:00+00:00",
+    "dateModified": "2026-09-03T09:00:00+00:00",
+    "inLanguage": "en-GB",
+    "articleSection": "NeverMissed",
+    "keywords": "AI receptionist, AI phone answering, NeverMissed, takeaway orders, voice AI",
+    "author": { "@type": "Person", "name": "Raki", "url": "https://ravolution.agency/", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Ravolution Ltd" } },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Ravolution Ltd",
+      "url": "https://ravolution.agency",
+      "logo": { "@type": "ImageObject", "url": "https://ravolution.agency/assets/icon-512.png", "width": 512, "height": 512 }
+    },
+    "isPartOf": { "@type": "Blog", "@id": "https://ravolution.agency/insights/#blog", "name": "Ravolution Insights" },
+    "about": { "@type": "Service", "@id": "https://ravolution.agency/nevermissed/#service", "name": "NeverMissed" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ravolution.agency/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://ravolution.agency/insights/" },
+      { "@type": "ListItem", "position": 3, "name": "How an AI receptionist takes an order", "item": "https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/" }
+    ]
+  }
+  </script>
+</head>
+<body data-page="insights">
+
+<div class="bg-fixed"></div>
+<div class="noise"></div>
+
+<!-- @nav -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-mark">
+    <span class="pl-logo"><b class="lr">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span>
+    <span class="pl-bar"><i></i></span>
+  </div>
+</div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav" aria-label="Primary">
+  <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
+  <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1" hidden>
+  <div class="menu-inner">
+    <p class="menu-label">Menu</p>
+    <nav class="menu-links" aria-label="Site">
+      <a href="/" data-nav="home"><i>01</i>Home</a>
+      <a href="/nevermissed/" data-nav="nevermissed"><i>02</i>NeverMissed</a>
+      <a href="/vaults/" data-nav="vaults"><i>03</i>The Vaults</a>
+      <a href="/insights/" data-nav="insights" aria-current="page"><i>04</i>Insights</a>
+      <a href="/#contact" data-nav="contact"><i>05</i>Contact</a>
+    </nav>
+    <div class="menu-secondary">
+      <a href="/#faq">FAQ</a>
+      <a href="/refunds/">Refunds &amp; Delivery</a>
+      <a href="/vaults/account/">Your Library</a>
+    </div>
+    <a href="/vaults/" class="nav-cta menu-cta" data-track="cta_click">Enter the Vaults</a>
+    <div class="menu-foot">
+      <a href="mailto:rehan@ravolution.agency">rehan@ravolution.agency</a>
+      <span>Ravolution Ltd · Scotland</span>
+    </div>
+  </div>
+</div>
+<!-- /@nav -->
+
+<main id="main">
+
+<article class="post">
+
+  <header class="post-header">
+    <div class="post-wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li aria-current="page">How an AI receptionist takes an order</li>
+        </ol>
+      </nav>
+      <p class="eyebrow">NeverMissed</p>
+      <h1>How an AI receptionist <em>actually takes an order</em> — and when it hands over to a human</h1>
+      <p class="post-lead">Not a demo reel. The actual mechanics of the call: what the AI is allowed to do, what it reads back before it hangs up, and the moments it deliberately stops and gets a person involved.</p>
+      <div class="post-meta">
+        <time datetime="2026-09-03">3 September 2026</time>
+        <span>7 min read</span>
+        <span class="by">Raki</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <div class="post-wrap">
+
+      <div class="prose">
+        <p>People assume "AI receptionist" means a chatbot with a voice bolted on, guessing its way through a phone call. It doesn't work like that, and it shouldn't. A takeaway order is a small, specific transaction — items, quantities, collection or delivery, a total — and the whole point of building NeverMissed was to make that transaction reliable, not to make the AI sound impressive. So this is the plumbing: what happens between the ring and the text landing on your phone, and exactly where the system stops guessing and gets a human involved instead.</p>
+
+        <h2>The call never leaves your number</h2>
+
+        <p>Nothing changes for the customer. They ring the number that's on your window, your Google listing and the box on the counter. What changes is what happens when that call isn't picked up in the shop, or the line is already busy. It diverts, in a couple of seconds, to the NeverMissed line, and the AI answers using your shop's name. Some owners choose to have it answer every call as a matter of course; most set it as a safety net for the moments the shop genuinely can't get to the phone. Either way, it's a divert on your existing line, not a new number to advertise, and setting it up takes a couple of minutes with your provider.</p>
+
+        <h2>The menu is a guardrail, not a suggestion</h2>
+
+        <p>This is the part that actually matters. The AI isn't reasoning from general knowledge about what a takeaway might sell. It's working from your menu, loaded in with your real items, sizes and prices, and it only offers what's on it. If a customer asks for something that isn't there, it says so and offers what's closest, rather than inventing a dish or a price to keep the call moving. When you change your menu — a price goes up, something's off tonight, there's a new special — you text the change and it's live the same day. That matters more than it sounds: a system that can quietly drift from what you actually sell is worse than no system at all, so the design choice is to keep it boxed in by your real menu rather than clever about working around it.</p>
+
+        <blockquote class="pull">
+          <p>The whole point of building this was to make the transaction reliable, not to make the AI sound impressive.</p>
+        </blockquote>
+
+        <h2>Taking the order</h2>
+
+        <p>A typical call runs in roughly the same shape every time, which is deliberate — consistency is what makes it trustworthy:</p>
+
+        <ol>
+          <li>Greeting with your shop's name, and a question: collection or delivery.</li>
+          <li>The order itself, taken item by item, with sizes and any extras confirmed as they're added.</li>
+          <li>Anything the customer says that doesn't match a menu item gets clarified in the moment, not guessed at.</li>
+          <li>A full read-back — every item, the total, and the collection or delivery time — before the call ends.</li>
+          <li>The order is texted to your phone the second the call finishes: name, items, total, time.</li>
+        </ol>
+
+        <p>That read-back step is the one I'd least want to cut. It's the moment the customer hears their own order said back to them and can correct it there and then, on the call, rather than finding out something was wrong when the food arrives. It slows the call down by a few seconds and saves considerably more time than that in remakes and refunds.</p>
+
+        <h2>Where it deliberately stops</h2>
+
+        <p>An AI that tries to handle everything is more dangerous than one that knows its limits. NeverMissed is built to hand over rather than improvise the moment it's out of its depth. In practice that's five kinds of moment:</p>
+
+        <ol>
+          <li><strong>An item it can't confidently match.</strong> If what the customer describes doesn't clearly correspond to anything on the menu, it says so and takes a callback number rather than guessing at what they meant.</li>
+          <li><strong>A complaint or an unhappy caller.</strong> Someone ringing about a previous order, or clearly frustrated, gets taken seriously and passed to a human rather than talked at by a script.</li>
+          <li><strong>Allergy or dietary detail beyond what's flagged on the menu.</strong> A simple "no onion" is fine. Anything that sounds like a genuine allergy concern goes to a person, because that's not a call worth an AI getting confidently wrong.</li>
+          <li><strong>A price or payment dispute.</strong> Questions about a previous charge, a refund, or "that's not what I was quoted" are handed off rather than argued with.</li>
+          <li><strong>A caller who simply asks for a person.</strong> If someone says they'd rather speak to someone in the shop, that request is honoured, not deflected.</li>
+        </ol>
+
+        <p>In every one of those cases the aim is the same: recognise the edge of what the system should be trusted with, and hand it to a human cleanly, with the customer's number, rather than push on and risk getting it wrong with more confidence than it's earned.</p>
+
+        <div class="estimate">
+          <b>A rough sense of scale, not a measurement</b>
+          Most calls to an independent takeaway are a straightforward order: an item, a size, collection or delivery. In the shops I've set this up in, the handover moments above are the minority of calls, not the majority — reasoning from what a typical night's order mix looks like, not from a survey. Your shop's split will depend on your menu and your customers, and it's exactly why the menu-as-guardrail approach matters more than a clever model.
+        </div>
+
+        <h2>What lands in your hand</h2>
+
+        <p>The output of a successful call is deliberately boring: a text message with the customer's name, the full order, the total, and the time it's due, the moment the call ends. No app to open, no dashboard to check mid-service. If you want it on a kitchen screen or a receipt printer instead of, or as well as, a text, that's a setup option, not a different product. The point is that the order arrives the same way whether it's the AI or a person who answered, so nothing changes about how the kitchen actually works.</p>
+
+        <h2>Why this beats a rushed answer</h2>
+
+        <p>The honest comparison isn't AI versus a calm, attentive member of staff with nothing else to do. It's AI versus the phone being answered by whoever's nearest, mid-service, half-listening while they plate an order. A rushed order taken standing at the fryer, on a scrap of paper, with no read-back, is where the wrong pizza comes from far more often than a system built specifically to take one order at a time, properly, every time. That's not a claim I can put a precise number on, and I won't pretend otherwise — it's the reason the read-back exists at all, and it's the difference the design is built around.</p>
+
+        <p>None of this replaces your judgement about your shop. Some owners want every call answered by the AI; some want it purely as backup for the moments the phone can't be reached. Both are reasonable, and it's a setting, not a rebuild. What doesn't change is the shape of the call itself: your menu, your prices, a clean read-back, and a human the moment it matters.</p>
+      </div>
+
+      <aside class="cta-box" aria-labelledby="ctaTitle">
+        <div>
+          <p class="eyebrow">Related</p>
+          <h2 id="ctaTitle">See it running on <em>your menu.</em></h2>
+          <p>NeverMissed answers every call to your takeaway, takes the full order against your real menu and prices, and texts it to you. I set it up in your shop in person.</p>
+        </div>
+        <div class="cta-box-actions">
+          <a class="btn-primary" href="/nevermissed/" data-track="cta_click" data-track-props='{"label":"View NeverMissed (article: how-an-ai-receptionist-takes-an-order)"}'>SEE NEVERMISSED</a>
+          <span class="cta-note">First week free · £99/month after · no contract</span>
+        </div>
+      </aside>
+
+      <div class="share-row" role="group" aria-label="Share this note">
+        <span class="share-label">Share</span>
+        <button type="button" class="share-btn" data-copy="https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/">Copy link</button>
+        <a class="share-btn" href="https://x.com/intent/post?url=https%3A%2F%2Fravolution.agency%2Finsights%2Fhow-an-ai-receptionist-takes-an-order%2F&amp;text=How%20an%20AI%20receptionist%20actually%20takes%20an%20order%20%E2%80%94%20and%20when%20it%20hands%20over%20to%20a%20human" target="_blank" rel="noopener">Share on X<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fravolution.agency%2Finsights%2Fhow-an-ai-receptionist-takes-an-order%2F" target="_blank" rel="noopener">Share on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+
+      <aside class="author-box" aria-labelledby="authorTitle">
+        <div class="author-mark" aria-hidden="true"><img src="/assets/logo-r-alpha.png" alt="" /></div>
+        <div>
+          <h2 id="authorTitle">Written by</h2>
+          <p class="author-name">Raki</p>
+          <p class="author-role">Founder, Ravolution Ltd · Scotland</p>
+          <p class="bio">I build digital products and automated systems, and I run every part of Ravolution myself. NeverMissed is the AI phone line I built for takeaways; the Vaults is where the written guides live. These notes are what I learn on the way.</p>
+          <div class="author-links">
+            <a href="/nevermissed/">NeverMissed</a>
+            <a href="/vaults/">The Vaults</a>
+            <a href="/#contact">Contact</a>
+          </div>
+        </div>
+      </aside>
+
+      <nav class="post-nav" aria-labelledby="moreTitle">
+        <h2 id="moreTitle">More notes</h2>
+        <ul>
+          <li>
+            <article class="post-card">
+              <div class="post-card-meta"><span class="tag">NeverMissed</span><time datetime="2026-08-20">20 Aug 2026</time></div>
+              <h3><a href="/insights/friday-night-phone-problem/">The Friday-night phone problem: what a missed call really costs a takeaway</a></h3>
+              <div class="post-card-foot"><span>6 min read</span><span class="view-project" aria-hidden="true">READ <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+            </article>
+          </li>
+          <li>
+            <article class="post-card">
+              <div class="post-card-meta"><span class="tag automation">Automation</span><time datetime="2026-09-16">16 Sep 2026</time></div>
+              <h3><a href="/insights/automating-a-one-person-back-office/">Automating a one-person back office: what to automate first</a></h3>
+              <div class="post-card-foot"><span>7 min read</span><span class="view-project" aria-hidden="true">READ <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+            </article>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+</article>
+
+</main>
+
+<!-- @footer -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
+      <p>Digital products, automated systems, cinematic execution. Built by Raki — self-built, no team, no liabilities.</p>
+      <form class="footer-mini" id="footerDispatch" data-form data-subject="New subscriber (footer)" data-event="newsletter_join" data-success="YOU'RE ON THE LIST — WATCH YOUR INBOX" novalidate>
+        <label class="visually-hidden" for="footerEmail">Your email for The Dispatch</label>
+        <div class="newsletter-inline">
+          <input class="input" id="footerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
+          <button class="btn-form" type="submit">Join</button>
+        </div>
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <p class="form-note" role="status" aria-live="polite">THE DISPATCH — ONE EMAIL WHEN SOMETHING SHIPS</p>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h2>Company</h2>
+      <a href="/">Home</a>
+      <a href="/insights/">Insights</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h2>Ventures</h2>
+      <a href="/nevermissed/">NeverMissed</a>
+      <a href="/vaults/">The Vaults</a>
+      <a href="/vaults/category/fitness.html">Fitness &amp; Body</a>
+      <a href="/vaults/category/wealth.html">Make Money</a>
+      <a href="/vaults/category/ai.html">AI &amp; Automation</a>
+      <a href="/vaults/category/mindset.html">Mindset &amp; Discipline</a>
+      <a href="/vaults/category/health.html">Health &amp; Longevity</a>
+    </div>
+    <div class="footer-col">
+      <h2>Support</h2>
+      <a href="/refunds/">Refunds &amp; Delivery</a>
+      <a href="/vaults/account/">Your Library</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <button class="linklike" type="button" data-consent-open>Cookie settings</button>
+    </div>
+    <div class="footer-col">
+      <h2>Connect</h2>
+      <span class="footer-soon">TikTok <small>SOON</small></span>
+      <span class="footer-soon">Instagram <small>SOON</small></span>
+      <a href="/insights/feed.xml">Insights RSS</a>
+      <a href="mailto:rehan@ravolution.agency">rehan@ravolution.agency</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">©2026 <b>RAKI</b> — I AM THE SYSTEM</span>
+    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS PROCESSED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-trust">SECURE CHECKOUT · 30-DAY MONEY-BACK · INSTANT DOWNLOAD</span>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" pathLength="1"></circle></svg>
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="consent" id="consent" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentText" hidden>
+  <h2 id="consentTitle">Cookies &amp; privacy</h2>
+  <p id="consentText">This site uses cookie-free analytics and stores your basket and this choice on your device. No advertising or tracking cookies unless you say so.</p>
+  <div class="consent-actions">
+    <button type="button" class="btn-primary" data-consent="all">Accept all</button>
+    <button type="button" class="btn-secondary" data-consent="essential">Essential only</button>
+    <a href="/privacy/#cookies">Privacy policy</a>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- /@footer -->
+
+</body>
+</html>

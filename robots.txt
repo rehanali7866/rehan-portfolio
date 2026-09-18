@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /vaults/cart.html
+Disallow: /vaults/account/
+Disallow: /vaults/thanks/
 Disallow: /404.html
 
 Sitemap: https://ravolution.agency/sitemap.xml

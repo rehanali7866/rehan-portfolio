@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ravolution Insights</title>
+    <link>https://ravolution.agency/insights/</link>
+    <description>Notes from the bench: practical writing on building, automating and selling, by Raki. Behind NeverMissed and the Ravolution Vaults.</description>
+    <language>en-gb</language>
+    <copyright>Copyright 2026 Ravolution Ltd</copyright>
+    <managingEditor>rehan@ravolution.agency (Raki)</managingEditor>
+    <webMaster>rehan@ravolution.agency (Raki)</webMaster>
+    <lastBuildDate>Wed, 16 Sep 2026 09:00:00 GMT</lastBuildDate>
+    <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+    <ttl>1440</ttl>
+    <atom:link href="https://ravolution.agency/insights/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://ravolution.agency/assets/icon-512.png</url>
+      <title>Ravolution Insights</title>
+      <link>https://ravolution.agency/insights/</link>
+    </image>
+
+    <item>
+      <title>Automating a one-person back office: what to automate first</title>
+      <link>https://ravolution.agency/insights/automating-a-one-person-back-office/</link>
+      <guid isPermaLink="true">https://ravolution.agency/insights/automating-a-one-person-back-office/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Raki</dc:creator>
+      <category>Automation</category>
+      <description><![CDATA[Ravolution is one person. The order I automated the back office in, the rule I used to choose what came first, and the jobs I have deliberately kept manual.]]></description>
+    </item>
+
+    <item>
+      <title>How an AI receptionist actually takes an order — and when it hands over to a human</title>
+      <link>https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/</link>
+      <guid isPermaLink="true">https://ravolution.agency/insights/how-an-ai-receptionist-takes-an-order/</guid>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Raki</dc:creator>
+      <category>NeverMissed</category>
+      <description><![CDATA[What actually happens between the ring and the order text: the divert, the menu as guardrail, the read-back, and the five moments the AI hands over to a person.]]></description>
+    </item>
+
+    <item>
+      <title>The Friday-night phone problem: what a missed call really costs a takeaway</title>
+      <link>https://ravolution.agency/insights/friday-night-phone-problem/</link>
+      <guid isPermaLink="true">https://ravolution.agency/insights/friday-night-phone-problem/</guid>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Raki</dc:creator>
+      <category>NeverMissed</category>
+      <description><![CDATA[Most takeaway owners know they miss calls on a Friday. Here is a plain way to put a number on it, with every assumption shown so you can use your own.]]></description>
+    </item>
+
+  </channel>
+</rss>

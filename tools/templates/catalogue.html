@@ -1,0 +1,94 @@
+<!-- ============ THE DOOR (approved animation — only dark area on the site) ============ -->
+<section id="vault-intro" class="vault-intro" data-nav-dark aria-label="The Vaults">
+  <div class="vi-sticky">
+  {{PREVIEW_STRIP}}
+  <div class="vi-door-wrap" aria-hidden="true">
+    <div class="vi-door">
+      <div class="vi-ring"></div>
+      <div class="vi-handle-scroll"><div class="vi-handle"><i></i><i></i><i></i></div></div>
+      <div class="vi-core"></div>
+    </div>
+  </div>
+  <div class="vi-stage">
+    <header class="vi-head">
+      <p class="vi-kicker">RAVOLUTION &middot; A PRIVATE ARCHIVE &mdash; SCOTLAND</p>
+      <h1 class="vi-title">THE<br>VAULTS</h1>
+      <p class="vi-sub">DIGITAL PRODUCTS &mdash; <em>{{DOOR_SUB}}</em></p>
+    </header>
+    <div class="vi-wait">
+      {{DOOR_CTA}}
+    </div>
+  </div>
+  <div class="vi-hud">
+    <div class="vi-hud-brand">RAVOLUTION &copy;MMXXVI</div>
+    <div class="vi-status"><span class="vi-status-row"><i aria-hidden="true"></i><a href="#catalogue">{{SCROLL_CUE}}</a></span><span class="vi-line" aria-hidden="true"><i></i></span></div>
+    <div class="vi-hud-dial"><span id="viDial" aria-hidden="true">00-00-00</span></div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ 01 · THE CATALOGUE ============ -->
+<section class="store-catalogue" id="catalogue">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>01</b> The Catalogue</span>
+      <h2>The skills <em>nobody taught you.</em></h2>
+      <p>Money, training, health, attention and automation — the practical stuff school skipped. Written by one person who had to work it out, and yours the moment you buy.</p>
+    </div>
+    {{TOOLBAR}}
+    <p class="store-count" id="storeCount" role="status" aria-live="polite">Showing {{COUNT}} of {{COUNT}}</p>
+    <ul class="store-grid" id="storeGrid" aria-label="Guides and bundles">
+{{CARDS}}
+    </ul>
+    <div class="store-empty" id="storeEmpty" hidden>
+      <p>Nothing matches that. Try another word, or <button class="linklike" type="button" data-store-reset>clear the filters</button>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · THE SHELVES ============ -->
+<section class="store-shelves" id="shelves">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>02</b> The Shelves</span>
+      <h2>Five things worth <em>getting good at.</em></h2>
+    </div>
+    <ul class="shelf-grid reveal">
+{{SHELVES}}
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 03 · HOW THIS WORKS ============ -->
+<section class="store-how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>03</b> How this works</span>
+      <h2>No fluff. <em>No subscription.</em></h2>
+    </div>
+    <div class="reveal">
+{{TRUST}}
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · QUESTIONS ============ -->
+<section class="store-faq" id="questions">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><b>04</b> Questions</span>
+      <h2>Before you <em>buy.</em></h2>
+    </div>
+{{FAQ}}
+  </div>
+</section>
+
+<!-- ============ START WITH ONE ============ -->
+<section class="store-final" id="start">
+  <div class="container reveal">
+    <p class="store-pill"><i aria-hidden="true"></i>Pay once · keep it forever</p>
+    <h2>Start with <em>one.</em></h2>
+    <p>Pick the one thing you want to be better at by next month. Instant access, 30-day money-back guarantee.</p>
+    <a class="btn-primary" href="#catalogue" data-track="cta_click">Browse the guides</a>
+  </div>
+</section>
