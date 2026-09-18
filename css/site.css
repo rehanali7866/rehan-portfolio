@@ -287,6 +287,64 @@ html.js .reveal.in{opacity:1;transform:none;}
 .mock-chat .in{background:#181b26;align-self:flex-start;border-bottom-left-radius:3px;}
 .mock-chat .out{background:var(--red);align-self:flex-end;border-bottom-right-radius:3px;}
 .mock-lock{margin:auto;font-family:'Space Grotesk';font-size:12px;letter-spacing:0.3em;color:rgba(244,246,251,0.55);text-align:center;}
+/* process-flow mock: call -> AI -> printed ticket (NeverMissed card) */
+.mock-body--flow{justify-content:center;}
+.mock-flow{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.flow-icons{position:relative;display:flex;align-items:center;width:100%;padding:0 4px;}
+.flow-node{flex:0 0 auto;display:flex;}
+.flow-ic{position:relative;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#1c1f2c,#0e0f16);border:1px solid rgba(255,255,255,0.14);box-shadow:0 8px 20px rgba(0,0,0,0.4);z-index:2;}
+.flow-ic svg{width:16px;height:16px;}
+.flow-node--active .flow-ic{background:linear-gradient(160deg,var(--red),#7f0a1c);box-shadow:0 0 22px rgba(232,16,46,0.6);border-color:transparent;}
+.flow-node:not(.flow-node--active) .flow-ic::before{
+  content:'';position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(232,16,46,0.55);opacity:0;
+  animation:flowPing 3.2s ease-out infinite;
+}
+.flow-node:first-child .flow-ic::before{animation-delay:0s;}
+.flow-node:last-child .flow-ic::before{animation-delay:1.9s;}
+.flow-line{flex:1 1 auto;height:2px;background:rgba(255,255,255,0.14);margin:0 -1px;border-radius:2px;}
+.flow-glow{position:absolute;top:50%;left:0;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;
+  background:#fff;box-shadow:0 0 4px #fff,0 0 16px 5px rgba(232,16,46,0.85);z-index:3;
+  animation:flowTravel 3.2s linear infinite;}
+.flow-labels{display:flex;width:100%;padding:0 4px;}
+.flow-labels span{flex:1 1 0;text-align:center;font-family:'Space Grotesk';font-size:9.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,246,251,0.55);}
+.flow-labels span:nth-child(2){color:#fff;}
+@keyframes flowTravel{0%{left:0%;opacity:0;}6%{opacity:1;}94%{opacity:1;}100%{left:100%;opacity:0;}}
+@keyframes flowPing{0%{transform:scale(0.7);opacity:0.9;}70%{transform:scale(1.4);opacity:0;}100%{opacity:0;}}
+
+/* vault-library scene (Vaults card) — same door recipe as the real /vaults/ door */
+.mock-body--vault{padding:0;background:none;}
+.mock-vault{position:absolute;inset:0;overflow:hidden;
+  background:radial-gradient(ellipse 70% 90% at 82% 45%, rgba(232,16,46,0.55), transparent 62%),
+    radial-gradient(ellipse 90% 70% at 72% 100%, rgba(232,16,46,0.30), transparent 60%), #0b0a08;}
+.mock-vault__lamp{position:absolute;left:15%;bottom:10%;width:64px;height:64px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,196,120,0.55),transparent 70%);filter:blur(5px);
+  animation:mockLampFlicker 3.6s ease-in-out infinite;}
+.mock-vault__books{position:absolute;left:0;top:0;bottom:0;width:56%;display:flex;align-items:flex-end;gap:3px;padding-left:16px;}
+.mock-vault__books i{display:block;width:7px;border-radius:1px 1px 0 0;background:linear-gradient(180deg,#4a2c22,#1c110d);}
+.mock-vault__books i:nth-child(3n){background:linear-gradient(180deg,#5a1b20,#20090b);}
+.mock-vault__books i:nth-child(4n){background:linear-gradient(180deg,#3a3126,#15110c);}
+.mock-vault__books i:nth-child(5n){background:linear-gradient(180deg,#4a2c22,#1c110d);opacity:0.85;}
+.mock-vault__door{position:absolute;right:-16%;top:50%;width:250px;height:250px;border-radius:50%;
+  transform:translateY(-50%);
+  background:conic-gradient(from 90deg,#201d19 0deg,#35302a 40deg,#191612 90deg,#2c2823 140deg,#17140f 190deg,#322d27 240deg,#1a1712 300deg,#201d19 360deg);
+  box-shadow:0 0 0 1px rgba(244,236,221,0.12),0 0 70px rgba(232,16,46,0.55),0 0 130px rgba(232,16,46,0.30),inset 0 0 40px rgba(0,0,0,0.85);
+  animation:mockDoorBreathe 8s ease-in-out infinite;}
+.mock-vault__ring{position:absolute;inset:8%;border-radius:50%;border:1px solid rgba(244,236,221,0.14);
+  background:repeating-conic-gradient(rgba(244,236,221,0.06) 0deg 1.4deg, transparent 1.4deg 30deg);
+  animation:mockDoorSpin 60s linear infinite reverse;}
+.mock-vault__handle{position:absolute;inset:24%;border-radius:50%;border:1.5px solid rgba(244,236,221,0.22);
+  animation:mockDoorSpin 10s linear infinite;}
+.mock-vault__handle i{position:absolute;left:50%;top:50%;width:112%;height:3px;margin:-1.5px 0 0 -56%;border-radius:2px;
+  background:linear-gradient(90deg,transparent 0%,rgba(244,236,221,0.3) 18%,rgba(244,236,221,0.3) 82%,transparent 100%);}
+.mock-vault__handle i:nth-child(2){transform:rotate(60deg);}
+.mock-vault__handle i:nth-child(3){transform:rotate(120deg);}
+.mock-vault__core{position:absolute;inset:38%;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#2b2721 0%,#171310 60%,#0c0a07 100%);
+  border:1px solid rgba(244,236,221,0.1);box-shadow:inset 0 0 18px rgba(0,0,0,0.9);}
+@keyframes mockDoorSpin{to{transform:rotate(360deg);}}
+@keyframes mockDoorBreathe{0%,100%{transform:translateY(-50%) scale(1);}50%{transform:translateY(-50%) scale(1.025);}}
+@keyframes mockLampFlicker{0%,100%{opacity:1;}50%{opacity:0.7;}}
 .mock-lock b{display:block;font-size:34px;color:rgba(255,255,255,0.08);letter-spacing:0;margin-bottom:6px;}
 .project-info{padding:52px;display:flex;flex-direction:column;justify-content:center;}
 .project-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 12px;border-radius:100px;background:var(--red-soft);color:var(--red-text);border:1px solid rgba(232,16,46,0.25);margin-bottom:20px;width:fit-content;font-weight:700;letter-spacing:0.08em;}
