@@ -657,14 +657,16 @@ nav#nav.nav-hidden:focus-within,body.menu-open nav#nav{transform:none;}
 .to-top:hover svg.ring circle{stroke:var(--cream);}
 @media (max-width:720px){.to-top{right:16px;bottom:16px;width:46px;height:46px;} body.has-sticky-cta .to-top{bottom:84px;}}
 
-/* ---- cursor follower (fine pointers only; native cursor stays) ---- */
+/* ---- cursor follower: magnetic snap outline (fine pointers only; native cursor stays) ---- */
 .cursor{display:none;}
 @media (hover:hover) and (pointer:fine){
   html.js .cursor{display:block;position:fixed;left:0;top:0;z-index:250;pointer-events:none;opacity:0;transition:opacity .3s ease;}
   html.js .cursor.show{opacity:1;}
-  .cursor-ring{position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1.5px solid #fff;mix-blend-mode:difference;will-change:transform;transition:background .3s ease;}
-  .cursor.hover .cursor-ring{background:rgba(255,255,255,.14);}
-  .cursor-dot{position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--red);will-change:transform;}
+  .cursor-ring{position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;border:1.5px solid #fff;mix-blend-mode:difference;will-change:transform;
+    transition:width .26s cubic-bezier(.2,.9,.3,1),height .26s cubic-bezier(.2,.9,.3,1),border-radius .26s cubic-bezier(.2,.9,.3,1),border-color .2s ease,background .2s ease;}
+  .cursor.hover .cursor-ring{border-color:var(--red);background:rgba(232,16,46,.10);mix-blend-mode:normal;}
+  .cursor-dot{position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--red);will-change:transform;transition:opacity .2s ease;}
+  .cursor.hover .cursor-dot{opacity:0;}
 }
 
 /* ---- entrance: split headings ---- */

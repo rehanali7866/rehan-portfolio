@@ -430,35 +430,65 @@
     });
   }
 
-  /* ---------------------------------------------------------------- cursor follower */
+  /* ---------------------------------------------------------------- cursor follower: magnetic snap outline */
   function initCursor() {
     if (REDUCED || !FINE) return;
     var c = $('#cursor');
     if (!c) return;
     var ring = $('.cursor-ring', c), dot = $('.cursor-dot', c);
     if (!ring || !dot) return;
-    var tx = -100, ty = -100, rx = -100, ry = -100, ts = 1, cs = 1, shown = false, raf = null, down = false, over = false;
+    var DEF = 34, PAD = 10, MAXR = 28;
+    var tx = -100, ty = -100, rx = -100, ry = -100, shown = false, raf = null, down = false;
+    var overEl = null, snapRect = null; // {x,y,w,h}
+    function applyBox(w, h) {
+      var r = Math.min(w, h, MAXR * 2) / 2;
+      r = Math.min(r, MAXR);
+      ring.style.width = w + 'px';
+      ring.style.height = h + 'px';
+      ring.style.borderRadius = r + 'px';
+    }
     function frame() {
-      rx += (tx - rx) * 0.18; ry += (ty - ry) * 0.18; cs += (ts - cs) * 0.2;
-      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0) scale(' + cs.toFixed(3) + ')';
+      var w = snapRect ? snapRect.w : DEF;
+      var h = snapRect ? snapRect.h : DEF;
+      var destX = snapRect ? snapRect.x : tx - w / 2;
+      var destY = snapRect ? snapRect.y : ty - h / 2;
+      var ease = snapRect ? 0.3 : 0.18;
+      rx += (destX - rx) * ease; ry += (destY - ry) * ease;
+      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
       dot.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
-      if (Math.abs(tx - rx) > 0.15 || Math.abs(ty - ry) > 0.15 || Math.abs(ts - cs) > 0.004) raf = window.requestAnimationFrame(frame);
+      if (Math.abs(destX - rx) > 0.2 || Math.abs(destY - ry) > 0.2) raf = window.requestAnimationFrame(frame);
       else raf = null;
     }
     function kick() { if (!raf) raf = window.requestAnimationFrame(frame); }
-    function target() { ts = down ? 0.8 : (over ? 1.7 : 1); c.classList.toggle('hover', over); kick(); }
+    function setOver(el) {
+      overEl = el;
+      if (el) {
+        var r = el.getBoundingClientRect();
+        snapRect = { x: r.left - PAD, y: r.top - PAD, w: r.width + PAD * 2, h: r.height + PAD * 2 };
+        applyBox(snapRect.w, snapRect.h);
+        c.classList.add('hover');
+      } else {
+        snapRect = null;
+        applyBox(DEF, DEF);
+        c.classList.remove('hover');
+      }
+      kick();
+    }
     document.addEventListener('pointermove', function (e) {
       if (e.pointerType && e.pointerType !== 'mouse') return;
       tx = e.clientX; ty = e.clientY;
-      if (!shown) { shown = true; rx = tx; ry = ty; c.classList.add('show'); }
+      if (!shown) { shown = true; rx = tx - DEF / 2; ry = ty - DEF / 2; c.classList.add('show'); }
       var t = e.target && e.target.nodeType === 1 ? closest(e.target, 'a, button, [role="button"], input, textarea, select, summary, label, .chip, .tilt') : null;
-      over = !!t;
-      target();
+      if (t !== overEl) setOver(t);
+      kick();
     }, { passive: true });
-    document.addEventListener('pointerdown', function (e) { if (!e.pointerType || e.pointerType === 'mouse') { down = true; target(); } }, { passive: true });
-    document.addEventListener('pointerup', function () { down = false; target(); }, { passive: true });
+    document.addEventListener('pointerdown', function (e) { if (!e.pointerType || e.pointerType === 'mouse') { down = true; ring.style.opacity = 0.7; } }, { passive: true });
+    document.addEventListener('pointerup', function () { down = false; ring.style.opacity = ''; }, { passive: true });
     document.documentElement.addEventListener('mouseleave', function () { c.classList.remove('show'); shown = false; });
     document.documentElement.addEventListener('mouseenter', function () { if (tx > -50) { c.classList.add('show'); shown = true; } });
+    window.addEventListener('scroll', function () {
+      if (overEl) { var r = overEl.getBoundingClientRect(); snapRect.x = r.left - PAD; snapRect.y = r.top - PAD; kick(); }
+    }, { passive: true });
   }
 
   /* ---------------------------------------------------------------- hero spotlight + vault door parallax */
