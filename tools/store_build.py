@@ -400,7 +400,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
             ("What format are the guides in?", f'Every guide is delivered as {" and ".join(data["config"]["formats"])}, so you can read it on a phone, tablet, e-reader or laptop.'),
             ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Email us with your order reference and it is refunded to your original payment method, normally within 5 to 10 working days. Full details on <a href=\"/refunds/\">Refunds &amp; Delivery</a>."),
             ("Can I buy more than one at a time?", "Yes. Add as many guides as you like to your basket, and check the bundles above &mdash; buying the related titles together is priced lower than buying them one by one."),
-            ("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/#dispatch\">the Dispatch list</a> and you will get one email when it goes live."),
+            ("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live."),
         ]),
     )
 

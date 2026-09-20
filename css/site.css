@@ -225,6 +225,7 @@ nav > .nav-cta{display:none;}
 
 /* ============ SECTIONS ============ */
 section{position:relative;z-index:3;padding:160px 48px;}
+#pillars{padding-bottom:60px;}
 .container{max-width:1300px;margin:0 auto;}
 html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
 html.js .reveal.reveal-left{transform:translateX(-26px);}
@@ -503,7 +504,8 @@ footer{border-top:1px solid var(--line);padding:70px 48px 32px;position:relative
 .footer-brand p{font-size:14.5px;color:var(--dim);line-height:1.7;max-width:300px;}
 .footer-mini{margin-top:22px;max-width:340px;}
 .footer-mini .form-note{margin-top:10px;font-size:12px;line-height:1.5;}
-.footer-col h2{font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim-2);margin-bottom:16px;font-weight:700;}
+.footer-col h2{font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim-2);margin-bottom:16px;font-weight:700;
+  text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:7px;}
 .footer-col a,.footer-col .linklike{display:block;font-size:14px;color:var(--dim);padding:5px 0;transition:color .3s ease;letter-spacing:0.04em;line-height:1.4;}
 .footer-col a:hover,.footer-col .linklike:hover{color:var(--ink);}
 .footer-soon{display:block;font-size:14px;color:var(--dim);padding:5px 0;letter-spacing:0.04em;line-height:1.4;}
