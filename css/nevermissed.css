@@ -118,6 +118,8 @@
 .nm-features li:last-child{border-bottom:0;}
 .nm-features li::before{content:'';flex:0 0 auto;width:18px;height:2px;background:var(--red);margin-top:11px;border-radius:2px;}
 .nm-price-card .btn-primary{display:block;width:100%;}
+.nm-price-card .nm-dd{display:block;width:100%;margin-top:12px;text-align:center;}
+.nm-dd-note{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim-2);text-align:center;}
 .nm-guarantee{margin-top:20px;font-size:15px;line-height:1.6;color:var(--dim);font-style:italic;text-align:center;}
 .nm-trust{margin-top:56px;}
 .nm-trust-note{margin-top:18px;font-size:13.5px;line-height:1.6;color:var(--dim);text-align:center;}
