@@ -114,6 +114,7 @@ def normalize_product(p: dict) -> dict:
         "status": p["status"],
         "featured": bool(p.get("featured")),
         "checkout": p.get("checkout", {"url": ""}),
+        "cover_image": p.get("cover_image"),
         "includes": None,
         "saving_pence": None,
     }
@@ -196,6 +197,12 @@ def cover_html(item: dict, cats: dict, author: str, big: bool = False) -> str:
     accent = cat["accent"] if cat else "#3a342e"
     cat_label = cat["name"] if cat else "Bundle"
     cls = "cover" + (" cover--big" if big else "")
+    if item.get("cover_image"):
+        return (
+            f'<div class="{cls} cover--img" style="--accent:{esc(accent)}" aria-hidden="true">'
+            f'<img src="{esc(item["cover_image"])}" alt="" loading="lazy" decoding="async"/>'
+            f'<span class="cover__shine"></span></div>'
+        )
     if item["kind"] == "bundle" and item["includes"]:
         minis = []
         for slug in item["includes"][:3]:
