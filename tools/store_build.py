@@ -242,7 +242,7 @@ def price_html(item: dict) -> str:
     return f'<span class="price-now">{price}</span>'
 
 
-def render_card(item: dict, cats: dict, author: str) -> str:
+def render_card(item: dict, cats: dict, author: str, provider: str = "none") -> str:
     cat = cats.get(item["category"])
     cat_name = cat["name"] if cat else "Bundle"
     href = f"/vaults/product/{item['slug']}.html"
@@ -261,9 +261,17 @@ def render_card(item: dict, cats: dict, author: str) -> str:
     if item["status"] == "coming_soon":
         action = '<span class="badge badge-soon">Coming soon</span>'
     else:
+        url = (item.get("checkout") or {}).get("url") or ""
+        if provider == "links" and url:
+            buy_now = (f'<a class="btn-primary btn-sm buy-now" href="{esc(url)}" '
+                       f'data-store-buy data-id="{esc(item["slug"])}" data-kind="{item["kind"]}">Buy now</a>')
+        else:
+            buy_now = (f'<button type="button" class="btn-primary btn-sm buy-now" '
+                       f'data-store-buy data-id="{esc(item["slug"])}" data-kind="{item["kind"]}">Buy now</button>')
         action = (
+            f'<div class="card-actions">{buy_now}'
             f'<button type="button" class="btn-secondary btn-sm buy-add" '
-            f'data-store-add data-id="{esc(item["slug"])}" data-kind="{item["kind"]}">+ Add to cart</button>'
+            f'data-store-add data-id="{esc(item["slug"])}" data-kind="{item["kind"]}">+ Add to cart</button></div>'
         )
     return f'''<li class="vault-card" data-cat="{esc(item["category"])}" data-status="{esc(item["status"])}" data-featured="{"true" if item["featured"] else "false"}" data-price="{item["price_pence"]}" data-title="{esc(title_attr)}" data-tagline="{esc(tag_attr)}" data-type="{item["kind"]}">
   <a class="cover-link" href="{esc(href)}" aria-label="{esc(item["title"])}">{cover_html(item, cats, author)}</a>
@@ -372,7 +380,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
     provider = data["config"]["checkout"]["provider"]
     status = data["config"]["status"]
     live_products = [i for i in items if i["kind"] == "product" and i["status"] == "live"]
-    cards = "\n".join(render_card(i, cats, author) for i in items)
+    cards = "\n".join(render_card(i, cats, author, provider) for i in items)
     shelves = "\n".join(
         render_shelf_card(cats[slug], sum(1 for i in items if i["kind"] == "product" and i["category"] == slug))
         for slug in CATEGORY_ORDER
@@ -459,7 +467,7 @@ def build_category(slug: str, data: dict, cats: dict, items: list, layout: str, 
     provider = data["config"]["checkout"]["provider"]
     cat = cats[slug]
     own_items = [i for i in items if i["category"] == slug]
-    cards = "\n".join(render_card(i, cats, author) for i in own_items)
+    cards = "\n".join(render_card(i, cats, author, provider) for i in own_items)
     other = [s for s in CATEGORY_ORDER if s != slug]
     shelves = "\n".join(
         render_shelf_card(cats[s], sum(1 for i in items if i["kind"] == "product" and i["category"] == s))
@@ -599,7 +607,7 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
     bundles_with = find_bundles_containing(slug, items) if item["kind"] == "product" else []
     related_pool = related_items + [b for b in bundles_with if b not in related_items]
     if related_pool:
-        related_cards = "\n".join(render_card(r, cats, author) for r in related_pool[:3])
+        related_cards = "\n".join(render_card(r, cats, author, provider) for r in related_pool[:3])
         related_html = f'''<section class="pdp-related" id="related">
   <div class="container">
     <div class="section-head reveal">

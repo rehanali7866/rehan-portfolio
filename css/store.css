@@ -167,6 +167,8 @@
 .card-price{font-family:'Space Grotesk';font-weight:700;font-size:17px;color:var(--ink);}
 .price-was{color:var(--dim);font-weight:500;font-size:.8em;margin-right:4px;}
 .btn-sm{padding:9px 16px;font-size:12px;min-height:44px;}
+.card-actions{flex:1 1 100%;display:flex;gap:8px;}
+.card-actions .btn-sm{flex:1 1 0;text-align:center;padding-left:10px;padding-right:10px;white-space:nowrap;}
 .related-grid{grid-template-columns:repeat(3,1fr);}
 
 @media (max-width:1000px){.store-grid{grid-template-columns:repeat(3,1fr);} .related-grid{grid-template-columns:repeat(2,1fr);}}
