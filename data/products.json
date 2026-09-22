@@ -3,7 +3,10 @@
     "status": "preview",
     "currency": "GBP",
     "guarantee_days": 30,
-    "formats": ["PDF", "ePub"],
+    "formats": [
+      "PDF",
+      "ePub"
+    ],
     "author": "Raki",
     "checkout": {
       "provider": "none",
@@ -12,33 +15,65 @@
     }
   },
   "categories": [
-    { "slug": "fitness", "name": "Fitness & Body", "short": "Fitness", "blurb": "Structured training you can actually follow.", "accent": "#8f2d07" },
-    { "slug": "wealth", "name": "Make Money", "short": "Money", "blurb": "Earn, price and sell without the guru theatre.", "accent": "#6f4900" },
-    { "slug": "ai", "name": "AI & Automation", "short": "AI", "blurb": "Build the systems that handle the work while you sleep.", "accent": "#0a5158" },
-    { "slug": "mindset", "name": "Mindset & Discipline", "short": "Mindset", "blurb": "Attention, consistency and standards worth keeping.", "accent": "#4b3290" },
-    { "slug": "health", "name": "Health & Longevity", "short": "Health", "blurb": "Evidence-led health for the long run.", "accent": "#1f5a30" }
+    {
+      "slug": "fitness",
+      "name": "Fitness & Body",
+      "short": "Fitness",
+      "blurb": "Structured training you can actually follow.",
+      "accent": "#8f2d07"
+    },
+    {
+      "slug": "wealth",
+      "name": "Make Money",
+      "short": "Money",
+      "blurb": "Earn, price and sell without the guru theatre.",
+      "accent": "#6f4900"
+    },
+    {
+      "slug": "ai",
+      "name": "AI & Automation",
+      "short": "AI",
+      "blurb": "Build the systems that handle the work while you sleep.",
+      "accent": "#0a5158"
+    },
+    {
+      "slug": "mindset",
+      "name": "Mindset & Discipline",
+      "short": "Mindset",
+      "blurb": "Attention, consistency and standards worth keeping.",
+      "accent": "#4b3290"
+    },
+    {
+      "slug": "health",
+      "name": "Health & Longevity",
+      "short": "Health",
+      "blurb": "Evidence-led health for the long run.",
+      "accent": "#1f5a30"
+    }
   ],
   "products": [
     {
-      "slug": "progressive-overload-12-week-programme",
-      "title": "Progressive Overload: A 12-Week Programme for Size and Strength",
-      "cover_title": "Progressive Overload",
-      "cover_sub": "A 12-Week Programme for Size and Strength",
-      "tagline": "Twelve weeks of structured lifting, with the progression planned for you.",
-      "description": "A twelve-week lifting programme built on progressive overload. Sets, reps and loading are planned week by week, with scheduled deloads, substitutions for missing equipment, and guidance on eating to support the work.",
+      "slug": "sculpted-12-week-aesthetic-blueprint",
+      "title": "Sculpted: The 12-Week Aesthetic Blueprint",
+      "cover_title": "Sculpted",
+      "cover_sub": "The 12-Week Aesthetic Blueprint",
+      "tagline": "A 12-week hypertrophy programme for a balanced, proportioned physique — not just a bigger one.",
+      "description": "A 12-week hypertrophy programme for intermediate and advanced lifters, built around proportion and symmetry rather than raw size. Three phases (Foundation, Build, Sculpt) each with their own exercise selection, sets, reps, RIR and tempo planned week by week, plus a nutrition chapter, recovery guidance, an exercise swap guide and a progress tracker.",
       "highlights": [
-        "12-week periodised lifting blueprint",
-        "Nutrition + macros calculator",
-        "Video demos for every lift",
-        "Deload + recovery protocols"
+        "3 phases across 12 weeks: Foundation, Build, Sculpt",
+        "Every session planned — sets, reps, RIR, rest and tempo",
+        "Nutrition chapter for an aesthetic physique",
+        "Exercise swap guide + progress tracker"
       ],
-      "pages": 184,
+      "pages": 43,
       "category": "fitness",
       "price_pence": 2900,
       "compare_at_pence": null,
       "status": "live",
       "featured": true,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "short-and-sharp-21-days-intervals",
@@ -59,7 +94,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "ground-up-calisthenics",
@@ -80,7 +117,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "your-first-online-income",
@@ -101,7 +140,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "the-sales-conversation",
@@ -122,7 +163,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "the-one-person-business",
@@ -143,7 +186,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": true,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "answer-every-call",
@@ -164,7 +209,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": true,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "selling-ai-services",
@@ -185,7 +232,9 @@
       "compare_at_pence": null,
       "status": "coming_soon",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "automated-back-office",
@@ -206,7 +255,9 @@
       "compare_at_pence": null,
       "status": "coming_soon",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "keeping-your-word",
@@ -227,7 +278,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "attention-30-days",
@@ -248,7 +301,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "consistency-habits",
@@ -269,7 +324,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "sleep-why-it-slips",
@@ -290,7 +347,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": true,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "what-to-eat",
@@ -311,7 +370,9 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     },
     {
       "slug": "the-gut-reset",
@@ -332,40 +393,28 @@
       "compare_at_pence": null,
       "status": "live",
       "featured": false,
-      "checkout": { "url": "" }
+      "checkout": {
+        "url": ""
+      }
     }
   ],
-  "bundles": [
-    {
-      "slug": "the-operator-stack",
-      "title": "The Operator Stack",
-      "blurb": "Design the offer, run the sales call, land the first payments. The three Make Money guides in one set.",
-      "includes": ["the-one-person-business", "the-sales-conversation", "your-first-online-income"],
-      "price_pence": 11900,
-      "saving_pence": 3400,
-      "checkout": { "url": "" }
-    },
-    {
-      "slug": "the-body-set",
-      "title": "The Body Set",
-      "blurb": "Lift, condition and build bodyweight strength. All three Fitness & Body programmes together.",
-      "includes": ["progressive-overload-12-week-programme", "short-and-sharp-21-days-intervals", "ground-up-calisthenics"],
-      "price_pence": 5700,
-      "saving_pence": 1500,
-      "checkout": { "url": "" }
-    },
-    {
-      "slug": "the-reset",
-      "title": "The Reset",
-      "blurb": "Sleep properly, concentrate again and keep the habits that hold it together. Three guides for a scattered month.",
-      "includes": ["sleep-why-it-slips", "attention-30-days", "consistency-habits"],
-      "price_pence": 7300,
-      "saving_pence": 1900,
-      "checkout": { "url": "" }
-    }
-  ],
+  "bundles": [],
   "coupons": [
-    { "code": "WELCOME10", "type": "percent", "value": 10, "min_pence": 2000, "label": "10% off your first order", "active": true },
-    { "code": "LAUNCH15", "type": "percent", "value": 15, "min_pence": 0, "label": "15% off at launch", "active": false }
+    {
+      "code": "WELCOME10",
+      "type": "percent",
+      "value": 10,
+      "min_pence": 2000,
+      "label": "10% off your first order",
+      "active": true
+    },
+    {
+      "code": "LAUNCH15",
+      "type": "percent",
+      "value": 15,
+      "min_pence": 0,
+      "label": "15% off at launch",
+      "active": false
+    }
   ]
 }
