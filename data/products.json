@@ -73,7 +73,7 @@
       "status": "live",
       "featured": true,
       "checkout": {
-        "url": ""
+        "url": "https://buy.stripe.com/5kQ28s7vHbNB2c7eKr0Ba02"
       }
     },
     {
@@ -93,7 +93,7 @@
       "category": "fitness",
       "price_pence": 1900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -116,7 +116,7 @@
       "category": "fitness",
       "price_pence": 2400,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -139,7 +139,7 @@
       "category": "wealth",
       "price_pence": 4700,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -162,7 +162,7 @@
       "category": "wealth",
       "price_pence": 3700,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -185,7 +185,7 @@
       "category": "wealth",
       "price_pence": 6900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": true,
       "checkout": {
         "url": ""
@@ -208,7 +208,7 @@
       "category": "ai",
       "price_pence": 4900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": true,
       "checkout": {
         "url": ""
@@ -277,7 +277,7 @@
       "category": "mindset",
       "price_pence": 3900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -300,7 +300,7 @@
       "category": "mindset",
       "price_pence": 2900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -323,7 +323,7 @@
       "category": "mindset",
       "price_pence": 2400,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -346,7 +346,7 @@
       "category": "health",
       "price_pence": 3900,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": true,
       "checkout": {
         "url": ""
@@ -369,7 +369,7 @@
       "category": "health",
       "price_pence": 3400,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""
@@ -392,7 +392,7 @@
       "category": "health",
       "price_pence": 2400,
       "compare_at_pence": null,
-      "status": "live",
+      "status": "coming_soon",
       "featured": false,
       "checkout": {
         "url": ""

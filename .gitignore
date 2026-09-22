@@ -12,3 +12,6 @@ package.json
 package-lock.json
 .mcp.json
 .vercel/
+
+# private deliverables: deployed by deploy.py, never committed (public repo)
+dl/
