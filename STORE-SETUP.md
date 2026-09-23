@@ -40,7 +40,7 @@ more than one item" below.
 
 Whichever you pick, do this once per product/bundle:
 
-1. Create the product in the provider (title, price, upload the PDF/ePub
+1. Create the product in the provider (title, price, upload the PDF
    files as the digital delivery attachment).
 2. Set the provider's **success/thank-you URL** to
    `https://ravolution.agency/vaults/thanks/`.
@@ -117,7 +117,7 @@ server.)
   an analytics `purchase` event and links to "Your Library" and the
   catalogue. It does **not** know what was bought — the provider's own
   confirmation email is what actually delivers the files.
-- Set up your provider to email the PDF/ePub as an attachment or permanent
+- Set up your provider to email the PDF as an attachment or permanent
   download link the moment payment clears — that email *is* the delivery
   mechanism the FAQ and Refunds page describe ("instant email with a
   permanent link").

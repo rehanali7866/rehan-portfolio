@@ -413,8 +413,8 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
         SHELVES=shelves,
         TRUST=trust_html(False),
         FAQ=faq_html([
-            ("How do I get a guide after I buy it?", "As soon as payment clears you get an email with a permanent PDF and ePub download link. Lost it? Head to <a href=\"/vaults/account/\">Your Library</a> and it will be resent within one working day."),
-            ("What format are the guides in?", f'Every guide is delivered as {" and ".join(data["config"]["formats"])}, so you can read it on a phone, tablet, e-reader or laptop.'),
+            ("How do I get a guide after I buy it?", "As soon as payment clears you get an email with a permanent PDF download link. Lost it? Head to <a href=\"/vaults/account/\">Your Library</a> and it will be resent within one working day."),
+            ("What format are the guides in?", "Every guide is a PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
             ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Email us with your order reference and it is refunded to your original payment method, normally within 5 to 10 working days. Full details on <a href=\"/refunds/\">Refunds &amp; Delivery</a>."),
             ("Can I buy more than one at a time?", "Yes. Add as many guides as you like to your basket and check out for all of them at once."),
             (("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live.") if status == "preview" else ("Can I buy today?", "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button &mdash; one email the day each one lands.")),
@@ -425,7 +425,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
         "RAVOLUTION VAULTS — Opening Soon" if status == "preview" else "The Vaults — Ravolution",
         make_description(
             "Fifteen practical guides on money, training, health, attention and automation, written by " + author + ".",
-            "Browse the full catalogue now; instant PDF and ePub delivery, 30-day money-back guarantee.",
+            "Browse the full catalogue now; instant PDF delivery, 30-day money-back guarantee.",
         ),
         f"{SITE}/vaults/",
         robots=False,
@@ -445,7 +445,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
     faq_ld = {
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [
-            {"@type": "Question", "name": "How do I get a guide after I buy it?", "acceptedAnswer": {"@type": "Answer", "text": "As soon as payment clears you get an email with a permanent PDF and ePub download link. If you lose it, Your Library can have it resent within one working day."}},
+            {"@type": "Question", "name": "How do I get a guide after I buy it?", "acceptedAnswer": {"@type": "Answer", "text": "As soon as payment clears you get an email with a permanent PDF download link. If you lose it, Your Library can have it resent within one working day."}},
             {"@type": "Question", "name": "What is the refund policy?", "acceptedAnswer": {"@type": "Answer", "text": "Every guide carries a 30-day money-back guarantee, refunded to your original payment method within 5 to 10 working days."}},
             ({"@type": "Question", "name": "When does checkout open?", "acceptedAnswer": {"@type": "Answer", "text": "The catalogue is open to browse now. Checkout switches on at launch; join the waitlist for one email when it goes live."}} if status == "preview" else {"@type": "Question", "name": "Can I buy today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button, one email the day each one lands."}}),
         ],
@@ -500,7 +500,7 @@ def build_category(slug: str, data: dict, cats: dict, items: list, layout: str, 
         title,
         make_description(
             cat["blurb"],
-            f'{n_total} guides on {cat["short"].lower()}, written by {author}. Instant PDF and ePub download from Ravolution Vaults.',
+            f'{n_total} guides on {cat["short"].lower()}, written by {author}. Instant PDF download from Ravolution Vaults.',
         ),
         f"{SITE}/vaults/category/{slug}.html",
         robots=False,
@@ -625,7 +625,7 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
         related_html = ""
 
     faq_pairs = [
-        ("What format is this in?", f'Delivered as {" and ".join(data["config"]["formats"])}, so you can read it on a phone, tablet, e-reader or laptop.'),
+        ("What format is this in?", "A PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
         ("How do I get it after I buy?", 'Instantly. As soon as payment clears you get an email with a permanent download link. Lost it? Head to <a href="/vaults/account/">Your Library</a> and it will be resent within one working day.'),
         ("What if it is not for me?", 'It carries a 30-day money-back guarantee. Email us with your order reference and the refund goes back to your original payment method. Full details on <a href="/refunds/">Refunds &amp; Delivery</a>.'),
     ]
@@ -658,7 +658,7 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
     title = f'{short} · Ravolution Vaults'
     slots = base_meta(
         title,
-        make_description(item["tagline"], f'{item["title"]}, by {author}. Instant PDF and ePub download from Ravolution Vaults.'),
+        make_description(item["tagline"], f'{item["title"]}, by {author}. Instant PDF download from Ravolution Vaults.'),
         f"{SITE}/vaults/product/{slug}.html",
         robots=False,
     )

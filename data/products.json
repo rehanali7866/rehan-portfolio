@@ -4,8 +4,7 @@
     "currency": "GBP",
     "guarantee_days": 30,
     "formats": [
-      "PDF",
-      "ePub"
+      "PDF"
     ],
     "author": "Raki",
     "checkout": {

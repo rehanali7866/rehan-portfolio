@@ -581,7 +581,7 @@
         list.appendChild(wrap);
       });
       status.textContent = 'Ready to download';
-      if (lead) lead.textContent = 'Thank you. Download below' + (data.email ? ', and a copy of the links is on its way to ' + data.email : '') + '. Not in your inbox? Check spam and promotions.';
+      if (lead) lead.textContent = 'Thank you. Download below' + (data.email ? ', and a copy of the download link is on its way to ' + data.email : '') + '. Not in your inbox? Check spam and promotions.';
     }
     function fail(msg) {
       status.textContent = msg;
@@ -594,7 +594,7 @@
         .then(function (res) {
           if (res.body && res.body.ok) return show(res.body);
           if (res.code === 202 && tries < 10) { status.textContent = 'Confirming your payment…'; return setTimeout(load, 3000); }
-          fail('We could not unlock the files on this page. Your download link is in your email; if it is not there, email rehan@ravolution.agency and it is sorted the same day.');
+          fail('We could not unlock your download on this page. Your download link is in your email; if it is not there, email rehan@ravolution.agency and it is sorted the same day.');
         })
         .catch(function () {
           if (tries < 3) return setTimeout(load, 2000);
