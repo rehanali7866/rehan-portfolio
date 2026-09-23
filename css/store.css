@@ -334,7 +334,7 @@ section.store-how,section.store-faq{padding-top:0;}
 }
 
 /* ============ ACCOUNT / THANKS ============ */
-.account-page,.thanks-page{padding-top:64px;}
+.account-page,.thanks-page{padding-top:128px;}
 .account-grid,.thanks-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start;}
 .account-steps{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:16px;}
 .account-steps li{display:flex;gap:16px;font-size:14.5px;line-height:1.6;color:var(--dim);}
@@ -347,8 +347,8 @@ section.store-how,section.store-faq{padding-top:0;}
 .resend-form .form-label{margin-bottom:0;}
 .resend-form .btn-form{margin-top:14px;width:100%;}
 .thanks-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
-.thanks-steps{margin-top:8px;}
-@media (max-width:900px){.account-grid,.thanks-grid{grid-template-columns:1fr;gap:36px;}}
+.thanks-steps{margin-top:76px;}
+@media (max-width:900px){.account-grid,.thanks-grid{grid-template-columns:1fr;gap:36px;}.account-page,.thanks-page{padding-top:104px;}.thanks-steps{margin-top:0;}}
 
 /* ============ MOTION v2: covers, cards, chips ============ */
 @media (hover:hover) and (pointer:fine){
