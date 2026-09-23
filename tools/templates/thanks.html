@@ -4,7 +4,11 @@
     <div class="section-head reveal">
       <span class="eyebrow"><b>✓</b> Order received</span>
       <h1>Paid. <em>Unlocked.</em></h1>
-      <p>Thank you. Your download link is on its way by email and should land within a minute or two. If it has not arrived in ten minutes, check spam and promotions, then head to Your Library and we will resend it.</p>
+      <p id="thanksLead">Thank you. Your download link is on its way by email and should land within a minute or two. If it has not arrived in ten minutes, check spam and promotions, then head to Your Library and we will resend it.</p>
+      <div class="thanks-dl" id="thanksDl" hidden aria-live="polite">
+        <p class="thanks-dl-status" id="thanksDlStatus">Unlocking your files&hellip;</p>
+        <div class="thanks-dl-items" id="thanksDlItems"></div>
+      </div>
       <div class="thanks-ctas">
         <a class="btn-primary" href="/vaults/account/" data-track="cta_click">Open Your Library</a>
         <a class="btn-secondary" href="/vaults/#catalogue" data-track="cta_click">Back to the catalogue</a>
@@ -12,7 +16,7 @@
     </div>
     <div class="reveal">
       <ul class="account-steps thanks-steps">
-        <li><b>01</b><span><strong>Check your inbox.</strong> It comes from Raki at Ravolution (rehan@ravolution.agency) and carries your PDF and ePub links.</span></li>
+        <li><b>01</b><span><strong>Download now or from your inbox.</strong> Your files are on this page, and a copy of the links is emailed from Raki at Ravolution (rehan@ravolution.agency). Not there? Check spam.</span></li>
         <li><b>02</b><span><strong>Save the files.</strong> They are yours to keep, on any device, with no subscription.</span></li>
         <li><b>03</b><span><strong>Changed your mind?</strong> Every guide carries a 30-day money-back guarantee. See <a href="/refunds/">Refunds &amp; Delivery</a>.</span></li>
       </ul>

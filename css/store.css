@@ -347,6 +347,14 @@ section.store-how,section.store-faq{padding-top:0;}
 .resend-form .form-label{margin-bottom:0;}
 .resend-form .btn-form{margin-top:14px;width:100%;}
 .thanks-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
+.thanks-dl{margin-top:26px;padding:22px 24px;border-radius:18px;border:1px solid var(--line);background:var(--cream-2);box-shadow:var(--shadow-card);}
+.section-head .thanks-dl p{margin:0;max-width:none;}
+.section-head .thanks-dl .thanks-dl-status{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red-text);line-height:1.5;}
+.section-head .thanks-dl.is-error .thanks-dl-status{font-size:14px;text-transform:none;font-weight:600;letter-spacing:0;line-height:1.55;}
+.thanks-dl-item{margin-top:14px;}
+.section-head .thanks-dl .thanks-dl-title{font-family:'Space Grotesk';font-weight:700;font-size:18px;color:var(--ink);line-height:1.3;}
+.thanks-dl-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;}
+.thanks-dl:not([hidden]) + .thanks-ctas .btn-primary{background:transparent;color:var(--ink);box-shadow:none;border:1px solid var(--line);}
 .thanks-steps{margin-top:76px;}
 @media (max-width:900px){.account-grid,.thanks-grid{grid-template-columns:1fr;gap:36px;}.account-page,.thanks-page{padding-top:104px;}.thanks-steps{margin-top:0;}}
 

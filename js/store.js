@@ -549,7 +549,59 @@
 
   /* ---------------------------------------------------------------- thanks page */
   function initThanks() {
-    if ($('.thanks-page')) track('purchase', {});
+    if (!$('.thanks-page')) return;
+    track('purchase', {});
+    var box = $('#thanksDl'), status = $('#thanksDlStatus'), list = $('#thanksDlItems'), lead = $('#thanksLead');
+    var sid = '';
+    try { sid = new URLSearchParams(location.search).get('session_id') || ''; } catch (e) { /* old browser */ }
+    if (!box || !/^cs_(live|test)_[A-Za-z0-9]+$/.test(sid)) return;
+    box.hidden = false;
+    var tries = 0;
+    function show(data) {
+      list.innerHTML = '';
+      data.items.forEach(function (it) {
+        var wrap = document.createElement('div');
+        wrap.className = 'thanks-dl-item';
+        var h = document.createElement('p');
+        h.className = 'thanks-dl-title';
+        h.textContent = it.title;
+        wrap.appendChild(h);
+        var row = document.createElement('div');
+        row.className = 'thanks-dl-btns';
+        it.files.forEach(function (f, i) {
+          var a = document.createElement('a');
+          a.className = i === 0 ? 'btn-primary' : 'btn-secondary';
+          a.href = f.url;
+          a.setAttribute('download', '');
+          a.textContent = f.label;
+          a.addEventListener('click', function () { track('download', { file: f.label }); });
+          row.appendChild(a);
+        });
+        wrap.appendChild(row);
+        list.appendChild(wrap);
+      });
+      status.textContent = 'Ready to download';
+      if (lead) lead.textContent = 'Thank you. Download below' + (data.email ? ', and a copy of the links is on its way to ' + data.email : '') + '. Not in your inbox? Check spam and promotions.';
+    }
+    function fail(msg) {
+      status.textContent = msg;
+      box.classList.add('is-error');
+    }
+    function load() {
+      tries++;
+      fetch('/api/order?session_id=' + encodeURIComponent(sid), { cache: 'no-store' })
+        .then(function (r) { return r.json().then(function (j) { return { code: r.status, body: j }; }); })
+        .then(function (res) {
+          if (res.body && res.body.ok) return show(res.body);
+          if (res.code === 202 && tries < 10) { status.textContent = 'Confirming your payment…'; return setTimeout(load, 3000); }
+          fail('We could not unlock the files on this page. Your download link is in your email; if it is not there, email rehan@ravolution.agency and it is sorted the same day.');
+        })
+        .catch(function () {
+          if (tries < 3) return setTimeout(load, 2000);
+          fail('Connection dropped. Refresh this page, or use the link in your email.');
+        });
+    }
+    load();
   }
 
   /* ---------------------------------------------------------------- boot */
