@@ -783,3 +783,8 @@ nav#nav.nav-hidden:focus-within,body.menu-open nav#nav{transform:none;}
 .refund-form .ama-label{display:block;margin-top:18px;}
 .refund-form .ama-opt{color:var(--dim-2);letter-spacing:.06em;}
 .refund-form .btn-form{margin-top:20px;}
+
+/* iOS zooms into any field under 16px: keep form text at 16px on touch screens */
+@media (hover:none) and (pointer:coarse){input,textarea,select,.input{font-size:16px !important;}}
+.footer-legal{grid-column:1 / -1;text-transform:none;font-size:11px;letter-spacing:.04em;color:var(--dim-2);line-height:1.6;}
+.footer-legal a{color:inherit;text-decoration:underline;text-underline-offset:2px;}

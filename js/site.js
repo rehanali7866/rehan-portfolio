@@ -103,7 +103,7 @@
         });
       });
       banner.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !banner.hidden) { hide(); }
+        if (e.key === 'Escape' && !banner.hidden) { consentSet('essential'); hide(); }
       });
     }
     document.addEventListener('click', function (e) {

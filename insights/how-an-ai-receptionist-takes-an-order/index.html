@@ -38,10 +38,10 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/assets/site.webmanifest" />
 <script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=8" />
+<link rel="stylesheet" href="/css/site.css?v=9" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=4"></script>
+<script defer src="/js/site.js?v=5"></script>
 <!-- /@head -->
   <link rel="stylesheet" href="/css/insights.css?v=1" />
   <script type="application/ld+json">
@@ -109,7 +109,7 @@
       <a href="/nevermissed/" data-nav="nevermissed"><i>02</i>NeverMissed</a>
       <a href="/vaults/" data-nav="vaults"><i>03</i>The Vaults</a>
       <a href="/insights/" data-nav="insights" aria-current="page"><i>04</i>Insights</a>
-      <a href="/#contact" data-nav="contact"><i>05</i>Contact</a>
+      <a href="/contact/" data-nav="contact"><i>05</i>Contact</a>
     </nav>
     <div class="menu-secondary">
       <a href="/#faq">FAQ</a>
@@ -152,7 +152,7 @@
     <div class="post-wrap">
 
       <div class="prose">
-        <p>People assume "AI receptionist" means a chatbot with a voice bolted on, guessing its way through a phone call. It doesn't work like that, and it shouldn't. A takeaway order is a small, specific transaction — items, quantities, collection or delivery, a total — and the whole point of building NeverMissed was to make that transaction reliable, not to make the AI sound impressive. So this is the plumbing: what happens between the ring and the text landing on your phone, and exactly where the system stops guessing and gets a human involved instead.</p>
+        <p>People assume "AI receptionist" means a chatbot with a voice bolted on, guessing its way through a phone call. It doesn't work like that, and it shouldn't. A takeaway order is a small, specific transaction — items, quantities, collection or delivery, a total — and the whole point of building NeverMissed was to make that transaction reliable, not to make the AI sound impressive. So this is the plumbing: what happens between the ring and the ticket printing in your kitchen, and exactly where the system stops guessing and gets a human involved instead.</p>
 
         <h2>The call never leaves your number</h2>
 
@@ -186,17 +186,17 @@
 
         <ol>
           <li><strong>An item it can't confidently match.</strong> If what the customer describes doesn't clearly correspond to anything on the menu, it says so and takes a callback number rather than guessing at what they meant.</li>
-          <li><strong>A complaint or an unhappy caller.</strong> Someone ringing about a previous order, or clearly frustrated, gets taken seriously and passed to a human rather than talked at by a script.</li>
+          <li><strong>A complaint or an unhappy caller.</strong> Someone ringing about a previous order, or clearly frustrated, gets taken seriously: it takes their number so someone from the shop rings back, rather than talking at them with a script.</li>
           <li><strong>Allergy or dietary detail beyond what's flagged on the menu.</strong> A simple "no onion" is fine. Anything that sounds like a genuine allergy concern goes to a person, because that's not a call worth an AI getting confidently wrong.</li>
           <li><strong>A price or payment dispute.</strong> Questions about a previous charge, a refund, or "that's not what I was quoted" are handed off rather than argued with.</li>
-          <li><strong>A caller who simply asks for a person.</strong> If someone says they'd rather speak to someone in the shop, that request is honoured, not deflected.</li>
+          <li><strong>A caller who simply asks for a person.</strong> If someone says they'd rather speak to someone in the shop, it takes their number for a call back rather than deflecting them.</li>
         </ol>
 
         <p>In every one of those cases the aim is the same: recognise the edge of what the system should be trusted with, and hand it to a human cleanly, with the customer's number, rather than push on and risk getting it wrong with more confidence than it's earned.</p>
 
         <div class="estimate">
           <b>A rough sense of scale, not a measurement</b>
-          Most calls to an independent takeaway are a straightforward order: an item, a size, collection or delivery. In the shops I've set this up in, the handover moments above are the minority of calls, not the majority — reasoning from what a typical night's order mix looks like, not from a survey. Your shop's split will depend on your menu and your customers, and it's exactly why the menu-as-guardrail approach matters more than a clever model.
+          Most calls to an independent takeaway are a straightforward order: an item, a size, collection or delivery. In testing, the handover moments above are the minority of calls, not the majority — reasoning from what a typical night's order mix looks like, not from a survey. Your shop's split will depend on your menu and your customers, and it's exactly why the menu-as-guardrail approach matters more than a clever model.
         </div>
 
         <h2>What lands in your hand</h2>
@@ -276,16 +276,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
-      <p>Digital products, automated systems, cinematic execution. Built by Raki — self-built, no team, no liabilities.</p>
-      <form class="footer-mini" id="footerDispatch" data-form data-subject="New subscriber (footer)" data-event="newsletter_join" data-success="YOU'RE ON THE LIST — WATCH YOUR INBOX" novalidate>
-        <label class="visually-hidden" for="footerEmail">Your email for The Dispatch</label>
-        <div class="newsletter-inline">
-          <input class="input" id="footerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
-          <button class="btn-form" type="submit">Join</button>
-        </div>
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <p class="form-note" role="status" aria-live="polite">THE DISPATCH — ONE EMAIL WHEN SOMETHING SHIPS</p>
-      </form>
+      <p>Digital products, automated systems, cinematic execution. Built by Raki: self-built, no team, no outsourcing.</p>
     </div>
     <div class="footer-col">
       <h2>Company</h2>
@@ -302,10 +293,10 @@
     <div class="footer-col">
       <h2>Support</h2>
       <a href="/refunds/">Refunds &amp; Delivery</a>
-      <a href="/vaults/account/">Your Library</a>
+      <a href="/vaults/account/">Resend my download</a>
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
-      <button class="linklike" type="button" data-consent-open>Cookie settings</button>
+      <button class="linklike" type="button" data-consent-open>Cookies</button>
     </div>
     <div class="footer-col">
       <h2>Connect</h2>
@@ -316,8 +307,9 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">©2026 <b>RAKI</b> — I AM THE SYSTEM</span>
-    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS PROCESSED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-copy">©2026 <b>RAVOLUTION LTD</b> — I AM THE SYSTEM</span>
+    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS ANSWERED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-legal">Ravolution Ltd · Registered in Scotland, company no. <a href="https://find-and-update.company-information.service.gov.uk/company/SC864460" rel="noopener" target="_blank">SC864460</a> · Registered office: 25 Nigel Rise, Livingston, EH54 6LT</span>
   </div>
 </footer>
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">
@@ -326,10 +318,9 @@
 </button>
 <div class="consent" id="consent" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentText" hidden>
   <h2 id="consentTitle">Cookies &amp; privacy</h2>
-  <p id="consentText">This site uses cookie-free analytics and stores your basket and this choice on your device. No advertising or tracking cookies unless you say so.</p>
+  <p id="consentText">No advertising or tracking cookies. We use cookie-free visitor counts, and your basket and this notice are remembered on your device only, so the site works.</p>
   <div class="consent-actions">
-    <button type="button" class="btn-primary" data-consent="all">Accept all</button>
-    <button type="button" class="btn-secondary" data-consent="essential">Essential only</button>
+    <button type="button" class="btn-primary" data-consent="essential">Got it</button>
     <a href="/privacy/#cookies">Privacy policy</a>
   </div>
 </div>

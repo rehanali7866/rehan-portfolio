@@ -38,10 +38,10 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/assets/site.webmanifest" />
 <script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=8" />
+<link rel="stylesheet" href="/css/site.css?v=9" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=4"></script>
+<script defer src="/js/site.js?v=5"></script>
 <!-- /@head -->
   <link rel="stylesheet" href="/css/insights.css?v=1" />
   <script type="application/ld+json">
@@ -108,7 +108,7 @@
       <a href="/nevermissed/" data-nav="nevermissed"><i>02</i>NeverMissed</a>
       <a href="/vaults/" data-nav="vaults"><i>03</i>The Vaults</a>
       <a href="/insights/" data-nav="insights" aria-current="page"><i>04</i>Insights</a>
-      <a href="/#contact" data-nav="contact"><i>05</i>Contact</a>
+      <a href="/contact/" data-nav="contact"><i>05</i>Contact</a>
     </nav>
     <div class="menu-secondary">
       <a href="/#faq">FAQ</a>
@@ -171,11 +171,9 @@
 
         <p>The first thing that failed the "worst possible moment" test badly enough to fix was the contact form. Early on, every enquiry meant me writing a reply from nothing, at whatever time it happened to land — which, inconveniently, was often the same evening I was trying to finish a Vault guide or set up a takeaway's phone line. The fix wasn't clever: a proper contact form with a clear prompt, wired straight to my inbox with no server of my own to maintain, and an honest note on the page about how fast I actually reply — one working day, Monday to Friday. That single change did two things at once. It meant nothing depended on me being at my desk the second a message arrived, and it set the right expectation up front, so a slower reply on a Saturday isn't a broken promise.</p>
 
-        <p>The newsletter worked the same way. Before it was automated, "subscribe" meant someone's email address sitting in a form submission I'd have to notice and copy somewhere. Now it's a form that adds the address to the list the moment it's submitted. Small, unglamorous, and it's the difference between a list that actually grows and one that quietly leaks people who took the time to ask.</p>
+        <h2>What went in next: delivery</h2>
 
-        <h2>What's going in next: delivery</h2>
-
-        <p>The next job on the list, as the Vaults store switches on, is the moment right after someone pays: getting the guide into their hands. Doing that by hand — watching for an order, attaching a file, writing an email — is exactly the kind of task that fails all three of my questions the hardest. It happens on no schedule I control, it needs the same response every single time, and it lands whenever a customer happens to buy, which is not going to be convenient. So it's automated from day one of the store being live: payment clears, the download link goes out immediately, and if it ever gets lost, a working request through Your Library gets it re-sent within a working day. I'd rather build that before the first sale than patch it together after the first person emails asking where their file is.</p>
+        <p>The next job on the list, once the Vaults store opened, was the moment right after someone pays: getting the guide into their hands. Doing that by hand — watching for an order, attaching a file, writing an email — is exactly the kind of task that fails all three of my questions the hardest. It happens on no schedule I control, it needs the same response every single time, and it lands whenever a customer happens to buy, which is not going to be convenient. So it was automated from the first sale: payment clears, the download appears on the order page and the link goes out by email straight away, and if it ever gets lost, a resend request gets it sent again within a working day. I'd rather build that before the first sale than patch it together after the first person emails asking where their file is.</p>
 
         <div class="estimate">
           <b>A rough sense of the trade, not a measurement</b>
@@ -266,16 +264,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/" class="logo" aria-label="Ravolution — home"><span><b class="lr landed">R<img class="lr-logo" src="/assets/logo-r-alpha.png" alt="" /></b>AVOLUTION<em>.</em></span></a>
-      <p>Digital products, automated systems, cinematic execution. Built by Raki — self-built, no team, no liabilities.</p>
-      <form class="footer-mini" id="footerDispatch" data-form data-subject="New subscriber (footer)" data-event="newsletter_join" data-success="YOU'RE ON THE LIST — WATCH YOUR INBOX" novalidate>
-        <label class="visually-hidden" for="footerEmail">Your email for The Dispatch</label>
-        <div class="newsletter-inline">
-          <input class="input" id="footerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
-          <button class="btn-form" type="submit">Join</button>
-        </div>
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <p class="form-note" role="status" aria-live="polite">THE DISPATCH — ONE EMAIL WHEN SOMETHING SHIPS</p>
-      </form>
+      <p>Digital products, automated systems, cinematic execution. Built by Raki: self-built, no team, no outsourcing.</p>
     </div>
     <div class="footer-col">
       <h2>Company</h2>
@@ -292,10 +281,10 @@
     <div class="footer-col">
       <h2>Support</h2>
       <a href="/refunds/">Refunds &amp; Delivery</a>
-      <a href="/vaults/account/">Your Library</a>
+      <a href="/vaults/account/">Resend my download</a>
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
-      <button class="linklike" type="button" data-consent-open>Cookie settings</button>
+      <button class="linklike" type="button" data-consent-open>Cookies</button>
     </div>
     <div class="footer-col">
       <h2>Connect</h2>
@@ -306,8 +295,9 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">©2026 <b>RAKI</b> — I AM THE SYSTEM</span>
-    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS PROCESSED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-copy">©2026 <b>RAVOLUTION LTD</b> — I AM THE SYSTEM</span>
+    <span class="footer-promise">REPLIES WITHIN ONE WORKING DAY (MON–FRI, UK TIME). REFUND REQUESTS ANSWERED WITHIN TWO WORKING DAYS.</span>
+    <span class="footer-legal">Ravolution Ltd · Registered in Scotland, company no. <a href="https://find-and-update.company-information.service.gov.uk/company/SC864460" rel="noopener" target="_blank">SC864460</a> · Registered office: 25 Nigel Rise, Livingston, EH54 6LT</span>
   </div>
 </footer>
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">
@@ -316,10 +306,9 @@
 </button>
 <div class="consent" id="consent" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentText" hidden>
   <h2 id="consentTitle">Cookies &amp; privacy</h2>
-  <p id="consentText">This site uses cookie-free analytics and stores your basket and this choice on your device. No advertising or tracking cookies unless you say so.</p>
+  <p id="consentText">No advertising or tracking cookies. We use cookie-free visitor counts, and your basket and this notice are remembered on your device only, so the site works.</p>
   <div class="consent-actions">
-    <button type="button" class="btn-primary" data-consent="all">Accept all</button>
-    <button type="button" class="btn-secondary" data-consent="essential">Essential only</button>
+    <button type="button" class="btn-primary" data-consent="essential">Got it</button>
     <a href="/privacy/#cookies">Privacy policy</a>
   </div>
 </div>
