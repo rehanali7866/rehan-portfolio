@@ -68,7 +68,14 @@
   function readCart() {
     try {
       var v = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-      return Array.isArray(v) ? v : [];
+      if (!Array.isArray(v)) return [];
+      /* only guides that are on sale, one copy each (old baskets may hold coming-soon items or qty > 1) */
+      var cat = getCatalogue();
+      return v.filter(function (l) {
+        if (!cat) return true;
+        var it = findItem(l.id);
+        return it && it.status === 'live';
+      }).map(function (l) { return { id: l.id, kind: l.kind, qty: 1 }; });
     } catch (e) { return []; }
   }
   function writeCart(items) {
@@ -80,7 +87,7 @@
   function addToCart(id, kind, qty) {
     var items = readCart();
     var line = items.filter(function (l) { return l.id === id; })[0];
-    if (line) { line.qty = (line.qty || 1) + (qty || 1); }
+    if (line) { line.qty = 1; } /* digital guides: one copy is all anyone needs */
     else { items.push({ id: id, kind: kind, qty: qty || 1 }); }
     writeCart(items);
     refreshCartUI();
@@ -594,7 +601,7 @@
         .then(function (res) {
           if (res.body && res.body.ok) return show(res.body);
           if (res.code === 202 && tries < 10) { status.textContent = 'Confirming your payment…'; return setTimeout(load, 3000); }
-          fail('We could not unlock your download on this page. Your download link is in your email; if it is not there, email rehan@ravolution.agency and it is sorted the same day.');
+          fail('We could not unlock your download on this page. Your download link is in your email; if it is not there, email rehan@ravolution.agency and it is sorted within one working day.');
         })
         .catch(function () {
           if (tries < 3) return setTimeout(load, 2000);

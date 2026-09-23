@@ -51,6 +51,8 @@ def jsonld(obj) -> str:
 
 
 def json_block(obj, el_id: str) -> str:
+    if isinstance(obj, dict) and "coupons" in obj:
+        obj = {**obj, "coupons": [c for c in obj["coupons"] if c.get("active")]}
     body = json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="{el_id}">{body}</script>'
 
@@ -66,11 +68,14 @@ def make_description(base: str, filler: str, lo: int = 120, hi: int = 160) -> st
     if len(candidate) <= hi:
         return candidate
     # trim the filler to fit
-    room = hi - len(text) - 1
-    if room > 10:
-        cut = filler[:room].rsplit(" ", 1)[0]
-        return (text + " " + cut).rstrip(",.;: ") + "."
-    return text
+    # filler doesn't fit whole: use as many complete sentences as fit, never a cut-off phrase
+    out = text
+    for sentence in [s.strip() for s in filler.replace(". ", ".|").split("|") if s.strip()]:
+        if len(out) + 1 + len(sentence) <= hi:
+            out = (out + " " + sentence).strip()
+        else:
+            break
+    return out
 
 
 # --------------------------------------------------------------------- data
@@ -115,6 +120,7 @@ def normalize_product(p: dict) -> dict:
         "featured": bool(p.get("featured")),
         "checkout": p.get("checkout", {"url": ""}),
         "cover_image": p.get("cover_image"),
+        "og_image": p.get("og_image"),
         "includes": None,
         "saving_pence": None,
     }
@@ -156,10 +162,10 @@ def build_items(data: dict) -> list:
 
 
 TRUST_COPY = [
-    ("Instant delivery", "The download link is in your inbox the second payment clears. No waiting room, no drip feed, no upsell page in between."),
-    ("30-day money-back", "Not what you expected? Ask within 30 days for your money back. No interrogation. The risk sits with us, not with you."),
+    ("Instant delivery", "Download it on screen the moment payment clears, with a copy of the link in your inbox. No waiting room, no drip feed, no upsell page."),
+    ("30-day money-back", "Not what you expected? Ask within 30 days and you get a full refund, checked personally under our refund policy."),
     ("Written from practice", "Every guide comes from doing the thing, not from summarising other people's books. Where something is uncertain, it says so."),
-    ("Yours to keep", "Pay once and it stays yours. No subscription, and you can re-download it whenever you need it again."),
+    ("Yours to keep", "Pay once and it stays yours. No subscription. Keep the email and you can download it again whenever you need it."),
 ]
 
 
@@ -198,6 +204,12 @@ def cover_html(item: dict, cats: dict, author: str, big: bool = False) -> str:
     cat_label = cat["name"] if cat else "Bundle"
     cls = "cover" + (" cover--big" if big else "")
     if item.get("cover_image"):
+        if big:
+            return (
+                f'<div class="{cls} cover--img" style="--accent:{esc(accent)}">'
+                f'<img src="{esc(item["cover_image"])}" alt="{esc(item["title"])} book cover" loading="eager" fetchpriority="high" decoding="async"/>'
+                f'<span class="cover__shine"></span></div>'
+            )
         return (
             f'<div class="{cls} cover--img" style="--accent:{esc(accent)}" aria-hidden="true">'
             f'<img src="{esc(item["cover_image"])}" alt="" loading="lazy" decoding="async"/>'
@@ -252,7 +264,9 @@ def render_card(item: dict, cats: dict, author: str, provider: str = "none") -> 
     if item["kind"] == "bundle":
         foot_badges += f'<span class="badge badge-bundle">BUNDLE · SAVE {money(item["saving_pence"])}</span>'
     meta_bits = []
-    if item["kind"] == "product":
+    if item["kind"] == "product" and item["status"] != "live":
+        meta_bits.append('In progress')
+    elif item["kind"] == "product":
         meta_bits.append(f'{item["pages"]} pages')
     else:
         meta_bits.append(f'{len(item["includes"])} guides')
@@ -369,6 +383,8 @@ def base_meta(title: str, description: str, canonical: str, robots: bool, og_tit
         "OG_EXTRA": "",
         "HEAD_EXTRA": "",
         "THEME_EXTRA": "",
+        "OG_IMAGE": f"{SITE}/assets/og-vaults.jpg",
+        "OG_IMAGE_ALT": "The Vaults — digital products by Ravolution",
     }
 
 
@@ -416,7 +432,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
             ("How do I get a guide after I buy it?", "As soon as payment clears you get an email with a permanent PDF download link. Lost it? Head to <a href=\"/vaults/account/\">Your Library</a> and it will be resent within one working day."),
             ("What format are the guides in?", "Every guide is a PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
             ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Request it on the <a href=\"/refunds/#refund-request\">Refunds page</a> or by email. Every request is checked personally, and once it is approved the money goes back to your original payment method, normally within 5 to 10 working days."),
-            ("Can I buy more than one at a time?", "Yes. Add as many guides as you like to your basket and check out for all of them at once."),
+            ("Can I buy more than one at a time?", "Yes, one after the other. Each guide checks out on its own through Stripe, so buy one, then come back for the next. Every guide lands in your inbox separately."),
             (("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live.") if status == "preview" else ("Can I buy today?", "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button &mdash; one email the day each one lands.")),
         ]),
     )
@@ -424,8 +440,8 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
     slots = base_meta(
         "RAVOLUTION VAULTS — Opening Soon" if status == "preview" else "The Vaults — Ravolution",
         make_description(
-            "Fifteen practical guides on money, training, health, attention and automation, written by " + author + ".",
-            "Browse the full catalogue now; instant PDF delivery, 30-day money-back guarantee.",
+            "Practical guides on training, money, health, attention and automation, written by " + author + ".",
+            "Sculpted, the 12-week aesthetic programme, is on sale now. More guides on the way.",
         ),
         f"{SITE}/vaults/",
         robots=False,
@@ -434,7 +450,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
     # first load, so this page overrides the partial's #d1c7bd theme-color. Must
     # be declared before the @head markers (browsers use the first theme-color
     # meta tag) so it wins over the one the head partial injects.
-    slots["THEME_EXTRA"] = '\n  <meta name="theme-color" content="#0b0a08" />'
+    # (theme-color comes from the shared head partial)
     breadcrumb_ld = {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         "itemListElement": [
@@ -492,7 +508,9 @@ def build_category(slug: str, data: dict, cats: dict, items: list, layout: str, 
         COUNT=str(len(own_items)),
         CARDS=cards,
         SHELVES=shelves,
-        TRUST=trust_html(False),
+        TRUST=trust_html(False) if n_live else "",
+        FINAL_TEXT=("Pick the one thing you want to be better at by next month. Instant access, 30-day money-back guarantee." if n_live
+                    else "Nothing on this shelf is on sale yet. Browse the rest of the Vaults, or use Notify me on any guide above."),
     )
 
     title = f'{cat["name"]} · Ravolution Vaults'
@@ -500,7 +518,8 @@ def build_category(slug: str, data: dict, cats: dict, items: list, layout: str, 
         title,
         make_description(
             cat["blurb"],
-            f'{n_total} guides on {cat["short"].lower()}, written by {author}. Instant PDF download from Ravolution Vaults.',
+            (f'{n_total} guides by {author}, {n_live} on sale now with instant PDF download and a 30-day money-back guarantee.' if n_live
+             else f'{n_total} guides by {author}, being written now. Get one email the day each one lands.'),
         ),
         f"{SITE}/vaults/category/{slug}.html",
         robots=False,
@@ -531,7 +550,7 @@ def pick_related(item: dict, items: list, max_n: int = 2) -> list:
     same_cat = [i for i in items if i["kind"] == "product" and i["slug"] != item["slug"]
                 and i["category"] == item["category"] and i["status"] == "live"]
     chosen = same_cat[:max_n]
-    if len(chosen) < max_n:
+    if len(chosen) < max_n and item["status"] == "live":
         pool = [i for i in items if i["kind"] == "product" and i["slug"] != item["slug"]
                 and i["status"] == "live" and i not in chosen]
         pool.sort(key=lambda i: (not i["featured"],))
@@ -553,13 +572,17 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
     cat_name = cat["name"] if cat else "Bundle"
     slug = item["slug"]
 
+    is_live = item["status"] == "live"
     meta_chips = []
-    if item["kind"] == "product":
+    if not is_live:
+        meta_chips.append('<li>Coming soon</li>')
+    elif item["kind"] == "product":
         meta_chips.append(f'<li>{item["pages"]} pages</li>')
     else:
         meta_chips.append(f'<li>{len(item["includes"])} guides</li>')
     meta_chips.append(f'<li>{" + ".join(data["config"]["formats"])}</li>')
-    meta_chips.append('<li>Instant download</li>')
+    if is_live:
+        meta_chips.append('<li>Instant download</li>')
 
     # buy box
     if item["status"] == "coming_soon":
@@ -626,9 +649,18 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
 
     faq_pairs = [
         ("What format is this in?", "A PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
-        ("How do I get it after I buy?", 'Instantly. As soon as payment clears you get an email with a permanent download link. Lost it? Head to <a href="/vaults/account/">Your Library</a> and it will be resent within one working day.'),
+        ("How do I get it after I buy?", 'Straight away. After payment you download it on the order page, and the link is emailed to you as well. Lost the email? <a href="/vaults/account/">Request a resend</a> and it is sent again within one working day.'),
         ("What if it is not for me?", 'It carries a 30-day money-back guarantee. Request it on the <a href="/refunds/#refund-request">Refunds page</a> or by email. Every request is checked personally, then the money goes back to your original payment method.'),
     ]
+
+    if not is_live:
+        faq_pairs = [
+            ("When will it be ready?", "It is being written now. Guides go on sale one at a time, and only once they are finished and checked. Use Notify me above and you get one email the day it lands."),
+            ("What format will it be?", "A PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
+            ("Can I buy something today?", '<a href="/vaults/product/sculpted-12-week-aesthetic-blueprint.html">Sculpted: The 12-Week Aesthetic Blueprint</a> is on sale now, with a 30-day money-back guarantee.'),
+        ]
+    pay_info = ('<p class="secure-line">Secure checkout · handled by Stripe · card details never touch our servers</p>\n'
+                '        <ul class="pay-pills" aria-label="Payment methods accepted at checkout"><li>VISA</li><li>MASTERCARD</li><li>AMEX</li><li>APPLE PAY</li><li>GOOGLE PAY</li></ul>') if is_live else ""
 
     crumbs = crumbs_html([("Vaults", "/vaults/")]
                           + ([(cat_name, f"/vaults/category/{item['category']}.html")] if cat else [])
@@ -645,7 +677,10 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
         META_CHIPS="\n".join(meta_chips),
         PRICE_HTML=price_html(item),
         BUY_BOX=buy_box,
-        TRUST=trust_html(True),
+        TRUST=trust_html(True) if is_live else "",
+        PAY_INFO=pay_info,
+        FAQ_HEAD=("Format, delivery, <em>refunds.</em>" if is_live else "Timing, format, <em>what&rsquo;s next.</em>"),
+        FAQ_EYEBROW=("Before you buy" if is_live else "Coming soon"),
         GET_HEADING=get_heading,
         GET_LIST=get_list,
         ABOUT_HEADING=about_heading,
@@ -655,13 +690,21 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
     )
 
     short = item.get("cover_title") or item["title"]
-    title = f'{short} · Ravolution Vaults'
+    title = f'{item["title"]} · Ravolution' if is_live and len(item["title"]) <= 50 else f'{short} · Ravolution Vaults'
+    if is_live:
+        desc_fill = f'By {author}. {item["pages"]} pages, PDF, {money(item["price_pence"])}. Instant download and a 30-day money-back guarantee.'
+    else:
+        desc_fill = f'A guide by {author}, coming soon to Ravolution Vaults. Get one email the day it lands.'
     slots = base_meta(
         title,
-        make_description(item["tagline"], f'{item["title"]}, by {author}. Instant PDF download from Ravolution Vaults.'),
+        make_description(item["tagline"], desc_fill),
         f"{SITE}/vaults/product/{slug}.html",
         robots=False,
     )
+    og_img = item.get("og_image")
+    if og_img:
+        slots["OG_IMAGE"] = f"{SITE}{og_img}"
+        slots["OG_IMAGE_ALT"] = esc(f'{item["title"]} cover')
     breadcrumb_items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
                          {"@type": "ListItem", "position": 2, "name": "The Vaults", "item": f"{SITE}/vaults/"}]
     pos = 3
@@ -681,10 +724,13 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
             "@type": "Offer",
             "price": f'{item["price_pence"] / 100:.2f}',
             "priceCurrency": data["config"]["currency"],
-            "availability": "https://schema.org/InStock" if item["status"] == "live" else "https://schema.org/PreOrder",
+            "availability": "https://schema.org/InStock" if is_live else "https://schema.org/OutOfStock",
             "url": f"{SITE}/vaults/product/{slug}.html",
+            "hasMerchantReturnPolicy": {"@id": f"{SITE}/refunds/#policy"},
         },
     }
+    if item.get("cover_image"):
+        product_ld["image"] = f'{SITE}{item["cover_image"]}'
     json_ld = jsonld(product_ld) + "\n" + jsonld(breadcrumb_ld)
     scripts = json_block(data, "rvCatalogue") + "\n" + json_block({
         "kind": item["kind"], "slug": slug, "title": item["title"],
@@ -714,7 +760,7 @@ def build_cart(data: dict, layout: str, cart_html: str) -> str:
     )
     slots = base_meta(
         "Your Basket · Ravolution Vaults",
-        "Your basket at Ravolution Vaults. Review the guides you have picked, apply a discount code and check out securely with instant delivery.",
+        "Your basket at Ravolution Vaults. Review the guide you picked and check out securely through Stripe, with instant PDF delivery.",
         f"{SITE}/vaults/cart.html",
         robots=True,
     )
@@ -750,7 +796,7 @@ def build_account(data: dict, layout: str, account_html: str) -> str:
     )
     slots = base_meta(
         "Your Library · Ravolution Vaults",
-        "Re-download any Ravolution Vaults guide you have bought. Delivery is by email with a permanent link, yours to keep.",
+        "Lost your Ravolution Vaults download email? Request a resend and your download link is emailed again within one working day.",
         f"{SITE}/vaults/account/",
         robots=True,
     )
@@ -762,7 +808,7 @@ def build_thanks(data: dict, layout: str, thanks_html: str) -> str:
     main = render_layout(thanks_html, TRUST=trust_html(False))
     slots = base_meta(
         "Order Received · Ravolution Vaults",
-        "Thank you for your order from Ravolution Vaults. Your download link is on its way by email, and every guide is yours to keep and re-download.",
+        "Thank you for your order from Ravolution Vaults. Download your guide on this page, and a copy of the link is on its way by email.",
         f"{SITE}/vaults/thanks/",
         robots=True,
     )

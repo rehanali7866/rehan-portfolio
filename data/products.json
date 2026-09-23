@@ -73,7 +73,8 @@
       "featured": true,
       "checkout": {
         "url": "https://buy.stripe.com/5kQ28s7vHbNB2c7eKr0Ba02"
-      }
+      },
+      "og_image": "/assets/og-sculpted.jpg"
     },
     {
       "slug": "short-and-sharp-21-days-intervals",
@@ -83,10 +84,10 @@
       "tagline": "Interval sessions you can finish inside half an hour.",
       "description": "Twenty-one days of high-intensity interval training, each session designed to be done in under thirty minutes. Covers work-to-rest structures, scaling for your current fitness, and how to recover between sessions.",
       "highlights": [
-        "21-day fat-burn calendar",
-        "HIIT circuits under 22 min",
-        "Fat-loss nutrition stack",
-        "Daily check-in tracker"
+        "A 21-day calendar of interval sessions, each one finished inside half an hour",
+        "How hard is hard enough: effort scales that work without a heart-rate monitor",
+        "Eating to support fat loss without crash dieting",
+        "A simple daily check-in so you can see what is actually changing"
       ],
       "pages": 112,
       "category": "fitness",
@@ -129,10 +130,10 @@
       "tagline": "Pick something to sell, find the people who want it, get paid.",
       "description": "A step-by-step route from having nothing to sell to receiving your first payments: choosing something you can actually deliver, pricing it honestly, finding the first buyers, and reinvesting what comes back.",
       "highlights": [
-        "Zero-to-£10K blueprint",
-        "Skill stacking playbook",
-        "Client acquisition scripts",
-        "30+ starter business models"
+        "How to choose something to sell based on skills you already have",
+        "Finding the first people who want it, without paid ads",
+        "Plain-English scripts for the first conversations with buyers",
+        "Realistic starter models, with what each one takes to get going"
       ],
       "pages": 236,
       "category": "wealth",
@@ -152,10 +153,10 @@
       "tagline": "Handle a high-value call without sounding like a salesman.",
       "description": "How high-value sales calls are actually run: opening properly, asking questions that surface the real problem, handling objections without pressure, presenting price with confidence, and following up without pestering.",
       "highlights": [
-        "Objection destroyer scripts",
-        "Tonality + pacing frameworks",
-        "10-step call structure",
-        "LinkedIn prospect hunting"
+        "A call structure you can follow from hello to next step",
+        "Handling objections by asking better questions, not by pushing",
+        "Pace, tone and listening, so you sound like yourself",
+        "Finding and approaching the right people on LinkedIn"
       ],
       "pages": 178,
       "category": "wealth",
@@ -175,10 +176,10 @@
       "tagline": "Build a business that runs properly without hiring anyone.",
       "description": "The structure of a business one person can run well: designing an offer, pricing it, building systems that remove repeat work, and deciding what to deliberately not do.",
       "highlights": [
-        "Offer architecture framework",
-        "Pricing ladder to £50K/mo",
-        "SOP + delegation templates",
-        "Solo scaling pitfall guide"
+        "Shaping an offer people understand in one sentence",
+        "Pricing that covers your time, with room to grow",
+        "Checklists and templates so the work runs the same way every time",
+        "The common traps of running solo, and how to avoid them"
       ],
       "pages": 246,
       "category": "wealth",
@@ -221,10 +222,10 @@
       "tagline": "AI services one person can realistically sell, priced and positioned.",
       "description": "A set of AI-assisted services a single operator can sell to small businesses, with the tools each one needs, what to charge, and how to land the first clients.",
       "highlights": [
-        "20 live AI side hustles",
-        "Tooling stack per hustle",
-        "Pricing + packaging templates",
-        "Client outreach blueprints"
+        "AI services one person can realistically deliver, and who buys them",
+        "The tools each service needs, and what they cost",
+        "How to price and package a service so it is easy to say yes to",
+        "Reaching your first clients without sounding like everyone else"
       ],
       "pages": 168,
       "category": "ai",
@@ -267,10 +268,10 @@
       "tagline": "The standards and routines that make someone worth relying on.",
       "description": "The standards, routines and decisions that make someone reliable: doing what you said you would, taking responsibility when it costs you, handling money and conflict properly, and how you treat the people around you.",
       "highlights": [
-        "12 core masculine principles",
-        "Morning protocol blueprint",
-        "Relationship frame mastery",
-        "Mission + legacy architecture"
+        "Twelve personal standards, and how to hold them on a bad day",
+        "A morning routine that survives real life",
+        "Setting boundaries in relationships without drama",
+        "Working out what you are building towards, and why"
       ],
       "pages": 248,
       "category": "mindset",
@@ -290,10 +291,10 @@
       "tagline": "Rebuild the ability to concentrate for more than ten minutes.",
       "description": "A thirty-day reset for a scattered mind: auditing what you consume, cutting compulsive phone and feed use, and rebuilding the ability to work on one thing for a long stretch.",
       "highlights": [
-        "30-day dopamine reset",
-        "Digital input audit",
-        "Deep work block framework",
-        "Sleep + light architecture"
+        "A 30-day plan to cut the constant pull of your phone",
+        "An audit of what you read, watch and scroll, and what to keep",
+        "Deep-work blocks that fit around a normal job",
+        "Small environment changes that make focus the easy option"
       ],
       "pages": 172,
       "category": "mindset",
@@ -313,10 +314,10 @@
       "tagline": "Habit design that holds up when motivation runs out.",
       "description": "Habit design for real life: environment over willpower, identity-based change, and a proper plan for getting back on track after you break a streak.",
       "highlights": [
-        "Identity-based habit loop",
-        "7 discipline micro-rituals",
-        "Willpower reset framework",
-        "30-day identity challenge"
+        "Building habits around who you want to be, not willpower",
+        "Seven small daily routines that are hard to skip",
+        "What to do on the day you miss, so one slip does not become a month",
+        "A 30-day challenge to lock the first habits in"
       ],
       "pages": 158,
       "category": "mindset",
@@ -382,10 +383,10 @@
       "tagline": "Ninety days to work out what your gut actually tolerates.",
       "description": "A structured ninety-day elimination and reintroduction plan to identify what you tolerate, alongside fibre laddering, fermented foods and a simple way to track symptoms.",
       "highlights": [
-        "90-day reset calendar",
-        "Probiotic strain selector",
-        "Fibre laddering plan",
-        "Stool-test decoder"
+        "A 90-day calendar for finding what your gut tolerates",
+        "How to reintroduce foods one at a time and track the response",
+        "Building up fibre gradually so it helps rather than hurts",
+        "The symptoms that mean you should see a GP, not follow a guide"
       ],
       "pages": 174,
       "category": "health",
