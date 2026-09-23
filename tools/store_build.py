@@ -388,8 +388,10 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
     scroll_cue = "SCROLL TO PREVIEW &darr;" if status == "preview" else "SCROLL TO ENTER &darr;"
     door_sub = "opening soon." if status == "preview" else "the archive."
 
-    door_cta = f'''<form class="waitlist-form" data-form data-subject="Vaults waitlist" data-event="waitlist_join" data-success="YOU'RE ON THE LIST" novalidate>
-      <p class="form-label">Get the key. One email when the doors open.</p>
+    door_subject = "Vaults waitlist" if status == "preview" else "Vaults new drops"
+    door_lead = "Get the key. One email when the doors open." if status == "preview" else "Get the key. One email each time a new guide lands."
+    door_cta = f'''<form class="waitlist-form" data-form data-subject="{door_subject}" data-event="waitlist_join" data-success="YOU'RE ON THE LIST" novalidate>
+      <p class="form-label">{door_lead}</p>
       <label class="visually-hidden" for="doorEmail">Your email</label>
       <div class="form-row">
         <input class="input" id="doorEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ENTER YOUR EMAIL FIRST" />
@@ -415,7 +417,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
             ("What format are the guides in?", f'Every guide is delivered as {" and ".join(data["config"]["formats"])}, so you can read it on a phone, tablet, e-reader or laptop.'),
             ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Email us with your order reference and it is refunded to your original payment method, normally within 5 to 10 working days. Full details on <a href=\"/refunds/\">Refunds &amp; Delivery</a>."),
             ("Can I buy more than one at a time?", "Yes. Add as many guides as you like to your basket and check out for all of them at once."),
-            ("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live."),
+            (("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live.") if status == "preview" else ("Can I buy today?", "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button &mdash; one email the day each one lands.")),
         ]),
     )
 
@@ -445,7 +447,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
         "mainEntity": [
             {"@type": "Question", "name": "How do I get a guide after I buy it?", "acceptedAnswer": {"@type": "Answer", "text": "As soon as payment clears you get an email with a permanent PDF and ePub download link. If you lose it, Your Library can have it resent within one working day."}},
             {"@type": "Question", "name": "What is the refund policy?", "acceptedAnswer": {"@type": "Answer", "text": "Every guide carries a 30-day money-back guarantee, refunded to your original payment method within 5 to 10 working days."}},
-            {"@type": "Question", "name": "When does checkout open?", "acceptedAnswer": {"@type": "Answer", "text": "The catalogue is open to browse now. Checkout switches on at launch; join the waitlist for one email when it goes live."}},
+            ({"@type": "Question", "name": "When does checkout open?", "acceptedAnswer": {"@type": "Answer", "text": "The catalogue is open to browse now. Checkout switches on at launch; join the waitlist for one email when it goes live."}} if status == "preview" else {"@type": "Question", "name": "Can I buy today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button, one email the day each one lands."}}),
         ],
     }
     json_ld = jsonld(breadcrumb_ld) + "\n" + jsonld(faq_ld)

@@ -57,7 +57,7 @@
     var data = getCatalogue();
     if (!data) return null;
     var p = (data.products || []).filter(function (x) { return x.slug === id; })[0];
-    if (p) return { kind: 'product', slug: p.slug, title: p.title, price_pence: p.price_pence, category: p.category, status: p.status, checkout: p.checkout };
+    if (p) return { kind: 'product', slug: p.slug, title: p.title, price_pence: p.price_pence, category: p.category, status: p.status, checkout: p.checkout, cover_image: p.cover_image || null };
     var b = (data.bundles || []).filter(function (x) { return x.slug === id; })[0];
     if (b) return { kind: 'bundle', slug: b.slug, title: b.title, price_pence: b.price_pence, category: null, status: 'live', checkout: b.checkout, includes: b.includes };
     return null;
@@ -295,7 +295,14 @@
     span.setAttribute('aria-hidden', 'true');
     var accent = item.category ? categoryAccent(cats, item.category) : '#3a342e';
     span.style.setProperty('--accent', accent);
-    span.textContent = (item.title || '?').charAt(0);
+    if (item.cover_image) {
+      var img = document.createElement('img');
+      img.src = item.cover_image; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+      span.classList.add('line-thumb--img');
+      span.appendChild(img);
+    } else {
+      span.textContent = (item.title || '?').charAt(0);
+    }
     return span;
   }
 
@@ -395,7 +402,7 @@
       if (best) {
         var card = document.createElement('div');
         card.className = 'upsell-card';
-        card.appendChild(lineThumb({ title: best.title }, cats));
+        card.appendChild(lineThumb({ title: best.title, cover_image: best.cover_image }, cats));
         var info = document.createElement('div');
         info.className = 'upsell-info';
         var b2 = document.createElement('b'); b2.textContent = best.title; info.appendChild(b2);
@@ -421,7 +428,7 @@
         if (candidate) {
           var card2 = document.createElement('div');
           card2.className = 'upsell-card';
-          card2.appendChild(lineThumb({ title: candidate.title, category: candidate.category }, cats));
+          card2.appendChild(lineThumb({ title: candidate.title, category: candidate.category, cover_image: candidate.cover_image }, cats));
           var info2 = document.createElement('div');
           info2.className = 'upsell-info';
           var b3 = document.createElement('b'); b3.textContent = candidate.title; info2.appendChild(b3);
@@ -504,6 +511,9 @@
   function initCoupon() {
     var form = $('#couponForm');
     if (!form) return;
+    /* Stripe Payment Links don't know about site-side codes, so only show the box when a code is live */
+    var cat = getCatalogue();
+    if (!((cat && cat.coupons) || []).some(function (c) { return c.active; })) { form.hidden = true; writeAppliedCoupon(''); return; }
     var input = $('#couponCode', form);
     var note = $('#couponNote', form);
     var existing = readAppliedCoupon();

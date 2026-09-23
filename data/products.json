@@ -407,7 +407,7 @@
       "value": 10,
       "min_pence": 2000,
       "label": "10% off your first order",
-      "active": true
+      "active": false
     },
     {
       "code": "LAUNCH15",
