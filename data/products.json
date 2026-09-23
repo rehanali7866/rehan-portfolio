@@ -68,12 +68,12 @@
       "pages": 43,
       "cover_image": "/assets/covers/sculpted-12-week-aesthetic-blueprint-1200.jpg",
       "category": "fitness",
-      "price_pence": 2900,
+      "price_pence": 50,
       "compare_at_pence": null,
       "status": "live",
       "featured": true,
       "checkout": {
-        "url": "https://buy.stripe.com/5kQ28s7vHbNB2c7eKr0Ba02"
+        "url": "https://buy.stripe.com/5kQcN6cQ19FtdUPdGn0Ba03"
       }
     },
     {
