@@ -776,3 +776,10 @@ nav#nav.nav-hidden:focus-within,body.menu-open nav#nav{transform:none;}
   .bg-fixed::before,.bg-fixed::after,.noise,.hero-bg .orb{animation:none !important;}
   ::view-transition-old(root),::view-transition-new(root){animation:none !important;}
 }
+
+/* refund request form (Refunds & Delivery page) */
+.refund-form{margin-top:32px;scroll-margin-top:calc(var(--nav-h) + 32px);}
+.legal-prose .refund-form h3,.refund-form h3{margin-top:0 !important;padding-top:0;border:0;font-family:'Space Grotesk';font-size:22px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 4px;}
+.refund-form .ama-label{display:block;margin-top:18px;}
+.refund-form .ama-opt{color:var(--dim-2);letter-spacing:.06em;}
+.refund-form .btn-form{margin-top:20px;}

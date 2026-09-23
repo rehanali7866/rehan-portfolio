@@ -157,7 +157,7 @@ def build_items(data: dict) -> list:
 
 TRUST_COPY = [
     ("Instant delivery", "The download link is in your inbox the second payment clears. No waiting room, no drip feed, no upsell page in between."),
-    ("30-day money-back", "Not what you expected? Money back, no forms and no interrogation. The risk sits with us, not with you."),
+    ("30-day money-back", "Not what you expected? Ask within 30 days for your money back. No interrogation. The risk sits with us, not with you."),
     ("Written from practice", "Every guide comes from doing the thing, not from summarising other people's books. Where something is uncertain, it says so."),
     ("Yours to keep", "Pay once and it stays yours. No subscription, and you can re-download it whenever you need it again."),
 ]
@@ -415,7 +415,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
         FAQ=faq_html([
             ("How do I get a guide after I buy it?", "As soon as payment clears you get an email with a permanent PDF download link. Lost it? Head to <a href=\"/vaults/account/\">Your Library</a> and it will be resent within one working day."),
             ("What format are the guides in?", "Every guide is a PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
-            ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Email us with your order reference and it is refunded to your original payment method, normally within 5 to 10 working days. Full details on <a href=\"/refunds/\">Refunds &amp; Delivery</a>."),
+            ("What is the refund policy?", "Every guide carries a 30-day money-back guarantee. Request it on the <a href=\"/refunds/#refund-request\">Refunds page</a> or by email. Every request is checked personally, and once it is approved the money goes back to your original payment method, normally within 5 to 10 working days."),
             ("Can I buy more than one at a time?", "Yes. Add as many guides as you like to your basket and check out for all of them at once."),
             (("When does checkout open?", "The catalogue is open to browse now. Checkout switches on at launch &mdash; join the waitlist above or <a href=\"/insights/#dispatch\">the Dispatch list</a> and you will get one email when it goes live.") if status == "preview" else ("Can I buy today?", "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button &mdash; one email the day each one lands.")),
         ]),
@@ -446,7 +446,7 @@ def build_catalogue(data: dict, cats: dict, items: list, layout: str, product_ht
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [
             {"@type": "Question", "name": "How do I get a guide after I buy it?", "acceptedAnswer": {"@type": "Answer", "text": "As soon as payment clears you get an email with a permanent PDF download link. If you lose it, Your Library can have it resent within one working day."}},
-            {"@type": "Question", "name": "What is the refund policy?", "acceptedAnswer": {"@type": "Answer", "text": "Every guide carries a 30-day money-back guarantee, refunded to your original payment method within 5 to 10 working days."}},
+            {"@type": "Question", "name": "What is the refund policy?", "acceptedAnswer": {"@type": "Answer", "text": "Every guide carries a 30-day money-back guarantee. Request it on the Refunds page or by email. Every request is checked personally, and approved refunds go back to your original payment method within 5 to 10 working days."}},
             ({"@type": "Question", "name": "When does checkout open?", "acceptedAnswer": {"@type": "Answer", "text": "The catalogue is open to browse now. Checkout switches on at launch; join the waitlist for one email when it goes live."}} if status == "preview" else {"@type": "Question", "name": "Can I buy today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Any guide with a price and a Buy now button is available right now. Payment goes through Stripe and the download lands in your inbox straight after. Guides marked Coming soon have a Notify me button, one email the day each one lands."}}),
         ],
     }
@@ -627,7 +627,7 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
     faq_pairs = [
         ("What format is this in?", "A PDF, so it opens on any phone, tablet or laptop. Kindle readers can send it to their Kindle too."),
         ("How do I get it after I buy?", 'Instantly. As soon as payment clears you get an email with a permanent download link. Lost it? Head to <a href="/vaults/account/">Your Library</a> and it will be resent within one working day.'),
-        ("What if it is not for me?", 'It carries a 30-day money-back guarantee. Email us with your order reference and the refund goes back to your original payment method. Full details on <a href="/refunds/">Refunds &amp; Delivery</a>.'),
+        ("What if it is not for me?", 'It carries a 30-day money-back guarantee. Request it on the <a href="/refunds/#refund-request">Refunds page</a> or by email. Every request is checked personally, then the money goes back to your original payment method.'),
     ]
 
     crumbs = crumbs_html([("Vaults", "/vaults/")]

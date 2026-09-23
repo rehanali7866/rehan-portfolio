@@ -741,6 +741,7 @@
     var subject = form.getAttribute('data-subject') || 'New message from ravolution.agency';
     var successText = form.getAttribute('data-success') || "SENT — I'LL COME BACK TO YOU SHORTLY";
     var eventName = form.getAttribute('data-event') || '';
+    var endpoint = form.getAttribute('data-endpoint') || FORM_ENDPOINT;
 
     function note(text, state) {
       status.textContent = text;
@@ -764,7 +765,7 @@
       if (btn) { btn.disabled = true; btn.classList.add('is-sending'); }
       note('SENDING…', '');
       var sent = false;
-      fetch(FORM_ENDPOINT, {
+      fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(body)

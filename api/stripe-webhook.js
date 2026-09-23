@@ -50,7 +50,7 @@ function buildEmail(items, name) {
 <p style="margin:0 0 22px;line-height:1.55">Payment cleared, so the guide is yours. It's a PDF that opens on any phone, tablet or laptop. This link doesn't expire &mdash; keep this email.</p>
 ${linksHtml}
 <p style="margin:26px 0 0;padding-top:18px;border-top:1px solid rgba(21,18,15,.18);font-size:13px;line-height:1.6;color:#504842">
-Every Vault guide carries a 30-day money-back guarantee &mdash; reply to this email if it isn't what you expected and it's refunded, no forms.
+Every Vault guide carries a 30-day money-back guarantee &mdash; if it isn't what you expected, reply to this email within 30 days to request a refund.
 Lost this email later? <a href="${SITE}/vaults/account/" style="color:#15120f">Your Library</a> will resend it.</p>
 <p style="margin:18px 0 0;font-size:13px;color:#504842">&mdash; Raki<br/>ravolution.agency</p>
 </div></body></html>`;

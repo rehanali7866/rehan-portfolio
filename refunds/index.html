@@ -31,10 +31,10 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/assets/site.webmanifest" />
 <script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=7" />
+<link rel="stylesheet" href="/css/site.css?v=8" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=3"></script>
+<script defer src="/js/site.js?v=4"></script>
 <!-- /@head -->
   <link rel="stylesheet" href="/css/legal.css?v=2" />
   <script type="application/ld+json">
@@ -175,11 +175,27 @@
       <h2 id="guarantee">30-day money-back guarantee</h2>
       <p>Every Vault guide carries a <strong>voluntary 30-day money-back guarantee</strong>. It is our promise, offered on top of your legal rights, and it applies to every guide in the Vaults.</p>
       <ul>
-        <li><strong>How to claim.</strong> Email <a href="mailto:rehan@ravolution.agency?subject=Refund%20request">rehan@ravolution.agency</a> within 30 days of purchase with your order reference (it is in your delivery email). You do not need to fill in a form, return anything or explain yourself, although a line on what missed the mark helps us write better guides.</li>
-        <li><strong>How fast.</strong> Refund requests are processed within two working days of your email. The money is returned to your original payment method; depending on your bank or card issuer it normally shows in your account within <strong>5 to 10 working days</strong> after that.</li>
+        <li><strong>How to claim.</strong> Use the <a href="#refund-request">refund request form</a> below, or email <a href="mailto:rehan@ravolution.agency?subject=Refund%20request">rehan@ravolution.agency</a>, within 30 days of purchase. Use the email address you paid with. You do not need to return anything or explain yourself, although a line on what missed the mark helps us write better guides.</li>
+        <li><strong>Checked by a person.</strong> Nothing is refunded automatically. Every request is checked by the founder, and you get an email confirming your refund once it has been issued.</li>
+        <li><strong>How fast.</strong> Refund requests are checked and confirmed within two working days. The money is returned to your original payment method; depending on your bank or card issuer it normally shows in your account within <strong>5 to 10 working days</strong> after that.</li>
         <li><strong>Discounted purchases.</strong> You receive back exactly what you paid, including where a coupon was applied.</li>
       </ul>
       <p>Once a refund is issued your licence to use the guide ends, and we ask you to delete your copies.</p>
+
+      <form id="refund-request" class="ama-form refund-form" data-form data-endpoint="/api/refund-request" data-subject="Refund request" data-event="refund_request" data-success="REQUEST SENT — YOU'LL GET AN EMAIL WITHIN TWO WORKING DAYS" novalidate>
+        <h3>Request a refund</h3>
+        <label class="ama-label" for="refundEmail">EMAIL YOU PAID WITH</label>
+        <input id="refundEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required data-msg-required="ADD THE EMAIL YOU PAID WITH" data-msg-invalid="THAT EMAIL DOESN'T LOOK RIGHT" />
+        <label class="ama-label" for="refundGuide">WHICH GUIDE</label>
+        <input id="refundGuide" name="guide" type="text" placeholder="e.g. Sculpted" required data-msg-required="WHICH GUIDE IS IT FOR?" />
+        <label class="ama-label" for="refundOrder">ORDER REFERENCE <span class="ama-opt">(optional, it is on your Stripe receipt)</span></label>
+        <input id="refundOrder" name="order" type="text" placeholder="e.g. 1234-5678" autocomplete="off" />
+        <label class="ama-label" for="refundReason">WHAT MISSED THE MARK <span class="ama-opt">(optional)</span></label>
+        <textarea id="refundReason" name="reason" rows="4" placeholder="One line helps me write better guides."></textarea>
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn-form" data-track="cta_click">Send refund request</button>
+        <p class="ama-note" role="status" aria-live="polite">GOES STRAIGHT TO THE FOUNDER. NOTHING IS REFUNDED UNTIL IT HAS BEEN CHECKED.</p>
+      </form>
 
       <h2 id="decline">When we may decline</h2>
       <p>The guarantee exists so you can buy without worrying. It is not a free-reading scheme, so we reserve the right to decline a refund where:</p>
@@ -214,7 +230,7 @@
 
       <div class="callout" id="support-promise">
         <p class="callout-label">Support promise</p>
-        <p class="promise">Replies within one working day (Mon–Fri, UK time). Refund requests processed within two working days.</p>
+        <p class="promise">Replies within one working day (Mon–Fri, UK time). Refund requests checked and confirmed within two working days.</p>
       </div>
 
       <div class="company-card">
