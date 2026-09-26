@@ -601,9 +601,9 @@ def build_product(item: dict, data: dict, cats: dict, items: list, layout: str, 
         add_btn = f'<button type="button" class="btn-secondary buy-add" data-store-add data-id="{esc(slug)}" data-kind="{item["kind"]}">+ Add to cart</button>'
         url = (item.get("checkout") or {}).get("url") or ""
         if provider == "links" and url:
-            buy_btn = f'<a class="btn-primary buy-now" href="{esc(url)}" data-store-buy data-id="{esc(slug)}" data-kind="{item["kind"]}">Buy now &mdash; instant delivery</a>'
+            buy_btn = f'<a class="btn-primary buy-now" href="{esc(url)}" data-store-buy data-id="{esc(slug)}" data-kind="{item["kind"]}">Buy now</a>'
         else:
-            buy_btn = f'<button type="button" class="btn-primary buy-now" data-store-buy data-id="{esc(slug)}" data-kind="{item["kind"]}">Buy now &mdash; instant delivery</button>'
+            buy_btn = f'<button type="button" class="btn-primary buy-now" data-store-buy data-id="{esc(slug)}" data-kind="{item["kind"]}">Buy now</button>'
         buy_box = f'<div class="buy-actions">{buy_btn}{add_btn}</div>'
 
     if item["kind"] == "bundle":

@@ -19,35 +19,35 @@
       "name": "Fitness & Body",
       "short": "Fitness",
       "blurb": "Structured training you can actually follow.",
-      "accent": "#8f2d07"
+      "accent": "#d4a017"
     },
     {
       "slug": "wealth",
       "name": "Make Money",
       "short": "Money",
       "blurb": "Earn, price and sell without the guru theatre.",
-      "accent": "#6f4900"
+      "accent": "#a9b1bc"
     },
     {
       "slug": "ai",
       "name": "AI & Automation",
       "short": "AI",
       "blurb": "Build the systems that handle the work while you sleep.",
-      "accent": "#0a5158"
+      "accent": "#1f5fc4"
     },
     {
       "slug": "mindset",
       "name": "Mindset & Discipline",
       "short": "Mindset",
       "blurb": "Attention, consistency and standards worth keeping.",
-      "accent": "#4b3290"
+      "accent": "#6b3fc4"
     },
     {
       "slug": "health",
       "name": "Health & Longevity",
       "short": "Health",
       "blurb": "Evidence-led health for the long run.",
-      "accent": "#1f5a30"
+      "accent": "#2e8b4e"
     }
   ],
   "products": [
@@ -65,7 +65,7 @@
         "Exercise swap guide + progress tracker"
       ],
       "pages": 44,
-      "cover_image": "/assets/covers/sculpted-12-week-aesthetic-blueprint-v2-1200.jpg",
+      "cover_image": "/assets/covers/sculpted-12-week-aesthetic-blueprint-v3-1200.jpg",
       "category": "fitness",
       "price_pence": 2900,
       "compare_at_pence": null,
@@ -74,7 +74,7 @@
       "checkout": {
         "url": "https://buy.stripe.com/5kQ28s7vHbNB2c7eKr0Ba02"
       },
-      "og_image": "/assets/og-sculpted-v2.jpg"
+      "og_image": "/assets/og-sculpted-v3.jpg"
     },
     {
       "slug": "short-and-sharp-21-days-intervals",
@@ -97,7 +97,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/short-and-sharp-21-days-intervals-1200.jpg"
     },
     {
       "slug": "ground-up-calisthenics",
@@ -120,7 +121,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/ground-up-calisthenics-1200.jpg"
     },
     {
       "slug": "your-first-online-income",
@@ -143,7 +145,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/your-first-online-income-1200.jpg"
     },
     {
       "slug": "the-sales-conversation",
@@ -166,7 +169,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/the-sales-conversation-1200.jpg"
     },
     {
       "slug": "the-one-person-business",
@@ -189,7 +193,8 @@
       "featured": true,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/the-one-person-business-1200.jpg"
     },
     {
       "slug": "answer-every-call",
@@ -212,7 +217,8 @@
       "featured": true,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/answer-every-call-1200.jpg"
     },
     {
       "slug": "selling-ai-services",
@@ -235,7 +241,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/selling-ai-services-1200.jpg"
     },
     {
       "slug": "automated-back-office",
@@ -258,7 +265,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/automated-back-office-1200.jpg"
     },
     {
       "slug": "keeping-your-word",
@@ -281,7 +289,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/keeping-your-word-1200.jpg"
     },
     {
       "slug": "attention-30-days",
@@ -304,7 +313,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/attention-30-days-1200.jpg"
     },
     {
       "slug": "consistency-habits",
@@ -327,7 +337,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/consistency-habits-1200.jpg"
     },
     {
       "slug": "sleep-why-it-slips",
@@ -350,7 +361,8 @@
       "featured": true,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/sleep-why-it-slips-1200.jpg"
     },
     {
       "slug": "what-to-eat",
@@ -373,7 +385,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/what-to-eat-1200.jpg"
     },
     {
       "slug": "the-gut-reset",
@@ -396,7 +409,8 @@
       "featured": false,
       "checkout": {
         "url": ""
-      }
+      },
+      "cover_image": "/assets/covers/the-gut-reset-1200.jpg"
     }
   ],
   "bundles": [],
