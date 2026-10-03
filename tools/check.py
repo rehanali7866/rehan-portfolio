@@ -308,11 +308,19 @@ def check_js() -> None:
     if not js_dir.exists():
         return
     for js_path in sorted(js_dir.glob("*.js")):
+        src = js_path.read_text(encoding="utf-8", errors="replace")
+        is_module = re.search(r"^\s*(import|export)\s", src, re.M) is not None
         try:
-            result = subprocess.run(
-                [str(node), "--check", str(js_path)],
-                capture_output=True, text=True, timeout=30,
-            )
+            if is_module:  # ES modules (e.g. hero-3d.js) need module-mode parsing
+                result = subprocess.run(
+                    [str(node), "--input-type=module", "--check"],
+                    input=src, capture_output=True, text=True, timeout=30,
+                )
+            else:
+                result = subprocess.run(
+                    [str(node), "--check", str(js_path)],
+                    capture_output=True, text=True, timeout=30,
+                )
         except Exception as exc:  # pragma: no cover - defensive
             flag(rel(js_path), f"could not run node --check: {exc}")
             continue

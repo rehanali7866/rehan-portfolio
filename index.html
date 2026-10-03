@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 <link rel="manifest" href="/assets/site.webmanifest" />
 <script>(function(d,h){h.className+=' js';try{if(!sessionStorage.getItem('rv_seen')&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){h.className+=' is-loading';}}catch(e){}setTimeout(function(){if(h.className.indexOf('js-ready')<0){h.className=h.className.replace(/\bjs\b/,'').replace(/\bis-loading\b/,'');}},2500);})(document,document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=9" />
+<link rel="stylesheet" href="/css/site.css?v=18" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/js/site.js?v=5"></script>
@@ -67,7 +67,7 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "What does Ravolution actually do?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Two things. It builds digital products, sold through the Vaults, and it builds automated systems for small businesses, starting with NeverMissed, an AI phone line for takeaways. Everything is designed, built and shipped by one person: Raki." } },
+        "acceptedAnswer": { "@type": "Answer", "text": "It builds digital products, sold through the Vaults, and it builds for small businesses: NeverMissed, an AI phone line for takeaways, and soon Ravolution Web, websites designed and built for local businesses. Everything is designed, built and shipped by one person: Raki." } },
       { "@type": "Question", "name": "What is in the Vaults?",
         "acceptedAnswer": { "@type": "Answer", "text": "Written guides across five shelves: Fitness & Body, Make Money, AI & Automation, Mindset & Discipline and Health & Longevity. The first, Sculpted: The 12-Week Aesthetic Blueprint, is on sale now, with more landing one by one. Each guide is a PDF you download instantly and keep." } },
       { "@type": "Question", "name": "Are the Vaults open?",
@@ -132,7 +132,8 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span></div>
+ <div class="hero-pin">
+  <div class="hero-bg" aria-hidden="true"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span><span class="hero-dark"></span><canvas class="hero-3d" data-finish="red"></canvas></div>
   <div class="hero-content">
     <h1>
       <span class="line"><span>Digital products.</span></span>
@@ -141,6 +142,7 @@
     </h1>
     <p class="hero-sub">Precision-built assets and intelligent systems for businesses that value execution over noise.</p>
   </div>
+ </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -187,7 +189,7 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><b>02</b> The Ventures</span>
-      <h2>Two ventures, live.<br>Built to <em>run without me.</em></h2>
+      <h2>Two ventures live, one on the way.<br>Built to <em>run without me.</em></h2>
     </div>
 
     <div class="work-grid">
@@ -247,20 +249,35 @@
         </div>
       </a>
 
-      <div class="project-card reveal">
+      <a class="project-card reveal" href="/contact/" data-track="cta_click" data-track-props='{"label":"Web Design register interest"}'>
         <div class="project-visual" aria-hidden="true">
           <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span><i>CLASSIFIED</i></div>
-            <div class="mock-body"><div class="mock-lock"><b>03</b>ON THE BENCH</div></div>
+            <div class="mock-bar"><span></span><span></span><span></span><i>RAVOLUTION · WEB</i></div>
+            <div class="mock-body mock-body--flow">
+              <div class="mock-flow">
+                <div class="flow-icons">
+                  <span class="flow-glow"></span>
+                  <div class="flow-node"><div class="flow-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                  <div class="flow-line"></div>
+                  <div class="flow-node flow-node--active"><div class="flow-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8h18M8 12h5M8 15h8" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                  <div class="flow-line"></div>
+                  <div class="flow-node"><div class="flow-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                </div>
+                <div class="flow-labels">
+                  <span>Your business</span><span>We design it</span><span>Site goes live</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="project-info">
           <span class="project-tag soon">COMING SOON</span>
-          <div class="project-cat">03 — Next Machine</div>
-          <h3>More<br>Coming Soon</h3>
-          <p><em>The lab never closes.</em> The next machine is already on the bench.</p>
+          <div class="project-cat">03 — Websites for Businesses</div>
+          <h3>Ravolution<br>Web</h3>
+          <p><em>Web design for local businesses</em> — fast, professional websites, designed and built for you, then kept up to date so they keep bringing in customers.</p>
+          <span class="view-project">REGISTER INTEREST <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -300,7 +317,7 @@
     <div class="faq reveal">
       <details>
         <summary>What does Ravolution actually do?</summary>
-        <div class="faq-a"><p>Two things. It builds digital products, sold through <a href="/vaults/">the Vaults</a>, and it builds automated systems for small businesses, starting with <a href="/nevermissed/">NeverMissed</a>, an AI phone line for takeaways. Everything is designed, built and shipped by one person: Raki.</p></div>
+        <div class="faq-a"><p>It builds digital products, sold through <a href="/vaults/">the Vaults</a>, and it builds for small businesses: <a href="/nevermissed/">NeverMissed</a>, an AI phone line for takeaways, and soon Ravolution Web, websites designed and built for local businesses. Everything is designed, built and shipped by one person: Raki.</p></div>
       </details>
       <details>
         <summary>What is in the Vaults?</summary>
@@ -383,6 +400,7 @@
       <h2>Ventures</h2>
       <a href="/nevermissed/">NeverMissed</a>
       <a href="/vaults/">The Vaults</a>
+      <a href="/contact/">Ravolution Web (soon)</a>
     </div>
     <div class="footer-col">
       <h2>Support</h2>
@@ -421,5 +439,6 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <!-- /@footer -->
 
+<script type="module" src="/js/hero-3d.js?v=11"></script>
 </body>
 </html>
