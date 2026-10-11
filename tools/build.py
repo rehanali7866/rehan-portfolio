@@ -13,7 +13,7 @@ Usage
 
 Partial contract (markers stay in the file; the content between them is replaced):
   <head> …page meta…  <!-- @head --><!-- /@head -->  …page CSS / JSON-LD… </head>
-  <body data-page="home|nevermissed|vaults|insights|contact|legal|notfound">
+  <body data-page="home|nevermissed|web|vaults|insights|contact|legal|notfound">
   <!-- @nav --><!-- /@nav -->
   <main id="main"> … </main>
   <!-- @footer --><!-- /@footer -->
@@ -40,7 +40,7 @@ REPO = Path(__file__).resolve().parent.parent
 PARTIALS_DIR = REPO / "_partials"
 SITE = "https://ravolution.agency"
 SKIP_DIR_NAMES = {"_partials", "tools", "node_modules", "react-bits", "ui-ux-pro-max-skill"}
-PAGE_VALUES = {"home", "nevermissed", "vaults", "insights", "contact", "legal", "notfound"}
+PAGE_VALUES = {"home", "nevermissed", "web", "vaults", "insights", "contact", "legal", "notfound"}
 MARKERS = ("head", "nav", "footer")
 LEGAL_DIRS = {"privacy", "terms", "refunds", "contact"}
 

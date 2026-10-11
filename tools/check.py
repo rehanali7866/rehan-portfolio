@@ -41,7 +41,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 SITE = "https://ravolution.agency"
 SKIP_DIR_NAMES = {"_partials", "tools", "node_modules", "react-bits", "ui-ux-pro-max-skill"}
-PAGE_VALUES = {"home", "nevermissed", "vaults", "insights", "contact", "legal", "notfound"}
+PAGE_VALUES = {"home", "nevermissed", "web", "vaults", "insights", "contact", "legal", "notfound"}
 MARKERS = ("head", "nav", "footer")
 
 OLD_PATHS = ["css/style.css", "js/main.js", "js/roller.js", "css/legal.css?v=1", "/vaults/assets/"]
