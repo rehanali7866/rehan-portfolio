@@ -628,17 +628,20 @@
     if (!/^[\d\s+()-]{9,}$/.test(d.phone)) { F.phone.focus(); say("THAT PHONE NUMBER DOESN'T LOOK RIGHT", 'err'); return; }
     btn.disabled = true;
     say('ONE SEC…', '');
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ shop: d.shop, name: d.name, phone: d.phone, town: d.town, page: location.pathname,
-        _subject: 'NeverMissed DEMO request — ' + d.shop, _template: 'table', _captcha: 'false', _honey: '' })
-    }).then(function (r) {
-      if (!r.ok) throw new Error('lead ' + r.status);
-      return fetch('/api/demo-line', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(d)
-      });
+    /* Email the lead in the background (keepalive so it finishes even if they tap call straight away),
+       and show the number as soon as the server hands it over. Retry the email once if it fails. */
+    var leadBody = JSON.stringify({ shop: d.shop, name: d.name, phone: d.phone, town: d.town, page: location.pathname,
+      _subject: 'NeverMissed DEMO request — ' + d.shop, _template: 'table', _captcha: 'false', _honey: '' });
+    function sendLead(tries) {
+      fetch(ENDPOINT, { method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: leadBody
+      }).then(function (r) { if (!r.ok) throw new Error('lead ' + r.status); })
+        .catch(function () { if (tries > 0) setTimeout(function () { sendLead(tries - 1); }, 1500); });
+    }
+    sendLead(1);
+    fetch('/api/demo-line', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
     }).then(function (r) {
       if (!r.ok) throw new Error('line ' + r.status);
       return r.json();
