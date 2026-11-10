@@ -156,7 +156,7 @@
     <div class="nm-ctas">
       <a class="btn-primary" href="#start" data-track="cta_click" data-track-props='{"label":"Start your free week (hero)"}'>START YOUR FREE WEEK</a>
       <a class="btn-secondary" href="#how" data-track="cta_click" data-track-props='{"label":"See how it works (hero)"}'>SEE HOW IT WORKS</a>
-      <a class="btn-secondary" href="#demo" data-demo-open data-track="cta_click" data-track-props='{"label":"Call the live demo (hero)"}'>CALL THE LIVE DEMO</a>
+      <a class="btn-secondary" href="#demo" data-demo-open data-track="cta_click" data-track-props='{"label":"Try the live demo (hero)"}'>TRY THE LIVE DEMO</a>
     </div>
     <p class="nm-hero-note">NO APP · NO NEW PHONE SYSTEM · YOUR NUMBER STAYS THE SAME</p>
   </div>
@@ -402,7 +402,7 @@
     <button class="nm-demo-close" type="button" id="nmDemoClose" aria-label="Close">&times;</button>
     <form id="nmDemoForm" novalidate>
       <h2 id="nmDemoTitle">Hear it for yourself</h2>
-      <p>Tell me about your shop and I'll give you the demo number to ring straight away.</p>
+      <p>Tell me about your shop and I'll email you the demo number to ring.</p>
       <div class="nm-grid">
         <div class="nm-field">
           <label class="form-label" for="nmdShop">Shop name</label>
@@ -417,21 +417,24 @@
           <input class="input" id="nmdPhone" name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="07xxx xxxxxx" />
         </div>
         <div class="nm-field">
+          <label class="form-label" for="nmdEmail">Email</label>
+          <input class="input" id="nmdEmail" name="email" type="email" inputmode="email" required autocomplete="email" placeholder="you@yourshop.co.uk" />
+        </div>
+        <div class="nm-field">
           <label class="form-label" for="nmdTown">Town / City</label>
           <input class="input" id="nmdTown" name="town" type="text" required autocomplete="address-level2" placeholder="Edinburgh" />
         </div>
       </div>
       <input type="text" name="_honey" id="nmdHoney" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="nm-actions">
-        <button class="btn-form" type="submit" id="nmdBtn" data-track="cta_click" data-track-props='{"label":"Get demo number (form)"}'>GET THE DEMO NUMBER</button>
+        <button class="btn-form" type="submit" id="nmdBtn" data-track="cta_click" data-track-props='{"label":"Request demo number (form)"}'>EMAIL ME THE DEMO NUMBER</button>
         <p class="form-note" id="nmdNote" role="status" aria-live="polite">FOR TAKEAWAY OWNERS AND STAFF</p>
       </div>
     </form>
     <div class="nm-demo-done" id="nmDemoDone" hidden>
-      <h2>Ring the demo now</h2>
-      <p>It answers as <b>Tony's Takeaway</b>, a demo shop. Order something like you would from any takeaway, and it'll read it back. On your free week it answers with your shop's name and your menu.</p>
-      <a class="btn-primary nm-demo-call" id="nmdCall" href="#">CALL <span id="nmdNum"></span></a>
-      <p class="form-note">I'LL ALSO GIVE YOU A RING TO SEE WHAT YOU THOUGHT</p>
+      <h2>Thanks, <span id="nmdThanksName">got it</span></h2>
+      <p>I'll email the demo number to <b id="nmdThanksEmail">you</b> shortly, usually within a few hours. It answers as a demo takeaway: ring it and order like a normal customer. On your free week it answers with your shop's name and your menu.</p>
+      <p class="form-note">CAN'T SEE IT? CHECK YOUR SPAM, OR WHATSAPP ME ON 07836 671372</p>
     </div>
   </div>
 </div>
@@ -568,32 +571,32 @@
 })();
 </script>
 <script>
-/* Live demo gate: details first, then the demo number (served by /api/demo-line, not in this page). */
+/* Live demo gate: details first. The number is NOT in this page and is never shown on the site.
+   /api/demo-request emails Rehan the lead plus a ready-to-send reply containing the number. */
 (function () {
   'use strict';
-  var EMAIL = 'rehan@ravolution.agency';
-  var ENDPOINT = 'https://formsubmit.co/ajax/2c5ecb72f1ee0224596c06758178d5aa';
   var modal = document.getElementById('nmDemo');
   var form = document.getElementById('nmDemoForm');
   var done = document.getElementById('nmDemoDone');
   if (!modal || !form) return;
+  try { localStorage.removeItem('nmDemoLine'); } catch (err) { /* fine */ }
   var F = {
     shop: document.getElementById('nmdShop'), name: document.getElementById('nmdName'),
-    phone: document.getElementById('nmdPhone'), town: document.getElementById('nmdTown'),
-    honey: document.getElementById('nmdHoney')
+    phone: document.getElementById('nmdPhone'), email: document.getElementById('nmdEmail'),
+    town: document.getElementById('nmdTown'), honey: document.getElementById('nmdHoney')
   };
   var note = document.getElementById('nmdNote');
   var btn = document.getElementById('nmdBtn');
-  var LABEL = { shop: 'SHOP NAME', name: 'YOUR NAME', phone: 'PHONE NUMBER', town: 'TOWN' };
+  var LABEL = { shop: 'SHOP NAME', name: 'YOUR NAME', phone: 'PHONE NUMBER', email: 'EMAIL', town: 'TOWN' };
   var lastFocus = null;
 
   function say(t, s) { note.textContent = t; if (s) note.setAttribute('data-state', s); else note.removeAttribute('data-state'); }
   function val(el) { return el ? String(el.value || '').trim() : ''; }
   function track(n, d) { if (typeof window.rvTrack === 'function') window.rvTrack(n, d); }
-  function showNumber(tel, display) {
-    var a = document.getElementById('nmdCall');
-    a.href = 'tel:' + tel;
-    document.getElementById('nmdNum').textContent = display;
+  function first(n) { return String(n || '').split(/\s+/)[0]; }
+  function showThanks(d) {
+    document.getElementById('nmdThanksName').textContent = first(d.name) || 'got it';
+    document.getElementById('nmdThanksEmail').textContent = d.email;
     form.hidden = true; done.hidden = false;
   }
   function open(e) {
@@ -601,11 +604,7 @@
     lastFocus = document.activeElement;
     modal.hidden = false;
     document.documentElement.style.overflow = 'hidden';
-    try {
-      var saved = JSON.parse(localStorage.getItem('nmDemoLine') || 'null');
-      if (saved && saved.tel) { showNumber(saved.tel, saved.display); }
-    } catch (err) { /* storage blocked: just show the form */ }
-    setTimeout(function () { (done.hidden ? F.shop : document.getElementById('nmdCall')).focus(); }, 30);
+    setTimeout(function () { if (done.hidden) F.shop.focus(); }, 30);
     track('demo_open', { venture: 'nevermissed' });
   }
   function close() {
@@ -622,36 +621,24 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (F.honey && F.honey.value) return;
-    var d = { shop: val(F.shop), name: val(F.name), phone: val(F.phone), town: val(F.town) };
-    var missing = ['shop', 'name', 'phone', 'town'].filter(function (k) { return !d[k]; })[0];
+    var d = { shop: val(F.shop), name: val(F.name), phone: val(F.phone), email: val(F.email), town: val(F.town) };
+    var missing = ['shop', 'name', 'phone', 'email', 'town'].filter(function (k) { return !d[k]; })[0];
     if (missing) { F[missing].focus(); say('FILL IN THE ' + LABEL[missing] + ' FIRST', 'err'); return; }
     if (!/^[\d\s+()-]{9,}$/.test(d.phone)) { F.phone.focus(); say("THAT PHONE NUMBER DOESN'T LOOK RIGHT", 'err'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { F.email.focus(); say("THAT EMAIL DOESN'T LOOK RIGHT", 'err'); return; }
     btn.disabled = true;
-    say('ONE SEC…', '');
-    /* Email the lead in the background (keepalive so it finishes even if they tap call straight away),
-       and show the number as soon as the server hands it over. Retry the email once if it fails. */
-    var leadBody = JSON.stringify({ shop: d.shop, name: d.name, phone: d.phone, town: d.town, page: location.pathname,
-      _subject: 'NeverMissed DEMO request — ' + d.shop, _template: 'table', _captcha: 'false', _honey: '' });
-    function sendLead(tries) {
-      fetch(ENDPOINT, { method: 'POST', keepalive: true,
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: leadBody
-      }).then(function (r) { if (!r.ok) throw new Error('lead ' + r.status); })
-        .catch(function () { if (tries > 0) setTimeout(function () { sendLead(tries - 1); }, 1500); });
+    say('SENDING…', '');
+    var body = JSON.stringify(d);
+    function post(tries) {
+      return fetch('/api/demo-request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body })
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j || !j.success) throw new Error('req ' + r.status); }); })
+        .catch(function (err) { if (tries > 0) return new Promise(function (res) { setTimeout(res, 1500); }).then(function () { return post(tries - 1); }); throw err; });
     }
-    sendLead(1);
-    fetch('/api/demo-line', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
-    }).then(function (r) {
-      if (!r.ok) throw new Error('line ' + r.status);
-      return r.json();
-    }).then(function (j) {
-      if (!j || !j.tel) throw new Error('no number');
-      try { localStorage.setItem('nmDemoLine', JSON.stringify({ tel: j.tel, display: j.display })); } catch (err) { /* fine */ }
-      showNumber(j.tel, j.display);
-      track('demo_unlock', { venture: 'nevermissed' });
+    post(1).then(function () {
+      showThanks(d);
+      track('demo_request', { venture: 'nevermissed' });
     }).catch(function () {
-      say("COULDN'T SEND — TRY AGAIN, OR WHATSAPP ME ON 07836 671372", 'err');
+      say("COULDN'T SEND - TRY AGAIN, OR WHATSAPP ME ON 07836 671372", 'err');
     }).then(function () { btn.disabled = false; });
   });
 })();
