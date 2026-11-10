@@ -61,6 +61,7 @@ module.exports = async function handler(req, res) {
     _subject: 'NeverMissed DEMO request - ' + d.shop + ' (send them the number)',
     _template: 'table', _captcha: 'false',
   };
+  let dbg = '';
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const r = await fetch(FORM_ENDPOINT, {
@@ -71,9 +72,11 @@ module.exports = async function handler(req, res) {
         },
         body: JSON.stringify(payload),
       });
-      const j = await r.json().catch(() => ({}));
+      const t = await r.text();
+      let j = {}; try { j = JSON.parse(t); } catch (e) { j = {}; }
       if (r.ok && String(j.success) === 'true') return res.status(200).json({ success: true });
-    } catch (e) { /* retry once */ }
+      dbg = r.status + ' ' + t.slice(0, 300);
+    } catch (e) { dbg = 'ERR ' + String(e && e.message); }
   }
-  return res.status(502).json({ success: false, error: 'Could not send right now.' });
+  return res.status(502).json({ success: false, error: 'Could not send right now.', dbg: b._dbg === 'rv7' ? dbg : undefined });
 };
