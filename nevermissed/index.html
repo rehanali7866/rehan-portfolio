@@ -572,7 +572,7 @@
 </script>
 <script>
 /* Live demo gate: details first. The number is NOT in this page and is never shown on the site.
-   /api/demo-request emails Rehan the lead plus a ready-to-send reply containing the number. */
+   /api/demo-request validates and returns the ready-to-send reply; the browser emails it to Rehan via FormSubmit. */
 (function () {
   'use strict';
   var modal = document.getElementById('nmDemo');
@@ -628,13 +628,26 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { F.email.focus(); say("THAT EMAIL DOESN'T LOOK RIGHT", 'err'); return; }
     btn.disabled = true;
     say('SENDING…', '');
-    var body = JSON.stringify(d);
-    function post(tries) {
-      return fetch('/api/demo-request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body })
-        .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j || !j.success) throw new Error('req ' + r.status); }); })
-        .catch(function (err) { if (tries > 0) return new Promise(function (res) { setTimeout(res, 1500); }).then(function () { return post(tries - 1); }); throw err; });
+    var FORM = 'https://formsubmit.co/ajax/2c5ecb72f1ee0224596c06758178d5aa';
+    function retry(fn, tries) {
+      return fn().catch(function (err) { if (tries > 0) return new Promise(function (r) { setTimeout(r, 1500); }).then(function () { return retry(fn, tries - 1); }); throw err; });
     }
-    post(1).then(function () {
+    function post() {
+      return retry(function () {
+        return fetch('/api/demo-request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+          .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j || !j.success) throw new Error('req ' + r.status); return j; }); });
+      }, 1).then(function (j) {
+        var lead = JSON.stringify({ shop: d.shop, name: d.name, phone: d.phone, email: d.email, town: d.town,
+          READY_REPLY_subject: j.subject, READY_REPLY_press_Reply_then_paste_this: j.reply,
+          _replyto: d.email, _subject: 'NeverMissed DEMO request - ' + d.shop + ' (send them the number)',
+          _template: 'table', _captcha: 'false', _honey: '' });
+        return retry(function () {
+          return fetch(FORM, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: lead })
+            .then(function (r) { return r.json().then(function (x) { if (!r.ok || String(x && x.success) !== 'true') throw new Error('lead ' + r.status); }); });
+        }, 1);
+      });
+    }
+    post().then(function () {
       showThanks(d);
       track('demo_request', { venture: 'nevermissed' });
     }).catch(function () {
